@@ -1,0 +1,128 @@
+%token <string> IDENT
+%token <string> USTR
+%token <string> STRING
+%token <int> INT (* parse integers *)
+%token LEFT_BRACE
+%token RIGHT_BRACE
+%token LEFT_BRACK
+%token RIGHT_BRACK
+%token LEFT_MIDBRACE
+%token RIGHT_MIDBRACE
+%token COMMA
+%token PERIOD  
+%left PERIOD 
+%token PK
+%token SK
+%token K
+%token LEFT_ANGLEBARCK
+%token RIGHT_ANGLEBARCK
+%token NONCE
+%token HASHCON
+%token AENC
+%token SENC
+%token SENDTO
+%token COLON
+%token SEMICOLON
+%token ACTIONS
+%token GOALS
+%token KNOWLEDGES
+%token PROTOCOL
+%token END
+%token SECRETOF
+%token NINJ
+%token INJ
+%token ON
+%token EOF
+%token ENVIRONMENT
+%token CONF
+%token AND
+
+%start <Protocols.protocols option> prog
+%%
+(* part 1 *)
+prog:
+  | p = protocols; EOF { Some p }
+  | EOF       { None   } ;
+
+protocols:
+  | PROTOCOL; name=IDENT; COLON ; p=pocolcontext ; END { `Protocol (name,p)};
+
+pocolcontext:
+  | k=knowledges;a=actions;env=envrionment; g = goals; { `Pocol (k,a,env,g) }
+
+knowledges:
+  | KNOWLEDGES; knwlist=knowledge; { knwlist };
+
+knowledge:
+  | r=IDENT; COLON ; m=message { `Knowledge (r,m) }
+  | LEFT_BRACE; knws = knowledge_list; RIGHT_BRACE { `Knowledge_list knws};
+
+knowledge_list:
+  knws = separated_list(SEMICOLON, knowledge)    { knws } ;
+
+envrionment:
+  | ENVIRONMENT; envlist = envs; { envlist }
+
+envs:
+  (*| LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE; rlist=message {`Env_rlist rlist }
+  | LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE; LEFT_BRACE;nlist=message;RIGHT_BRACE {`Env_nlist nlist }*)
+  | LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE; r=IDENT; LEFT_MIDBRACE; num = INT; RIGHT_MIDBRACE; COLON; m=message { `Env_agent (r,num,m)} (* add the attribute num *)
+  | LEFT_BRACE; envs = env_list; RIGHT_BRACE {`Envlist envs }
+;
+env_list:
+ envs = separated_list(SEMICOLON, envs) {envs} 
+;
+goals:
+  | GOALS; goallist=goal; { goallist };
+  
+goal:
+  (*| LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE ; m=message; SECRETOF ; rlist=role { `Secretgoal (seq,m,rlist)}*)
+  | LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE ; m=message { `Secretgoal (seq,m)}
+  | LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE ; m=message; CONF; r1 = IDENT; AND; r2=IDENT { `Secretgoal1 (seq,m,r1,r2)}
+  | LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE ; r1=IDENT;NINJ;r2=IDENT;ON; m=message { `Agreegoal (seq,r1,r2,m)}
+  | LEFT_BRACE; gols = goal_list; RIGHT_BRACE {`Goallist gols };
+
+goal_list:
+  gols = separated_list(SEMICOLON, goal)    { gols } ;
+
+role:
+  | id=IDENT { `RoleName id}
+  | LEFT_ANGLEBARCK;rlist=rolelist;RIGHT_ANGLEBARCK { `roleName_list  rlist}
+  ;
+
+rolelist:
+  rlist = separated_nonempty_list(PERIOD, role)    { rlist } ;
+(*
+nonce:
+  | NONCE;LEFT_BRACK;id=IDENT;RIGHT_BRACK {`Var id }
+  | LEFT_ANGLEBARCK;nlist=noncelist;RIGHT_ANGLEBARCK { `Identifier_list  nlist}
+
+noncelist:
+  nlist = separated_nonempty_list(PERIOD, nonce) {nlist}
+*)
+actions:
+  | ACTIONS; actlist= action;  { actlist };
+
+action:
+  | LEFT_MIDBRACE; seq=INT; RIGHT_MIDBRACE ; r1=IDENT; SENDTO ; r2=IDENT;LEFT_BRACK;NONCE;LEFT_BRACK;n=IDENT;RIGHT_BRACK; RIGHT_BRACK;COLON;m=message {`Act1 (seq,r1,r2,n,m) }
+  | LEFT_MIDBRACE; seq=INT; RIGHT_MIDBRACE ; r1=IDENT; SENDTO ; r2=IDENT;LEFT_BRACK;RIGHT_BRACK;COLON;m=message {`Act2 (seq,r1,r2,m) } (* no new nonce generated*)
+  | LEFT_BRACE;acts = action_list; RIGHT_BRACE { `Actlist acts};
+
+action_list:
+   acts = separated_list(SEMICOLON, action)    { acts } ;
+
+message: 
+  | id=IDENT { `Str id }
+  | NONCE;LEFT_BRACK;id=IDENT;RIGHT_BRACK {`Var id }
+  | PK;LEFT_BRACK;rlnm=IDENT;RIGHT_BRACK { `Pk rlnm }
+  | SK;LEFT_BRACK;rlnm=IDENT;RIGHT_BRACK { `Sk rlnm }
+  | K;LEFT_BRACK;rlnm1=IDENT;COMMA;rlnm2=IDENT;RIGHT_BRACK { `K (rlnm1,rlnm2)}
+  | HASHCON;LEFT_BRACK;v=message;RIGHT_BRACK {`Hash v}
+  | AENC;LEFT_BRACE;v1=message;RIGHT_BRACE;v2=message {`Aenc (v1,v2)}
+  | SENC;LEFT_BRACE;v1=message;RIGHT_BRACE;v2=message {`Senc (v1,v2)} 
+  | LEFT_ANGLEBARCK;msgs=message_list;RIGHT_ANGLEBARCK { `Concat msgs}
+  | LEFT_BRACK;v=message;RIGHT_BRACK { v }
+  ;
+
+message_list:
+  msgs = separated_list(PERIOD, message)    { msgs } ;
