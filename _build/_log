@@ -1,0 +1,966 @@
+### Starting build.
+# Target: getModelString.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:getModelString.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules getModelString.ml > getModelString.ml.depends # cached
+# Target: protocols.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:protocols.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules protocols.ml > protocols.ml.depends
+# Target: func.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:func.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules func.ml > func.ml.depends # cached
+# Target: proctype.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:proctype.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules proctype.ml > proctype.ml.depends # cached
+# Target: proctype.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:proctype.cmo, file:proctype.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o proctype.cmo proctype.ml # cached
+# Target: func.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:func.cmo, file:func.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o func.cmo func.ml # cached
+# Target: tmrLexer.mll, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mll, file:tmrLexer.mll, lexer, ocaml, ocamllex, quiet, short_paths, thread }
+/Users/sword/.opam/4.04.0/bin/ocamllex.opt -q tmrLexer.mll # cached
+# Target: tmrLexer.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:tmrLexer.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules tmrLexer.ml > tmrLexer.ml.depends # cached
+# Target: tmrRetparser.mly.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mly, file:tmrRetparser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, short_paths, thread }
+menhir --raw-depend --ocamldep 'ocamlfind ocamldep -modules' tmrRetparser.mly > tmrRetparser.mly.depends # cached
+# Target: tmrRetparser.mly, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:ml, extension:mly, file:tmrRetparser.ml, file:tmrRetparser.mly, infer, menhir, ocaml, parser, quiet, short_paths, thread }
+menhir --ocamlc 'ocamlfind ocamlc -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx '\''ppx-jane -as-ppx'\''' --infer tmrRetparser.mly # cached
+# Target: tmrRetparser.mli.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mli, file:tmrRetparser.mli, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules tmrRetparser.mli > tmrRetparser.mli.depends # cached
+# Target: tmrRetparser.cmi, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:mli, file:tmrRetparser.mli, interf, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o tmrRetparser.cmi tmrRetparser.mli # cached
+# Target: tmrLexer.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:tmrLexer.cmo, file:tmrLexer.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o tmrLexer.cmo tmrLexer.ml # cached
+# Target: protocols.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:protocols.cmo, file:protocols.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o protocols.cmo protocols.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o protocols.cmo protocols.ml
+findlib: [WARNING] Interface base.cmi occurs in several directories: ., /Users/sword/.opam/4.04.0/lib/base
+File "protocols.ml", line 115, characters 5-6:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 116, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 117, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 121, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 124, characters 5-6:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 125, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 128, characters 13-14:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 129, characters 47-48:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 132, characters 13-14:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 133, characters 35-36:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 134, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 135, characters 28-29:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 136, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 137, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 138, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 142, characters 6-7:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 143, characters 62-63:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 144, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 145, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 146, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 147, characters 28-29:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 148, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 149, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 150, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 151, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 152, characters 131-132:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 153, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 154, characters 6-7:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 155, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 156, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 157, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 158, characters 27-28:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 159, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 164, characters 3-4:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 165, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 166, characters 44-45:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 167, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 168, characters 6-7:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 169, characters 2-3:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 170, characters 5-6:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 173, characters 5-6:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 174, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 175, characters 39-40:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 178, characters 56-57:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 179, characters 49-50:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 180, characters 33-34:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 181, characters 38-39:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 232, characters 15-16:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 233, characters 58-59:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 234, characters 28-29:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 235, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 236, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 237, characters 13-14:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 238, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 239, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 240, characters 51-52:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 241, characters 58-59:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 242, characters 69-70:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 243, characters 117-118:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 244, characters 144-145:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 245, characters 96-97:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 246, characters 96-97:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 247, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 248, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 249, characters 75-76:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 250, characters 32-33:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 251, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 252, characters 30-31:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 253, characters 70-71:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 254, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 255, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 256, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 257, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 258, characters 30-31:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 259, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 260, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 261, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 262, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 263, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 264, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 269, characters 15-16:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 270, characters 38-39:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 271, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 272, characters 13-14:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 273, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 274, characters 28-29:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 275, characters 38-39:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 276, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 277, characters 38-39:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 278, characters 30-31:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 279, characters 36-37:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 280, characters 36-37:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 281, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 282, characters 27-28:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 283, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 284, characters 39-40:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 285, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 286, characters 27-28:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 287, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 288, characters 41-42:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 289, characters 28-29:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 290, characters 27-28:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 291, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 292, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 293, characters 37-38:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 294, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 295, characters 40-41:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 296, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 297, characters 40-41:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 298, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 299, characters 37-38:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 300, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 301, characters 40-41:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 302, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 303, characters 40-41:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 304, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 305, characters 39-40:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 306, characters 28-29:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 307, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 308, characters 35-36:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 309, characters 48-49:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 310, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 311, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 312, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 313, characters 46-47:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 314, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 315, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 319, characters 57-58:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 320, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 321, characters 11-12:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 322, characters 32-33:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 323, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 324, characters 42-43:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 325, characters 39-40:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 326, characters 36-37:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 327, characters 38-39:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 328, characters 42-43:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 329, characters 36-37:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 330, characters 38-39:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 331, characters 44-45:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 332, characters 38-39:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 333, characters 40-41:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 334, characters 40-41:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 335, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 336, characters 14-15:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 337, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 341, characters 70-71:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 342, characters 28-29:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 343, characters 11-12:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 344, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 345, characters 27-28:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 346, characters 46-47:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 347, characters 62-63:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 348, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 349, characters 79-80:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 350, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 351, characters 103-104:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 352, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 353, characters 108-109:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 354, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 355, characters 108-109:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 356, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 357, characters 134-135:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 358, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 359, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 360, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 361, characters 15-16:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 362, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 452, characters 67-68:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 453, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 454, characters 7-8:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 455, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 456, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 457, characters 56-57:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 458, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 459, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 460, characters 11-12:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 461, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 467, characters 167-168:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 468, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 469, characters 7-8:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 470, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 471, characters 27-28:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 472, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 473, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 474, characters 27-28:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 475, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 476, characters 8-9:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 477, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 478, characters 10-11:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 479, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 485, characters 167-168:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 486, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 487, characters 7-8:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 488, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 489, characters 27-28:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 490, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 491, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 492, characters 27-28:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 493, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 494, characters 8-9:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 495, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 496, characters 10-11:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 497, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 506, characters 53-54:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 507, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 508, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 509, characters 8-9:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 510, characters 51-52:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 511, characters 146-147:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 512, characters 54-55:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 513, characters 109-110:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 514, characters 50-51:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 515, characters 31-32:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 516, characters 78-79:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 517, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 518, characters 78-79:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 519, characters 36-37:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 520, characters 115-116:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 521, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 522, characters 52-53:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 523, characters 98-99:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 524, characters 52-53:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 525, characters 98-99:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 526, characters 81-82:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 527, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 528, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 529, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 530, characters 89-90:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 531, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 532, characters 10-11:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 533, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 534, characters 8-9:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 535, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 536, characters 11-12:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 540, characters 71-72:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 541, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 542, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 543, characters 7-8:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 544, characters 18-19:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 545, characters 11-12:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 546, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 547, characters 50-51:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 548, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 549, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 550, characters 15-16:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 551, characters 8-9:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 552, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 654, characters 59-60:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 655, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 656, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 657, characters 37-38:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 658, characters 31-32:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 659, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 660, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 661, characters 10-11:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 662, characters 10-11:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 663, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 664, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 665, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 666, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 667, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 668, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 669, characters 9-10:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 670, characters 14-15:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 671, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 673, characters 64-65:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 674, characters 13-14:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 675, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 676, characters 37-38:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 677, characters 62-63:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 678, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 679, characters 14-15:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 680, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 681, characters 11-12:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 682, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 683, characters 30-31:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 684, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 685, characters 33-34:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 686, characters 33-34:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 687, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 688, characters 30-31:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 689, characters 10-11:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 690, characters 15-16:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 691, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 693, characters 64-65:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 694, characters 13-14:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 695, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 696, characters 37-38:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 697, characters 62-63:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 698, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 699, characters 14-15:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 700, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 701, characters 11-12:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 702, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 703, characters 30-31:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 704, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 705, characters 33-34:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 706, characters 33-34:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 707, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 708, characters 10-11:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 709, characters 15-16:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 710, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 733, characters 61-62:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 734, characters 15-16:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 735, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 736, characters 38-39:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 737, characters 39-40:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 738, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 739, characters 16-17:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 740, characters 14-15:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 741, characters 13-14:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 742, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 743, characters 32-33:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 744, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 745, characters 37-38:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 746, characters 35-36:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 747, characters 32-33:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 748, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 749, characters 17-18:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 750, characters 23-24:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 762, characters 87-88:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 763, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 764, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 765, characters 25-26:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 766, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 767, characters 45-46:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 768, characters 45-46:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 769, characters 40-41:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 770, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 771, characters 14-15:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 772, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 810, characters 61-62:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 811, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 812, characters 35-36:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 813, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 814, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 818, characters 63-64:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 819, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 820, characters 54-55:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 821, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 822, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 826, characters 53-54:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 827, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 828, characters 54-55:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 829, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 830, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 842, characters 61-62:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 843, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 844, characters 35-36:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 845, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 846, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1613, characters 45-46:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1614, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1615, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1616, characters 9-10:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1617, characters 22-23:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1618, characters 0-1:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1619, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1620, characters 19-20:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1621, characters 9-10:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1622, characters 0-1:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1623, characters 20-21:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1624, characters 28-29:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1625, characters 24-25:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1626, characters 9-10:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1627, characters 0-1:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1628, characters 15-16:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1643, characters 41-42:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1644, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1645, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1646, characters 9-10:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1647, characters 0-1:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1648, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1649, characters 31-32:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1650, characters 31-32:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1651, characters 30-31:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1652, characters 28-29:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1653, characters 42-43:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1654, characters 46-47:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1655, characters 29-30:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1670, characters 12-13:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1671, characters 21-22:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1672, characters 26-27:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1740, characters 39-40:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1741, characters 34-35:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1742, characters 33-34:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 1743, characters 14-15:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 59, characters 8-22:
+Warning 39: unused rec flag.
+File "protocols.ml", line 61, characters 8-9:
+Warning 27: unused variable c.
+File "protocols.ml", line 62, characters 8-9:
+Warning 27: unused variable s.
+File "protocols.ml", line 63, characters 9-10:
+Warning 27: unused variable e.
+File "protocols.ml", line 64, characters 9-10:
+Warning 27: unused variable m.
+File "protocols.ml", line 424, characters 77-78:
+Warning 27: unused variable m.
+File "protocols.ml", line 425, characters 76-77:
+Warning 27: unused variable m.
+File "protocols.ml", line 427, characters 69-70:
+Warning 27: unused variable m.
+File "protocols.ml", line 628, characters 77-79:
+Warning 27: unused variable m'.
+File "protocols.ml", line 629, characters 77-79:
+Warning 27: unused variable m'.
+File "protocols.ml", line 634, characters 79-81:
+Warning 27: unused variable m'.
+File "protocols.ml", line 636, characters 78-80:
+Warning 27: unused variable m'.
+File "protocols.ml", line 755, characters 8-13:
+Warning 26: unused variable atoms.
+File "protocols.ml", line 809, characters 10-11:
+Warning 27: unused variable s.
+File "protocols.ml", line 817, characters 9-13:
+Warning 27: unused variable role.
+File "protocols.ml", line 825, characters 9-13:
+Warning 27: unused variable role.
+File "protocols.ml", line 833, characters 8-10:
+Warning 27: unused variable r1.
+File "protocols.ml", line 833, characters 11-13:
+Warning 27: unused variable r2.
+File "protocols.ml", line 841, characters 10-11:
+Warning 27: unused variable n.
+File "protocols.ml", line 791, characters 82-83:
+Warning 27: unused variable m.
+File "protocols.ml", line 792, characters 75-76:
+Warning 27: unused variable m.
+File "protocols.ml", line 796, characters 85-86:
+Warning 27: unused variable m.
+File "protocols.ml", line 914, characters 80-81:
+Warning 27: unused variable m.
+File "protocols.ml", line 919, characters 87-91:
+Warning 27: unused variable subm.
+File "protocols.ml", line 920, characters 74-78:
+Warning 27: unused variable subm.
+File "protocols.ml", line 1041, characters 14-15:
+Warning 27: unused variable i.
+File "protocols.ml", line 1049, characters 20-21:
+Warning 27: unused variable i.
+File "protocols.ml", line 1062, characters 29-33:
+Warning 27: unused variable msgs.
+File "protocols.ml", line 1073, characters 28-31:
+Warning 27: unused variable m1'.
+File "protocols.ml", line 1073, characters 32-35:
+Warning 27: unused variable k1'.
+File "protocols.ml", line 1084, characters 28-31:
+Warning 27: unused variable m1'.
+File "protocols.ml", line 1084, characters 32-35:
+Warning 27: unused variable k1'.
+File "protocols.ml", line 1137, characters 37-41:
+Warning 27: unused variable msgs.
+File "protocols.ml", line 1149, characters 36-39:
+Warning 27: unused variable m1'.
+File "protocols.ml", line 1149, characters 40-43:
+Warning 27: unused variable k1'.
+File "protocols.ml", line 1161, characters 36-39:
+Warning 27: unused variable m1'.
+File "protocols.ml", line 1161, characters 40-43:
+Warning 27: unused variable k1'.
+File "protocols.ml", line 1217, characters 79-80:
+Warning 27: unused variable m.
+File "protocols.ml", line 1224, characters 31-33:
+Warning 27: unused variable m1.
+File "protocols.ml", line 1224, characters 34-36:
+Warning 27: unused variable k1.
+File "protocols.ml", line 1228, characters 31-33:
+Warning 27: unused variable m1.
+File "protocols.ml", line 1228, characters 37-39:
+Warning 27: unused variable r1.
+File "protocols.ml", line 1228, characters 40-42:
+Warning 27: unused variable r2.
+File "protocols.ml", line 1278, characters 6-10:
+Warning 26: unused variable kNum.
+File "protocols.ml", line 1335, characters 18-19:
+Warning 27: unused variable m.
+File "protocols.ml", line 1335, characters 20-21:
+Warning 27: unused variable k.
+File "protocols.ml", line 1335, characters 28-30:
+Warning 27: unused variable i2.
+File "protocols.ml", line 1360, characters 18-19:
+Warning 27: unused variable m.
+File "protocols.ml", line 1360, characters 20-21:
+Warning 27: unused variable k.
+File "protocols.ml", line 1390, characters 61-62:
+Warning 27: unused variable m.
+File "protocols.ml", line 1391, characters 62-63:
+Warning 27: unused variable m.
+File "protocols.ml", line 1392, characters 63-64:
+Warning 27: unused variable m.
+File "protocols.ml", line 1442, characters 32-33:
+Warning 27: unused variable i.
+File "protocols.ml", line 1462, characters 54-55:
+Warning 27: unused variable m.
+File "protocols.ml", line 1465, characters 49-50:
+Warning 27: unused variable m.
+File "protocols.ml", line 1471, characters 38-42:
+Warning 27: unused variable knws.
+File "protocols.ml", line 1498, characters 82-84:
+Warning 27: unused variable r1.
+File "protocols.ml", line 1498, characters 90-92:
+Warning 27: unused variable r2.
+File "protocols.ml", line 1499, characters 82-84:
+Warning 27: unused variable r1.
+File "protocols.ml", line 1499, characters 90-92:
+Warning 27: unused variable r2.
+File "protocols.ml", line 1500, characters 81-83:
+Warning 27: unused variable r1.
+File "protocols.ml", line 1500, characters 84-86:
+Warning 27: unused variable r2.
+File "protocols.ml", line 1500, characters 91-99:
+Warning 27: unused variable r1'r2'.
+File "protocols.ml", line 1595, characters 9-12:
+Warning 27: unused variable seq.
+File "protocols.ml", line 1595, characters 13-14:
+Warning 27: unused variable s.
+File "protocols.ml", line 1595, characters 19-21:
+Warning 27: unused variable ms.
+File "protocols.ml", line 1601, characters 12-15:
+Warning 27: unused variable seq.
+File "protocols.ml", line 1601, characters 17-18:
+Warning 27: unused variable s.
+File "protocols.ml", line 1636, characters 46-47:
+Warning 27: unused variable i.
+File "protocols.ml", line 1639, characters 46-47:
+Warning 27: unused variable i.
+File "protocols.ml", line 1691, characters 8-9:
+Warning 27: unused variable n.
+File "protocols.ml", line 1765, characters 12-16:
+Warning 27: unused variable outc.
+File "protocols.ml", line 1768, characters 16-17:
+Warning 27: unused variable n.
+# Target: getModelString.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:getModelString.cmo, file:getModelString.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o getModelString.cmo getModelString.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o getModelString.cmo getModelString.ml
+findlib: [WARNING] Interface base.cmi occurs in several directories: ., /Users/sword/.opam/4.04.0/lib/base
+# Target: tmrRetparser.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:tmrRetparser.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules tmrRetparser.ml > tmrRetparser.ml.depends # cached
+# Target: tmrRetparser.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:tmrRetparser.cmo, file:tmrRetparser.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o tmrRetparser.cmo tmrRetparser.ml # cached
+# Target: getModelString.byte, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, debug, dont_link_with, extension:byte, file:getModelString.byte, link, ocaml, program, quiet, short_paths, thread }
+ocamlfind ocamlc -linkpkg -g -thread -package core proctype.cmo func.cmo protocols.cmo tmrRetparser.cmo tmrLexer.cmo getModelString.cmo -o getModelString.byte
++ ocamlfind ocamlc -linkpkg -g -thread -package core proctype.cmo func.cmo protocols.cmo tmrRetparser.cmo tmrLexer.cmo getModelString.cmo -o getModelString.byte
+findlib: [WARNING] Interface base.cmi occurs in several directories: ., /Users/sword/.opam/4.04.0/lib/base
+# Compilation successful.

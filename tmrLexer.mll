@@ -42,30 +42,46 @@ rule read =
   | ']'      { RIGHT_MIDBRACE}
   | ':'      { COLON }
   | ';'      { SEMICOLON }
+  (* | '@'      { AT} *)
   | ','      { COMMA }
   | '.'      { PERIOD }
-  | "->"     { SENDTO}
+  | '+'     {PLUS}
+  | '-'     {MINUS}
+  (* | "->"     { SENDTO} *)
+  | "inv" {INV}
+  | "mod" {MOD}
   | "pk" {PK}
   | "sk" {SK}
+  | "tmp" {TMP}
+  | "Agent:" {AGENT}
+  | "Number:" {NUMBER}
+  | "Function:" {FUNCTION}
+  | "Agents:" {AGENTS}
+  | "to" {TO}
   | 'k' {K}
   | '<' {LEFT_ANGLEBARCK}
   | '>' {RIGHT_ANGLEBARCK}
   | 'h' {HASHCON}
+  | 'e' {EXP}
+  | '*' {MULTI}
+  | "xor" {XOR}
   | "nonce" {NONCE}
   | "aenc" {AENC}
+  | "sig" {SIG}
   | "senc" {SENC}
   | "Actions:" {ACTIONS}
   | "Goals:" {GOALS}
   | "Environment:" {ENVIRONMENT}
   | "Knowledges:" {KNOWLEDGES}
+  | "Types:" {TYPES}
   | "Protocol" {PROTOCOL}
   | "end" {END}
   | "secret of" {SECRETOF}
   | "non-injectively agrees with" {NINJ}
   | "injectively agrees with" {INJ}
+  | "confidentially sends" {CONF}
   | "on" {ON}
-  | "keep confidential between" {CONF}
-  | "and" {AND}
+  (* | "and" {AND} *)
   | id { IDENT (Lexing.lexeme lexbuf) }
   | int {INT (int_of_string (Lexing.lexeme lexbuf)) }
   | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }
