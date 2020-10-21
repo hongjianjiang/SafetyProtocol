@@ -1,15 +1,15 @@
 #define NUMRULES_DEFINE 1417
 /******************************
-  Program "result.m" compiled by "Caching Murphi Release 5.4.9"
+  Program "result.m" compiled by "Caching Murphi Release 5.4.9.1"
 
-  Murphi Last Compiled date: "Aug  5 2020"
+  Murphi Last Compiled date: "Oct 20 2020"
  ******************************/
 
 /********************
   Parameter
  ********************/
-#define MURPHI_VERSION "Caching Murphi Release 5.4.9"
-#define MURPHI_DATE "Aug  5 2020"
+#define MURPHI_VERSION "Caching Murphi Release 5.4.9.1"
+#define MURPHI_DATE "Oct 20 2020"
 #define PROTOCOL_NAME "result"
 #define BITS_IN_WORLD 39952
 #define ALIGN
@@ -6569,19 +6569,19 @@ bool mu__boolexpr205;
 bool mu__boolexpr206;
   if (!((mu_ch[2].mu_empty) == (mu_true))) mu__boolexpr206 = FALSE ;
   else {
-  mu__boolexpr206 = ((mu_i) <= (mu_pat8Set.mu_length)) ; 
+  mu__boolexpr206 = ((mu_i) <= (mu_pat7Set.mu_length)) ; 
 }
   if (!(mu__boolexpr206)) mu__boolexpr205 = FALSE ;
   else {
-  mu__boolexpr205 = ((mu_pat8Set.mu_content[mu_i]) != (0)) ; 
+  mu__boolexpr205 = ((mu_pat7Set.mu_content[mu_i]) != (0)) ; 
 }
   if (!(mu__boolexpr205)) mu__boolexpr204 = FALSE ;
   else {
-  mu__boolexpr204 = (mu_Spy_known[mu_pat8Set.mu_content[mu_i]]) ; 
+  mu__boolexpr204 = (mu_Spy_known[mu_pat7Set.mu_content[mu_i]]) ; 
 }
   if (!(mu__boolexpr204)) mu__boolexpr203 = FALSE ;
   else {
-  mu__boolexpr203 = (mu_matchPat( mu_msgs[mu_pat8Set.mu_content[mu_i]], mu_sPat8Set )) ; 
+  mu__boolexpr203 = (mu_matchPat( mu_msgs[mu_pat7Set.mu_content[mu_i]], mu_sPat7Set )) ; 
 }
     return mu__boolexpr203;
   }
@@ -6604,19 +6604,19 @@ bool mu__boolexpr209;
 bool mu__boolexpr210;
   if (!((mu_ch[2].mu_empty) == (mu_true))) mu__boolexpr210 = FALSE ;
   else {
-  mu__boolexpr210 = ((mu_i) <= (mu_pat8Set.mu_length)) ; 
+  mu__boolexpr210 = ((mu_i) <= (mu_pat7Set.mu_length)) ; 
 }
   if (!(mu__boolexpr210)) mu__boolexpr209 = FALSE ;
   else {
-  mu__boolexpr209 = ((mu_pat8Set.mu_content[mu_i]) != (0)) ; 
+  mu__boolexpr209 = ((mu_pat7Set.mu_content[mu_i]) != (0)) ; 
 }
   if (!(mu__boolexpr209)) mu__boolexpr208 = FALSE ;
   else {
-  mu__boolexpr208 = (mu_Spy_known[mu_pat8Set.mu_content[mu_i]]) ; 
+  mu__boolexpr208 = (mu_Spy_known[mu_pat7Set.mu_content[mu_i]]) ; 
 }
   if (!(mu__boolexpr208)) mu__boolexpr207 = FALSE ;
   else {
-  mu__boolexpr207 = (mu_matchPat( mu_msgs[mu_pat8Set.mu_content[mu_i]], mu_sPat8Set )) ; 
+  mu__boolexpr207 = (mu_matchPat( mu_msgs[mu_pat7Set.mu_content[mu_i]], mu_sPat7Set )) ; 
 }
 	      if (mu__boolexpr207) {
 		if ( ( TRUE  ) )
@@ -6645,14 +6645,14 @@ bool mu__boolexpr210;
     static mu_1_msgLen mu_i;
     mu_i.value((r % 16) + 0);
     r = r / 16;
-if ( !(mu_emit[mu_pat8Set.mu_content[mu_i]]) )
+if ( !(mu_emit[mu_pat7Set.mu_content[mu_i]]) )
 {
 mu_ch[2].clear();
-mu_ch[2].mu_msg = mu_msgs[mu_pat8Set.mu_content[mu_i]];
+mu_ch[2].mu_msg = mu_msgs[mu_pat7Set.mu_content[mu_i]];
 mu_ch[2].mu_sender = mu_Intruder;
 mu_ch[2].mu_receiver = mu_roleA[mu_j].mu_A;
 mu_ch[2].mu_empty = mu_false;
-mu_emit[mu_pat8Set.mu_content[mu_i]] = mu_true;
+mu_emit[mu_pat7Set.mu_content[mu_i]] = mu_true;
 cout << "intruder emit msg into ch[2].\n";
 }
   };
@@ -6690,19 +6690,19 @@ bool mu__boolexpr213;
 bool mu__boolexpr214;
   if (!((mu_ch[3].mu_empty) == (mu_true))) mu__boolexpr214 = FALSE ;
   else {
-  mu__boolexpr214 = ((mu_i) <= (mu_pat6Set.mu_length)) ; 
+  mu__boolexpr214 = ((mu_i) <= (mu_pat8Set.mu_length)) ; 
 }
   if (!(mu__boolexpr214)) mu__boolexpr213 = FALSE ;
   else {
-  mu__boolexpr213 = ((mu_pat6Set.mu_content[mu_i]) != (0)) ; 
+  mu__boolexpr213 = ((mu_pat8Set.mu_content[mu_i]) != (0)) ; 
 }
   if (!(mu__boolexpr213)) mu__boolexpr212 = FALSE ;
   else {
-  mu__boolexpr212 = (mu_Spy_known[mu_pat6Set.mu_content[mu_i]]) ; 
+  mu__boolexpr212 = (mu_Spy_known[mu_pat8Set.mu_content[mu_i]]) ; 
 }
   if (!(mu__boolexpr212)) mu__boolexpr211 = FALSE ;
   else {
-  mu__boolexpr211 = (mu_matchPat( mu_msgs[mu_pat6Set.mu_content[mu_i]], mu_sPat6Set )) ; 
+  mu__boolexpr211 = (mu_matchPat( mu_msgs[mu_pat8Set.mu_content[mu_i]], mu_sPat8Set )) ; 
 }
     return mu__boolexpr211;
   }
@@ -6725,19 +6725,19 @@ bool mu__boolexpr217;
 bool mu__boolexpr218;
   if (!((mu_ch[3].mu_empty) == (mu_true))) mu__boolexpr218 = FALSE ;
   else {
-  mu__boolexpr218 = ((mu_i) <= (mu_pat6Set.mu_length)) ; 
+  mu__boolexpr218 = ((mu_i) <= (mu_pat8Set.mu_length)) ; 
 }
   if (!(mu__boolexpr218)) mu__boolexpr217 = FALSE ;
   else {
-  mu__boolexpr217 = ((mu_pat6Set.mu_content[mu_i]) != (0)) ; 
+  mu__boolexpr217 = ((mu_pat8Set.mu_content[mu_i]) != (0)) ; 
 }
   if (!(mu__boolexpr217)) mu__boolexpr216 = FALSE ;
   else {
-  mu__boolexpr216 = (mu_Spy_known[mu_pat6Set.mu_content[mu_i]]) ; 
+  mu__boolexpr216 = (mu_Spy_known[mu_pat8Set.mu_content[mu_i]]) ; 
 }
   if (!(mu__boolexpr216)) mu__boolexpr215 = FALSE ;
   else {
-  mu__boolexpr215 = (mu_matchPat( mu_msgs[mu_pat6Set.mu_content[mu_i]], mu_sPat6Set )) ; 
+  mu__boolexpr215 = (mu_matchPat( mu_msgs[mu_pat8Set.mu_content[mu_i]], mu_sPat8Set )) ; 
 }
 	      if (mu__boolexpr215) {
 		if ( ( TRUE  ) )
@@ -6766,14 +6766,14 @@ bool mu__boolexpr218;
     static mu_1_msgLen mu_i;
     mu_i.value((r % 16) + 0);
     r = r / 16;
-if ( !(mu_emit[mu_pat6Set.mu_content[mu_i]]) )
+if ( !(mu_emit[mu_pat8Set.mu_content[mu_i]]) )
 {
 mu_ch[3].clear();
-mu_ch[3].mu_msg = mu_msgs[mu_pat6Set.mu_content[mu_i]];
+mu_ch[3].mu_msg = mu_msgs[mu_pat8Set.mu_content[mu_i]];
 mu_ch[3].mu_sender = mu_Intruder;
 mu_ch[3].mu_receiver = mu_roleB[mu_j].mu_B;
 mu_ch[3].mu_empty = mu_false;
-mu_emit[mu_pat6Set.mu_content[mu_i]] = mu_true;
+mu_emit[mu_pat8Set.mu_content[mu_i]] = mu_true;
 cout << "intruder emit msg into ch[3].\n";
 }
   };
@@ -6941,7 +6941,7 @@ public:
   void Code(unsigned r)
   {
 /*** Variable declaration ***/
-mu_0_boolean mu_flag_pat8("flag_pat8",0);
+mu_0_boolean mu_flag_pat7("flag_pat7",0);
 
 /*** Variable declaration ***/
 mu_1_indexType mu_msgNo("msgNo",8);
@@ -6951,16 +6951,16 @@ mu_1_Message mu_msg("msg",16);
 
 mu_msg = mu_ch[2].mu_msg;
 mu_get_msgNo ( mu_msg, mu_msgNo );
-mu_isPat8 ( mu_msg, mu_flag_pat8 );
-if ( mu_flag_pat8 )
+mu_isPat7 ( mu_msg, mu_flag_pat7 );
+if ( mu_flag_pat7 )
 {
-if ( !(mu_exist( mu_pat8Set, mu_msgNo )) )
+if ( !(mu_exist( mu_pat7Set, mu_msgNo )) )
 {
-mu_pat8Set.mu_length = (mu_pat8Set.mu_length) + (1);
+mu_pat7Set.mu_length = (mu_pat7Set.mu_length) + (1);
 if (mu_msgNo.isundefined())
-  mu_pat8Set.mu_content[mu_pat8Set.mu_length].undefine();
+  mu_pat7Set.mu_content[mu_pat7Set.mu_length].undefine();
 else
-  mu_pat8Set.mu_content[mu_pat8Set.mu_length] = mu_msgNo;
+  mu_pat7Set.mu_content[mu_pat7Set.mu_length] = mu_msgNo;
 mu_Spy_known[mu_msgNo] = mu_true;
 }
 cout << "intruder get msg from ch[2].\n";
@@ -7011,7 +7011,7 @@ public:
   void Code(unsigned r)
   {
 /*** Variable declaration ***/
-mu_0_boolean mu_flag_pat6("flag_pat6",0);
+mu_0_boolean mu_flag_pat8("flag_pat8",0);
 
 /*** Variable declaration ***/
 mu_1_indexType mu_msgNo("msgNo",8);
@@ -7021,16 +7021,16 @@ mu_1_Message mu_msg("msg",16);
 
 mu_msg = mu_ch[3].mu_msg;
 mu_get_msgNo ( mu_msg, mu_msgNo );
-mu_isPat6 ( mu_msg, mu_flag_pat6 );
-if ( mu_flag_pat6 )
+mu_isPat8 ( mu_msg, mu_flag_pat8 );
+if ( mu_flag_pat8 )
 {
-if ( !(mu_exist( mu_pat6Set, mu_msgNo )) )
+if ( !(mu_exist( mu_pat8Set, mu_msgNo )) )
 {
-mu_pat6Set.mu_length = (mu_pat6Set.mu_length) + (1);
+mu_pat8Set.mu_length = (mu_pat8Set.mu_length) + (1);
 if (mu_msgNo.isundefined())
-  mu_pat6Set.mu_content[mu_pat6Set.mu_length].undefine();
+  mu_pat8Set.mu_content[mu_pat8Set.mu_length].undefine();
 else
-  mu_pat6Set.mu_content[mu_pat6Set.mu_length] = mu_msgNo;
+  mu_pat8Set.mu_content[mu_pat8Set.mu_length] = mu_msgNo;
 mu_Spy_known[mu_msgNo] = mu_true;
 }
 cout << "intruder get msg from ch[3].\n";

@@ -109,54 +109,54 @@ let rec print_goal gs =
     let non_dup = del_duplicate patlist in (* delete duplicate *)
     let pats = getEqvlMsgPattern non_dup in 
     (* let maxMsgLen = getMaxLenMsg (allOfAct) in  *)
-    let concatParts = ref "\n      concatPart: Array[msgLen] of indexType;" in
+    let concatParts = ref "\n    concatPart: Array[msgLen] of indexType;" in
     sprintf "const\n" ^
-    String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "    role%sNum:1;" r) rlist) ^
+    String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "  role%sNum:1;" r) rlist) ^
     "
-    totalFact:100;
-    msgLength:15;
-    chanNum:10;\n" ^
+  totalFact:100;
+  msgLength:15;
+  chanNum:10;\n" ^
   
     (* print type*)
     sprintf "type
-    indexType:0..totalFact;\n"^
-    String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "    role%sNums:1..role%sNum;" r r) rlist) ^
+  indexType:0..totalFact;\n"^
+    String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "  role%sNums:1..role%sNum;" r r) rlist) ^
     "
-    msgLen:0..msgLength;
-    chanNums:1..chanNum;\n"^
+  msgLen:0..msgLength;
+  chanNums:1..chanNum;\n"^
   
     sprintf "
-    AgentType : enum{%s,anyAgent}; ---Intruder 
-    NonceType : enum{%s, anyNonce};  \n" (agents2Str rolesOfEnv) (nonce2Str nonceOfEnv)
+  AgentType : enum{%s,anyAgent}; ---Intruder 
+  NonceType : enum{%s, anyNonce};  \n" (agents2Str rolesOfEnv) (nonce2Str nonceOfEnv)
     ^
     sprintf "
-    EncryptType : enum{PK,SK,Symk};
-    KeyType: record 
-      encType: EncryptType; 
-      ag: AgentType; 
-      ag1:AgentType;
-      ag2:AgentType;
-    end;\n\n  %s;\n" (agentSStatus rlist lensOfactStr) (*
+  EncryptType : enum{PK,SK,Symk};
+  KeyType: record 
+    encType: EncryptType; 
+    ag: AgentType; 
+    ag1:AgentType;
+    ag2:AgentType;
+  end;\n\n  %s;\n" (agentSStatus rlist lensOfactStr) (*
     AStatus : enum {A1,A2,A3}; ---the roles status should be derived from actions and the principals
     BStatus : enum {B1,B2,B3};*)
     ^"
   MsgType : enum {null,agent,nonce,key,aenc,senc,concat,hash};
   Message: record
-      msgType : MsgType;
-      ag : AgentType;
-      noncePart : NonceType;
-      k : KeyType;
-      aencMsg : indexType;
-      aencKey : indexType;
-      sencMsg : indexType;
-      sencKey : indexType;"^ !concatParts ^ "--- concatParts could be written in arrays: concatPart: Array[msgLen] of indexType" ^"
-      length : indexType;
+    msgType : MsgType;
+    ag : AgentType;
+    noncePart : NonceType;
+    k : KeyType;
+    aencMsg : indexType;
+    aencKey : indexType;
+    sencMsg : indexType;
+    sencKey : indexType;"^ !concatParts ^ "--- concatParts could be written in arrays: concatPart: Array[msgLen] of indexType" ^"
+    length : indexType;
   end;
   Channel: record
-      msg : Message;
-      sender : AgentType;
-      receiver : AgentType;
-      empty : boolean;
+    msg : Message;
+    sender : AgentType;
+    receiver : AgentType;
+    empty : boolean;
   end;\n" ^ printMurphiRecords k nlist rlist ^ (* print records of principals *)
     (* ---RoleIntruder: record
     ---  B : AgentType;
@@ -167,19 +167,19 @@ let rec print_goal gs =
     length : indexType;
   end;
   
-  var
-    ch : Array[chanNums] of Channel;\n"^
-    sprintf "    %s;\n" (rlistToVars rlist )^
+var
+  ch : Array[chanNums] of Channel;\n"^
+    sprintf "  %s;\n" (rlistToVars rlist )^
     "
-    ---intruder    : RoleIntruder;
-    msgs : Array[indexType] of Message;
-    msg_end: indexType;\n"^
+  ---intruder    : RoleIntruder;
+  msgs : Array[indexType] of Message;
+  msg_end: indexType;\n"^
     sprintf "%s\n" (printPatSetVars pats) ^
-    sprintf "    Spy_known: Array[indexType] of boolean;
-    ---systemEvent   : array[eventNums] of Event;
-    ---eve_end       : eventNums;
-    emit: Array[indexType] of boolean;
-    gnum : indexType;\n\n" (* global num*)  
+    sprintf "  Spy_known: Array[indexType] of boolean;
+  ---systemEvent   : array[eventNums] of Event;
+  ---eve_end       : eventNums;
+  emit: Array[indexType] of boolean;
+  gnum : indexType;\n\n" (* global num*)  
    
 (*--------------------------------------------------------print precedure -----------------------------------------------------------*)
 
@@ -228,139 +228,139 @@ let atoms2Parms atoms =
     done;
     String.concat ~sep:"; " !paraList
 
-    let genGet_msgNoCode () =
-      sprintf "
-      procedure get_msgNo(msg:Message; Var num:indexType);
-        var index:indexType;
-            j:indexType;
-            flag:boolean;
-        begin
-          index:=0;
-          for i: indexType do
-            if (msgs[i].msgType = msg.msgType) then
-              if ( (msg.msgType=agent & msgs[i].ag=msg.ag)
-              | (msg.msgType=nonce & msgs[i].noncePart=msg.noncePart)
-              | (msg.msgType=key & (msgs[i].k.encType=msg.k.encType & msg.k.encType != Symk & msgs[i].k.ag=msg.k.ag))
-              | (msg.msgType=key & (msgs[i].k.encType=msg.k.encType & msg.k.encType = Symk & msgs[i].k.ag1=msg.k.ag1 & msgs[i].k.ag2=msg.k.ag2))
-              | (msg.msgType=aenc & (msgs[i].aencMsg=msg.aencMsg & msgs[i].aencKey=msg.aencKey))
-              | (msg.msgType=senc & (msgs[i].sencMsg=msg.sencMsg & msgs[i].sencKey=msg.sencKey))
-              ) then 
-                index:=i;
-              elsif (msg.msgType=concat & msg.length = msgs[i].length) then
-                j := msg.length;
-                flag := true;
-                while j > 0 do
-                  if (msg.concatPart[j] != msgs[i].concatPart[j]) then
-                    flag := false;
-                  endif;
-                  j := j - 1;
-                end;
-                if (flag) then
-                  index := i;
-                endif;
-              endif;
+let genGet_msgNoCode () =
+sprintf "
+procedure get_msgNo(msg:Message; Var num:indexType);
+  var index:indexType;
+    j:indexType;
+    flag:boolean;
+  begin
+    index:=0;
+    for i: indexType do
+      if (msgs[i].msgType = msg.msgType) then
+        if ( (msg.msgType=agent & msgs[i].ag=msg.ag)
+        | (msg.msgType=nonce & msgs[i].noncePart=msg.noncePart)
+        | (msg.msgType=key & (msgs[i].k.encType=msg.k.encType & msg.k.encType != Symk & msgs[i].k.ag=msg.k.ag))
+        | (msg.msgType=key & (msgs[i].k.encType=msg.k.encType & msg.k.encType = Symk & msgs[i].k.ag1=msg.k.ag1 & msgs[i].k.ag2=msg.k.ag2))
+        | (msg.msgType=aenc & (msgs[i].aencMsg=msg.aencMsg & msgs[i].aencKey=msg.aencKey))
+        | (msg.msgType=senc & (msgs[i].sencMsg=msg.sencMsg & msgs[i].sencKey=msg.sencKey))
+        ) then 
+          index:=i;
+        elsif (msg.msgType=concat & msg.length = msgs[i].length) then
+          j := msg.length;
+          flag := true;
+          while j > 0 do
+            if (msg.concatPart[j] != msgs[i].concatPart[j]) then
+              flag := false;
             endif;
-          endfor;
-          num := index;
-        end;\n";
-    ;;
-    
-    let genPrintMsgCode () =
-      sprintf "
-      procedure printMsg(msg:Message);
-        var i:indexType;
-        begin
-          if msg.msgType=null then
-            put \"null\\n\";
-          elsif msg.msgType=agent then
-            put msg.ag;
-          elsif msg.msgType=nonce then
-            put msg.noncePart;
-          elsif msg.msgType=key then
-            if msg.k.encType=PK then
-              put \"PK(\";
-              put msg.k.ag;
-              put \")\";
-            elsif msg.k.encType=SK then
-              put \"SK(\";
-              put msg.k.ag;
-              put \")\";
-            elsif msg.k.encType=Symk then
-              put \"SymK(\";
-              put msg.k.ag;
-              put \")\";
-            endif;
-          elsif msg.msgType=aenc then
-            put \"aenc{\";
-            printMsg(msgs[msg.aencMsg]);
-            put \",\";
-            printMsg(msgs[msg.aencKey]);
-            put \"}\";
-          elsif msg.msgType=senc then
-            put \"senc{\";
-            printMsg(msgs[msg.sencMsg]);
-            put \",\";
-            printMsg(msgs[msg.sencKey]);
-            put \"}\";
-          elsif msg.msgType=concat then
-            put \"concat(\";
-            i := 1;
-            while i < msg.length do
-              printMsg(msgs[msg.concatPart[i]]);
-              put \",\";
-              i := i+1;
-            end;
-            printMsg(msgs[msg.concatPart[i]]);
-            put\")\";
-          endif;
-        end;\n"
-    ;;
-    let genInverseKeyCode ()=
-      sprintf "function inverseKey(msgK:Message):Message;
-      var key_inv:Message;
-      begin
-        key_inv.msgType := null;
-        if (msgK.msgType=key) then
-          key_inv.msgType := msgK.msgType;
-          if (msgK.k.encType = PK) then
-            key_inv.k.encType := SK;
-            key_inv.k.ag := msgK.k.ag;
-          elsif (msgK.k.encType = SK) then
-            key_inv.k.encType := PK;
-            key_inv.k.ag := msgK.k.ag;
-          elsif (msgK.k.encType = Symk) then
-            key_inv.k.encType := Symk;
-            key_inv.k.ag1 := msgK.k.ag1;
-            key_inv.k.ag2 := msgK.k.ag2;
-          endif;
+            j := j - 1;
+        end;
+        if (flag) then
+          index := i;
         endif;
-        return key_inv;
-      end;\n";
+      endif;
+    endif;
+  endfor;
+  num := index;
+end;\n"
+
+    
+let genPrintMsgCode () =
+sprintf "
+procedure printMsg(msg:Message);
+  var i:indexType;
+  begin
+    if msg.msgType=null then
+      put \"null\\n\";
+    elsif msg.msgType=agent then
+      put msg.ag;
+    elsif msg.msgType=nonce then
+      put msg.noncePart;
+    elsif msg.msgType=key then
+      if msg.k.encType=PK then
+        put \"PK(\";
+        put msg.k.ag;
+        put \")\";
+      elsif msg.k.encType=SK then
+        put \"SK(\";
+        put msg.k.ag;
+        put \")\";
+      elsif msg.k.encType=Symk then
+        put \"SymK(\";
+        put msg.k.ag;
+        put \")\";
+      endif;
+      elsif msg.msgType=aenc then
+        put \"aenc{\";
+        printMsg(msgs[msg.aencMsg]);
+        put \",\";
+        printMsg(msgs[msg.aencKey]);
+        put \"}\";
+      elsif msg.msgType=senc then
+        put \"senc{\";
+        printMsg(msgs[msg.sencMsg]);
+        put \",\";
+        printMsg(msgs[msg.sencKey]);
+        put \"}\";
+      elsif msg.msgType=concat then
+        put \"concat(\";
+        i := 1;
+        while i < msg.length do
+          printMsg(msgs[msg.concatPart[i]]);
+          put \",\";
+          i := i+1;
+        end;
+        printMsg(msgs[msg.concatPart[i]]);
+        put\")\";
+      endif;
+    end;\n"
     ;;
-    let genLookUpCode () =
-      sprintf "function lookUp(msg: Message): indexType; --- not used.
-      var index : indexType;
-      begin
-        index:=0;
-        for i: indexType do
-          if(msgs[i].msgType=msg.msgType) then
-            if(msgs[i].msgType=agent & msgs[i].ag=msg.ag) then
-              index := i;
-            elsif(msgs[i].msgType=nonce & msgs[i].noncePart=msg.noncePart) then
-              index := i;
-            elsif(msgs[i].msgType=key & (msgs[i].k.encType=msg.k.encType & msgs[i].k.ag=msg.k.ag)) then
-              index := i;
-            elsif(msgs[i].msgType = aenc & (msgs[i].aencKey=msg.aencKey & msgs[i].aencMsg=msg.aencMsg)) then
-              index := i;
-            elsif(msgs[i].msgType = senc & (msgs[i].sencKey=msg.sencKey & msgs[i].sencMsg=msg.sencMsg)) then
-              index := i;
-            elsif(msgs[i].msgType = concat & (msgs[i].concatPart[1]=msg.concatPart[1] & msgs[i].concatPart[2]=msg.concatPart[2])) then
-              index := i;
-            endif;
-          endif;
-        endfor;
-        return index;
-      end;\n";
+let genInverseKeyCode ()=
+  sprintf "function inverseKey(msgK:Message):Message;
+  var key_inv:Message;
+  begin
+    key_inv.msgType := null;
+    if (msgK.msgType=key) then
+      key_inv.msgType := msgK.msgType;
+      if (msgK.k.encType = PK) then
+        key_inv.k.encType := SK;
+        key_inv.k.ag := msgK.k.ag;
+      elsif (msgK.k.encType = SK) then
+        key_inv.k.encType := PK;
+        key_inv.k.ag := msgK.k.ag;
+      elsif (msgK.k.encType = Symk) then
+        key_inv.k.encType := Symk;
+        key_inv.k.ag1 := msgK.k.ag1;
+        key_inv.k.ag2 := msgK.k.ag2;
+      endif;
+    endif;
+    return key_inv;
+  end;\n"
+
+let genLookUpCode () =
+sprintf "function lookUp(msg: Message): indexType; --- not used.
+  var index : indexType;
+  begin
+    index:=0;
+    for i: indexType do
+      if(msgs[i].msgType=msg.msgType) then
+        if(msgs[i].msgType=agent & msgs[i].ag=msg.ag) then
+          index := i;
+        elsif(msgs[i].msgType=nonce & msgs[i].noncePart=msg.noncePart) then
+          index := i;
+        elsif(msgs[i].msgType=key & (msgs[i].k.encType=msg.k.encType & msgs[i].k.ag=msg.k.ag)) then
+          index := i;
+        elsif(msgs[i].msgType = aenc & (msgs[i].aencKey=msg.aencKey & msgs[i].aencMsg=msg.aencMsg)) then
+          index := i;
+        elsif(msgs[i].msgType = senc & (msgs[i].sencKey=msg.sencKey & msgs[i].sencMsg=msg.sencMsg)) then
+          index := i;
+        elsif(msgs[i].msgType = concat & (msgs[i].concatPart[1]=msg.concatPart[1] & msgs[i].concatPart[2]=msg.concatPart[2])) then
+          index := i;
+        endif;
+      endif;
+    endfor;
+    return index;
+  end;\n";
     ;;
     (* generate m by its submsgs*)
 let consMsgBySubs m patList =
@@ -760,17 +760,17 @@ let genSynthCode m i patList =
                     let i1= getPatNum m1 patList in
                     let i2= getPatNum k1 patList in
                     str1 ^ sprintf "  var flag1,flagPart1,flagPart2 : boolean;\n  begin
-      flag1 := false;
-      flagPart1 := false;
-      flagPart2 := false;
-      if (msg.msgType = aenc) then
-        isPat%d(msgs[msg.aencMsg],flagPart1);
-        isPat%d(msgs[msg.aencKey],flagPart2);
-        if (flagPart1 & flagPart2) then 
-          flag1 := true;
-        endif;
+    flag1 := false;
+    flagPart1 := false;
+    flagPart2 := false;
+    if (msg.msgType = aenc) then
+      isPat%d(msgs[msg.aencMsg],flagPart1);
+      isPat%d(msgs[msg.aencKey],flagPart2);
+      if (flagPart1 & flagPart2) then 
+        flag1 := true;
       endif;
-      flag := flag1;\n  end;\n\n" i1 i2
+    endif;
+    flag := flag1;\n  end;\n\n" i1 i2
     end;
     |`Senc(m1,symk) ->str1^
                       sprintf "  var flag1,flagPart1,flagPart2 : boolean;\n  begin\n"^
@@ -808,19 +808,19 @@ let genSynthCode m i patList =
     end;
     |`Str s ->begin
               str1 ^ sprintf "  var flag1 : boolean;\n  begin
-      flag1 := false;
-      if (msg.msgType = agent) then
-        flag1 := true;
-      endif;
-      flag := flag1;\n  end;\n\n"
+    flag1 := false;
+    if (msg.msgType = agent) then
+      flag1 := true;
+    endif;
+    flag := flag1;\n  end;\n\n"
     end;
     |`Pk role ->begin
                 str1 ^ sprintf "  var flag1 : boolean;\n  begin
-      flag1 := false;
-      if (msg.msgType = key & msg.k.encType = PK) then
-        flag1 := true;
-      endif;
-      flag := flag1;\n  end;\n\n"
+    flag1 := false;
+    if (msg.msgType = key & msg.k.encType = PK) then
+      flag1 := true;
+    endif;
+    flag := flag1;\n  end;\n\n"
     end;
     |`Sk role ->begin
       str1 ^ sprintf "  var flag1 : boolean;\n  begin
@@ -840,11 +840,11 @@ let genSynthCode m i patList =
                   sprintf "  end;\n\n"             
     |`Var n ->begin
               str1 ^ sprintf "  var flag1 : boolean;\n  begin
-      flag1 := false;
-      if (msg.msgType = nonce) then
-        flag1 := true;
-      endif;
-      flag := flag1;\n  end;\n\n"
+    flag1 := false;
+    if (msg.msgType = nonce) then
+      flag1 := true;
+    endif;
+    flag := flag1;\n  end;\n\n"
     end;
     |_ -> ""
   
@@ -1754,7 +1754,7 @@ let output_protocol pocol =
                          "startstate\n" ^ (* print startstate *)
                          (printMuriphiStart env k) ^(printImpofStart ag k) ^
                          "end;\n" ^
-                         (printGoal2Murphi g) (* print murphi goals *)  
+                         (printGoal2Murphi g) (* print murphi goals *) 
 
 
 let create_file filename str =

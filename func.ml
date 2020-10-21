@@ -219,12 +219,12 @@ let rec printMurphiRecords knw nlist aglist =
   | `Knowledge_list knws ->String.concat (List.map ~f:(fun k -> printMurphiRecords k nlist aglist) knws)
 
 let rlistToVars rlist =
-    String.concat ~sep:";\n    " (List.map ~f:(fun r -> 
+    String.concat ~sep:";\n  " (List.map ~f:(fun r -> 
                   sprintf "role%s : Array[role%sNums] of Role%s" r r r) rlist)
   
 let printPatSetVars pats =
-  String.concat  (List.mapi ~f:(fun i p ->sprintf "    pat%dSet: msgSet;\n" (i+1)^
-                                          sprintf "    sPat%dSet: msgSet;\n" (i+1)) pats)
+  String.concat  (List.mapi ~f:(fun i p ->sprintf "  pat%dSet: msgSet;\n" (i+1)^
+                                          sprintf "  sPat%dSet: msgSet;\n" (i+1)) pats)
 
 
 (**pattern match part *)
@@ -694,7 +694,7 @@ let print_murphiRule_ofIntruder agents =
   let actions =  (getAllActsList agents) in
   let sendActions = List.concat (List.map ~f:getAllSendActs actions ) in 
   let msgs = List.concat (List.map ~f:getMsgs (sendActions)) in    (* get all msgs from actions *)
-  let patlist = List.concat (List.map ~f:getPatList (sendActions)) in (*get all patterns from actions*)
+  let patlist = List.concat (List.map ~f:getPatList (actions)) in (*get all patterns from actions*)
   let non_dup = del_duplicate patlist in (* delete duplicate *)
   let non_equivalent = getEqvlMsgPattern non_dup in
   let getMsgStr = String.concat (List.map ~f:(fun m -> genCodeOfIntruderGetMsg m non_equivalent) msgs) in
