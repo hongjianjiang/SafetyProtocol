@@ -3,6 +3,7 @@ open Core
 type label = string
 type roleName = string 
 type identifier = string 
+type messName = string
 type index = int 
 (*type nonce = string *)
 
@@ -22,7 +23,7 @@ type message = [
   (* | `Fresh of identifier nonce or coin flips *)
   | `Str of roleName
   (* | `Inv of message  *)
-  | `Tmp of message 
+  | `Tmp of messName 
   (* | `Multi of message * message 
   | `Exp of message * message
   | `Sig of message * message 

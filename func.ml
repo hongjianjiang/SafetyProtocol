@@ -1,6 +1,39 @@
 open Core
 open Proctype
 
+
+let up_to n =
+  let rec wrapper n res =
+    match n with
+    | 0 -> res
+    | _ -> wrapper (n - 1) ((n - 1)::res)
+  in
+  wrapper n []
+
+(** Generate the combination of a list *)
+let rec combination list n =
+  match list with
+  | [] -> []
+  | ele::list' ->
+    let len = List.length list in
+    if len < n then
+      []
+    else begin
+      match n with
+      | 0 -> []
+      | 1 -> List.map list ~f:(fun x -> [x])
+      | _ ->
+        let first_set = List.map (combination list' (n - 1)) ~f:(fun x -> ele::x) in
+        first_set@(combination list' n)
+    end
+
+let concat ms = `Concat
+
+(** Generate all combinations of a list *)
+let combination_all list =
+  let nums = List.map (up_to (List.length list)) ~f:(fun x -> x + 1) in
+  List.concat (List.map nums ~f:(fun n -> combination list n))
+
 (*judge e whether in list l*)
 let rec listwithout l e =  
   match l with
@@ -63,7 +96,7 @@ let rec getAtoms msg =
   |`Null   	-> [`Null]
   |`Var id 	-> [`Var id]
   |`Str s 	-> [`Str s]
-  |`Tmp m -> getAtoms m
+  |`Tmp mn -> [`Tmp mn]
   |`Concat msgs -> getEachAtoms msgs
   |`Hash m 	-> getAtoms m
   |`Aenc (m1,m2)-> List.concat (List.map ~f:getAtoms [m1;m2])
@@ -99,6 +132,18 @@ let rec getNonces msgs =
     |`Var n -> [n]
     |`Concat msgs -> List.concat (List.map ~f:getNoncesOfMsg msgs)
     |_ -> []
+
+
+let rec getTmp msgs =
+  match msgs with
+    | [] -> []
+    | hd :: tl -> (getTmpsOfMsg hd) @ (getTmp tl)
+  and getTmpsOfMsg m =
+    match m with
+    |`Tmp n -> [n]
+    (* |`Concat msgs -> List.concat (List.map ~f:getTmpsOfMsg msgs) *)
+    |_ -> []
+
 
 let rec getEnvRoles env rl = 
     match env with
@@ -186,6 +231,14 @@ let rec getAllSendActs actions =
   | `Receive (seq,s,m) -> []
   | `Actlist arr -> List.concat (List.map ~f:getAllSendActs arr)
 
+  let rec getAllReceActs actions =
+    match actions with
+    | `Null -> []
+    | `Send (seq,s,r,mls,m) -> []
+    | `Receive (seq,s,m) -> [actions]
+    | `Actlist arr -> List.concat (List.map ~f:getAllReceActs arr)
+  
+
 let agentSStatus rlist lensOfrlist =
     String.concat ~sep:";\n  " (List.mapi ~f:(fun i r -> 
                               let len = match List.nth lensOfrlist i with
@@ -206,17 +259,21 @@ let nType2Str nlist =
 let agType2Str rlist =
   String.concat ~sep: ";\n   " (List.map ~f:(fun r -> sprintf "loc%s : AgentType" r) rlist)
 
-let rec printMurphiRecords knw nlist aglist =
+let mType2Str tlist = 
+  String.concat ~sep: ";\n   " (List.map ~f:(fun m -> sprintf "loc%s : MsgType" m) tlist)
+
+let rec printMurphiRecords knw nlist aglist tlist =
   match knw with
   |`Null -> sprintf "null"
   | `Knowledge (r,m) -> let str1 = sprintf "  Role%s : record\n" r in
                         let str2 = String.concat ~sep:"\n" (List.map ~f:(fun n -> sprintf "   %s : NonceType;" n) nlist) ^ "\n" in
                         let str3 = String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "   %s : AgentType;" r) aglist) ^ "\n" in
-                        let str4 = sprintf "   %s;\n   %s;\n   st: %sStatus;\n" (nType2Str nlist) (agType2Str aglist) r in
-                        let str5 = sprintf "   commit : boolean;\n" in
-                        let str6 = sprintf "  end;\n" in
-                        str1 ^ str2 ^ str3 ^ str4 ^ str5 ^ str6
-  | `Knowledge_list knws ->String.concat (List.map ~f:(fun k -> printMurphiRecords k nlist aglist) knws)
+                        let str4 = String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "   %s : MsgType;" r) tlist) ^ "\n" in
+                        let str5 = sprintf "   %s;\n   %s;\n   %s;\n   st: %sStatus;\n" (nType2Str nlist) (agType2Str aglist) (mType2Str tlist) r in
+                        let str6 = sprintf "   commit : boolean;\n" in
+                        let str7 = sprintf "  end;\n" in
+                        str1 ^ str2 ^ str3 ^ str4 ^ str5 ^ str6 ^ str7
+  | `Knowledge_list knws ->String.concat (List.map ~f:(fun k -> printMurphiRecords k nlist aglist tlist) knws)
 
 let rlistToVars rlist =
     String.concat ~sep:";\n  " (List.map ~f:(fun r -> 
@@ -232,8 +289,8 @@ let rec isSamePat m1 m2 =
   match (m1,m2) with
   | (`Aenc(m1',k1'),`Aenc(m2',k2')) -> if (isSamePat k1' k2') && (isSamePat m1' m2') then true else false
   | (`Senc(m1',k1'),`Senc(m2',k2')) -> if (isSamePat k1' k2') && (isSamePat m1' m2') then true else false
-  | (`Tmp(m),_ )-> true 
-  | (_,`Tmp(m)) -> true 
+  | (`Tmp(m1), `Tmp(m2))-> if (m1=m2) then true else false
+  (* | (_,`Tmp(m)) -> true  *)
   | (`Pk r1,`Pk r2) -> true
   | (`Sk r1,`Sk r2) -> true
   | (`Pk r1,`Sk r2) -> true  (* sk(r1),pk(r1) are the same pat, they are stored into the same patSet*)
@@ -276,8 +333,13 @@ let rec getSubMsg msg =
   |`Var nonce -> [`Var nonce]
   |`Str role  -> [`Str role]
   |`Tmp m -> [`Tmp m]
-  |`Concat msgs -> let submsgs = List.concat (List.map ~f:getSubMsg msgs) in
-                    submsgs@msgs@[msg]
+  |`Concat msgs -> let submsgs = List.concat (List.map ~f:getSubMsg msgs) in 
+                    submsgs@[msg]
+                    (* let submsgs = del_duplicate(List.concat (List.map ~f:getSubMsg msgs)) in
+                    let subMsgNoConcat = remove submsgs msg in 
+                    let concatMsgs =(combination_all subMsgNoConcat) in 
+                    let ml = List.concat (List.map ~f:(fun x->if (List.length x) = 1 then x else [concat x]) concatMsgs)  in 
+                    del_duplicate (ml) *)
   |`Aenc (m,k) -> (getSubMsg m)@[m;k]@[msg]
   |`Senc (m,k) -> (getSubMsg m)@[m;k]@[msg]
   |`Hash m -> (getSubMsg m) @ [msg]
@@ -299,7 +361,7 @@ let isSubPat y x =
     match List.reduce ~f:(||) boollist with
     |Some b -> b
     |None -> false
-;;
+
 let rec getEqvlMsgPattern patlist =
   let non_eqvlPat = ref [] in 
   let len = List.length patlist in
@@ -323,6 +385,10 @@ let rec getPatList actions =
   | `Receive (seq,s,m) -> (getSubMsg m) @ [m] 
   | `Actlist arr -> List.concat (List.map ~f:getPatList arr)
 
+let getSendPatList actions = 
+  let `Send (seq,s,r,mls,m) = actions in 
+  (getSubMsg m) @ [m]
+  
 let rec list_max xs =
   match xs with
   | [] ->  failwith "list_max called on empty list" (* empty list: fail *)
@@ -404,6 +470,13 @@ let rec getMsgs actions =
                       begin
                         atoms':=!atoms'@[r'];
                         let rstr = s^r in
+                        paralist := !paralist@[rstr];
+                      end
+      |Some(`Tmp mn) ->let mn'="tmp_"^mn in 
+                      if listwithout !atoms' mn' then
+                      begin
+                        atoms':=!atoms'@[mn'];
+                        let rstr = s^mn in
                         paralist := !paralist@[rstr];
                       end
       |Some(`Pk r) -> let r'="pk_"^r in
@@ -499,6 +572,13 @@ let rec getMsgs actions =
                           let rstr = loc^r in
                           str' := !str'@[rstr];
                         end
+      |Some(`Tmp mn) ->let mn'="tmp_"^mn in 
+                      if listwithout !atoms' mn' then
+                      begin
+                        atoms' := !atoms'@[mn'];
+                        let rstr = loc^mn in
+                        str' := !str'@[rstr];
+                      end              
       |Some (`Pk r) ->let r' = "pk_"^r in
                       if listwithout !atoms' r' then 
                       begin

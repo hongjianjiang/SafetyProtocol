@@ -25,11 +25,12 @@ type
   AStatus: enum{A1,A2,A3};
   BStatus: enum{B1,B2,B3};
 
-  MsgType : enum {null,agent,nonce,key,aenc,senc,concat,hash};
+  MsgType : enum {null,agent,nonce,key,aenc,senc,concat,hash,tmp};
   Message: record
     msgType : MsgType;
     ag : AgentType;
     noncePart : NonceType;
+    tmpPart : MsgType;
     k : KeyType;
     aencMsg : indexType;
     aencKey : indexType;
@@ -49,10 +50,12 @@ type
    Nb : NonceType;
    A : AgentType;
    B : AgentType;
+
    locNa : NonceType;
    locNb : NonceType;
    locA : AgentType;
    locB : AgentType;
+   ;
    st: AStatus;
    commit : boolean;
   end;
@@ -61,10 +64,12 @@ type
    Nb : NonceType;
    A : AgentType;
    B : AgentType;
+
    locNa : NonceType;
    locNb : NonceType;
    locA : AgentType;
    locB : AgentType;
+   ;
    st: BStatus;
    commit : boolean;
   end;
@@ -1654,7 +1659,6 @@ startstate
   for i:indexType do 
     Spy_known[i] := false;
   endfor;
-
   msg_end:=msg_end+1;
   msgs[msg_end].msgType := key;
   msgs[msg_end].k.ag:=Intruder;

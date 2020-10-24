@@ -198,7 +198,7 @@ message:
   /* | INV;LEFT_BRACK;v=message;RIGHT_BRACK { `Inv v} */
   | PK;LEFT_BRACK;rlnm=IDENT;RIGHT_BRACK { `Pk rlnm }
   | SK;LEFT_BRACK;rlnm=IDENT;RIGHT_BRACK { `Sk rlnm }
-  | TMP;LEFT_BRACK;v=message;RIGHT_BRACK{`Tmp v}
+  | TMP;LEFT_BRACK;mn=IDENT;RIGHT_BRACK{`Tmp mn}
   /* | MOD;LEFT_BRACK;m1=message;COMMA;m2=message;RIGHT_BRACK {`Mod (m1,m2)} */
   /* | v1= message;MULTI;v2=message  {`Multi (v1,v2)} */
   | K;LEFT_BRACK;rlnm1=IDENT;COMMA;rlnm2=IDENT;RIGHT_BRACK { `K (rlnm1,rlnm2)}
