@@ -181,7 +181,7 @@ sign:
   |PLUS {`Plus}
 ;
 action:
-   | LEFT_MIDBRACE;seq=INT;RIGHT_MIDBRACE;s=sign;;COMMA;r=IDENT;COMMA;LEFT_BRACK;ms=message_list;RIGHT_BRACK;COLON;m=message{`Send (seq,s,r,ms,m)}
+   | LEFT_MIDBRACE;seq=INT;RIGHT_MIDBRACE;s=sign;COMMA;r=IDENT;COMMA;LEFT_BRACK;ms=message_list;RIGHT_BRACK;COLON;m=message{`Send (seq,s,r,ms,m)}
   | LEFT_MIDBRACE;seq=INT;RIGHT_MIDBRACE;s=sign;COLON;m=message {`Receive (seq,s,m)}
   | LEFT_BRACE;acts = action_list; RIGHT_BRACE { `Actlist acts}
 ;
@@ -203,9 +203,10 @@ message:
   /* | v1= message;MULTI;v2=message  {`Multi (v1,v2)} */
   | K;LEFT_BRACK;rlnm1=IDENT;COMMA;rlnm2=IDENT;RIGHT_BRACK { `K (rlnm1,rlnm2)}
   | HASHCON;LEFT_BRACK;v=message;RIGHT_BRACK {`Hash v}
-  /* | EXP;LEFT_BRACK;v=message;COMMA;i=message;RIGHT_BRACK {`Exp (v,i)}
+  /*
   | SIG;LEFT_BRACK;v=message;COMMA;k=message;RIGHT_BRACK {`Sig (v,k)}
   | XOR;LEFT_BRACK;v1=message;COMMA;v2=message;RIGHT_BRACK {`Xor (v1,v2)} */
+  /* | EXP;LEFT_BRACK;v=message;COMMA;i=message;RIGHT_BRACK {`Exp (v,i)}  */
   | AENC;LEFT_BRACE;v1=message;RIGHT_BRACE;v2=message {`Aenc (v1,v2)}
   | SENC;LEFT_BRACE;v1=message;RIGHT_BRACE;v2=message {`Senc (v1,v2)} 
   | LEFT_ANGLEBARCK;msgs=message_list;RIGHT_ANGLEBARCK { `Concat msgs}

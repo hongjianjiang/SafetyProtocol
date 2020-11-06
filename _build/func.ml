@@ -260,16 +260,17 @@ let agType2Str rlist =
   String.concat ~sep: ";\n   " (List.map ~f:(fun r -> sprintf "loc%s : AgentType" r) rlist)
 
 let mType2Str tlist = 
-  String.concat ~sep: ";\n   " (List.map ~f:(fun m -> sprintf "loc%s : MsgType" m) tlist)
+  String.concat ~sep: ";\n   " (List.map ~f:(fun m -> sprintf "loc%s : Message" m) tlist)
 
 let rec printMurphiRecords knw nlist aglist tlist =
+  let () = print_endline (sprintf "tlist:%d" (List.length tlist)) in 
   match knw with
   |`Null -> sprintf "null"
   | `Knowledge (r,m) -> let str1 = sprintf "  Role%s : record\n" r in
                         let str2 = String.concat ~sep:"\n" (List.map ~f:(fun n -> sprintf "   %s : NonceType;" n) nlist) ^ "\n" in
                         let str3 = String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "   %s : AgentType;" r) aglist) ^ "\n" in
-                        let str4 = String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "   %s : MsgType;" r) tlist) ^ "\n" in
-                        let str5 = sprintf "   %s;\n   %s;\n   %s;\n   st: %sStatus;\n" (nType2Str nlist) (agType2Str aglist) (mType2Str tlist) r in
+                        let str4 = String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "   %s : Message;" r) tlist) ^ "\n" in
+                        let str5 = sprintf "   %s;\n   %s;\n   %s\n   st: %sStatus;\n" (nType2Str nlist) (agType2Str aglist) (if (List.length tlist >0) then (sprintf "%s;" (mType2Str tlist)) else (sprintf "%s" (mType2Str tlist))) r in
                         let str6 = sprintf "   commit : boolean;\n" in
                         let str7 = sprintf "  end;\n" in
                         str1 ^ str2 ^ str3 ^ str4 ^ str5 ^ str6 ^ str7
@@ -290,7 +291,7 @@ let rec isSamePat m1 m2 =
   | (`Aenc(m1',k1'),`Aenc(m2',k2')) -> if (isSamePat k1' k2') && (isSamePat m1' m2') then true else false
   | (`Senc(m1',k1'),`Senc(m2',k2')) -> if (isSamePat k1' k2') && (isSamePat m1' m2') then true else false
   | (`Tmp(m1), `Tmp(m2))-> if (m1=m2) then true else false
-  (* | (_,`Tmp(m)) -> true  *)
+ 
   | (`Pk r1,`Pk r2) -> true
   | (`Sk r1,`Sk r2) -> true
   | (`Pk r1,`Sk r2) -> true  (* sk(r1),pk(r1) are the same pat, they are stored into the same patSet*)
@@ -542,7 +543,7 @@ let rec getMsgs actions =
     (* sprintf "   put flag_pat%d;\n" patNum ^ *)
     sprintf "   if(flag_pat%d) then\n" patNum ^
     sprintf "     destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
-    sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
+    sprintf "     if (%s) then\n" (atoms2Str atoms rolename msgofRolename) ^
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
@@ -634,6 +635,13 @@ let rec getMsgs actions =
                           atoms' := !atoms'@[n'];
                           let nstr = sprintf "matchNonce(role%s[i].loc%s, role%s[i].%s)" rolename n rolename n in
                           strlist := !strlist@[nstr];
+                        end
+      |Some (`Tmp m) -> let m' = "tmp_"^m in 
+                        if listwithout !atoms' m' then 
+                        begin 
+                          atoms' :=!atoms' @ [m'];
+                          let mstr = sprintf "matchTmp(role%s[i].loc%s, role%s[i].%s)" rolename m rolename m in 
+                          strlist := !strlist@[mstr];
                         end
       |Some (`Str r) -> let r' = "agent_"^r in
                         if listwithout !atoms' r' then 

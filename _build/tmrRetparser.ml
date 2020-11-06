@@ -1077,7 +1077,7 @@ and _menhir_goto_loption_separated_nonempty_list_PERIOD_message__ : _menhir_env 
 # 1078 "tmrRetparser.ml"
      in
     
-# 216 "tmrRetparser.mly"
+# 217 "tmrRetparser.mly"
                                             ( msgs )
 # 1083 "tmrRetparser.ml"
      in
@@ -1096,7 +1096,7 @@ and _menhir_goto_loption_separated_nonempty_list_PERIOD_message__ : _menhir_env 
             let _3 = () in
             let _1 = () in
             let _v : (Proctype.message) = 
-# 211 "tmrRetparser.mly"
+# 212 "tmrRetparser.mly"
                                                        ( `Concat msgs)
 # 1102 "tmrRetparser.ml"
              in
@@ -1574,7 +1574,7 @@ and _menhir_goto_message : _menhir_env -> 'ttv_tail -> _menhir_state -> (Proctyp
         let _2 = () in
         let _1 = () in
         let _v : (Proctype.message) = 
-# 209 "tmrRetparser.mly"
+# 210 "tmrRetparser.mly"
                                                       (`Aenc (v1,v2))
 # 1580 "tmrRetparser.ml"
          in
@@ -1668,7 +1668,7 @@ and _menhir_goto_message : _menhir_env -> 'ttv_tail -> _menhir_state -> (Proctyp
             let _3 = () in
             let _1 = () in
             let _v : (Proctype.message) = 
-# 212 "tmrRetparser.mly"
+# 213 "tmrRetparser.mly"
                                      ( v )
 # 1674 "tmrRetparser.ml"
              in
@@ -1729,7 +1729,7 @@ and _menhir_goto_message : _menhir_env -> 'ttv_tail -> _menhir_state -> (Proctyp
         let _2 = () in
         let _1 = () in
         let _v : (Proctype.message) = 
-# 210 "tmrRetparser.mly"
+# 211 "tmrRetparser.mly"
                                                       (`Senc (v1,v2))
 # 1735 "tmrRetparser.ml"
          in
@@ -1770,7 +1770,7 @@ and _menhir_goto_message : _menhir_env -> 'ttv_tail -> _menhir_state -> (Proctyp
         let _1 = () in
         let _v : (Proctype.action) = 
 # 184 "tmrRetparser.mly"
-                                                                                                                            (`Send (seq,s,r,ms,m))
+                                                                                                                           (`Send (seq,s,r,ms,m))
 # 1775 "tmrRetparser.ml"
          in
         _menhir_goto_action _menhir_env _menhir_stack _menhir_s _v

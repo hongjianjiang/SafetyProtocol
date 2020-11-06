@@ -25,10 +25,10 @@ type message = [
   (* | `Inv of message  *)
   | `Tmp of messName 
   (* | `Multi of message * message 
-  | `Exp of message * message
   | `Sig of message * message 
   | `Xor of message * message 
   | `Mod of message * message *)
+  (* | `Exp of message * message *)
   | `Concat of message list
   | `Aenc of message * message   (* Asymmetric encryption *)
   | `Senc of message * message   (* Symmetric encryption *)
