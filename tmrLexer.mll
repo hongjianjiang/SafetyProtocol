@@ -58,11 +58,14 @@ rule read =
   | "Function:" {FUNCTION}
   | "Agents:" {AGENTS}
   | "to" {TO}
+  | "f1" {F1}
+  | "f2" {F2}
   | 'k' {K}
   | '<' {LEFT_ANGLEBARCK}
   | '>' {RIGHT_ANGLEBARCK}
   | 'h' {HASHCON}
-  | 'e' {EXP}
+  | "exp" {EXP}
+  | "const" {CONST}
   | '*' {MULTI}
   | "xor" {XOR}
   | "nonce" {NONCE}

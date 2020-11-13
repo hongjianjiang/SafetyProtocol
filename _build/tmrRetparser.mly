@@ -54,7 +54,9 @@
 %token ENVIRONMENT
 %token CONF
 %token AND
-
+%token CONST
+%token F1
+%token F2
 %start <Proctype.protocols option> prog
 %%
 (* part 1 *)
@@ -68,7 +70,7 @@ protocols:
 ;
 
 pocolcontext:
-  | k=knowledges;ag = agents;env=envrionment; g = goals; { `Pocol (k,ag,g,env) }
+  | t=types;k=knowledges;ag = agents;env=envrionment; g = goals; { `Pocol (t,k,ag,g,env) }
 ;
 
 types:
@@ -159,19 +161,6 @@ role:
 rolelist:
   rlist = separated_nonempty_list(PERIOD, role)    { rlist } 
 ;
-/* 
-fields :
-  |fields = field;{fields}
-;
-
-field:
-  | id = IDENT {`Field1 id}
-  | c = LINED {`Field2 c}
-;
-
-field_list:
-  fls = separated_list(COMMA,fields) {fls}
-; */
 
 actions:
   | ACTIONS; actlist= action;  { actlist }
@@ -192,21 +181,21 @@ action_list:
 
 message: 
   | id=IDENT { `Str id }
-  /* | i = INT {`Const i} */
   | NONCE;LEFT_BRACK;id=IDENT;RIGHT_BRACK {`Var id }
   /* | FRESH;LEFT_BRACK;id=IDENT;RIGHT_BRACK {`Fresh id} */
   /* | INV;LEFT_BRACK;v=message;RIGHT_BRACK { `Inv v} */
   | PK;LEFT_BRACK;rlnm=IDENT;RIGHT_BRACK { `Pk rlnm }
   | SK;LEFT_BRACK;rlnm=IDENT;RIGHT_BRACK { `Sk rlnm }
   | TMP;LEFT_BRACK;mn=IDENT;RIGHT_BRACK{`Tmp mn}
-  /* | MOD;LEFT_BRACK;m1=message;COMMA;m2=message;RIGHT_BRACK {`Mod (m1,m2)} */
+  | MOD;LEFT_BRACK;m1=message;COMMA;m2=message;RIGHT_BRACK {`Mod (m1,m2)}
   /* | v1= message;MULTI;v2=message  {`Multi (v1,v2)} */
   | K;LEFT_BRACK;rlnm1=IDENT;COMMA;rlnm2=IDENT;RIGHT_BRACK { `K (rlnm1,rlnm2)}
   | HASHCON;LEFT_BRACK;v=message;RIGHT_BRACK {`Hash v}
+  | CONST;LEFT_BRACK;n = IDENT;RIGHT_BRACK{`Const n}
   /*
   | SIG;LEFT_BRACK;v=message;COMMA;k=message;RIGHT_BRACK {`Sig (v,k)}
   | XOR;LEFT_BRACK;v1=message;COMMA;v2=message;RIGHT_BRACK {`Xor (v1,v2)} */
-  /* | EXP;LEFT_BRACK;v=message;COMMA;i=message;RIGHT_BRACK {`Exp (v,i)}  */
+  | EXP;LEFT_BRACK;v=message;COMMA;i=message;RIGHT_BRACK {`Exp (v,i)} 
   | AENC;LEFT_BRACE;v1=message;RIGHT_BRACE;v2=message {`Aenc (v1,v2)}
   | SENC;LEFT_BRACE;v1=message;RIGHT_BRACE;v2=message {`Senc (v1,v2)} 
   | LEFT_ANGLEBARCK;msgs=message_list;RIGHT_ANGLEBARCK { `Concat msgs}

@@ -24,11 +24,12 @@ type message = [
   | `Str of roleName
   (* | `Inv of message  *)
   | `Tmp of messName 
+  | `Const of identifier
   (* | `Multi of message * message 
   | `Sig of message * message 
-  | `Xor of message * message 
-  | `Mod of message * message *)
-  (* | `Exp of message * message *)
+  | `Xor of message * message*) 
+  | `Mod of message * message
+  | `Exp of message * message
   | `Concat of message list
   | `Aenc of message * message   (* Asymmetric encryption *)
   | `Senc of message * message   (* Symmetric encryption *)
@@ -78,29 +79,21 @@ type environment = [
 
 type agent = [
   |`Agent of roleName * message list * action list
+
   |`Agentlist of agent list 
   |`Null
 ]
 
-(* type goal = [
-  |`Secretgoal of identifier * message * roleName list
-  |`Agreegoal of identifier * roleName * roleName * message
-  |`Agreegoal1 of identifier * roleName * roleName * message
-  |`Confidentgoal of identifier * roleName * message * roleName
-  |`Goallist of goal list
-  |`Null
-]  *)
 type goal = [
-  (*|`Secretgoal of identifier * message * roleName_list*)
   |`Secretgoal of identifier * message
   |`Secretgoal1 of identifier * message * roleName * roleName
   |`Agreegoal of identifier * roleName * roleName * message
   |`Goallist of goal list
   |`Null
-];;
+]
 
 type pocolcontext = [
-  | `Pocol of knowledge * agent * goal * environment
+  | `Pocol of mode * knowledge * agent * goal * environment
   | `Null
 ] 
 

@@ -41,10 +41,13 @@ type token =
   | HASHCON
   | GOALS
   | FUNCTION
+  | F2
+  | F1
   | EXP
   | EOF
   | ENVIRONMENT
   | END
+  | CONST
   | CONF
   | COMMA
   | COLON

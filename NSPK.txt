@@ -1,4 +1,7 @@
 Protocol NSPK:
+Types:{
+    
+}
 Knowledges:{
     A : <A.B.nonce(Na)>;
     B : <B.nonce(Nb)>
@@ -18,7 +21,6 @@ Environment:{
 [agent2] B [1] : <Bob.nonce(Nb)>
 }
 Goals:{
-[secrecy] nonce(Nb);
-[weakB] B non-injectively agrees with A on nonce(Na)
+[secrecy] nonce(Na)
 }
 end

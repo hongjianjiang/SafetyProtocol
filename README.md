@@ -12,4 +12,4 @@ $ /Users/sword/Downloads/cmurphi5.4.9.1/src/mu result.m
 
 $ g++ -o result.o result.cpp -I /Users/sword/Downloads/cmurphi5.4.9.1/include/ -ggdb
 
-$ ./result.o
+$ ./result.o >out1
