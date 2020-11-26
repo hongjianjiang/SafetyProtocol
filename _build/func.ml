@@ -1,6 +1,32 @@
 open Core
 open Proctype
 
+let rec combination list n =
+  match list with
+  | [] -> []
+  | ele::list' ->
+    let len = List.length list in
+    if len < n then
+      []
+    else begin
+      match n with
+      | 0 -> []
+      | 1 -> List.map list ~f:(fun x -> [x])
+      | _ ->
+        let first_set = List.map (combination list' (n - 1)) ~f:(fun x -> ele::x) in
+        first_set@(combination list' n)
+    end
+
+
+let print_option po=
+  match po with 
+  |None->""
+  |Some a -> a
+
+let get_option go = 
+  match go with 
+  | None -> [] 
+  | Some a -> a 
 (*judge e whether in list l*)
 let rec listwithout l e =  
   match l with
@@ -188,8 +214,10 @@ let agents2Str rlist =
 let nonce2Str nlist =
     String.concat ~sep:", " nlist
 
-  let const2Str clist =
+let const2Str clist =
     String.concat ~sep:", " clist
+let const2IntruderStr clist = 
+    String.concat ~sep:"i," clist 
 
 let agentSStatus rlist lensOfrlist =
       String.concat ~sep:";\n  " (List.mapi ~f:(fun i r -> 
@@ -294,7 +322,7 @@ let rec isSamePat m1 m2 =
   | (`Senc(m1',k1'),`Senc(m2',k2')) -> if (isSamePat k1' k2') && (isSamePat m1' m2') then true else false
   | (`Tmp(m1), `Tmp(m2))-> if (m1=m2) then true else false
   | (`Exp(m11,m12),`Exp(m21,m22)) -> if (isSamePat m11 m21) && (isSamePat m12 m22) then true else false
-  | (`Const i1,`Const i2) ->true
+  | (`Const i1,`Const i2) -> true
   | (`Mod(m11,m12),`Mod(m21,m22)) -> if (isSamePat m11 m21) && (isSamePat m12 m22) then true else false
   | (`Pk r1,`Pk r2) -> true
   | (`Sk r1,`Sk r2) -> true
@@ -339,13 +367,12 @@ let rec getSubMsg msg =
   |`Str role  -> [`Str role]
   |`Tmp m -> [`Tmp m]
   |`Const i -> [`Const i]
-  |`Exp (m1,m2) -> (getSubMsg m1)@(getSubMsg m2)@[msg]
-
+  |`Exp (m1,m2) -> (getSubMsg m1)@(getSubMsg m2)@ [msg]
   |`Mod (m1,m2) -> (getSubMsg m1)@(getSubMsg m2)@[msg]
   |`Concat msgs -> let submsgs = List.concat (List.map ~f:getSubMsg msgs) in 
                     submsgs@[msg]
-  |`Aenc (m,k) -> (getSubMsg m)@[m;k]@[msg]
-  |`Senc (m,k) -> (getSubMsg m)@[m;k]@[msg]
+  |`Aenc (m,k) -> (getSubMsg m)@ (getSubMsg k)@[m;k]@[msg]
+  |`Senc (m,k) -> (getSubMsg m)@ (getSubMsg k) @[m;k]@[msg]
   |`Hash m -> (getSubMsg m) @ [msg]
   |`Pk role -> [`Pk role]
   |`Sk role -> [`Sk role]
@@ -770,7 +797,7 @@ let genCodeOfIntruderGetMsg (seq,r,m) patList =
   let j = getPatNum m patList in
   sprintf "\n---rule of intruder to get msg from ch[%d] \n" seq ^
   sprintf "rule \"intruderGetMsgFromCh[%d]\" \n" seq ^ 
-  sprintf "  ch[%d].empty = false\n  ==>\n" seq ^
+  sprintf "  ch[%d].empty = false & ch[%d].sender != Intruder ==>\n" seq seq^
   sprintf "  var flag_pat%d:boolean;\n      msgNo:indexType;\n      msg:Message;\n" j^
   sprintf "  begin\n" ^
   sprintf "    msg := ch[%d].msg;\n" seq ^ 
@@ -782,7 +809,7 @@ let genCodeOfIntruderGetMsg (seq,r,m) patList =
   sprintf "        pat%dSet.content[pat%dSet.length]:=msgNo;\n" j j^
   sprintf "        Spy_known[msgNo] := true;\n"^
   sprintf "      endif;\n" ^
-  sprintf "          put \"intruder get msg from ch[%d].\\n\";\n" seq ^
+  sprintf "      put \"intruder get msg from ch[%d].\\n\";\n" seq ^
   sprintf "      ch[%d].empty := true;\n      clear ch[%d].msg;\n" seq seq^
   sprintf "    endif;\n" ^
   sprintf "  end;\n"
