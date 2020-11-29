@@ -12,7 +12,7 @@ Agents:{
     [1]+,B,(const(g).const(p)): <const(g).const(p)>,
     [2]+,B,(const(X).k(A,B)):senc{mod(exp(const(g),const(X)),const(p))}k(A,B),
     [3]-:senc{tmp(m2)}k(A,B),
-    [4]+,B,(nonce(Na)):aenc{nonce(Na)}e(tmp(m2),x);
+    [4]+,B,(nonce(Na)):aenc{nonce(Na)}exp(m2,x);
 
     B:Y.k(A,B),
     [1]-:<const(g).const(p)>,

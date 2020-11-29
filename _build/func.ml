@@ -206,6 +206,21 @@ let rec getEnvNonces env nl =
 let getNonceFromEnv env nl =
     let nlist = getEnvNonces env nl in
     del_duplicate nlist
+  
+  let rec getKnwNonces knw nl = 
+      match knw with
+          |`Null -> nl
+          |`Knowledge (r, m) -> getNonceInstance m nl 
+          |`Knowledge_list knw -> getNonce knw nl
+      and getNonce knw nl =
+        List.concat (List.map ~f:(fun e -> getKnwNonces e nl) knw)
+      and getNonceInstance m nl =
+        match m with
+          | `Var n -> if listwithout nl n then n :: nl else nl
+          | `Concat msgs -> getNonceInstances msgs nl
+          | _ -> nl
+      and getNonceInstances msgs nl =
+          List.concat (List.map ~f:(fun m -> getNonceInstance m nl) msgs)
 
 let agents2Str rlist =
     let intruStr = if listwithout rlist ("Intruder") then "Intruder, " else "" in
@@ -213,11 +228,12 @@ let agents2Str rlist =
 
 let nonce2Str nlist =
     String.concat ~sep:", " nlist
-
+let nonce2IntruderStr nlist = 
+    String.concat ~sep:"i, " nlist 
 let const2Str clist =
     String.concat ~sep:", " clist
 let const2IntruderStr clist = 
-    String.concat ~sep:"i," clist 
+    String.concat ~sep:"i, " clist 
 
 let agentSStatus rlist lensOfrlist =
       String.concat ~sep:";\n  " (List.mapi ~f:(fun i r -> 
@@ -821,7 +837,7 @@ let genCodeOfIntruderEmitMsg (seq,r,m) patList=
   in
   let str2 = sprintf "  ruleset j: role%sNums do\n" r in
   let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n" seq j j j j j^ 
-             sprintf "      begin\n        if (!emit[pat%dSet.content[i]]) then  --- & msgs[msgs[pat%dSet.content[i]].aencKey].k.ag=role%s[j].%s\n" j j r r^ 
+             sprintf "      begin\n        if (!emit[pat%dSet.content[i]]) then  \n" j ^ 
              sprintf "          clear ch[%d];\n" seq ^sprintf "          ch[%d].msg:=msgs[pat%dSet.content[i]];\n" seq j^
              sprintf "          ch[%d].sender:=Intruder;\n" seq
   in
