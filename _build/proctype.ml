@@ -33,7 +33,7 @@ type message = [
   | `Concat of message list
   | `Aenc of message * message   (* Asymmetric encryption *)
   | `Senc of message * message   (* Symmetric encryption *)
-  | `Hash of message
+  | `Hash of message * message
   | `Pk of roleName
   | `Sk of roleName
   | `K of roleName * roleName
@@ -79,7 +79,6 @@ type environment = [
 
 type agent = [
   |`Agent of roleName * message list * action list
-
   |`Agentlist of agent list 
   |`Null
 ]

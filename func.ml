@@ -91,7 +91,7 @@ let rec getAtoms msg =
   |`Str s 	-> [`Str s]
   |`Tmp mn -> [`Tmp mn]
   |`Concat msgs -> getEachAtoms msgs
-  |`Hash m 	-> getAtoms m
+  |`Hash (m1,m2) 	->  List.concat (List.map ~f:getAtoms [m1;m2])
   |`Aenc (m1,m2)-> List.concat (List.map ~f:getAtoms [m1;m2])
   |`Senc (m1,m2)-> List.concat (List.map ~f:getAtoms [m1;m2])
   |`Exp (m1,m2)-> List.concat (List.map ~f:getAtoms [m1;m2])
@@ -111,10 +111,16 @@ let rec getMsgOfRoles knws =
   | `Knowledge (r,m) -> [m]
   | `Knowledge_list knws -> List.concat (List.map ~f:(fun k -> getMsgOfRoles k) knws)
 
+  let rec getMsgOfIntruder knws =
+    match knws with
+    | `Null -> []
+    | `Knowledge (r,m) -> if r = "I" then [m] else []
+    | `Knowledge_list knws -> List.concat (List.map ~f:(fun k -> getMsgOfIntruder k) knws)
+
 let rec getRolesFromKnws knws rl =
   match knws with
     | `Null -> rl
-    | `Knowledge (r,m) -> if listwithout rl r then r :: rl else rl
+    | `Knowledge (r,m) -> if r <> "I" then if listwithout rl r then r :: rl else rl else rl
     | `Knowledge_list ks -> getroles ks rl
   and getroles ks rl =
     List.concat (List.map ~f:(fun k -> getRolesFromKnws k rl ) ks)
@@ -222,6 +228,22 @@ let getNonceFromEnv env nl =
       and getNonceInstances msgs nl =
           List.concat (List.map ~f:(fun m -> getNonceInstance m nl) msgs)
 
+  let rec getKnwNoncesInt knw nl = 
+      match knw with
+          |`Null -> nl
+          |`Knowledge (r, m) -> if r = "I" then getNonceInstanceInt m nl else []
+          |`Knowledge_list knw -> getNonceInt knw nl
+      and getNonceInt knw nl =
+        List.concat (List.map ~f:(fun e -> getKnwNoncesInt e nl) knw)
+      and getNonceInstanceInt m nl =
+        match m with
+          | `Var n -> if listwithout nl n then n :: nl else nl
+          | `Concat msgs -> getNonceInstancesInt msgs nl
+          | _ -> nl
+      and getNonceInstancesInt msgs nl =
+          List.concat (List.map ~f:(fun m -> getNonceInstanceInt m nl) msgs)
+
+
 let agents2Str rlist =
     let intruStr = if listwithout rlist ("Intruder") then "Intruder, " else "" in
       intruStr ^ String.concat ~sep:", " rlist
@@ -311,7 +333,7 @@ let mType2Str tlist =
 let rec printMurphiRecords knw nlist aglist tlist clist=
   match knw with
   |`Null -> sprintf "null"
-  | `Knowledge (r,m) -> let str1 = sprintf "  Role%s : record\n" r in
+  | `Knowledge (r,m) -> if r <> "I" then let str1 = sprintf "  Role%s : record\n" r in
                         let str2 = String.concat ~sep:"\n" (List.map ~f:(fun n -> sprintf "   %s : NonceType;" n) nlist) ^ "\n" in
                         let str3 = String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "   %s : AgentType;" r) aglist) ^ "\n" in
                         let str4 = String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "   %s : Message;" r) tlist) ^ "\n" in
@@ -320,6 +342,7 @@ let rec printMurphiRecords knw nlist aglist tlist clist=
                         let str7 = sprintf "   commit : boolean;\n" in
                         let str8 = sprintf "  end;\n" in
                         str1 ^ str2 ^ str3 ^ str4 ^ str5 ^ str6 ^ str7 ^ str8
+                        else ""
   | `Knowledge_list knws ->String.concat (List.map ~f:(fun k -> printMurphiRecords k nlist aglist tlist clist) knws)
 
 let rlistToVars rlist =
@@ -347,7 +370,7 @@ let rec isSamePat m1 m2 =
   | (`K(r11,r12),`K(r21,r22)) -> true
   | (`Var n1,`Var n2) -> true
   | (`Concat msgs1,`Concat msgs2) -> isSameList msgs1 msgs2
-  | (`Hash m1',`Hash m2') -> if (isSamePat m1' m2') then true else false
+  | (`Hash(m1',k1'),`Hash(m2',k2')) -> if (isSamePat k1' k2') && (isSamePat m1' m2') then true else false
   | (`Str r1,`Str r2) -> true
   | _ -> false
 
@@ -389,7 +412,7 @@ let rec getSubMsg msg =
                     submsgs@[msg]
   |`Aenc (m,k) -> (getSubMsg m)@ (getSubMsg k)@[m;k]@[msg]
   |`Senc (m,k) -> (getSubMsg m)@ (getSubMsg k) @[m;k]@[msg]
-  |`Hash m -> (getSubMsg m) @ [msg]
+  |`Hash (m,k) -> (getSubMsg m)@ (getSubMsg k)@[m;k]@[msg]
   |`Pk role -> [`Pk role]
   |`Sk role -> [`Sk role]
   |`K (r1,r2) -> [`K (r1,r2)]
@@ -818,6 +841,7 @@ let genCodeOfIntruderGetMsg (seq,r,m) patList =
   sprintf "  begin\n" ^
   sprintf "    msg := ch[%d].msg;\n" seq ^ 
   sprintf "    get_msgNo(msg, msgNo);\n"^ 
+  sprintf "    msg.tmpPart := msgNo;\n" ^
   sprintf "    isPat%d(msg,flag_pat%d);\n" j j^ 
   sprintf "    if (flag_pat%d) then\n" j^
   sprintf "      if(!exist(pat%dSet,msgNo)) then\n" j^
@@ -855,11 +879,14 @@ let genCodeOfIntruderEmitMsg (seq,r,m) patList=
 let print_murphiRule_ofIntruder agents =
   let actions =  (getAllActsList agents) in
   let sendActions = List.concat (List.map ~f:getAllSendActs actions ) in 
-  let msgs = List.concat (List.map ~f:getMsgs (sendActions)) in    (* get all msgs from actions *)
+  let receActions = List.concat (List.map ~f:getAllReceActs actions ) in
+  let msgs = List.concat (List.map ~f:getMsgs (receActions)) in    (* get all msgs from actions *)
+  let msgs1 = List.concat (List.map ~f:getMsgs (sendActions)) in    (* get all msgs from actions *)
+
   let patlist = List.concat (List.map ~f:getPatList (actions)) in (*get all patterns from actions*)
   let non_dup = del_duplicate patlist in (* delete duplicate *)
   let non_equivalent = getEqvlMsgPattern non_dup in
-  let getMsgStr = String.concat (List.map ~f:(fun m -> genCodeOfIntruderGetMsg m non_equivalent) msgs) in
-  let emitMsgStr = String.concat (List.mapi ~f:(fun i m -> genCodeOfIntruderEmitMsg m non_equivalent) msgs) in
+  let getMsgStr = String.concat (List.map ~f:(fun m -> genCodeOfIntruderGetMsg m non_equivalent) msgs1) in
+  let emitMsgStr = String.concat (List.mapi ~f:(fun i m -> genCodeOfIntruderEmitMsg m non_equivalent) msgs1) in
   getMsgStr ^ emitMsgStr      
   

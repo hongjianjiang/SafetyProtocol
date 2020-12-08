@@ -190,7 +190,7 @@ message:
   | MOD;LEFT_BRACK;m1=message;COMMA;m2=message;RIGHT_BRACK {`Mod (m1,m2)}
   /* | v1= message;MULTI;v2=message  {`Multi (v1,v2)} */
   | K;LEFT_BRACK;rlnm1=IDENT;COMMA;rlnm2=IDENT;RIGHT_BRACK { `K (rlnm1,rlnm2)}
-  | HASHCON;LEFT_BRACK;v=message;RIGHT_BRACK {`Hash v}
+  | HASHCON;LEFT_BRACK;v1=message;RIGHT_BRACK;v2=message {`Hash (v1,v2)}
   | CONST;LEFT_BRACK;n = IDENT;RIGHT_BRACK{`Const n}
   /*
   | SIG;LEFT_BRACK;v=message;COMMA;k=message;RIGHT_BRACK {`Sig (v,k)}

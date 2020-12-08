@@ -63,7 +63,7 @@ rule read =
   | 'k' {K}
   | '<' {LEFT_ANGLEBARCK}
   | '>' {RIGHT_ANGLEBARCK}
-  | 'h' {HASHCON}
+  | "hash" {HASHCON}
   | "exp" {EXP}
   | "const" {CONST}
   | '*' {MULTI}

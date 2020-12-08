@@ -1,0 +1,61 @@
+Protocol DiffieHellman:
+Types:{
+    Agent:UE.SEAF.AUSF.UDM;
+    Number:g
+}
+Knowledges:{
+    UE : <SUPI.nonce(ue)>;
+    SEAF : <SEAFN>;
+    AUSF : <> ; 
+    UDM : <EAP_TLS>
+}
+Agents:{
+    UE:SUPI.nonce(ue).nonce(prekey),
+    [1]+,SEAF,(SUPI.nonce(ue)): aenc{<SUPI.nonce(UE)>}pk(UDM),
+    [6]-:TLS_START,
+    [7]+,SEAF,(nonce(ue1).Methods_UE):<nonce(ue1).Methods_UE>,
+    [10]-:<nonce(ausf).Ceritificate_AUSF.Methods_AUSF>,
+    [11]+,SEAF,():<aenc{nonce(prekey)}pk(AUSF).UE.hash(HandShake_UE)sk(UE).hash(HandShake_UE)sk(session)>,
+    [14]-:hash(HandShake_AUSF)sk(session),
+    [15]+,SEAF,():EAP_TLS,
+    [18]-:Success;
+    SEAF: ,
+    [1]-:tmp(m1),
+    [2]+,AUSF,(SEAFN):<tmp(m1).SEAFN>,
+    [5]-:TLS_START,
+    [6]+,UE,():TLS_START,
+    [7]-:<nonce(ue1).Methods_UE>,
+    [8]+,AUSF,():<nonce(ue1).Methods_UE>,
+    [9]-:<nonce(ausf).Ceritificate_AUSF.Methods_AUSF>,
+    [10]+,UE,():<nonce(ausf).Ceritificate_AUSF.Methods_AUSF>,
+    [11]-:tmp(m3),
+    [12]+,AUST,():tmp(m3),
+    [13]-:hash(HandShake_AUSF)pk(session),
+    [14]+,UE,():hash(HandShake_AUSF)pk(session),
+    [15]-:EAP_TLS,
+    [16]+,AUSF,():EAP_TLS,
+    [17]-:<Success.SUPI.nonce(seaf)>,
+    [18]+,UE,():Success;
+    AUSF: , 
+    [2]-:tmp(m2),
+    [3]+,UDM,():tmp(m2),
+    [4]-:<SUPI.EAP_TLS>,
+    [5]+,SEAF,(TLS_START):TLS_START,
+    [8]-:<nonce(ue1).Methods_UE>,
+    [9]+,SEAF,(nonce(ausf).Ceritificate_AUSF.Methods_AUSF):<nonce(ausf).Ceritificate_AUSF.Methods_AUSF>,
+    [12]-:tmp(m3),
+    [13]+,SEAF,():hash(HandShake_AUSF)pk(session),
+    [16]-:EAP_TLS,
+    [17]+,AUSF,():<Success.SUPI.nonce(seaf)>;
+    UDM: ,
+    [3]-:tmp(m2),
+    [4]+,AUSF,(EAP_TLS):<SUPI.EAP_TLS>
+}
+Environment:{
+[agent1] A [1] : <Alice.Intruder.const(g).const(p).const(X).k(A,B).nonce(Na)>;
+[agent2] B [1] : <Bob.Intruder.const(Y).k(A,B)>
+}
+Goals:{
+    [secrecy1] nonce(Na)
+}
+end
