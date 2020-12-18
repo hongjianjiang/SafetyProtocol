@@ -172,11 +172,11 @@ var
   msgs : Array[indexType] of Message;
   msg_end: indexType;\n"^
     sprintf "%s\n" (printPatSetVars pats) ^
-    sprintf "  Spy_known: Array[indexType] of boolean;
+    sprintf "  %s\n  Spy_known: Array[indexType] of boolean;
   ---systemEvent   : array[eventNums] of Event;
   ---eve_end       : eventNums;
   emit: Array[indexType] of boolean;
-  gnum : indexType;\n\n" (* global num*)  
+  gnum : indexType;\n\n" (rlistToKnows rlist )(* global num*)  
    
 (*--------------------------------------------------------print precedure -----------------------------------------------------------*)
 
@@ -853,7 +853,7 @@ let genSynthCode m i patList =
                      sprintf "     endif;\n"^
                      sprintf "   endfor;\n"^
                      sprintf "   if(index=0) then\n"^
-                     sprintf "     msg_end := msg_end + 1 ;\n     index := msg_end;\n     msgs[index].msgType := senc;\n     msgs[index].sencMsg := i1; \n     msgs[index].sencKey := i2; \n     msgs[index].length := 1;\n"^
+                     sprintf "     msg_end := msg_end + 1 ;\n     index := msg_end;\n     msgs[index].msgType := senc;\n     msgs[index].sencMsg := i1; \n     msgs[index].sencKey := i2; \n    %s\n     msgs[index].length := 1;\n" (sprintf "msgs[i2].k.encType := MsgK;\n     msgs[i2].k.m := i2;\n") ^
                      sprintf "   endif;\n"^
                      sprintf "   num:=index;\n   msg:=msgs[index];\n  end;\n\n";
   |`Concat msgs ->let msgNoStr = String.concat ~sep:"," (List.mapi ~f:(fun i m' -> sprintf "msg%d" (i+1)) msgs) in
@@ -2541,6 +2541,15 @@ let printImpofStart agents knws =
                                                   sprintf "    msgs[msg_end].k.encType:=PK;\n    msgs[msg_end].length := 1;\n    pat%dSet.length := pat%dSet.length + 1;\n" pkNum pkNum ^
                                                   sprintf "    pat%dSet.content[pat%dSet.length] :=msg_end;\n" pkNum pkNum ^
                                                   sprintf "    Spy_known[msg_end] := true;\n"^
+                                                  sprintf "    %s_known[msg_end] := true;\n" r^
+                                                  sprintf "  endfor;\n" ^
+                                                  sprintf "    for i : role%sNums do\n" r ^
+                                                  sprintf "    msg_end := msg_end+1;\n    msgs[msg_end].msgType := key;\n" ^
+                                                  sprintf "    msgs[msg_end].k.ag := role%s[i].%s;\n" r r^
+                                                  sprintf "    msgs[msg_end].k.encType:=SK;\n    msgs[msg_end].length := 1;\n    pat%dSet.length := pat%dSet.length + 1;\n" pkNum pkNum ^
+                                                  sprintf "    pat%dSet.content[pat%dSet.length] :=msg_end;\n" pkNum pkNum ^
+                                                  sprintf "    Spy_known[msg_end] := true;\n"^
+                                                  sprintf "    %s_known[msg_end] := true;\n" r^
                                                   sprintf "  endfor;\n"
                             ) rlist) else ""
   in
@@ -2586,7 +2595,7 @@ let printImpofStart agents knws =
   "  endfor;
   for i:indexType do 
     Spy_known[i] := false;
-  endfor;\n" ^  str3 ^ str4 ^ str5 ^ str6  ^ str8 ^  str7 ^ (String.concat (List.map ~f:(fun a->initSpatSet a patlist) actions))^ (* initialize sample pattern Set *)
+  endfor;\n" ^ rlistToState rlist ^ str3 ^ str4 ^ str5 ^ str6  ^ str8 ^  str7 ^ (String.concat (List.map ~f:(fun a->initSpatSet a patlist) actions))^ (* initialize sample pattern Set *)
   "\n"
 ;;
 

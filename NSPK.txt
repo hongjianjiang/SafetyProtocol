@@ -1,6 +1,6 @@
 Protocol NSPK:
 Types:{
-    
+    Agent:A.B
 }
 Knowledges:{
     A : <A.B.nonce(Na)>;

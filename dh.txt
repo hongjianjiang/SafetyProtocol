@@ -12,12 +12,12 @@ Agents:{
     A:const(g).const(p).const(x).k(A,B).nonce(Na),
     [1]+,B,(const(x)): mod(exp(const(g),const(x)),const(p)),
     [2]-:tmp(m2),
-    [3]+,B,(nonce(Na)):aenc{nonce(Na)}mod(exp(tmp(m2),const(x)),const(p));
+    [3]+,B,(nonce(Na)):senc{nonce(Na)}mod(exp(tmp(m2),const(x)),const(p));
 
     B:const(y).k(A,B),
     [1]-:tmp(m1),
     [2]+,A,(const(g).nonce(y)):mod(exp(const(g),const(y)),const(p)),
-    [3]-:aenc{tmp(m3)}mod(exp(tmp(m2),const(x)),const(p))
+    [3]-:senc{tmp(m3)}mod(exp(tmp(m2),const(x)),const(p))
 }
 Environment:{
 [agent1] A [1] : <Alice.Intruder.const(g).const(p).const(x).nonce(Na)>;

@@ -57,6 +57,7 @@
 %token CONST
 %token F1
 %token F2
+%token FORMAT
 %start <Proctype.protocols option> prog
 %%
 (* part 1 *)
@@ -79,18 +80,8 @@ types:
 mode:
   | AGENT; rs=ident_list {`Agent rs}
   | NUMBER ; ms=message_list {`Number ms}
-  | FUNCTION ;fs=function_list {`Function fs}
   | LEFT_BRACE; ms = type_list ; RIGHT_BRACE {`Modelist ms}
 ;
-function1:
-  | pk=PK {`Pk pk}
-  | sk=SK {`Sk sk}
-  | exp =EXP {`Exp exp}
-  | mod1 = MOD {`Mod mod1}
-;
-
-function_list:
-  fs = separated_list(PERIOD,function1){fs}
 
 ident_list:
   is = separated_list(PERIOD,IDENT) {is}
@@ -102,7 +93,6 @@ type_list:
 agents:
   |AGENTS ; ags=agent;{ags}
 ;
-
 agent:
   | name=IDENT ;COLON; ms = message_list ;COMMA; actlist=action_list;{`Agent (name,ms,actlist)}
   /* | RESP ; ms = message_list ;COMMA; actlist=action_list;{`Resp (ms,actlist)} */

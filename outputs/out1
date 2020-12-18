@@ -33,7 +33,7 @@ Algorithm:
 
 Memory usage:
 
-	* The size of each state is 43632 bits (rounded up to 5456 bytes).
+	* The size of each state is 45248 bits (rounded up to 5656 bytes).
 	* The memory allocated for the hash table and state queue is
 	  8 Mbytes.
 	  With states hash-compressed to 40 bits, the maximum size of
@@ -491,7 +491,7 @@ intruder get msg from ch[3].
 rule constructMod 3
 rule decrypt mod 3
 intruder get msg from ch[3].
-rule adecrypt8
+rule sdecrypt8
 
 ==========================================================================
 

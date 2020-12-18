@@ -7,27 +7,12 @@ type messName = string
 type index = int 
 (*type nonce = string *)
 
-type identifier_list=[
-  | `Identifier of identifier
-  | `Identifier_list of identifier list
-] 
-
-type roleName_list=[
-  | `RoleName of roleName
-  | `roleName_list of roleName_list list
-] 
 type message = [
   | `Null
-  (* | `Const of index const *)
   | `Var of identifier (*variable*)
-  (* | `Fresh of identifier nonce or coin flips *)
   | `Str of roleName
-  (* | `Inv of message  *)
   | `Tmp of messName 
   | `Const of identifier
-  (* | `Multi of message * message 
-  | `Sig of message * message 
-  | `Xor of message * message*) 
   | `Mod of message * message
   | `Exp of message * message
   | `Concat of message list
@@ -57,16 +42,9 @@ type knowledge = [
   | `Null
 ] 
 
-type function1= [
-  | `Pk of unit
-  | `Sk of unit 
-  | `Exp of unit
-  | `Mod of unit
-] 
 type mode = [
   | `Agent of roleName list
   | `Number of message list
-  | `Function of function1  list
   | `Modelist of mode list
   | `Null 
 ]
@@ -92,7 +70,7 @@ type goal = [
 ]
 
 type pocolcontext = [
-  | `Pocol of mode * knowledge * agent * goal * environment
+  | `Pocol of mode  * knowledge * agent * goal * environment
   | `Null
 ] 
 

@@ -348,6 +348,12 @@ let rec printMurphiRecords knw nlist aglist tlist clist=
 let rlistToVars rlist =
     String.concat ~sep:";\n  " (List.map ~f:(fun r -> 
                   sprintf "role%s : Array[role%sNums] of Role%s" r r r) rlist)
+let rlistToKnows rlist =
+    String.concat ~sep:"\n  " (List.map ~f:(fun r -> 
+                  sprintf "%s_known : Array[indexType] of boolean;" r) rlist)
+let rlistToState rlist =
+    String.concat ~sep:"\n  " (List.map ~f:(fun r -> 
+                  sprintf "for i:indexType do\n    %s_known[i] := false;\n  endfor;" r) rlist)
   
 let printPatSetVars pats =
   String.concat  (List.mapi ~f:(fun i p ->sprintf "  pat%dSet: msgSet;\n" (i+1)^
@@ -622,15 +628,27 @@ let rec getMsgs actions =
     let commitStr = if i = length then sprintf "   role%s[i].commit := true;\n" rolename else "" in 
     let patNum = getPatNum m patlist in
     sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\nbegin\n" patNum ^ 
-    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n" seq patNum patNum  ^ 
+    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n     if msg.msgType = aenc then\n       if %s_known[msg.aencKey] then\n" seq patNum patNum  rolename^ 
     (* sprintf "   put flag_pat%d;\n" patNum ^ *)
-    sprintf "   if(flag_pat%d) then\n" patNum ^
-    sprintf "     destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
-    sprintf "     if (%s) then\n" (atoms2Str atoms rolename msgofRolename) ^
-    sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
-    sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
+    sprintf "         if(flag_pat%d) then\n" patNum ^
+    sprintf "         destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
+    sprintf "           if (%s) then\n" (atoms2Str atoms rolename msgofRolename) ^
+    sprintf "           ch[%d].empty:=true;\n           clear ch[%d].msg;\n" seq seq ^
+    sprintf "           role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
+    sprintf "           endif;\n"^
+    sprintf "       endif;\n" ^
+    sprintf "      endif;\n" ^
+    sprintf "      else\n"^
+    sprintf "         get_msgNo(msg, msgNo);\n" ^
+    sprintf "         %s_known[msgNo]:=true;\n" rolename^
+    sprintf "         if(flag_pat%d) then\n" patNum ^
+    sprintf "         destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
+    sprintf "           if (%s) then\n" (atoms2Str atoms rolename msgofRolename) ^
+    sprintf "           ch[%d].empty:=true;\n           clear ch[%d].msg;\n" seq seq ^
+    sprintf "           role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
+    sprintf "           endif;\n"^
+    sprintf "       endif;\n" ^
     sprintf "     endif;\n"^
-    sprintf "   endif;\n" ^
     sprintf "   put \"role%s[i] in st%d\\n\";\n" rolename i ^
     (* sprintf "   put \"recv%d. \";\n   put ch[%d].sender;\n   put \"   \";\n   put ch[%d].receiver;\n   put \"   msg: \";\n   printMsg(msg);\n   put \"\\n\";\n" i seq seq ^ *)
     commitStr ^

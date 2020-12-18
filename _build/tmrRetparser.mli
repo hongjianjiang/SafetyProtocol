@@ -41,6 +41,7 @@ type token =
   | HASHCON
   | GOALS
   | FUNCTION
+  | FORMAT
   | F2
   | F1
   | EXP

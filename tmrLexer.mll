@@ -57,6 +57,7 @@ rule read =
   | "Number:" {NUMBER}
   | "Function:" {FUNCTION}
   | "Agents:" {AGENTS}
+  | "Format:" {FORMAT}
   | "to" {TO}
   | "f1" {F1}
   | "f2" {F2}
