@@ -119,7 +119,6 @@ type
   
 var
   ch : Array[chanNums] of Channel;
-  ic:invokeNums;
   roleA : Array[roleANums] of RoleA;
   roleB : Array[roleBNums] of RoleB;
 
@@ -1425,29 +1424,16 @@ begin
    clear msg;
    msg := ch[2].msg;
    isPat4(msg, flag_pat4);
-     if msg.msgType = aenc then
-       if A_known[msg.aencKey] then
-         if(flag_pat4) then
-         destruct4(msg,roleA[i].locm2);
-           if (matchTmp(roleA[i].locm2, roleA[i].m2)) then
-           ch[2].empty:=true;
-           clear ch[2].msg;
-           roleA[i].st := A3;
-           endif;
-       endif;
-      endif;
-      else
-         get_msgNo(msg, msgNo);
-         A_known[msgNo]:=true;
-         if(flag_pat4) then
-         destruct4(msg,roleA[i].locm2);
-           if (matchTmp(roleA[i].locm2, roleA[i].m2)) then
-           ch[2].empty:=true;
-           clear ch[2].msg;
-           roleA[i].st := A3;
-           endif;
-       endif;
+   if(flag_pat4) then
+     get_msgNo(msg, msgNo);
+     A_known[msgNo]:=true;
+     destruct4(msg,roleA[i].locm2);
+     if(matchTmp(roleA[i].locm2, roleA[i].m2))then
+       ch[2].empty:=true;
+       clear ch[2].msg;
+       roleA[i].st := A3;
      endif;
+   endif;
    put "roleA[i] in st2\n";
 end;
 rule " roleA3 "
@@ -1479,29 +1465,16 @@ begin
    clear msg;
    msg := ch[1].msg;
    isPat9(msg, flag_pat9);
-     if msg.msgType = aenc then
-       if B_known[msg.aencKey] then
-         if(flag_pat9) then
-         destruct9(msg,roleB[i].locm1);
-           if (matchTmp(roleB[i].locm1, roleB[i].m1)) then
-           ch[1].empty:=true;
-           clear ch[1].msg;
-           roleB[i].st := B2;
-           endif;
-       endif;
-      endif;
-      else
-         get_msgNo(msg, msgNo);
-         B_known[msgNo]:=true;
-         if(flag_pat9) then
-         destruct9(msg,roleB[i].locm1);
-           if (matchTmp(roleB[i].locm1, roleB[i].m1)) then
-           ch[1].empty:=true;
-           clear ch[1].msg;
-           roleB[i].st := B2;
-           endif;
-       endif;
+   if(flag_pat9) then
+     get_msgNo(msg, msgNo);
+     B_known[msgNo]:=true;
+     destruct9(msg,roleB[i].locm1);
+     if(matchTmp(roleB[i].locm1, roleB[i].m1))then
+       ch[1].empty:=true;
+       clear ch[1].msg;
+       roleB[i].st := B2;
      endif;
+   endif;
    put "roleB[i] in st1\n";
 end;
 rule " roleB2 "
@@ -1529,29 +1502,14 @@ begin
    clear msg;
    msg := ch[3].msg;
    isPat11(msg, flag_pat11);
-     if msg.msgType = aenc then
-       if B_known[msg.aencKey] then
-         if(flag_pat11) then
-         destruct11(msg,roleB[i].locm3,roleB[i].locm2,roleB[i].locx,roleB[i].locp);
-           if (matchTmp(roleB[i].locm3, roleB[i].m3) & matchTmp(roleB[i].locm2, roleB[i].m2) & matchNumber(roleB[i].locx, roleB[i].x) & matchNumber(roleB[i].locp, roleB[i].p)) then
-           ch[3].empty:=true;
-           clear ch[3].msg;
-           roleB[i].st := B1;
-           endif;
-       endif;
-      endif;
-      else
-         get_msgNo(msg, msgNo);
-         B_known[msgNo]:=true;
-         if(flag_pat11) then
-         destruct11(msg,roleB[i].locm3,roleB[i].locm2,roleB[i].locx,roleB[i].locp);
-           if (matchTmp(roleB[i].locm3, roleB[i].m3) & matchTmp(roleB[i].locm2, roleB[i].m2) & matchNumber(roleB[i].locx, roleB[i].x) & matchNumber(roleB[i].locp, roleB[i].p)) then
-           ch[3].empty:=true;
-           clear ch[3].msg;
-           roleB[i].st := B1;
-           endif;
-       endif;
+   if(flag_pat11 & B_known[msg.sencKey]) then
+     destruct11(msg,roleB[i].locm3,roleB[i].locm2,roleB[i].locx,roleB[i].locp);
+     if(matchTmp(roleB[i].locm3, roleB[i].m3) & matchTmp(roleB[i].locm2, roleB[i].m2) & matchNumber(roleB[i].locx, roleB[i].x) & matchNumber(roleB[i].locp, roleB[i].p))then
+       ch[3].empty:=true;
+       clear ch[3].msg;
+       roleB[i].st := B1;
      endif;
+   endif;
    put "roleB[i] in st3\n";
    roleB[i].commit := true;
 end;
@@ -1690,8 +1648,7 @@ endruleset;
 ruleset i:msgLen do
   rule "destructExp 2" --pat2
     i<=pat2Set.length & pat2Set.content[i] != 0
-    & Spy_known[pat2Set.content[i]] &  Spy_known[msgs[pat2Set.content[i]].expMsg1] & !Spy_known[msgs[pat2Set.content[i]].expMsg2] &
-    ic <= 10 & ic > 0
+    & Spy_known[pat2Set.content[i]] &  Spy_known[msgs[pat2Set.content[i]].expMsg1] & !Spy_known[msgs[pat2Set.content[i]].expMsg2] 
     ==>
     var msgPat1:indexType;
 	      flag_pat1:boolean;
@@ -1706,7 +1663,6 @@ ruleset i:msgLen do
           pat1Set.content[pat1Set.length]:=msgPat1;
         endif;
       endif;
-      ic := ic - 1 ;
     end;
 endruleset;
 
@@ -1716,8 +1672,7 @@ ruleset i:msgLen do
       i<=pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] &
       j<=pat1Set.length & pat1Set.content[j] != 0 & Spy_known[pat1Set.content[j]] &
       matchPat(msgs[construct2By11(pat1Set.content[i],pat1Set.content[j])], sPat2Set) &
-      !Spy_known[construct2By11(pat1Set.content[i],pat1Set.content[j])] &
-      ic<=10 & ic>0
+      !Spy_known[construct2By11(pat1Set.content[i],pat1Set.content[j])] 
       ==>
       var construtExpNo:indexType;
       begin
@@ -1728,7 +1683,6 @@ ruleset i:msgLen do
           pat2Set.length:=pat2Set.length+1;
           pat2Set.content[pat2Set.length]:=construtExpNo;
         endif;
-      ic := ic - 1 ;
       end;
   endruleset;
 endruleset;
@@ -1738,7 +1692,7 @@ ruleset i:msgLen do
   rule "destructMod 3" --pat3
     i<=pat3Set.length & pat3Set.content[i] != 0
     & Spy_known[pat3Set.content[i]] & (!Spy_known[msgs[pat3Set.content[i]].modMsg1] | !Spy_known[msgs[pat3Set.content[i]].modMsg2])
-    & ic <= 10 & ic > 0
+     
     ==>
     var msgPat2,msgPat1:indexType;
 	      flag_pat2,flag_pat1:boolean;
@@ -1766,7 +1720,6 @@ ruleset i:msgLen do
           endif;
         endif;
       endif;
-      ic := ic - 1 ;
     end;
 endruleset;
 
@@ -1776,8 +1729,7 @@ ruleset i:msgLen do
       i<=pat2Set.length & pat2Set.content[i] != 0 & Spy_known[pat2Set.content[i]] &
       j<=pat1Set.length & pat1Set.content[j] != 0 & Spy_known[pat1Set.content[j]] &
       matchPat(msgs[construct3By21(pat2Set.content[i],pat1Set.content[j])], sPat3Set) &
-      !Spy_known[construct3By21(pat2Set.content[i],pat1Set.content[j])] &
-       ic <= 10 & ic > 0 
+      !Spy_known[construct3By21(pat2Set.content[i],pat1Set.content[j])]
       ==>
       var constructModNo:indexType;
       begin
@@ -1788,7 +1740,6 @@ ruleset i:msgLen do
           pat3Set.length:=pat3Set.length+1;
           pat3Set.content[pat3Set.length]:=constructModNo;
         endif;
-      ic := ic - 1 ;
       end;
   endruleset;
 endruleset;
@@ -1797,8 +1748,7 @@ endruleset;
 ruleset i:msgLen do
   rule "destructExp 6" --pat6
     i<=pat6Set.length & pat6Set.content[i] != 0
-    & Spy_known[pat6Set.content[i]] &  Spy_known[msgs[pat6Set.content[i]].expMsg1] & !Spy_known[msgs[pat6Set.content[i]].expMsg2] &
-    ic <= 10 & ic > 0
+    & Spy_known[pat6Set.content[i]] &  Spy_known[msgs[pat6Set.content[i]].expMsg1] & !Spy_known[msgs[pat6Set.content[i]].expMsg2] 
     ==>
     var msgPat4,msgPat1:indexType;
 	      flag_pat4,flag_pat1:boolean;
@@ -1813,7 +1763,6 @@ ruleset i:msgLen do
           pat1Set.content[pat1Set.length]:=msgPat1;
         endif;
       endif;
-      ic := ic - 1 ;
     end;
 endruleset;
 
@@ -1823,8 +1772,7 @@ ruleset i:msgLen do
       i<=pat4Set.length & pat4Set.content[i] != 0 & Spy_known[pat4Set.content[i]] &
       j<=pat1Set.length & pat1Set.content[j] != 0 & Spy_known[pat1Set.content[j]] &
       matchPat(msgs[construct6By41(pat4Set.content[i],pat1Set.content[j])], sPat6Set) &
-      !Spy_known[construct6By41(pat4Set.content[i],pat1Set.content[j])] &
-      ic<=10 & ic>0
+      !Spy_known[construct6By41(pat4Set.content[i],pat1Set.content[j])] 
       ==>
       var construtExpNo:indexType;
       begin
@@ -1835,7 +1783,6 @@ ruleset i:msgLen do
           pat6Set.length:=pat6Set.length+1;
           pat6Set.content[pat6Set.length]:=construtExpNo;
         endif;
-      ic := ic - 1 ;
       end;
   endruleset;
 endruleset;
@@ -1845,7 +1792,7 @@ ruleset i:msgLen do
   rule "destructMod 7" --pat7
     i<=pat7Set.length & pat7Set.content[i] != 0
     & Spy_known[pat7Set.content[i]] & (!Spy_known[msgs[pat7Set.content[i]].modMsg1] | !Spy_known[msgs[pat7Set.content[i]].modMsg2])
-    & ic <= 10 & ic > 0
+     
     ==>
     var msgPat6,msgPat1:indexType;
 	      flag_pat6,flag_pat1:boolean;
@@ -1873,7 +1820,6 @@ ruleset i:msgLen do
           endif;
         endif;
       endif;
-      ic := ic - 1 ;
     end;
 endruleset;
 
@@ -1883,8 +1829,7 @@ ruleset i:msgLen do
       i<=pat6Set.length & pat6Set.content[i] != 0 & Spy_known[pat6Set.content[i]] &
       j<=pat1Set.length & pat1Set.content[j] != 0 & Spy_known[pat1Set.content[j]] &
       matchPat(msgs[construct7By61(pat6Set.content[i],pat1Set.content[j])], sPat7Set) &
-      !Spy_known[construct7By61(pat6Set.content[i],pat1Set.content[j])] &
-       ic <= 10 & ic > 0 
+      !Spy_known[construct7By61(pat6Set.content[i],pat1Set.content[j])]
       ==>
       var constructModNo:indexType;
       begin
@@ -1895,7 +1840,6 @@ ruleset i:msgLen do
           pat7Set.length:=pat7Set.length+1;
           pat7Set.content[pat7Set.length]:=constructModNo;
         endif;
-      ic := ic - 1 ;
       end;
   endruleset;
 endruleset;
@@ -2039,7 +1983,7 @@ startstate
   roleB[1].x := anyNumber;
   roleB[1].xi := anyNumber;
   roleB[1].yi := anyNumber;
-  ic := 2;
+
 ---intruder.B := Bob;
   for i:chanNums do
     ch[i].empty := true;
@@ -2082,12 +2026,13 @@ startstate
   for i:indexType do 
     Spy_known[i] := false;
   endfor;
-for i:indexType do
+  for i:indexType do
     A_known[i] := false;
   endfor;
   for i:indexType do
     B_known[i] := false;
-  endfor;  pat1Set.length := 0;
+  endfor;
+  pat1Set.length := 0;
   sPat1Set.length := 0;
   pat2Set.length := 0;
   sPat2Set.length := 0;

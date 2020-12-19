@@ -33,7 +33,7 @@ Algorithm:
 
 Memory usage:
 
-	* The size of each state is 45248 bits (rounded up to 5656 bytes).
+	* The size of each state is 45240 bits (rounded up to 5656 bytes).
 	* The memory allocated for the hash table and state queue is
 	  8 Mbytes.
 	  With states hash-compressed to 40 bits, the maximum size of
@@ -110,6 +110,7 @@ roleB[i] in st1
 roleA[i] in st2
 roleB[i] in st2
 roleA[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
@@ -117,10 +118,12 @@ intruder emit msg into ch[1].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleB[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
+rule constructMod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 rule constructMod 3
@@ -135,6 +138,7 @@ roleA[i] in st2
 intruder get msg from ch[1].
 roleB[i] in st1
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
@@ -142,10 +146,12 @@ intruder emit msg into ch[1].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleB[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
+rule constructMod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 rule constructMod 3
@@ -157,6 +163,7 @@ roleB[i] in st1
 rule constructMod 3
 intruder get msg from ch[2].
 roleA[i] in st2
+rule constructMod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 rule constructExp 2
@@ -188,6 +195,7 @@ intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 rule constructExp 2
 roleA[i] in st3
+rule decrypt mod 3
 intruder emit msg into ch[1].
 roleA[i] in st2
 roleA[i] in st2
@@ -198,30 +206,53 @@ intruder get msg from ch[2].
 roleA[i] in st1
 intruder get msg from ch[1].
 roleB[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule decrypt mod 3
 intruder emit msg into ch[1].
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 roleB[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 roleB[i] in st1
 roleB[i] in st2
 intruder emit msg into ch[1].
 intruder get msg from ch[2].
 roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule decrypt mod 3
 intruder emit msg into ch[1].
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[1].
 roleA[i] in st2
+rule decrypt mod 3
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 roleB[i] in st1
 intruder emit msg into ch[2].
-roleB[i] in st1
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule constructMod 3
 roleA[i] in st2
+rule constructMod 3
 roleB[i] in st1
+rule constructMod 3
 roleA[i] in st2
 rule constructMod 3
 rule decrypt mod 3
 roleA[i] in st3
+rule constructMod 3
 roleB[i] in st1
 rule constructMod 3
 rule decrypt mod 3
@@ -232,36 +263,60 @@ intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 rule constructMod 3
 roleA[i] in st3
+rule decrypt mod 3
 intruder emit msg into ch[1].
 roleA[i] in st2
 roleA[i] in st2
 intruder get msg from ch[1].
 roleB[i] in st1
 roleA[i] in st3
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule decrypt mod 3
 intruder emit msg into ch[1].
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 roleB[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 roleB[i] in st1
 roleB[i] in st2
 intruder emit msg into ch[1].
 intruder get msg from ch[2].
 roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule decrypt mod 3
 intruder emit msg into ch[1].
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[1].
 roleA[i] in st2
+rule decrypt mod 3
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 roleB[i] in st1
 intruder emit msg into ch[2].
-roleB[i] in st1
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule constructMod 3
 roleA[i] in st2
+rule constructMod 3
 roleB[i] in st1
+rule constructMod 3
 roleA[i] in st2
 rule constructMod 3
 rule decrypt mod 3
 roleA[i] in st3
+rule constructMod 3
 roleB[i] in st1
 rule constructMod 3
 rule decrypt mod 3
@@ -272,11 +327,19 @@ intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 rule constructMod 3
 roleA[i] in st3
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule constructMod 3
 roleA[i] in st2
+rule constructMod 3
 roleB[i] in st1
+rule constructMod 3
 roleA[i] in st2
 rule constructExp 2
 roleA[i] in st3
+rule constructMod 3
 roleB[i] in st1
 rule constructExp 2
 roleB[i] in st2
@@ -323,8 +386,12 @@ roleA[i] in st3
 rule constructExp 2
 intruder get msg from ch[3].
 roleB[i] in st3
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule decrypt mod 3
 roleB[i] in st1
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleA[i] in st3
@@ -333,31 +400,52 @@ roleA[i] in st3
 intruder get msg from ch[3].
 intruder get msg from ch[1].
 roleB[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleA[i] in st1
 intruder get msg from ch[2].
 intruder get msg from ch[1].
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleB[i] in st2
 intruder get msg from ch[2].
 intruder get msg from ch[1].
 roleA[i] in st2
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule decrypt mod 3
 roleB[i] in st1
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleA[i] in st3
 intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleB[i] in st2
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleB[i] in st2
 intruder get msg from ch[2].
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
@@ -365,37 +453,65 @@ intruder emit msg into ch[1].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleA[i] in st3
-roleB[i] in st1
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[1].
 roleA[i] in st2
 intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+roleB[i] in st1
 intruder emit msg into ch[1].
-roleA[i] in st3
+roleA[i] in st2
+rule decrypt mod 3
 roleB[i] in st1
 roleA[i] in st2
+rule decrypt mod 3
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+roleA[i] in st3
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleA[i] in st3
 intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
+roleB[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleB[i] in st2
-roleA[i] in st3
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
 roleB[i] in st2
+rule constructMod 3
+roleA[i] in st3
+rule constructMod 3
+roleB[i] in st2
+rule constructMod 3
 roleA[i] in st3
 rule constructMod 3
 rule decrypt mod 3
 intruder get msg from ch[3].
+rule constructMod 3
 roleB[i] in st2
 rule constructMod 3
 rule decrypt mod 3
 intruder get msg from ch[2].
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
+rule constructMod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 rule constructMod 3
@@ -406,8 +522,12 @@ rule decrypt mod 3
 rule constructMod 3
 intruder get msg from ch[3].
 roleB[i] in st3
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule decrypt mod 3
 roleB[i] in st1
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleA[i] in st3
@@ -416,19 +536,38 @@ roleA[i] in st3
 intruder get msg from ch[3].
 intruder get msg from ch[1].
 roleB[i] in st1
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule decrypt mod 3
 roleB[i] in st1
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleA[i] in st3
 intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleB[i] in st2
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleB[i] in st2
 intruder get msg from ch[2].
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
@@ -436,37 +575,65 @@ intruder emit msg into ch[1].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleA[i] in st3
-roleB[i] in st1
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[1].
 roleA[i] in st2
 intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+roleB[i] in st1
 intruder emit msg into ch[1].
-roleA[i] in st3
+roleA[i] in st2
+rule decrypt mod 3
 roleB[i] in st1
 roleA[i] in st2
+rule decrypt mod 3
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+roleA[i] in st3
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleA[i] in st3
 intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
+roleB[i] in st1
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 roleB[i] in st2
-roleA[i] in st3
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
 roleB[i] in st2
+rule constructMod 3
+roleA[i] in st3
+rule constructMod 3
+roleB[i] in st2
+rule constructMod 3
 roleA[i] in st3
 rule constructMod 3
 rule decrypt mod 3
 intruder get msg from ch[3].
+rule constructMod 3
 roleB[i] in st2
 rule constructMod 3
 rule decrypt mod 3
 intruder get msg from ch[2].
 roleA[i] in st2
+rule decrypt mod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
+rule constructMod 3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 rule constructMod 3
@@ -477,11 +644,23 @@ rule decrypt mod 3
 rule constructMod 3
 intruder get msg from ch[3].
 roleB[i] in st3
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule constructMod 3
 roleA[i] in st3
+rule constructMod 3
 roleB[i] in st2
+rule constructMod 3
 roleA[i] in st3
 rule constructExp 2
 intruder get msg from ch[3].
+rule constructMod 3
 roleB[i] in st2
 rule constructExp 2
 intruder get msg from ch[2].
@@ -501,7 +680,7 @@ Result:
 
 State Space Explored:
 
-	334 states, 611 rules fired in 0.10s.
+	439 states, 826 rules fired in 0.10s.
 
 Analysis of State Space:
 

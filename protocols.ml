@@ -164,8 +164,7 @@ let rec print_goal gs =
   end;
   
 var
-  ch : Array[chanNums] of Channel;
-  ic:invokeNums;\n"^
+  ch : Array[chanNums] of Channel;\n"^
     sprintf "  %s;\n" (rlistToVars rlist )^
     "
   ---intruder    : RoleIntruder;
@@ -1961,7 +1960,7 @@ let rec adecryptRule (m,k) patList=
 and printDecRule (m,k) i i1 i2 =
 match k with 
 |`Pk pka->sprintf "  rule \"adecrypt %d\"	---pat%d\n" i i^
-sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n    !Spy_known[msgs[pat%dSet.content[i]].aencMsg] &\n    ic <= 10 & 0 < ic\n    ==>\n" i i i i^
+sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n    !Spy_known[msgs[pat%dSet.content[i]].aencMsg]  ==>\n" i i i i^
 sprintf "    var key_inv:Message;\n	      msgPat%d:indexType;\n	      flag_pat%d:boolean;\n" i1 i1^
 sprintf "    begin\n"^
 sprintf "      put \"rule adecrypt%d\\n\";\n" i^
@@ -1974,11 +1973,11 @@ sprintf "            pat%dSet.length:=pat%dSet.length+1;\n            pat%dSet.c
 sprintf "          endif;\n"^
 sprintf "        endif;\n"^
 sprintf "      endif;\n"^
-sprintf "      ic := ic - 1 ;\n"^
+ 
 sprintf "    end;\n"
 |`Sk sks ->
    sprintf "  rule \"adecrypt %d\"	---pat%d\n" i i^
-   sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n    !Spy_known[msgs[pat%dSet.content[i]].aencMsg]\n    ic <= 10 & 0 < ic\n        ==>\n" i i i i^
+   sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n    !Spy_known[msgs[pat%dSet.content[i]].aencMsg]\n        ==>\n" i i i i^
    sprintf "    var key_inv:Message;\n	      msgPat%d:indexType;\n	      flag_pat%d:boolean;\n" i1 i1^
    sprintf "    begin\n"^
    sprintf "      put \"rule adecrypt%d\\n\";\n" i^
@@ -1991,10 +1990,10 @@ sprintf "    end;\n"
    sprintf "          endif;\n"^
    sprintf "        endif;\n"^
    sprintf "      endif;\n"^
-   sprintf "      ic := ic - 1 ;\n"^
+    
    sprintf "    end;\n"
 |_ ->   sprintf "  rule \"adecrypt %d\"	---pat%d\n" i i^
-sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n    !Spy_known[msgs[pat%dSet.content[i]].aencMsg] &\n    ic <= 10 & 0 < ic\n    ==>\n" i i i i^
+sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n    !Spy_known[msgs[pat%dSet.content[i]].aencMsg] \n   ==>\n" i i i i^
 sprintf "    var key_inv:Message;\n	      msgPat%d,keyNo:indexType;\n	      flag_pat%d:boolean;\n" i1 i1^
 sprintf "    begin\n"^
 sprintf "      put \"rule adecrypt%d\\n\";\n" i^
@@ -2008,7 +2007,7 @@ sprintf "            pat%dSet.length:=pat%dSet.length+1;\n            pat%dSet.c
 sprintf "          endif;\n"^
 sprintf "        endif;\n"^
 sprintf "      endif;\n"^
-sprintf "      ic := ic - 1 ;\n"^
+ 
 sprintf "    end;\n"
 
 (* encryption rules for aenc(Na.A, Pk(B)), aenc(Na.Nb,Pk(A)) and aenc(Nb,Pk(B))*)
@@ -2023,7 +2022,7 @@ and printEncRule (m,k) i i1 i2 =
   sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" i1 i1 i1 ^
   sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" i2 i2 i2 ^
   sprintf "      matchPat(msgs[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])], sPat%dSet) &\n" i i1 i2 i1 i2 i ^ 
-  sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] &\n      ic <= 10 & 0 < ic\n    ==>\n" i i1 i2 i1 i2 ^
+  sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n    ==>\n" i i1 i2 i1 i2 ^
   sprintf "      var encMsgNo:indexType;\n"^
   sprintf "      begin\n"^
   sprintf "        put \"rule aencrypt%d\\n\";\n" i^
@@ -2036,7 +2035,6 @@ and printEncRule (m,k) i i1 i2 =
   sprintf "            Spy_known[encMsgNo] := true;\n"^
   sprintf "          endif;\n"^
   sprintf "        endif;\n"^
-  sprintf "      ic := ic - 1 ;\n"^
   sprintf "      end;\n"
   (*printf "    end;\n";*)
 ;;
@@ -2061,14 +2059,13 @@ let deconcatRule msgs patList =
                       sprintf "      endif;\n") msgs)
   in
   sprintf "  rule \"deconcat %d\" --pat%d\n" i i ^
-  sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] & ic <= 10 & ic > 0 &\n" i i i ^
+  sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]]   &\n" i i i ^
   sprintf "    !(%s)\n    ==>\n" guardStr ^
   sprintf "    var %s:indexType;\n" msgPatStr^
   sprintf "        %s:boolean;\n" flagPatStr^
   sprintf "    begin\n"^
   sprintf "      put \"rule deconcat%d\\n\";\n" i^
-  sprintf "%s" deconcatStr^
-  sprintf "      ic := ic - 1 ;\n"^
+  sprintf "%s" deconcatStr ^
   sprintf "    end;\n"  
 ;;
 
@@ -2085,7 +2082,7 @@ let enconcatRule msgs patList =
   in
   str1 ^ 
   sprintf " &\n      matchPat(msgs[construct%dBy%s(%s)], sPat%dSet)&\n" i subMsgNo patSetStr i ^
-  sprintf "      !Spy_known[construct%dBy%s(%s)] &\n      ic<=10 & ic >0\n      ==>\n" i subMsgNo patSetStr ^ 
+  sprintf "      !Spy_known[construct%dBy%s(%s)] \n      ==>\n" i subMsgNo patSetStr ^ 
   sprintf "      var concatMsgNo:indexType;\n      begin\n" ^
   sprintf "        put \"rule enconcat%d\\n\";\n" i^
   sprintf "        concatMsgNo := construct%dBy%s(%s);\n" i subMsgNo patSetStr ^
@@ -2094,7 +2091,6 @@ let enconcatRule msgs patList =
   sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
   sprintf "          pat%dSet.content[pat%dSet.length]:=concatMsgNo;\n" i i ^
   sprintf "        endif;\n" ^
-  sprintf "      ic := ic - 1 ;\n"^
   sprintf "      end;\n"
 ;;
 
@@ -2106,7 +2102,7 @@ let destructModRule (m1,m2) patList =
   sprintf "  rule \"destructMod %d\" --pat%d\n" i i ^
   sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0\n" i i^
   sprintf "    & Spy_known[pat%dSet.content[i]] & (!Spy_known[msgs[pat%dSet.content[i]].modMsg1] | !Spy_known[msgs[pat%dSet.content[i]].modMsg2])\n" i i i ^
-  sprintf "    & ic <= 10 & ic > 0\n" ^
+  sprintf "     \n" ^
   sprintf "    ==>\n" ^
   sprintf "    var msgPat%d,msgPat%d:indexType;\n	      flag_pat%d,flag_pat%d:boolean;\n" m1Num m2Num m1Num m2Num^
   sprintf "    begin\n" ^
@@ -2133,7 +2129,6 @@ let destructModRule (m1,m2) patList =
   sprintf "          endif;\n"^
   sprintf "        endif;\n"^
   sprintf "      endif;\n"^
-  sprintf "      ic := ic - 1 ;\n"^
   sprintf "    end;\n"
 
 (* construct rules for mod msgs *)
@@ -2145,7 +2140,7 @@ let destructModRule (m1,m2) patList =
     sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" m1Num m1Num m1Num ^
     sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" m2Num m2Num m2Num ^
     sprintf "      matchPat(msgs[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])], sPat%dSet) &\n" i m1Num m2Num m1Num m2Num i ^ 
-    sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] &\n       ic <= 10 & ic > 0 \n      ==>\n" i m1Num m2Num m1Num m2Num ^
+    sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])]\n      ==>\n" i m1Num m2Num m1Num m2Num ^
     sprintf "      var constructModNo:indexType;\n"^
     sprintf "      begin\n"^
     sprintf "        put \"rule constructMod %d\\n\";\n" i^
@@ -2155,7 +2150,6 @@ let destructModRule (m1,m2) patList =
     sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
     sprintf "          pat%dSet.content[pat%dSet.length]:=constructModNo;\n" i i ^
     sprintf "        endif;\n" ^
-    sprintf "      ic := ic - 1 ;\n"^
     sprintf "      end;\n"
 
 (* destruct rules for exp msgs *)
@@ -2166,8 +2160,7 @@ let destructExpRule (m1,m2) patList =
   if m1Num <> m2Num then
   sprintf "  rule \"destructExp %d\" --pat%d\n" i i ^
   sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0\n" i i^
-  sprintf "    & Spy_known[pat%dSet.content[i]] &  Spy_known[msgs[pat%dSet.content[i]].expMsg1] & !Spy_known[msgs[pat%dSet.content[i]].expMsg2] &\n" i i i ^
-  sprintf "    ic <= 10 & ic > 0\n" ^
+  sprintf "    & Spy_known[pat%dSet.content[i]] &  Spy_known[msgs[pat%dSet.content[i]].expMsg1] & !Spy_known[msgs[pat%dSet.content[i]].expMsg2] \n" i i i ^
   sprintf "    ==>\n" ^
   sprintf "    var msgPat%d,msgPat%d:indexType;\n	      flag_pat%d,flag_pat%d:boolean;\n" m1Num m2Num m1Num m2Num^
   sprintf "    begin\n" ^
@@ -2181,12 +2174,10 @@ let destructExpRule (m1,m2) patList =
   sprintf "          pat%dSet.content[pat%dSet.length]:=msgPat%d;\n" m2Num m2Num m2Num^
   sprintf "        endif;\n"^
   sprintf "      endif;\n"^
-  sprintf "      ic := ic - 1 ;\n"^
   sprintf "    end;\n"
   else   sprintf "  rule \"destructExp %d\" --pat%d\n" i i ^
   sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0\n" i i^
-  sprintf "    & Spy_known[pat%dSet.content[i]] &  Spy_known[msgs[pat%dSet.content[i]].expMsg1] & !Spy_known[msgs[pat%dSet.content[i]].expMsg2] &\n" i i i ^
-  sprintf "    ic <= 10 & ic > 0\n" ^
+  sprintf "    & Spy_known[pat%dSet.content[i]] &  Spy_known[msgs[pat%dSet.content[i]].expMsg1] & !Spy_known[msgs[pat%dSet.content[i]].expMsg2] \n" i i i ^
   sprintf "    ==>\n" ^
   sprintf "    var msgPat%d:indexType;\n	      flag_pat%d:boolean;\n" m1Num  m1Num ^
   sprintf "    begin\n" ^
@@ -2200,8 +2191,6 @@ let destructExpRule (m1,m2) patList =
   sprintf "          pat%dSet.content[pat%dSet.length]:=msgPat%d;\n" m1Num m1Num m1Num^
   sprintf "        endif;\n"^
   sprintf "      endif;\n"^
-  sprintf "      ic := ic - 1 ;\n"^
-
   sprintf "    end;\n"
 
   (* construct rules for mod msgs *)
@@ -2213,7 +2202,7 @@ let destructExpRule (m1,m2) patList =
     sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" m1Num m1Num m1Num ^
     sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" m2Num m2Num m2Num ^
     sprintf "      matchPat(msgs[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])], sPat%dSet) &\n" i m1Num m2Num m1Num m2Num i ^ 
-    sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] &\n      ic<=10 & ic>0\n      ==>\n" i m1Num m2Num m1Num m2Num ^
+    sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n      ==>\n" i m1Num m2Num m1Num m2Num ^
     sprintf "      var construtExpNo:indexType;\n"^
     sprintf "      begin\n"^
     sprintf "        put \"rule constructExp %d\\n\";\n" i^
@@ -2223,7 +2212,6 @@ let destructExpRule (m1,m2) patList =
     sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
     sprintf "          pat%dSet.content[pat%dSet.length]:=construtExpNo;\n" i i ^
     sprintf "        endif;\n" ^
-    sprintf "      ic := ic - 1 ;\n"^
     sprintf "      end;\n"
 
   let tdecryptRule m1 patList =
@@ -2234,7 +2222,6 @@ let destructExpRule (m1,m2) patList =
     sprintf "  rule \"destructTmp %d\" --pat%d\n" i i ^
     sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0\n" i i^
     sprintf "    & Spy_known[pat%dSet.content[i]] \n" i  ^
-    sprintf "    & ic <= 10 & ic > 0\n" ^
     sprintf "    ==>\n" ^
     sprintf "    var msgPat%d:indexType;\n	      flag_pat%d:boolean;\n" m1Num  m1Num ^
     sprintf "    var msgPat%d:indexType;\n	      flag_pat%d:boolean;\n" m2Num  m2Num ^
@@ -2258,7 +2245,6 @@ let destructExpRule (m1,m2) patList =
     sprintf "           pat%dSet.content[pat%dSet.length]:=msgNo;\n" m3Num m3Num ^  
     sprintf "         endif;\n"^
     sprintf "      endif;\n" ^
-    sprintf "      ic := ic - 1 ;\n"^
     sprintf "    end;\n"     
 
 let print_murphiRule_byPats pat i patList =
@@ -2490,7 +2476,7 @@ let printImpofStart agents knws =
   let msgOfKnws = getMsgOfIntruder knws in
   let nlist = getKnwNoncesInt knws [] in
   let clist = del_duplicate (getConsts msgOfKnws) in
-  let str1 = sprintf "  ic := 2;\n---intruder.B := Bob;
+  let str1 = sprintf "\n---intruder.B := Bob;
   for i:chanNums do
     ch[i].empty := true;
   endfor;
@@ -2548,7 +2534,6 @@ let printImpofStart agents knws =
                                                   sprintf "    msgs[msg_end].k.ag := role%s[i].%s;\n" r r^
                                                   sprintf "    msgs[msg_end].k.encType:=SK;\n    msgs[msg_end].length := 1;\n    pat%dSet.length := pat%dSet.length + 1;\n" pkNum pkNum ^
                                                   sprintf "    pat%dSet.content[pat%dSet.length] :=msg_end;\n" pkNum pkNum ^
-                                                  sprintf "    Spy_known[msg_end] := true;\n"^
                                                   sprintf "    %s_known[msg_end] := true;\n" r^
                                                   sprintf "  endfor;\n"
                             ) rlist) else ""
@@ -2595,7 +2580,7 @@ let printImpofStart agents knws =
   "  endfor;
   for i:indexType do 
     Spy_known[i] := false;
-  endfor;\n" ^ rlistToState rlist ^ str3 ^ str4 ^ str5 ^ str6  ^ str8 ^  str7 ^ (String.concat (List.map ~f:(fun a->initSpatSet a patlist) actions))^ (* initialize sample pattern Set *)
+  endfor;\n" ^ rlistToState rlist ^"\n" ^ str3 ^ str4 ^ str5 ^ str6  ^ str8 ^  str7 ^ (String.concat (List.map ~f:(fun a->initSpatSet a patlist) actions))^ (* initialize sample pattern Set *)
   "\n"
 ;;
 
