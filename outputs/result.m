@@ -1502,6 +1502,8 @@ begin
    clear msg;
    msg := ch[3].msg;
    isPat11(msg, flag_pat11);
+   invMsg:=inverseKey(msgs[msg.sencKey]);
+   get_msgNo(invMsg,msgNo);
    if(flag_pat11 & B_known[msg.sencKey]) then
      destruct11(msg,roleB[i].locm3,roleB[i].locm2,roleB[i].locx,roleB[i].locp);
      if(matchTmp(roleB[i].locm3, roleB[i].m3) & matchTmp(roleB[i].locm2, roleB[i].m2) & matchNumber(roleB[i].locx, roleB[i].x) & matchNumber(roleB[i].locp, roleB[i].p))then

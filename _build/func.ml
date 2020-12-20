@@ -645,6 +645,7 @@ let rec getMsgs actions =
     |`Senc(m1,m2)->
     sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\nbegin\n" patNum ^ 
     sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n" seq patNum patNum  ^ 
+    sprintf "   invMsg:=inverseKey(msgs[msg.sencKey]);\n   get_msgNo(invMsg,msgNo);\n"^
     sprintf "   if(flag_pat%d & %s_known[msg.sencKey]) then\n" patNum rolename ^
     sprintf "     destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
