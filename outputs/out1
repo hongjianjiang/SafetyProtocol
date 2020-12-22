@@ -33,7 +33,7 @@ Algorithm:
 
 Memory usage:
 
-	* The size of each state is 45240 bits (rounded up to 5656 bytes).
+	* The size of each state is 37784 bits (rounded up to 4728 bytes).
 	* The memory allocated for the hash table and state queue is
 	  8 Mbytes.
 	  With states hash-compressed to 40 bits, the maximum size of
@@ -45,642 +45,202 @@ Memory usage:
 
 Warning: No trace will not be printed in the case of protocol errors!
          Check the options if you want to have error traces.
-rule constructExp 2
-roleA[i] in st1
-rule constructMod 3
-roleA[i] in st1
-rule constructExp 2
-intruder get msg from ch[1].
-roleB[i] in st1
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st1
-rule constructMod 3
-intruder get msg from ch[1].
-roleB[i] in st1
-rule constructMod 3
-intruder get msg from ch[1].
-roleB[i] in st1
-rule decrypt mod 3
-rule constructExp 2
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructExp 2
-roleB[i] in st2
-roleA[i] in st1
-roleB[i] in st1
-intruder emit msg into ch[2].
-intruder get msg from ch[1].
-roleB[i] in st1
-rule constructMod 3
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructMod 3
-roleB[i] in st2
-intruder emit msg into ch[2].
-intruder get msg from ch[1].
-roleB[i] in st1
-rule constructMod 3
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructMod 3
-roleB[i] in st2
-rule constructExp 2
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructMod 3
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule decrypt mod 3
-rule constructExp 2
-roleA[i] in st2
-rule decrypt mod 3
-rule constructExp 2
-roleB[i] in st1
-rule constructMod 3
-roleB[i] in st2
-rule constructExp 2
-intruder get msg from ch[2].
-roleA[i] in st2
-intruder get msg from ch[1].
-roleB[i] in st1
-roleA[i] in st2
-roleB[i] in st2
-roleA[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule constructMod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructMod 3
-rule decrypt mod 3
-roleA[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-roleB[i] in st1
-rule constructMod 3
-intruder get msg from ch[2].
-roleA[i] in st2
-intruder get msg from ch[1].
-roleB[i] in st1
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule constructMod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructMod 3
-rule decrypt mod 3
-roleA[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-roleB[i] in st1
-rule constructMod 3
-intruder get msg from ch[2].
-roleA[i] in st2
-rule constructMod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructExp 2
-roleA[i] in st2
-rule constructExp 2
-roleB[i] in st1
-rule constructExp 2
-roleA[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-roleA[i] in st2
-rule decrypt mod 3
-rule constructExp 2
-roleA[i] in st3
-rule constructExp 2
-roleB[i] in st1
-rule constructMod 3
-rule decrypt mod 3
-roleB[i] in st1
-rule decrypt mod 3
-rule constructExp 2
-roleB[i] in st2
-rule constructMod 3
-intruder get msg from ch[2].
-roleA[i] in st2
-rule decrypt mod 3
-rule constructExp 2
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructExp 2
-roleA[i] in st3
-rule decrypt mod 3
-intruder emit msg into ch[1].
-roleA[i] in st2
-roleA[i] in st2
-intruder get msg from ch[1].
-roleB[i] in st1
-roleA[i] in st3
-intruder get msg from ch[2].
 roleA[i] in st1
 intruder get msg from ch[1].
+roleB[i] in st1
+rule adecrypt5
+intruder emit msg into ch[1].
+rule aencrypt5
+rule deconcat3
+intruder emit msg into ch[1].
+rule adecrypt5
+roleB[i] in st1
+rule deconcat3
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule aencrypt5
+intruder emit msg into ch[1].
+rule aencrypt5
+rule deconcat3
+roleB[i] in st1
+rule aencrypt5
+rule deconcat3
+roleB[i] in st1
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule deconcat3
+roleB[i] in st1
+rule deconcat3
+roleB[i] in st1
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule aencrypt5
+roleB[i] in st1
+rule aencrypt5
+roleB[i] in st1
+roleB[i] in st1
+roleB[i] in st1
+roleB[i] in st1
+roleB[i] in st1
+rule deconcat3
+intruder emit msg into ch[1].
 roleB[i] in st2
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
 intruder emit msg into ch[1].
+roleB[i] in st2
 intruder emit msg into ch[1].
-rule decrypt mod 3
+roleB[i] in st2
+rule deconcat3
+roleB[i] in st2
+rule deconcat3
 intruder emit msg into ch[1].
+intruder get msg from ch[2].
 roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-roleB[i] in st1
 roleB[i] in st2
 intruder emit msg into ch[1].
 intruder get msg from ch[2].
 roleA[i] in st2
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule decrypt mod 3
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule constructMod 3
-roleA[i] in st2
-rule constructMod 3
-roleB[i] in st1
-rule constructMod 3
-roleA[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-roleA[i] in st3
-rule constructMod 3
-roleB[i] in st1
-rule constructMod 3
-rule decrypt mod 3
 roleB[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructMod 3
-roleA[i] in st3
-rule decrypt mod 3
-intruder emit msg into ch[1].
-roleA[i] in st2
-roleA[i] in st2
-intruder get msg from ch[1].
-roleB[i] in st1
-roleA[i] in st3
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule decrypt mod 3
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-roleB[i] in st1
-roleB[i] in st2
-intruder emit msg into ch[1].
-intruder get msg from ch[2].
-roleA[i] in st2
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule decrypt mod 3
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule constructMod 3
-roleA[i] in st2
-rule constructMod 3
-roleB[i] in st1
-rule constructMod 3
-roleA[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-roleA[i] in st3
-rule constructMod 3
-roleB[i] in st1
-rule constructMod 3
-rule decrypt mod 3
-roleB[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructMod 3
-roleA[i] in st3
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule constructMod 3
-roleA[i] in st2
-rule constructMod 3
-roleB[i] in st1
-rule constructMod 3
-roleA[i] in st2
-rule constructExp 2
-roleA[i] in st3
-rule constructMod 3
-roleB[i] in st1
-rule constructExp 2
-roleB[i] in st2
-rule constructExp 2
-roleA[i] in st3
-rule constructMod 3
-rule decrypt mod 3
-roleA[i] in st3
-rule decrypt mod 3
-rule constructExp 2
-intruder get msg from ch[3].
-rule constructExp 2
-roleB[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-roleB[i] in st2
-rule decrypt mod 3
-rule constructExp 2
+rule deconcat3
 intruder get msg from ch[2].
 roleA[i] in st2
 intruder emit msg into ch[1].
 intruder get msg from ch[2].
 roleA[i] in st2
-rule constructMod 3
-rule decrypt mod 3
+rule adecrypt7
+rule deconcat3
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
-rule constructMod 3
-roleA[i] in st3
-rule constructExp 2
-intruder emit msg into ch[2].
+rule deconcat3
 intruder emit msg into ch[1].
-rule constructMod 3
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule decrypt mod 3
-rule constructExp 2
-roleA[i] in st2
-rule decrypt mod 3
-rule constructExp 2
-rule constructMod 3
-roleA[i] in st3
-rule constructExp 2
-intruder get msg from ch[3].
-roleB[i] in st3
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-roleB[i] in st1
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-roleB[i] in st2
-roleA[i] in st3
-intruder get msg from ch[3].
-intruder get msg from ch[1].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st1
-intruder get msg from ch[2].
-intruder get msg from ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
-intruder get msg from ch[2].
-intruder get msg from ch[1].
-roleA[i] in st2
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-roleB[i] in st1
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
 intruder get msg from ch[2].
 roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-roleB[i] in st1
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-roleB[i] in st1
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
-rule constructMod 3
-roleA[i] in st3
-rule constructMod 3
-roleB[i] in st2
-rule constructMod 3
-roleA[i] in st3
-rule constructMod 3
-rule decrypt mod 3
-intruder get msg from ch[3].
-rule constructMod 3
-roleB[i] in st2
-rule constructMod 3
-rule decrypt mod 3
 intruder get msg from ch[2].
 roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule constructMod 3
+rule adecrypt7
 intruder emit msg into ch[2].
 intruder emit msg into ch[1].
-rule constructMod 3
-rule decrypt mod 3
-roleA[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-rule constructMod 3
-intruder get msg from ch[3].
-roleB[i] in st3
 intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-roleB[i] in st1
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-roleB[i] in st2
-roleA[i] in st3
-intruder get msg from ch[3].
-intruder get msg from ch[1].
-roleB[i] in st1
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-roleB[i] in st1
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
 intruder get msg from ch[2].
 roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-roleB[i] in st1
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule decrypt mod 3
-roleB[i] in st1
-roleA[i] in st2
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleA[i] in st3
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule decrypt mod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-roleB[i] in st2
-rule constructMod 3
-roleA[i] in st3
-rule constructMod 3
-roleB[i] in st2
-rule constructMod 3
-roleA[i] in st3
-rule constructMod 3
-rule decrypt mod 3
-intruder get msg from ch[3].
-rule constructMod 3
-roleB[i] in st2
-rule constructMod 3
-rule decrypt mod 3
 intruder get msg from ch[2].
 roleA[i] in st2
-rule decrypt mod 3
+rule adecrypt7
+rule deconcat3
 intruder emit msg into ch[2].
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-rule constructMod 3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule constructMod 3
-rule decrypt mod 3
-roleA[i] in st2
-rule constructMod 3
-rule decrypt mod 3
-rule constructMod 3
-intruder get msg from ch[3].
-roleB[i] in st3
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[2].
-roleB[i] in st1
-intruder emit msg into ch[2].
-roleB[i] in st1
-rule constructMod 3
-roleA[i] in st3
-rule constructMod 3
-roleB[i] in st2
-rule constructMod 3
-roleA[i] in st3
-rule constructExp 2
-intruder get msg from ch[3].
-rule constructMod 3
-roleB[i] in st2
-rule constructExp 2
+rule deconcat3
 intruder get msg from ch[2].
 roleA[i] in st2
-rule constructExp 2
-intruder get msg from ch[3].
-rule constructMod 3
-rule decrypt mod 3
-intruder get msg from ch[3].
-rule sdecrypt8
+intruder get msg from ch[2].
+roleA[i] in st2
+intruder emit msg into ch[1].
+intruder get msg from ch[2].
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder get msg from ch[2].
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+rule adecrypt7
+rule deconcat3
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[1].
+intruder get msg from ch[2].
+roleA[i] in st2
+rule adecrypt7
+rule deconcat3
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+rule adecrypt7
+intruder emit msg into ch[2].
+intruder get msg from ch[2].
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+rule adecrypt7
+intruder emit msg into ch[2].
+intruder get msg from ch[2].
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[2].
+rule adecrypt7
+rule deconcat3
+roleA[i] in st2
+intruder get msg from ch[2].
+roleA[i] in st2
+rule adecrypt7
+rule deconcat3
+intruder emit msg into ch[2].
+rule adecrypt7
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+rule adecrypt7
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule adecrypt7
+rule deconcat3
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+rule adecrypt7
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[2].
+rule adecrypt7
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule adecrypt7
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[2].
+rule adecrypt7
+roleA[i] in st2
+rule adecrypt7
+rule deconcat3
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[2].
+rule adecrypt7
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule adecrypt7
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule adecrypt7
+roleA[i] in st2
+rule adecrypt7
+roleA[i] in st2
+rule adecrypt7
+roleA[i] in st2
 
 ==========================================================================
 
-Result:
+Status:
 
-	Invariant "secrecy1" failed.
+	No error found.
 
 State Space Explored:
 
-	439 states, 826 rules fired in 0.10s.
+	73 states, 207 rules fired in 0.10s.
+
+Omission Probabilities (caused by Hash Compaction):
+
+	Pr[even one omitted state]    <= 0.000000
+	Pr[even one undetected error] <= 0.000000
+	Diameter of reachability graph: 12
 
 Analysis of State Space:
 
