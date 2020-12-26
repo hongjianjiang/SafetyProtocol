@@ -50,14 +50,19 @@ intruder get msg from ch[1].
 roleB[i] in st1
 rule adecrypt5
 intruder emit msg into ch[1].
+intruder get msg from ch[1].
+roleB[i] in st1
 rule aencrypt5
 rule deconcat3
 intruder emit msg into ch[1].
 rule adecrypt5
 roleB[i] in st1
+rule adecrypt5
+intruder emit msg into ch[1].
 rule deconcat3
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
+rule enconcat6
 rule aencrypt5
 intruder emit msg into ch[1].
 rule aencrypt5
@@ -66,27 +71,106 @@ roleB[i] in st1
 rule aencrypt5
 rule deconcat3
 roleB[i] in st1
+rule adecrypt5
+roleB[i] in st1
+rule aencrypt5
+rule deconcat3
+intruder emit msg into ch[1].
+rule enconcat6
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 rule deconcat3
 roleB[i] in st1
 rule deconcat3
 roleB[i] in st1
+rule aencrypt7
+rule aencrypt5
+intruder emit msg into ch[1].
+rule enconcat6
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
+rule enconcat6
+rule aencrypt5
+roleB[i] in st1
+rule enconcat6
 rule aencrypt5
 roleB[i] in st1
 rule aencrypt5
+rule deconcat3
 roleB[i] in st1
+rule aencrypt5
+rule deconcat3
 roleB[i] in st1
+rule deconcat3
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule enconcat6
+rule aencrypt5
+intruder emit msg into ch[1].
+rule aencrypt7
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule enconcat6
 roleB[i] in st1
+rule enconcat6
 roleB[i] in st1
+rule enconcat6
+roleB[i] in st1
+rule deconcat3
+roleB[i] in st1
+rule enconcat6
 roleB[i] in st1
 rule deconcat3
 intruder emit msg into ch[1].
 roleB[i] in st2
+rule aencrypt5
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+rule aencrypt7
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule aencrypt7
+rule aencrypt5
+roleB[i] in st1
+rule aencrypt7
+rule aencrypt5
+roleB[i] in st1
+rule enconcat6
+rule aencrypt5
+roleB[i] in st1
+rule enconcat6
+rule aencrypt5
+roleB[i] in st1
+rule enconcat6
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule deconcat3
+roleB[i] in st1
+rule aencrypt7
+rule aencrypt5
+intruder emit msg into ch[1].
+rule enconcat6
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule aencrypt7
+roleB[i] in st1
+rule aencrypt7
+roleB[i] in st1
+rule aencrypt7
+roleB[i] in st1
+rule enconcat6
+roleB[i] in st1
+rule aencrypt7
+roleB[i] in st1
+rule enconcat6
 intruder emit msg into ch[1].
 roleB[i] in st2
+rule enconcat6
+roleB[i] in st1
+rule enconcat6
 intruder emit msg into ch[1].
 roleB[i] in st2
 rule deconcat3
@@ -95,14 +179,60 @@ rule deconcat3
 intruder emit msg into ch[1].
 intruder get msg from ch[2].
 roleA[i] in st2
+rule aencrypt5
+intruder emit msg into ch[1].
+roleA[i] in st2
+rule aencrypt5
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule aencrypt7
+rule aencrypt5
+roleB[i] in st1
+rule aencrypt7
+rule aencrypt5
+roleB[i] in st1
+rule aencrypt7
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule enconcat6
+roleB[i] in st1
+rule enconcat6
+roleB[i] in st1
+rule aencrypt5
+intruder emit msg into ch[2].
+intruder emit msg into ch[1].
+rule aencrypt7
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+roleA[i] in st2
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule aencrypt7
+roleB[i] in st1
+rule aencrypt7
+intruder emit msg into ch[1].
 roleB[i] in st2
+rule aencrypt7
+roleB[i] in st1
+rule aencrypt7
+intruder emit msg into ch[1].
+roleB[i] in st2
+rule enconcat6
+roleB[i] in st2
+rule enconcat6
 intruder emit msg into ch[1].
 intruder get msg from ch[2].
 roleA[i] in st2
+rule enconcat6
 roleB[i] in st2
 rule deconcat3
 intruder get msg from ch[2].
 roleA[i] in st2
+rule enconcat6
 intruder emit msg into ch[1].
 intruder get msg from ch[2].
 roleA[i] in st2
@@ -112,135 +242,23 @@ intruder emit msg into ch[2].
 intruder emit msg into ch[1].
 rule deconcat3
 intruder emit msg into ch[1].
-intruder get msg from ch[2].
+roleA[i] in st3
+rule aencrypt5
+roleB[i] in st1
 roleA[i] in st2
-intruder get msg from ch[2].
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
+rule aencrypt5
 intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-intruder get msg from ch[2].
-roleA[i] in st2
-intruder get msg from ch[2].
-roleA[i] in st2
-rule adecrypt7
-rule deconcat3
-intruder emit msg into ch[2].
-rule deconcat3
-intruder get msg from ch[2].
-roleA[i] in st2
-intruder get msg from ch[2].
-roleA[i] in st2
-intruder emit msg into ch[1].
-intruder get msg from ch[2].
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-intruder emit msg into ch[1].
-intruder get msg from ch[2].
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule adecrypt7
-rule deconcat3
-intruder emit msg into ch[1].
-roleA[i] in st2
-intruder emit msg into ch[1].
-intruder get msg from ch[2].
-roleA[i] in st2
-rule adecrypt7
-rule deconcat3
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule adecrypt7
-intruder emit msg into ch[2].
-intruder get msg from ch[2].
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule adecrypt7
-intruder emit msg into ch[2].
-intruder get msg from ch[2].
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
-rule adecrypt7
-rule deconcat3
-roleA[i] in st2
-intruder get msg from ch[2].
-roleA[i] in st2
-rule adecrypt7
-rule deconcat3
-intruder emit msg into ch[2].
-rule adecrypt7
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule adecrypt7
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule adecrypt7
-rule deconcat3
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
-intruder emit msg into ch[1].
-rule adecrypt7
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
-rule adecrypt7
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule adecrypt7
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
-rule adecrypt7
-roleA[i] in st2
-rule adecrypt7
-rule deconcat3
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[2].
-rule adecrypt7
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule adecrypt7
-intruder emit msg into ch[1].
-roleA[i] in st2
-rule adecrypt7
-roleA[i] in st2
-rule adecrypt7
-roleA[i] in st2
-rule adecrypt7
-roleA[i] in st2
+roleA[i] in st3
 
 ==========================================================================
 
-Status:
+Result:
 
-	No error found.
+	Invariant "weakB" failed.
 
 State Space Explored:
 
-	73 states, 207 rules fired in 0.10s.
-
-Omission Probabilities (caused by Hash Compaction):
-
-	Pr[even one omitted state]    <= 0.000000
-	Pr[even one undetected error] <= 0.000000
-	Diameter of reachability graph: 12
+	109 states, 215 rules fired in 0.10s.
 
 Analysis of State Space:
 

@@ -354,7 +354,12 @@ let rlistToKnows rlist =
 let rlistToState rlist =
     String.concat ~sep:"\n" (List.map ~f:(fun r -> 
                   sprintf "  for i:indexType do\n    %s_known[i] := false;\n  endfor;" r) rlist)
-  
+let rlistToDest1 rlist = 
+    String.concat ~sep:" |" (List.map ~f:(fun r -> 
+                  sprintf "%s_known[msgNo1]" r) rlist)
+let rlistToDest2 rlist = 
+    String.concat ~sep:" |" (List.map ~f:(fun r -> 
+                  sprintf "%s_known[msgNo2]" r) rlist)
 let printPatSetVars pats =
   String.concat  (List.mapi ~f:(fun i p ->sprintf "  pat%dSet: msgSet;\n" (i+1)^
                                           sprintf "  sPat%dSet: msgSet;\n" (i+1)) pats)
@@ -629,11 +634,10 @@ let rec getMsgs actions =
     let patNum = getPatNum m patlist in
     match m with 
     | `Aenc(m1,m2) ->
-    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\n    invMsg:Message;\nbegin\n" patNum ^ 
-    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n" seq patNum patNum  ^ 
-    sprintf "   invMsg:=inverseKey(msgs[msg.aencKey]);\n   get_msgNo(invMsg,msgNo);\n"^
-    sprintf "   if(flag_pat%d & %s_known[msgNo]) then\n" patNum rolename ^
-    sprintf "     destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
+    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\n    invMsg:Message;\n    agmsg:Message;\nbegin\n" patNum ^ 
+    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n   agmsg.msgType := agent;\n   agmsg.ag:=role%s[i].%s;\n   get_msgNo(agmsg,msgNo);\n   %s_known[msgNo] := true;\n" seq patNum patNum rolename rolename rolename^ 
+    sprintf "   if(flag_pat%d) then\n" patNum ^
+    sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
