@@ -634,7 +634,7 @@ let rec getMsgs actions =
     let patNum = getPatNum m patlist in
     match m with 
     | `Aenc(m1,m2) ->
-    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\n    invMsg:Message;\n    agmsg:Message;\nbegin\n" patNum ^ 
+    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\n    agmsg:Message;\nbegin\n" patNum ^ 
     sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n   agmsg.msgType := agent;\n   agmsg.ag:=role%s[i].%s;\n   get_msgNo(agmsg,msgNo);\n   %s_known[msgNo] := true;\n" seq patNum patNum rolename rolename rolename^ 
     sprintf "   if(flag_pat%d) then\n" patNum ^
     sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
@@ -647,11 +647,10 @@ let rec getMsgs actions =
     commitStr ^
     sprintf "end;\n"
     |`Senc(m1,m2)->
-    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\nbegin\n" patNum ^ 
-    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n" seq patNum patNum  ^ 
-    sprintf "   invMsg:=inverseKey(msgs[msg.sencKey]);\n   get_msgNo(invMsg,msgNo);\n"^
+    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\n    agmsg:Message;\nbegin\n" patNum ^ 
+    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n   agmsg.msgType := agent;\n   agmsg.ag:=role%s[i].%s;\n   get_msgNo(agmsg,msgNo);\n   %s_known[msgNo] := true;\n" seq patNum patNum rolename rolename rolename^ 
     sprintf "   if(flag_pat%d & %s_known[msg.sencKey]) then\n" patNum rolename ^
-    sprintf "     destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
+    sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
@@ -661,11 +660,10 @@ let rec getMsgs actions =
     commitStr ^
     sprintf "end;\n"
     |_->    
-    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\nbegin\n" patNum ^ 
-    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n" seq patNum patNum  ^ 
+    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\n    agmsg:Message;\nbegin\n" patNum ^ 
+    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n   agmsg.msgType := agent;\n   agmsg.ag:=role%s[i].%s;\n   get_msgNo(agmsg,msgNo);\n   %s_known[msgNo] := true;\n" seq patNum patNum rolename rolename rolename^ 
     sprintf "   if(flag_pat%d) then\n" patNum ^
-    sprintf "     get_msgNo(msg, msgNo);\n     %s_known[msgNo]:=true;\n" rolename ^
-    sprintf "     destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
+    sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^

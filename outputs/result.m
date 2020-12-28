@@ -1221,7 +1221,6 @@ roleA[i].st = A2 & ch[2].empty = false & !roleA[i].commit
 var flag_pat7:boolean;
     msg:Message;
     msgNo:indexType;
-    invMsg:Message;
     agmsg:Message;
 begin
    clear msg;
@@ -1266,7 +1265,6 @@ roleB[i].st = B1 & ch[1].empty = false & !roleB[i].commit
 var flag_pat5:boolean;
     msg:Message;
     msgNo:indexType;
-    invMsg:Message;
     agmsg:Message;
 begin
    clear msg;
@@ -1307,7 +1305,6 @@ roleB[i].st = B3 & ch[3].empty = false & !roleB[i].commit
 var flag_pat8:boolean;
     msg:Message;
     msgNo:indexType;
-    invMsg:Message;
     agmsg:Message;
 begin
    clear msg;
