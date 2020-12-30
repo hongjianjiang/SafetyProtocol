@@ -140,6 +140,8 @@ let rec print_goal gs =
     k : KeyType;
     modMsg1 : indexType;
     modMsg2 : indexType;
+    hashMsg : indexType;
+    hashKey : indexType;
     expMsg1 : indexType;
     expMsg2 : indexType;
     aencMsg : indexType;
@@ -946,6 +948,33 @@ let genSynthCode m i patList =
     num:=index;
     msg:=msgs[index];
    end;\n\n" n n 
+  |`Hash (m1,k1) -> begin
+            let i1= getPatNum m1 patList in
+            let i2= getPatNum k1 patList in
+            let keyAg=match k1 with
+                      |`Pk role -> role^"Pk"
+                      |`Sk role -> role^"Sk"
+                      |_->"null"
+            in
+            let m1Atoms = getAtoms m1 in  
+            let k1Atoms = getAtoms k1 in 
+            str1 ^                                          
+            sprintf "  Var msg1, msg2: Message;\n      index,i1,i2:indexType;\n  begin\n"^
+            sprintf "   index:=0;\n"^
+            sprintf "   lookAddPat%d(%s,msg1,i1);\n" i1 (atom2Str m1Atoms)^
+            sprintf "   lookAddPat%d(%s,msg2,i2);\n" i2 (if keyAg = "null" then (atom2Str k1Atoms) else keyAg)^               
+            sprintf "   for i : indexType do\n"^
+            sprintf "     if (msgs[i].msgType = hash) then\n"^
+            sprintf "       if (msgs[i].hashMsg = i1 & msgs[i].hashKey = i2) then\n"^
+            sprintf "          index:=i;\n"^
+            sprintf "       endif;\n"^
+            sprintf "     endif;\n"^
+            sprintf "   endfor;\n"^
+            sprintf "   if(index=0) then\n"^
+            sprintf "     msg_end := msg_end + 1 ;\n     index := msg_end;\n     msgs[index].msgType := hash;\n     msgs[index].hashMsg := i1; \n     msgs[index].hashKey := i2;\n     %smsgs[index].length := 1;\n" (if keyAg = "null" then (sprintf "msgs[i2].k.encType := MsgK;\n     msgs[i2].k.m := i2;\n") else "")^
+            sprintf "   endif;\n"^
+            sprintf "   num:=index;\n   msg:=msgs[index];\n  end;\n\n"; 
+            end;
   |`Pk role -> str1 ^ sprintf "  Var index : indexType;\n  begin
     index:=0;
     for i: indexType do
@@ -1050,6 +1079,22 @@ let genSynthCode m i patList =
     if (msg.msgType = aenc) then
       isPat%d(msgs[msg.aencMsg],flagPart1);
       isPat%d(msgs[msg.aencKey],flagPart2);
+      if (flagPart1 & flagPart2) then 
+        flag1 := true;
+      endif;
+    endif;
+    flag := flag1;\n  end;\n\n" i1 i2
+    end;
+    |`Hash(m1,k1) ->begin
+                    let i1= getPatNum m1 patList in
+                    let i2= getPatNum k1 patList in
+                    str1 ^ sprintf "  var flag1,flagPart1,flagPart2 : boolean;\n  begin
+    flag1 := false;
+    flagPart1 := false;
+    flagPart2 := false;
+    if (msg.msgType = hash) then
+      isPat%d(msgs[msg.hashMsg],flagPart1);
+      isPat%d(msgs[msg.hashKey],flagPart2);
       if (flagPart1 & flagPart2) then 
         flag1 := true;
       endif;
@@ -1195,17 +1240,48 @@ let genSynthCode m i patList =
                       sprintf "    constructSpat%d(%s, i2);\n" i2 (if keyAg = "null" then (atom2Str k1Atoms) else keyAg) ^ 
                       sprintf "    i := 1;\n" ^
                       sprintf "    while(i <= msg_end) do\n"^
-                      (* sprintf "    for i : indexType do\n"^ *)
                       sprintf "      if (msgs[i].msgType = aenc) then\n"^
                       sprintf "        if (msgs[i].aencMsg = i1 & msgs[i].aencKey = i2) then\n"^
                       sprintf "           index:=i;\n"^
                       sprintf "        endif;\n"^
                       sprintf "      endif;\n"^
                       sprintf "      i := i+1;\n"^
-                      (* sprintf "    endfor;\n"^ *)
                       sprintf "    endwhile;\n" ^
                       sprintf "    if(index=0) then\n"^
                       sprintf "      msg_end := msg_end + 1 ;\n      index := msg_end;\n      msgs[index].msgType := aenc;\n      msgs[index].aencMsg := i1; \n      msgs[index].aencKey := i2; \n      msgs[index].length := 1;\n"^
+                      sprintf "    endif;\n"^
+                      sprintf "    sPat%dSet.length := sPat%dSet.length + 1;\n" patNum patNum ^
+                      sprintf "    sPat%dSet.content[sPat%dSet.length] := index;\n" patNum patNum^
+                      sprintf "    num := index;\n" ^
+                      sprintf "  end;\n\n"; 
+                      end;
+      |`Hash(m1,k1) ->begin
+                      let i1= getPatNum m1 patList in
+                      let i2= getPatNum k1 patList in
+                      let keyAg=match k1 with
+                                |`Pk role -> role^"Pk"
+                                |`Sk role -> role^"Sk"
+                                |`Tmp m -> m
+                                |_ -> "null"
+                      in
+                      let m1Atoms = getAtoms m1 in  
+                      let k1Atoms = getAtoms k1 in 
+                      str1 ^                                          
+                      sprintf "  Var i,index,i1,i2:indexType;\n  begin\n"^ (* i is the loop variable*)
+                      sprintf "    index:=0;\n"^
+                      sprintf "    constructSpat%d(%s, i1);\n" i1 (atom2Str m1Atoms)^
+                      sprintf "    constructSpat%d(%s, i2);\n" i2 (if keyAg = "null" then (atom2Str k1Atoms) else keyAg) ^ 
+                      sprintf "    i := 1;\n" ^
+                      sprintf "    while(i <= msg_end) do\n"^
+                      sprintf "      if (msgs[i].msgType = hash) then\n"^
+                      sprintf "        if (msgs[i].hashMsg = i1 & msgs[i].hashKey = i2) then\n"^
+                      sprintf "           index:=i;\n"^
+                      sprintf "        endif;\n"^
+                      sprintf "      endif;\n"^
+                      sprintf "      i := i+1;\n"^
+                      sprintf "    endwhile;\n" ^
+                      sprintf "    if(index=0) then\n"^
+                      sprintf "      msg_end := msg_end + 1 ;\n      index := msg_end;\n      msgs[index].msgType := hash;\n      msgs[index].hashMsg := i1; \n      msgs[index].hashKey := i2; \n      msgs[index].length := 1;\n"^
                       sprintf "    endif;\n"^
                       sprintf "    sPat%dSet.length := sPat%dSet.length + 1;\n" patNum patNum ^
                       sprintf "    sPat%dSet.content[sPat%dSet.length] := index;\n" patNum patNum^
@@ -2369,6 +2445,7 @@ let print_startstate r num m knws ag=
   let msgOfKnws = getMsgOfRoles knws in
   let nlist = getNonces msgOfKnws in
   let rlist = getRolesFromKnws knws [] in
+  let () = print_endline (sprintf "%s\n" (String.concat ~sep:"," rlist)) in 
   let clist = del_duplicate (getConsts msgOfKnws) in
   let allOfAct =  (getAllActsList ag) in
   let patlist = List.concat (List.map ~f:getPatList (allOfAct)) in (*get all patterns from actions*)
@@ -2412,6 +2489,7 @@ let print_startstate r num m knws ag=
                                           str1 ^ str2 ^ str3 ^ str4  ^ str5
                                         else sprintf "" ) msgOfKnws)
 ;;
+
 (*startstate of roleA and role B*)
 let rec printMuriphiStart env k ag=
   match env with
@@ -2548,8 +2626,8 @@ let printImpofStart agents knws =
   let str2 = String.concat (List.mapi ~f:(fun i p -> sprintf "    pat%dSet.content[i] := 0;\n" (getPatNum p patlist) ^
                                                      sprintf "    sPat%dSet.content[i] := 0;\n" (getPatNum p patlist)) patlist)
   in
-  let str3 = String.concat (List.mapi ~f:(fun i p -> sprintf "  pat%dSet.length := 0;\n" (getPatNum p patlist) ^
-                                                     sprintf "  sPat%dSet.length := 0;\n" (getPatNum p patlist)) patlist)
+  let str3 = String.concat (List.mapi ~f:(fun i p -> sprintf "    pat%dSet.length := 0;\n" (getPatNum p patlist) ^
+                                                     sprintf "    sPat%dSet.length := 0;\n" (getPatNum p patlist)) patlist)
   in
   let skNum = getPatNum (`Sk "A") patlist in
   let str4 = if skNum <> 0 then sprintf "
@@ -2629,11 +2707,11 @@ let printImpofStart agents knws =
   " x constNum constNum constNum constNum 
     else "") clist)
   in
-  str1 ^ str2 ^ 
+  str1 ^ str2 ^ str3 ^ 
   "  endfor;
   for i:indexType do 
     Spy_known[i] := false;
-  endfor;\n" ^ rlistToState rlist ^"\n" ^ str3 ^ str4 ^ str5  ^  str6  ^ str8 ^  str7 ^ (String.concat (List.map ~f:(fun a->initSpatSet a patlist) actions))^ (* initialize sample pattern Set *)
+  endfor;\n" ^ rlistToState rlist ^"\n"  ^ str4 ^ str5  ^  str6  ^ str8 ^  str7 ^ (String.concat (List.map ~f:(fun a->initSpatSet a patlist) actions))^ (* initialize sample pattern Set *)
   "\n"
 ;;
 

@@ -134,6 +134,8 @@ let rec getNonces msgs =
     |`Var n -> [n]
     |`Concat msgs -> List.concat (List.map ~f:getNoncesOfMsg msgs)
     |_ -> []
+
+
 let rec getConsts msgs =
   match msgs with
     | [] -> []
@@ -834,7 +836,7 @@ let rec getMsgs actions =
     match act with
     |`Null -> sprintf ""
     |`Send (seq, s,r,ms, m) ->let atoms = getAtoms m in
-                      let atoms = del_duplicate atoms in
+                      (* let atoms = del_duplicate atoms in *)
                       genRuleName rolename i^
                       genSendGuard rolename i seq^
                       (genSendAct rolename seq i m atoms length msgOfrolename patlist)
