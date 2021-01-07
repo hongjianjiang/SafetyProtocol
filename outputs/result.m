@@ -1330,32 +1330,7 @@ end;
 endruleset;
 
 
----rule of intruder to get msg from ch[2] 
-  ruleset j: roleNums do
-rule "intruderGetMsgFromCh[2]" 
-  ch[2].empty = false & ch[2].sender != Intruder ==>
-  var flag_pat7:boolean;
-      msgNo:indexType;
-      msg:Message;
-  begin
-    msg := ch[2].msg;
-    get_msgNo(msg, msgNo);
-    msg.tmpPart := msgNo;
-    isPat7(msg,flag_pat7);
-    if (flag_pat7) then
-      if(!exist(pat7Set,msgNo)) then
-        pat7Set.length:=pat7Set.length+1;
-        pat7Set.content[pat7Set.length]:=msgNo;
-        Spy_known[msgNo] := true;
-      endif;
-      put "intruder get msg from ch[2].\n";
-      ch[2].empty := true;
-      clear ch[2].msg;
-    endif;
-  end;
-
 ---rule of intruder to get msg from ch[1] 
-  ruleset j: roleNums do
 rule "intruderGetMsgFromCh[1]" 
   ch[1].empty = false & ch[1].sender != Intruder ==>
   var flag_pat5:boolean;
@@ -1379,7 +1354,6 @@ rule "intruderGetMsgFromCh[1]"
   end;
 
 ---rule of intruder to get msg from ch[3] 
-  ruleset j: roleNums do
 rule "intruderGetMsgFromCh[3]" 
   ch[3].empty = false & ch[3].sender != Intruder ==>
   var flag_pat8:boolean;
@@ -1399,6 +1373,29 @@ rule "intruderGetMsgFromCh[3]"
       put "intruder get msg from ch[3].\n";
       ch[3].empty := true;
       clear ch[3].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[2] 
+rule "intruderGetMsgFromCh[2]" 
+  ch[2].empty = false & ch[2].sender != Intruder ==>
+  var flag_pat7:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[2].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat7(msg,flag_pat7);
+    if (flag_pat7) then
+      if(!exist(pat7Set,msgNo)) then
+        pat7Set.length:=pat7Set.length+1;
+        pat7Set.content[pat7Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[2].\n";
+      ch[2].empty := true;
+      clear ch[2].msg;
     endif;
   end;
 

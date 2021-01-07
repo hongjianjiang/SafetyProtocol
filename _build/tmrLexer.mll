@@ -42,12 +42,10 @@ rule read =
   | ']'      { RIGHT_MIDBRACE}
   | ':'      { COLON }
   | ';'      { SEMICOLON }
-  (* | '@'      { AT} *)
   | ','      { COMMA }
   | '.'      { PERIOD }
   | '+'     {PLUS}
   | '-'     {MINUS}
-  (* | "->"     { SENDTO} *)
   | "inv" {INV}
   | "mod" {MOD}
   | "pk" {PK}

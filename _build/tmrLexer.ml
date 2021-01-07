@@ -3019,227 +3019,227 @@ and __ocaml_lex_read_rec lexbuf __ocaml_lex_state =
 # 3020 "tmrLexer.ml"
 
   | 11 ->
-# 46 "tmrLexer.mll"
+# 45 "tmrLexer.mll"
              ( COMMA )
 # 3025 "tmrLexer.ml"
 
   | 12 ->
-# 47 "tmrLexer.mll"
+# 46 "tmrLexer.mll"
              ( PERIOD )
 # 3030 "tmrLexer.ml"
 
   | 13 ->
-# 48 "tmrLexer.mll"
+# 47 "tmrLexer.mll"
             (PLUS)
 # 3035 "tmrLexer.ml"
 
   | 14 ->
-# 49 "tmrLexer.mll"
+# 48 "tmrLexer.mll"
             (MINUS)
 # 3040 "tmrLexer.ml"
 
   | 15 ->
-# 51 "tmrLexer.mll"
+# 49 "tmrLexer.mll"
           (INV)
 # 3045 "tmrLexer.ml"
 
   | 16 ->
-# 52 "tmrLexer.mll"
+# 50 "tmrLexer.mll"
           (MOD)
 # 3050 "tmrLexer.ml"
 
   | 17 ->
-# 53 "tmrLexer.mll"
+# 51 "tmrLexer.mll"
          (PK)
 # 3055 "tmrLexer.ml"
 
   | 18 ->
-# 54 "tmrLexer.mll"
+# 52 "tmrLexer.mll"
          (SK)
 # 3060 "tmrLexer.ml"
 
   | 19 ->
-# 55 "tmrLexer.mll"
+# 53 "tmrLexer.mll"
           (TMP)
 # 3065 "tmrLexer.ml"
 
   | 20 ->
-# 56 "tmrLexer.mll"
+# 54 "tmrLexer.mll"
              (AGENT)
 # 3070 "tmrLexer.ml"
 
   | 21 ->
-# 57 "tmrLexer.mll"
+# 55 "tmrLexer.mll"
               (NUMBER)
 # 3075 "tmrLexer.ml"
 
   | 22 ->
-# 58 "tmrLexer.mll"
+# 56 "tmrLexer.mll"
                 (FUNCTION)
 # 3080 "tmrLexer.ml"
 
   | 23 ->
-# 59 "tmrLexer.mll"
+# 57 "tmrLexer.mll"
               (AGENTS)
 # 3085 "tmrLexer.ml"
 
   | 24 ->
-# 60 "tmrLexer.mll"
+# 58 "tmrLexer.mll"
               (FORMAT)
 # 3090 "tmrLexer.ml"
 
   | 25 ->
-# 61 "tmrLexer.mll"
+# 59 "tmrLexer.mll"
          (TO)
 # 3095 "tmrLexer.ml"
 
   | 26 ->
-# 62 "tmrLexer.mll"
+# 60 "tmrLexer.mll"
          (F1)
 # 3100 "tmrLexer.ml"
 
   | 27 ->
-# 63 "tmrLexer.mll"
+# 61 "tmrLexer.mll"
          (F2)
 # 3105 "tmrLexer.ml"
 
   | 28 ->
-# 64 "tmrLexer.mll"
+# 62 "tmrLexer.mll"
         (K)
 # 3110 "tmrLexer.ml"
 
   | 29 ->
-# 65 "tmrLexer.mll"
+# 63 "tmrLexer.mll"
         (LEFT_ANGLEBARCK)
 # 3115 "tmrLexer.ml"
 
   | 30 ->
-# 66 "tmrLexer.mll"
+# 64 "tmrLexer.mll"
         (RIGHT_ANGLEBARCK)
 # 3120 "tmrLexer.ml"
 
   | 31 ->
-# 67 "tmrLexer.mll"
+# 65 "tmrLexer.mll"
            (HASHCON)
 # 3125 "tmrLexer.ml"
 
   | 32 ->
-# 68 "tmrLexer.mll"
+# 66 "tmrLexer.mll"
           (EXP)
 # 3130 "tmrLexer.ml"
 
   | 33 ->
-# 69 "tmrLexer.mll"
+# 67 "tmrLexer.mll"
             (CONST)
 # 3135 "tmrLexer.ml"
 
   | 34 ->
-# 70 "tmrLexer.mll"
+# 68 "tmrLexer.mll"
         (MULTI)
 # 3140 "tmrLexer.ml"
 
   | 35 ->
-# 71 "tmrLexer.mll"
+# 69 "tmrLexer.mll"
           (XOR)
 # 3145 "tmrLexer.ml"
 
   | 36 ->
-# 72 "tmrLexer.mll"
+# 70 "tmrLexer.mll"
             (NONCE)
 # 3150 "tmrLexer.ml"
 
   | 37 ->
-# 73 "tmrLexer.mll"
+# 71 "tmrLexer.mll"
            (AENC)
 # 3155 "tmrLexer.ml"
 
   | 38 ->
-# 74 "tmrLexer.mll"
+# 72 "tmrLexer.mll"
           (SIG)
 # 3160 "tmrLexer.ml"
 
   | 39 ->
-# 75 "tmrLexer.mll"
+# 73 "tmrLexer.mll"
            (SENC)
 # 3165 "tmrLexer.ml"
 
   | 40 ->
-# 76 "tmrLexer.mll"
+# 74 "tmrLexer.mll"
                (ACTIONS)
 # 3170 "tmrLexer.ml"
 
   | 41 ->
-# 77 "tmrLexer.mll"
+# 75 "tmrLexer.mll"
              (GOALS)
 # 3175 "tmrLexer.ml"
 
   | 42 ->
-# 78 "tmrLexer.mll"
+# 76 "tmrLexer.mll"
                    (ENVIRONMENT)
 # 3180 "tmrLexer.ml"
 
   | 43 ->
-# 79 "tmrLexer.mll"
+# 77 "tmrLexer.mll"
                   (KNOWLEDGES)
 # 3185 "tmrLexer.ml"
 
   | 44 ->
-# 80 "tmrLexer.mll"
+# 78 "tmrLexer.mll"
              (TYPES)
 # 3190 "tmrLexer.ml"
 
   | 45 ->
-# 81 "tmrLexer.mll"
+# 79 "tmrLexer.mll"
                (PROTOCOL)
 # 3195 "tmrLexer.ml"
 
   | 46 ->
-# 82 "tmrLexer.mll"
+# 80 "tmrLexer.mll"
           (END)
 # 3200 "tmrLexer.ml"
 
   | 47 ->
-# 83 "tmrLexer.mll"
+# 81 "tmrLexer.mll"
                 (SECRETOF)
 # 3205 "tmrLexer.ml"
 
   | 48 ->
-# 84 "tmrLexer.mll"
+# 82 "tmrLexer.mll"
                                   (NINJ)
 # 3210 "tmrLexer.ml"
 
   | 49 ->
-# 85 "tmrLexer.mll"
+# 83 "tmrLexer.mll"
                               (INJ)
 # 3215 "tmrLexer.ml"
 
   | 50 ->
-# 86 "tmrLexer.mll"
+# 84 "tmrLexer.mll"
                            (CONF)
 # 3220 "tmrLexer.ml"
 
   | 51 ->
-# 87 "tmrLexer.mll"
+# 85 "tmrLexer.mll"
          (ON)
 # 3225 "tmrLexer.ml"
 
   | 52 ->
-# 89 "tmrLexer.mll"
+# 87 "tmrLexer.mll"
        ( IDENT (Lexing.lexeme lexbuf) )
 # 3230 "tmrLexer.ml"
 
   | 53 ->
-# 90 "tmrLexer.mll"
+# 88 "tmrLexer.mll"
         (INT (int_of_string (Lexing.lexeme lexbuf)) )
 # 3235 "tmrLexer.ml"
 
   | 54 ->
-# 91 "tmrLexer.mll"
+# 89 "tmrLexer.mll"
       ( raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) )
 # 3240 "tmrLexer.ml"
 
   | 55 ->
-# 92 "tmrLexer.mll"
+# 90 "tmrLexer.mll"
              ( EOF )
 # 3245 "tmrLexer.ml"
 
@@ -3251,59 +3251,59 @@ and read_string buf lexbuf =
 and __ocaml_lex_read_string_rec buf lexbuf __ocaml_lex_state =
   match Lexing.engine __ocaml_lex_tables __ocaml_lex_state lexbuf with
       | 0 ->
-# 97 "tmrLexer.mll"
+# 95 "tmrLexer.mll"
               ( STRING (Buffer.contents buf) )
 # 3257 "tmrLexer.ml"
 
   | 1 ->
-# 98 "tmrLexer.mll"
+# 96 "tmrLexer.mll"
               ( Buffer.add_char buf '/'; read_string buf lexbuf )
 # 3262 "tmrLexer.ml"
 
   | 2 ->
-# 99 "tmrLexer.mll"
+# 97 "tmrLexer.mll"
               ( Buffer.add_char buf '\\'; read_string buf lexbuf )
 # 3267 "tmrLexer.ml"
 
   | 3 ->
-# 100 "tmrLexer.mll"
+# 98 "tmrLexer.mll"
               ( Buffer.add_char buf '\b'; read_string buf lexbuf )
 # 3272 "tmrLexer.ml"
 
   | 4 ->
-# 101 "tmrLexer.mll"
+# 99 "tmrLexer.mll"
               ( Buffer.add_char buf '\012'; read_string buf lexbuf )
 # 3277 "tmrLexer.ml"
 
   | 5 ->
-# 102 "tmrLexer.mll"
+# 100 "tmrLexer.mll"
               ( Buffer.add_char buf '\n'; read_string buf lexbuf )
 # 3282 "tmrLexer.ml"
 
   | 6 ->
-# 103 "tmrLexer.mll"
+# 101 "tmrLexer.mll"
               ( Buffer.add_char buf '\r'; read_string buf lexbuf )
 # 3287 "tmrLexer.ml"
 
   | 7 ->
-# 104 "tmrLexer.mll"
+# 102 "tmrLexer.mll"
               ( Buffer.add_char buf '\t'; read_string buf lexbuf )
 # 3292 "tmrLexer.ml"
 
   | 8 ->
-# 106 "tmrLexer.mll"
+# 104 "tmrLexer.mll"
     ( Buffer.add_string buf (Lexing.lexeme lexbuf);
       read_string buf lexbuf
     )
 # 3299 "tmrLexer.ml"
 
   | 9 ->
-# 109 "tmrLexer.mll"
+# 107 "tmrLexer.mll"
       ( raise (SyntaxError ("Illegal string character: " ^ Lexing.lexeme lexbuf)) )
 # 3304 "tmrLexer.ml"
 
   | 10 ->
-# 110 "tmrLexer.mll"
+# 108 "tmrLexer.mll"
         ( raise (SyntaxError ("String is not terminated")) )
 # 3309 "tmrLexer.ml"
 

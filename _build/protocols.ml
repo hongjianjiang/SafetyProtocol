@@ -34,7 +34,7 @@ let rec print_knowledge  knws =
   let rec print_action actions = 
     match actions with 
       | `Null -> sprintf "\n"
-      | `Send (seq,s,r,ms,m) -> sprintf "[%d] %s %s (%s):%s" seq  (print_sign s) r (String.concat ~sep:"," (List.map ~f:print_message ms)) (print_message m)
+      | `Send (seq,st,s,r,ms,m) -> sprintf "[%d] %s %s (%s):%s" seq  (print_sign s) r (String.concat ~sep:"," (List.map ~f:print_message ms)) (print_message m)
       | `Receive (seq,s,m) -> sprintf "[%d] %s :%s" seq  (print_sign s) (print_message m)
       | `Actlist arr ->String.concat ~sep:"\n" (List.map ~f:print_action arr)
     
@@ -2581,13 +2581,13 @@ let rec initSpatSet actions patlist=
   let non_equivalent = getEqvlMsgPattern non_dup in *)
   match actions with
   |`Null -> ""
-  |`Send(seq,s, r, ms, m) ->let patNum = (getPatNum m patlist) in
+  |`Send(seq, st,s, r, ms, m) ->let patNum = (getPatNum m patlist) in
                               let atoms = getAtoms m in
                               let atoms = del_duplicate atoms in
                               sprintf "  for i : role%sNums do\n" r ^
                               sprintf "    constructSpat%d(%s, gnum);\n" patNum (atoms2Str atoms r) ^
                               sprintf "  endfor;\n"
-  |`Receive(seq, s, m) ->let patNum = (getPatNum m patlist) in
+  |`Receive(seq, st,s, m) ->let patNum = (getPatNum m patlist) in
                            let atoms = getAtoms m in
                            let atoms = del_duplicate atoms in
                            sprintf "  for i : role%sNums do\n" "" ^

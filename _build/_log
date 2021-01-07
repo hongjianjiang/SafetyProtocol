@@ -49,35 +49,43 @@ File "func.ml", line 293, characters 14-16:
 Warning 27: unused variable ms.
 File "func.ml", line 299, characters 11-14:
 Warning 27: unused variable seq.
-File "func.ml", line 299, characters 15-16:
+File "func.ml", line 299, characters 15-17:
+Warning 27: unused variable st.
+File "func.ml", line 299, characters 18-19:
 Warning 27: unused variable s.
-File "func.ml", line 299, characters 17-18:
+File "func.ml", line 299, characters 20-21:
 Warning 27: unused variable r.
-File "func.ml", line 299, characters 19-22:
+File "func.ml", line 299, characters 22-25:
 Warning 27: unused variable mls.
-File "func.ml", line 299, characters 23-24:
+File "func.ml", line 299, characters 26-27:
 Warning 27: unused variable m.
 File "func.ml", line 300, characters 14-17:
 Warning 27: unused variable seq.
-File "func.ml", line 300, characters 18-19:
+File "func.ml", line 300, characters 18-20:
+Warning 27: unused variable st.
+File "func.ml", line 300, characters 21-22:
 Warning 27: unused variable s.
-File "func.ml", line 300, characters 20-21:
+File "func.ml", line 300, characters 23-24:
 Warning 27: unused variable m.
 File "func.ml", line 306, characters 13-16:
 Warning 27: unused variable seq.
-File "func.ml", line 306, characters 17-18:
+File "func.ml", line 306, characters 17-19:
+Warning 27: unused variable st.
+File "func.ml", line 306, characters 20-21:
 Warning 27: unused variable s.
-File "func.ml", line 306, characters 19-20:
+File "func.ml", line 306, characters 22-23:
 Warning 27: unused variable r.
-File "func.ml", line 306, characters 21-24:
+File "func.ml", line 306, characters 24-27:
 Warning 27: unused variable mls.
-File "func.ml", line 306, characters 25-26:
+File "func.ml", line 306, characters 28-29:
 Warning 27: unused variable m.
 File "func.ml", line 307, characters 16-19:
 Warning 27: unused variable seq.
-File "func.ml", line 307, characters 20-21:
+File "func.ml", line 307, characters 20-22:
+Warning 27: unused variable st.
+File "func.ml", line 307, characters 23-24:
 Warning 27: unused variable s.
-File "func.ml", line 307, characters 22-23:
+File "func.ml", line 307, characters 25-26:
 Warning 27: unused variable m.
 File "func.ml", line 338, characters 18-19:
 Warning 27: unused variable m.
@@ -121,29 +129,35 @@ File "func.ml", line 387, characters 18-20:
 Warning 27: unused variable r2.
 File "func.ml", line 467, characters 11-14:
 Warning 27: unused variable seq.
-File "func.ml", line 467, characters 15-16:
+File "func.ml", line 467, characters 15-17:
+Warning 27: unused variable st.
+File "func.ml", line 467, characters 18-19:
 Warning 27: unused variable s.
-File "func.ml", line 467, characters 17-18:
+File "func.ml", line 467, characters 20-21:
 Warning 27: unused variable r.
-File "func.ml", line 467, characters 19-22:
+File "func.ml", line 467, characters 22-25:
 Warning 27: unused variable mls.
 File "func.ml", line 468, characters 14-17:
 Warning 27: unused variable seq.
-File "func.ml", line 468, characters 18-19:
+File "func.ml", line 468, characters 18-20:
+Warning 27: unused variable st.
+File "func.ml", line 468, characters 21-22:
 Warning 27: unused variable s.
-File "func.ml", line 472, characters 21-24:
+File "func.ml", line 472, characters 24-27:
 Warning 27: unused variable mls.
-File "func.ml", line 472, characters 19-20:
+File "func.ml", line 472, characters 22-23:
 Warning 27: unused variable r.
-File "func.ml", line 472, characters 17-18:
+File "func.ml", line 472, characters 20-21:
 Warning 27: unused variable s.
+File "func.ml", line 472, characters 17-19:
+Warning 27: unused variable st.
 File "func.ml", line 472, characters 13-16:
 Warning 27: unused variable seq.
-File "func.ml", line 492, characters 15-16:
+File "func.ml", line 492, characters 18-19:
 Warning 27: unused variable s.
-File "func.ml", line 492, characters 19-21:
+File "func.ml", line 492, characters 22-24:
 Warning 27: unused variable ms.
-File "func.ml", line 493, characters 18-19:
+File "func.ml", line 493, characters 21-22:
 Warning 27: unused variable s.
 File "func.ml", line 515, characters 10-11:
 Warning 27: unused variable m.
@@ -191,15 +205,25 @@ File "func.ml", line 651, characters 14-16:
 Warning 27: unused variable m2.
 File "func.ml", line 755, characters 31-44:
 Warning 27: unused variable msgofRolename.
-File "func.ml", line 838, characters 17-18:
+File "func.ml", line 838, characters 16-18:
+Warning 27: unused variable st.
+File "func.ml", line 838, characters 20-21:
 Warning 27: unused variable s.
-File "func.ml", line 838, characters 19-20:
+File "func.ml", line 838, characters 22-23:
 Warning 27: unused variable r.
-File "func.ml", line 838, characters 21-23:
+File "func.ml", line 838, characters 24-26:
 Warning 27: unused variable ms.
-File "func.ml", line 843, characters 19-20:
+File "func.ml", line 843, characters 19-21:
+Warning 27: unused variable st.
+File "func.ml", line 843, characters 22-23:
 Warning 27: unused variable s.
-File "func.ml", line 930, characters 52-53:
+File "func.ml", line 874, characters 33-35:
+Warning 27: unused variable st.
+File "func.ml", line 874, characters 36-37:
+Warning 27: unused variable r.
+File "func.ml", line 922, characters 6-10:
+Warning 26: unused variable msgs.
+File "func.ml", line 929, characters 52-53:
 Warning 27: unused variable i.
 # Target: tmrLexer.mll, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mll, file:tmrLexer.mll, lexer, ocaml, ocamllex, quiet, short_paths, thread }
 /Users/sword/.opam/4.04.0/bin/ocamllex.opt -q tmrLexer.mll # cached
@@ -1291,6 +1315,8 @@ File "protocols.ml", line 2784, characters 14-15:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 48, characters 8-22:
 Warning 39: unused rec flag.
+File "protocols.ml", line 37, characters 19-21:
+Warning 27: unused variable st.
 File "protocols.ml", line 50, characters 8-9:
 Warning 27: unused variable c.
 File "protocols.ml", line 51, characters 8-9:
@@ -1447,13 +1473,17 @@ File "protocols.ml", line 2467, characters 91-99:
 Warning 27: unused variable r1'r2'.
 File "protocols.ml", line 2584, characters 9-12:
 Warning 27: unused variable seq.
-File "protocols.ml", line 2584, characters 13-14:
+File "protocols.ml", line 2584, characters 14-16:
+Warning 27: unused variable st.
+File "protocols.ml", line 2584, characters 17-18:
 Warning 27: unused variable s.
-File "protocols.ml", line 2584, characters 19-21:
+File "protocols.ml", line 2584, characters 23-25:
 Warning 27: unused variable ms.
 File "protocols.ml", line 2590, characters 12-15:
 Warning 27: unused variable seq.
-File "protocols.ml", line 2590, characters 17-18:
+File "protocols.ml", line 2590, characters 17-19:
+Warning 27: unused variable st.
+File "protocols.ml", line 2590, characters 20-21:
 Warning 27: unused variable s.
 File "protocols.ml", line 2627, characters 46-47:
 Warning 27: unused variable i.

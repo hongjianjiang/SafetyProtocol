@@ -296,15 +296,15 @@ let rec getAllActsList agents =
 let rec getAllSendActs actions =
   match actions with
   | `Null -> []
-  | `Send (seq,s,r,mls,m) -> [actions]
-  | `Receive (seq,s,m) -> []
+  | `Send (seq,st,s,r,mls,m) -> [actions]
+  | `Receive (seq,st,s,m) -> []
   | `Actlist arr -> List.concat (List.map ~f:getAllSendActs arr)
 
   let rec getAllReceActs actions =
     match actions with
     | `Null -> []
-    | `Send (seq,s,r,mls,m) -> []
-    | `Receive (seq,s,m) -> [actions]
+    | `Send (seq,st,s,r,mls,m) -> []
+    | `Receive (seq,st,s,m) -> [actions]
     | `Actlist arr -> List.concat (List.map ~f:getAllReceActs arr)
   
 
@@ -464,12 +464,12 @@ and insert x patlist =
 let rec getPatList actions =
   match actions with
   | `Null -> []
-  | `Send (seq,s,r,mls,m) -> (getSubMsg m) @ [m]
-  | `Receive (seq,s,m) -> (getSubMsg m) @ [m] 
+  | `Send (seq,st,s,r,mls,m) -> (getSubMsg m) @ [m]
+  | `Receive (seq,st,s,m) -> (getSubMsg m) @ [m] 
   | `Actlist arr -> List.concat (List.map ~f:getPatList arr)
 
 let getSendPatList actions = 
-  let `Send (seq,s,r,mls,m) = actions in 
+  let `Send (seq,st,s,r,mls,m) = actions in 
   (getSubMsg m) @ [m]
   
 let rec list_max xs =
@@ -489,8 +489,8 @@ let getMaxLenMsg actions =
 let rec getMsgs actions =
   match actions with
   | `Null -> []
-  | `Send (seq,s,r,ms,m) -> [(seq,r,m)]
-  | `Receive (seq,s,m) -> [(seq,"",m)]
+  | `Send (seq,st,s,r,ms,m) -> [(seq,st,r,m)]
+  | `Receive (seq,st,s,m) -> [(seq,st,"",m)]
   | `Actlist arr ->List.concat (List.map ~f:getMsgs arr)
 
   let rec existInit msg atom =
@@ -835,12 +835,12 @@ let rec getMsgs actions =
   let rec trans act i rolename length msgOfrolename patlist=
     match act with
     |`Null -> sprintf ""
-    |`Send (seq, s,r,ms, m) ->let atoms = getAtoms m in
+    |`Send (seq,st, s,r,ms, m) ->let atoms = getAtoms m in
                       (* let atoms = del_duplicate atoms in *)
                       genRuleName rolename i^
                       genSendGuard rolename i seq^
                       (genSendAct rolename seq i m atoms length msgOfrolename patlist)
-    |`Receive (seq,s,m) ->let atoms = getAtoms m in
+    |`Receive (seq,st,s,m) ->let atoms = getAtoms m in
                       let atoms = del_duplicate atoms in
                       genRuleName rolename i ^
                       genRecvGuard rolename i seq^
@@ -871,11 +871,10 @@ let rec getMsgs actions =
                             sprintf "endruleset;\n\n" ) rolelist)
 
 
-let genCodeOfIntruderGetMsg (seq,r,m) patList = 
+let genCodeOfIntruderGetMsg (seq,st,r,m) patList = 
   let j = getPatNum m patList in
-  let str2 = sprintf "  ruleset j: role%sNums do\n" r in
+
   sprintf "\n---rule of intruder to get msg from ch[%d] \n" seq ^
-  str2 ^ 
   sprintf "rule \"intruderGetMsgFromCh[%d]\" \n" seq ^ 
   sprintf "  ch[%d].empty = false & ch[%d].sender != Intruder ==>\n" seq seq^
   sprintf "  var flag_pat%d:boolean;\n      msgNo:indexType;\n      msg:Message;\n" j^
@@ -896,11 +895,11 @@ let genCodeOfIntruderGetMsg (seq,r,m) patList =
   sprintf "  end;\n"
 ;;
 
-let genCodeOfIntruderEmitMsg (seq,r,m) patList= 
+let genCodeOfIntruderEmitMsg (seq,st,r,m) patList= 
   let j = getPatNum m patList in
   let str1 = sprintf "\n---rule of intruder to emit msg into ch[%d].\n" seq ^ sprintf "ruleset i: msgLen do\n" in
   let str2 = sprintf "  ruleset j: role%sNums do\n" r in
-  let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      role%s[j].st = %s%d & ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n" r r seq seq  j j j j j^ 
+  let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      role%s[j].st = %s%d & ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n" r r st seq  j j j j j^ 
              sprintf "      begin\n        if (!emit[pat%dSet.content[i]]) then  \n" j ^ 
              sprintf "          clear ch[%d];\n" seq ^sprintf "          ch[%d].msg:=msgs[pat%dSet.content[i]];\n" seq j^
              sprintf "          ch[%d].sender:=Intruder;\n" seq
@@ -926,7 +925,7 @@ let print_murphiRule_ofIntruder agents =
   let patlist = List.concat (List.map ~f:getPatList (actions)) in (*get all patterns from actions*)
   let non_dup = del_duplicate patlist in (* delete duplicate *)
   let non_equivalent = getEqvlMsgPattern non_dup in
-  let getMsgStr = String.concat (List.map ~f:(fun m -> genCodeOfIntruderGetMsg m non_equivalent) msgs) in
+  let getMsgStr = String.concat (List.map ~f:(fun m -> genCodeOfIntruderGetMsg m non_equivalent) msgs1) in
   let emitMsgStr = String.concat (List.mapi ~f:(fun i m -> genCodeOfIntruderEmitMsg m non_equivalent) msgs1) in
   getMsgStr ^ emitMsgStr      
   
