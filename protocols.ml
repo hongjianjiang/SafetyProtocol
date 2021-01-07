@@ -100,7 +100,7 @@ let rec print_goal gs =
     "
   totalFact:100;
   msgLength:5;
-  chanNum:4;
+  chanNum:18;
   invokeNum:10;\n" ^
   
     (* print type*)
@@ -1057,7 +1057,7 @@ let genSynthCode m i patList =
   end;\n\n" n n; 
   |`Tmp mn -> str1 ^ 
     sprintf "  Var index : indexType;\n  begin
-    get_msgNo(%s,index); 
+    get_msgNo(msgs[%s.tmpPart],index); 
     num:=index;
     msg:=msgs[index];
   end;\n\n"  mn; 
@@ -1951,6 +1951,7 @@ let genCons m i patList =
     sprintf "  begin\n" ^
     sprintf "    get_msgNo(msg,msgNo);\n" ^
     sprintf "    %s:=msg;\n" m ^
+    sprintf "    %s.tmpPart:=msgNo;\n" m ^
     sprintf "  end;\n"
     |_ -> ""
 
@@ -2486,7 +2487,7 @@ let print_startstate r num m knws ag=
                                                                     if listwithout atoms (`Const c1) then sprintf "  role%s[%d].%s := anyNumber;\n" r num c1
                                                                     else "") clist)                                           
                                           in
-                                          str1 ^ str2 ^ str3 ^ str4  ^ str5
+                                          str1 ^ str2 ^ str3 ^ str4  ^ str5 ^"\n"
                                         else sprintf "" ) msgOfKnws)
 ;;
 

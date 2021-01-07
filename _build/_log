@@ -2,15 +2,205 @@
 # Target: getModelString.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:getModelString.ml, ocaml, ocamldep, quiet, short_paths, thread }
 ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules getModelString.ml > getModelString.ml.depends # cached
 # Target: protocols.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:protocols.ml, ocaml, ocamldep, quiet, short_paths, thread }
-ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules protocols.ml > protocols.ml.depends
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules protocols.ml > protocols.ml.depends # cached
 # Target: func.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:func.ml, ocaml, ocamldep, quiet, short_paths, thread }
-ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules func.ml > func.ml.depends # cached
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules func.ml > func.ml.depends
 # Target: proctype.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:proctype.ml, ocaml, ocamldep, quiet, short_paths, thread }
 ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules proctype.ml > proctype.ml.depends # cached
 # Target: proctype.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:proctype.cmo, file:proctype.ml, implem, ocaml, quiet, short_paths, thread }
 ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o proctype.cmo proctype.ml # cached
 # Target: func.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:func.cmo, file:func.ml, implem, ocaml, quiet, short_paths, thread }
-ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o func.cmo func.ml # cached
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o func.cmo func.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o func.cmo func.ml
+findlib: [WARNING] Interface base.cmi occurs in several directories: ., /Users/sword/.opam/4.04.0/lib/base
+File "func.ml", line 37, characters 8-12:
+Warning 39: unused rec flag.
+File "func.ml", line 39, characters 4-6:
+Warning 27: unused variable hd.
+File "func.ml", line 45, characters 7-9:
+Warning 27: unused variable tl.
+File "func.ml", line 111, characters 16-17:
+Warning 27: unused variable r.
+File "func.ml", line 123, characters 20-21:
+Warning 27: unused variable m.
+File "func.ml", line 163, characters 19-20:
+Warning 27: unused variable r.
+File "func.ml", line 163, characters 22-25:
+Warning 27: unused variable num.
+File "func.ml", line 182, characters 21-22:
+Warning 27: unused variable r.
+File "func.ml", line 182, characters 24-27:
+Warning 27: unused variable num.
+File "func.ml", line 202, characters 21-22:
+Warning 27: unused variable r.
+File "func.ml", line 202, characters 24-27:
+Warning 27: unused variable num.
+File "func.ml", line 221, characters 23-24:
+Warning 27: unused variable r.
+File "func.ml", line 262, characters 4-16:
+Warning 32: unused value agentSStatus.
+File "func.ml", line 280, characters 14-16:
+Warning 27: unused variable ms.
+File "func.ml", line 287, characters 14-16:
+Warning 27: unused variable ms.
+File "func.ml", line 293, characters 12-13:
+Warning 27: unused variable n.
+File "func.ml", line 293, characters 14-16:
+Warning 27: unused variable ms.
+File "func.ml", line 299, characters 11-14:
+Warning 27: unused variable seq.
+File "func.ml", line 299, characters 15-16:
+Warning 27: unused variable s.
+File "func.ml", line 299, characters 17-18:
+Warning 27: unused variable r.
+File "func.ml", line 299, characters 19-22:
+Warning 27: unused variable mls.
+File "func.ml", line 299, characters 23-24:
+Warning 27: unused variable m.
+File "func.ml", line 300, characters 14-17:
+Warning 27: unused variable seq.
+File "func.ml", line 300, characters 18-19:
+Warning 27: unused variable s.
+File "func.ml", line 300, characters 20-21:
+Warning 27: unused variable m.
+File "func.ml", line 306, characters 13-16:
+Warning 27: unused variable seq.
+File "func.ml", line 306, characters 17-18:
+Warning 27: unused variable s.
+File "func.ml", line 306, characters 19-20:
+Warning 27: unused variable r.
+File "func.ml", line 306, characters 21-24:
+Warning 27: unused variable mls.
+File "func.ml", line 306, characters 25-26:
+Warning 27: unused variable m.
+File "func.ml", line 307, characters 16-19:
+Warning 27: unused variable seq.
+File "func.ml", line 307, characters 20-21:
+Warning 27: unused variable s.
+File "func.ml", line 307, characters 22-23:
+Warning 27: unused variable m.
+File "func.ml", line 338, characters 18-19:
+Warning 27: unused variable m.
+File "func.ml", line 366, characters 38-39:
+Warning 27: unused variable p.
+File "func.ml", line 377, characters 12-14:
+Warning 27: unused variable i1.
+File "func.ml", line 377, characters 22-24:
+Warning 27: unused variable i2.
+File "func.ml", line 379, characters 9-11:
+Warning 27: unused variable r1.
+File "func.ml", line 379, characters 16-18:
+Warning 27: unused variable r2.
+File "func.ml", line 380, characters 9-11:
+Warning 27: unused variable r1.
+File "func.ml", line 380, characters 16-18:
+Warning 27: unused variable r2.
+File "func.ml", line 381, characters 9-11:
+Warning 27: unused variable r1.
+File "func.ml", line 381, characters 16-18:
+Warning 27: unused variable r2.
+File "func.ml", line 382, characters 9-11:
+Warning 27: unused variable r1.
+File "func.ml", line 382, characters 16-18:
+Warning 27: unused variable r2.
+File "func.ml", line 383, characters 8-11:
+Warning 27: unused variable r11.
+File "func.ml", line 383, characters 12-15:
+Warning 27: unused variable r12.
+File "func.ml", line 383, characters 20-23:
+Warning 27: unused variable r21.
+File "func.ml", line 383, characters 24-27:
+Warning 27: unused variable r22.
+File "func.ml", line 384, characters 10-12:
+Warning 27: unused variable n1.
+File "func.ml", line 384, characters 18-20:
+Warning 27: unused variable n2.
+File "func.ml", line 387, characters 10-12:
+Warning 27: unused variable r1.
+File "func.ml", line 387, characters 18-20:
+Warning 27: unused variable r2.
+File "func.ml", line 467, characters 11-14:
+Warning 27: unused variable seq.
+File "func.ml", line 467, characters 15-16:
+Warning 27: unused variable s.
+File "func.ml", line 467, characters 17-18:
+Warning 27: unused variable r.
+File "func.ml", line 467, characters 19-22:
+Warning 27: unused variable mls.
+File "func.ml", line 468, characters 14-17:
+Warning 27: unused variable seq.
+File "func.ml", line 468, characters 18-19:
+Warning 27: unused variable s.
+File "func.ml", line 472, characters 21-24:
+Warning 27: unused variable mls.
+File "func.ml", line 472, characters 19-20:
+Warning 27: unused variable r.
+File "func.ml", line 472, characters 17-18:
+Warning 27: unused variable s.
+File "func.ml", line 472, characters 13-16:
+Warning 27: unused variable seq.
+File "func.ml", line 492, characters 15-16:
+Warning 27: unused variable s.
+File "func.ml", line 492, characters 19-21:
+Warning 27: unused variable ms.
+File "func.ml", line 493, characters 18-19:
+Warning 27: unused variable s.
+File "func.ml", line 515, characters 10-11:
+Warning 27: unused variable m.
+File "func.ml", line 516, characters 10-12:
+Warning 27: unused variable m1.
+File "func.ml", line 516, characters 13-15:
+Warning 27: unused variable m2.
+File "func.ml", line 517, characters 10-12:
+Warning 27: unused variable m1.
+File "func.ml", line 517, characters 13-15:
+Warning 27: unused variable m2.
+File "func.ml", line 518, characters 12-13:
+Warning 27: unused variable m.
+File "func.ml", line 518, characters 14-15:
+Warning 27: unused variable k.
+File "func.ml", line 519, characters 12-13:
+Warning 27: unused variable m.
+File "func.ml", line 519, characters 14-15:
+Warning 27: unused variable k.
+File "func.ml", line 520, characters 11-14:
+Warning 27: unused variable m.
+File "func.ml", line 521, characters 9-10:
+Warning 27: unused variable r.
+File "func.ml", line 522, characters 9-10:
+Warning 27: unused variable r.
+File "func.ml", line 523, characters 9-11:
+Warning 27: unused variable r1.
+File "func.ml", line 523, characters 12-14:
+Warning 27: unused variable r2.
+File "func.ml", line 545, characters 29-30:
+Warning 27: unused variable i.
+File "func.ml", line 545, characters 37-50:
+Warning 27: unused variable msgofRolename.
+File "func.ml", line 616, characters 27-28:
+Warning 27: unused variable n.
+File "func.ml", line 617, characters 27-28:
+Warning 27: unused variable r.
+File "func.ml", line 638, characters 12-14:
+Warning 27: unused variable m1.
+File "func.ml", line 638, characters 15-17:
+Warning 27: unused variable m2.
+File "func.ml", line 651, characters 11-13:
+Warning 27: unused variable m1.
+File "func.ml", line 651, characters 14-16:
+Warning 27: unused variable m2.
+File "func.ml", line 755, characters 31-44:
+Warning 27: unused variable msgofRolename.
+File "func.ml", line 838, characters 17-18:
+Warning 27: unused variable s.
+File "func.ml", line 838, characters 19-20:
+Warning 27: unused variable r.
+File "func.ml", line 838, characters 21-23:
+Warning 27: unused variable ms.
+File "func.ml", line 843, characters 19-20:
+Warning 27: unused variable s.
+File "func.ml", line 930, characters 52-53:
+Warning 27: unused variable i.
 # Target: tmrLexer.mll, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mll, file:tmrLexer.mll, lexer, ocaml, ocamllex, quiet, short_paths, thread }
 /Users/sword/.opam/4.04.0/bin/ocamllex.opt -q tmrLexer.mll # cached
 # Target: tmrLexer.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:tmrLexer.ml, ocaml, ocamldep, quiet, short_paths, thread }
@@ -35,7 +225,7 @@ File "protocols.ml", line 101, characters 16-17:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 102, characters 14-15:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 103, characters 12-13:
+File "protocols.ml", line 103, characters 13-14:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 107, characters 17-18:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
@@ -897,7 +1087,7 @@ File "protocols.ml", line 1056, characters 23-24:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 1059, characters 46-47:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 1060, characters 25-26:
+File "protocols.ml", line 1060, characters 39-40:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 1061, characters 15-16:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
@@ -999,105 +1189,105 @@ File "protocols.ml", line 1213, characters 18-19:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 1214, characters 10-11:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2604, characters 45-46:
+File "protocols.ml", line 2605, characters 45-46:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2605, characters 19-20:
+File "protocols.ml", line 2606, characters 19-20:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2606, characters 24-25:
+File "protocols.ml", line 2607, characters 24-25:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2607, characters 9-10:
+File "protocols.ml", line 2608, characters 9-10:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2608, characters 0-1:
+File "protocols.ml", line 2609, characters 0-1:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2609, characters 21-22:
+File "protocols.ml", line 2610, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2610, characters 19-20:
+File "protocols.ml", line 2611, characters 19-20:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2611, characters 9-10:
+File "protocols.ml", line 2612, characters 9-10:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2612, characters 0-1:
+File "protocols.ml", line 2613, characters 0-1:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2613, characters 20-21:
+File "protocols.ml", line 2614, characters 20-21:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2614, characters 28-29:
+File "protocols.ml", line 2615, characters 28-29:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2615, characters 24-25:
+File "protocols.ml", line 2616, characters 24-25:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2616, characters 9-10:
+File "protocols.ml", line 2617, characters 9-10:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2617, characters 0-1:
+File "protocols.ml", line 2618, characters 0-1:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2618, characters 15-16:
+File "protocols.ml", line 2619, characters 15-16:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2633, characters 41-42:
+File "protocols.ml", line 2634, characters 41-42:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2634, characters 21-22:
+File "protocols.ml", line 2635, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2635, characters 26-27:
+File "protocols.ml", line 2636, characters 26-27:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2636, characters 9-10:
+File "protocols.ml", line 2637, characters 9-10:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2637, characters 21-22:
-Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2638, characters 31-32:
+File "protocols.ml", line 2638, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 2639, characters 31-32:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2640, characters 30-31:
+File "protocols.ml", line 2640, characters 31-32:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2641, characters 28-29:
+File "protocols.ml", line 2641, characters 30-31:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2642, characters 42-43:
+File "protocols.ml", line 2642, characters 28-29:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2643, characters 46-47:
+File "protocols.ml", line 2643, characters 42-43:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2644, characters 29-30:
+File "protocols.ml", line 2644, characters 46-47:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2673, characters 80-81:
+File "protocols.ml", line 2645, characters 29-30:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2674, characters 21-22:
+File "protocols.ml", line 2674, characters 80-81:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2675, characters 33-34:
+File "protocols.ml", line 2675, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2676, characters 31-32:
+File "protocols.ml", line 2676, characters 33-34:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2677, characters 28-29:
+File "protocols.ml", line 2677, characters 31-32:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2678, characters 42-43:
+File "protocols.ml", line 2678, characters 28-29:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2679, characters 46-47:
+File "protocols.ml", line 2679, characters 42-43:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2680, characters 29-30:
+File "protocols.ml", line 2680, characters 46-47:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2699, characters 80-81:
+File "protocols.ml", line 2681, characters 29-30:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2700, characters 21-22:
+File "protocols.ml", line 2700, characters 80-81:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2701, characters 34-35:
+File "protocols.ml", line 2701, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2702, characters 31-32:
+File "protocols.ml", line 2702, characters 34-35:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2703, characters 28-29:
+File "protocols.ml", line 2703, characters 31-32:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2704, characters 42-43:
+File "protocols.ml", line 2704, characters 28-29:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2705, characters 46-47:
+File "protocols.ml", line 2705, characters 42-43:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2706, characters 29-30:
+File "protocols.ml", line 2706, characters 46-47:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2711, characters 12-13:
+File "protocols.ml", line 2707, characters 29-30:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2712, characters 21-22:
+File "protocols.ml", line 2712, characters 12-13:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2713, characters 26-27:
+File "protocols.ml", line 2713, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2780, characters 39-40:
+File "protocols.ml", line 2714, characters 26-27:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2781, characters 34-35:
+File "protocols.ml", line 2781, characters 39-40:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2782, characters 33-34:
+File "protocols.ml", line 2782, characters 34-35:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2783, characters 14-15:
+File "protocols.ml", line 2783, characters 33-34:
+Warning 29: unescaped end-of-line in a string constant (non-portable code)
+File "protocols.ml", line 2784, characters 14-15:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 48, characters 8-22:
 Warning 39: unused rec flag.
@@ -1205,82 +1395,84 @@ File "protocols.ml", line 1887, characters 40-42:
 Warning 27: unused variable r2.
 File "protocols.ml", line 1926, characters 16-22:
 Warning 26: unused variable patNum.
-File "protocols.ml", line 1983, characters 6-10:
+File "protocols.ml", line 1984, characters 6-10:
 Warning 26: unused variable kNum.
-File "protocols.ml", line 1985, characters 6-8:
+File "protocols.ml", line 1986, characters 6-8:
 Warning 27: unused variable r1.
-File "protocols.ml", line 1985, characters 9-11:
+File "protocols.ml", line 1986, characters 9-11:
 Warning 27: unused variable r2.
-File "protocols.ml", line 2036, characters 7-9:
+File "protocols.ml", line 2037, characters 7-9:
 Warning 27: unused variable r1.
-File "protocols.ml", line 2036, characters 10-12:
+File "protocols.ml", line 2037, characters 10-12:
 Warning 27: unused variable r2.
-File "protocols.ml", line 2083, characters 18-19:
+File "protocols.ml", line 2084, characters 18-19:
 Warning 27: unused variable m.
-File "protocols.ml", line 2083, characters 28-30:
+File "protocols.ml", line 2084, characters 28-30:
 Warning 27: unused variable i2.
-File "protocols.ml", line 2085, characters 5-8:
+File "protocols.ml", line 2086, characters 5-8:
 Warning 27: unused variable pka.
-File "protocols.ml", line 2101, characters 5-8:
+File "protocols.ml", line 2102, characters 5-8:
 Warning 27: unused variable sks.
-File "protocols.ml", line 2143, characters 18-19:
+File "protocols.ml", line 2144, characters 18-19:
 Warning 27: unused variable m.
-File "protocols.ml", line 2143, characters 20-21:
+File "protocols.ml", line 2144, characters 20-21:
 Warning 27: unused variable k.
-File "protocols.ml", line 2168, characters 61-62:
+File "protocols.ml", line 2169, characters 61-62:
 Warning 27: unused variable m.
-File "protocols.ml", line 2169, characters 62-63:
+File "protocols.ml", line 2170, characters 62-63:
 Warning 27: unused variable m.
-File "protocols.ml", line 2170, characters 63-64:
+File "protocols.ml", line 2171, characters 63-64:
 Warning 27: unused variable m.
-File "protocols.ml", line 2373, characters 32-33:
+File "protocols.ml", line 2374, characters 32-33:
 Warning 27: unused variable i.
-File "protocols.ml", line 2404, characters 54-55:
+File "protocols.ml", line 2405, characters 54-55:
 Warning 27: unused variable m.
-File "protocols.ml", line 2407, characters 49-50:
+File "protocols.ml", line 2408, characters 49-50:
 Warning 27: unused variable m.
-File "protocols.ml", line 2428, characters 38-42:
+File "protocols.ml", line 2429, characters 38-42:
 Warning 27: unused variable knws.
-File "protocols.ml", line 2464, characters 82-84:
-Warning 27: unused variable r1.
-File "protocols.ml", line 2464, characters 90-92:
-Warning 27: unused variable r2.
 File "protocols.ml", line 2465, characters 82-84:
 Warning 27: unused variable r1.
 File "protocols.ml", line 2465, characters 90-92:
 Warning 27: unused variable r2.
-File "protocols.ml", line 2466, characters 81-83:
+File "protocols.ml", line 2466, characters 82-84:
 Warning 27: unused variable r1.
-File "protocols.ml", line 2466, characters 84-86:
+File "protocols.ml", line 2466, characters 90-92:
 Warning 27: unused variable r2.
-File "protocols.ml", line 2466, characters 91-99:
+File "protocols.ml", line 2467, characters 81-83:
+Warning 27: unused variable r1.
+File "protocols.ml", line 2467, characters 84-86:
+Warning 27: unused variable r2.
+File "protocols.ml", line 2467, characters 91-99:
 Warning 27: unused variable r1'r2'.
-File "protocols.ml", line 2583, characters 9-12:
+File "protocols.ml", line 2584, characters 9-12:
 Warning 27: unused variable seq.
-File "protocols.ml", line 2583, characters 13-14:
+File "protocols.ml", line 2584, characters 13-14:
 Warning 27: unused variable s.
-File "protocols.ml", line 2583, characters 19-21:
+File "protocols.ml", line 2584, characters 19-21:
 Warning 27: unused variable ms.
-File "protocols.ml", line 2589, characters 12-15:
+File "protocols.ml", line 2590, characters 12-15:
 Warning 27: unused variable seq.
-File "protocols.ml", line 2589, characters 17-18:
+File "protocols.ml", line 2590, characters 17-18:
 Warning 27: unused variable s.
-File "protocols.ml", line 2626, characters 46-47:
+File "protocols.ml", line 2627, characters 46-47:
 Warning 27: unused variable i.
-File "protocols.ml", line 2629, characters 46-47:
+File "protocols.ml", line 2630, characters 46-47:
 Warning 27: unused variable i.
-File "protocols.ml", line 2648, characters 6-13:
+File "protocols.ml", line 2649, characters 6-13:
 Warning 26: unused variable roleStr.
-File "protocols.ml", line 2731, characters 8-9:
+File "protocols.ml", line 2732, characters 8-9:
 Warning 27: unused variable n.
-File "protocols.ml", line 2791, characters 11-12:
+File "protocols.ml", line 2792, characters 11-12:
 Warning 27: unused variable t.
-File "protocols.ml", line 2805, characters 12-16:
+File "protocols.ml", line 2806, characters 12-16:
 Warning 27: unused variable outc.
-File "protocols.ml", line 2808, characters 16-17:
+File "protocols.ml", line 2809, characters 16-17:
 Warning 27: unused variable n.
 # Target: getModelString.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:getModelString.cmo, file:getModelString.ml, implem, ocaml, quiet, short_paths, thread }
-ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o getModelString.cmo getModelString.ml # cached
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o getModelString.cmo getModelString.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o getModelString.cmo getModelString.ml
+findlib: [WARNING] Interface base.cmi occurs in several directories: ., /Users/sword/.opam/4.04.0/lib/base
 # Target: tmrRetparser.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:tmrRetparser.ml, ocaml, ocamldep, quiet, short_paths, thread }
 ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules tmrRetparser.ml > tmrRetparser.ml.depends # cached
 # Target: tmrRetparser.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:tmrRetparser.cmo, file:tmrRetparser.ml, implem, ocaml, quiet, short_paths, thread }
