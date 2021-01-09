@@ -10,48 +10,48 @@ Knowledges:{
 }
 Agents:{
     A:A.B.C.D.nonce(ue).nonce(ue1).nonce(prekey).nonce(certa).nonce(eapm),
-    [1]+,B,(nonce(ue)): aenc{<nonce(supi).nonce(ue)>}pk(D),
-    [6]-:nonce(start),
-    [7]+,B,(nonce(ue1)):nonce(ue1),
-    [10]-:<nonce(ausf).nonce(certc)>,
-    [11]+,B,(nonce(prekey).nonce(certa)):<aenc{nonce(prekey)}pk(C).nonce(certa).hash(<nonce(start).nonce(ue1).nonce(ausf).nonce(certc)>)sk(A).hash(<nonce(start).nonce(ue1).nonce(ausf).nonce(certc)>)<nonce(ue1).nonce(ausf).nonce(prekey)>>,
-    [14]-:tmp(x10),
-    [15]+,B,(nonce(eapm)):nonce(eapm),
-    [18]-:nonce(sucm);
+    [1.1]+,B,(nonce(ue)): aenc{<nonce(supi).nonce(ue)>}pk(D),
+    [6.2]-:nonce(start),
+    [7.5]+,B,(nonce(ue1)):nonce(ue1),
+    [10.4]-:<nonce(ausf).nonce(certc)>,
+    [11.9]+,B,(nonce(prekey).nonce(certa)):<aenc{nonce(prekey)}pk(C).nonce(certa).hash(<nonce(start).nonce(ue1).nonce(ausf).nonce(certc)>)sk(A).hash(<nonce(start).nonce(ue1).nonce(ausf).nonce(certc)>)<nonce(ue1).nonce(ausf).nonce(prekey)>>,
+    [14.6]-:tmp(x10),
+    [15.13]+,B,(nonce(eapm)):nonce(eapm),
+    [18.8]-:nonce(sucm);
 
     B:A.B.C.D.nonce(bn),
-    [1]-:tmp(x1),
-    [2]+,C,(nonce(bn)):<tmp(x1).nonce(bn)>,
-    [5]-:tmp(x2),
-    [6]+,A,():tmp(x2),
-    [7]-:tmp(x3),
-    [8]+,C,():tmp(x3),
-    [9]-:<tmp(x4).tmp(x5)>,
-    [10]+,A,():<tmp(x4).tmp(x5)>,
-    [11]-:<tmp(x6).tmp(x7).tmp(x8).tmp(x9)>,
-    [12]+,C,():<tmp(x6).tmp(x7).tmp(x8).tmp(x9)>,
-    [13]-:tmp(x10),
-    [14]+,A,():tmp(x10),
-    [15]-:nonce(eapm),
-    [16]+,C,():nonce(eapm),
-    [17]-:nonce(sucm),
-    [18]+,A,():nonce(sucm);
+    [1.1]-:tmp(x1),
+    [2.1]+,C,(nonce(bn)):<tmp(x1).nonce(bn)>,
+    [5.3]-:tmp(x2),
+    [6.2]+,A,():tmp(x2),
+    [7.5]-:tmp(x3),
+    [8.5]+,C,():tmp(x3),
+    [9.7]-:<tmp(x4).tmp(x5)>,
+    [10.4]+,A,():<tmp(x4).tmp(x5)>,
+    [11.9]-:<tmp(x6).tmp(x7).tmp(x8).tmp(x9)>,
+    [12.7]+,C,():<tmp(x6).tmp(x7).tmp(x8).tmp(x9)>,
+    [13.11]-:tmp(x10),
+    [14.6]+,A,():tmp(x10),
+    [15.13]-:nonce(eapm),
+    [16.9]+,C,():nonce(eapm),
+    [17.15]-:nonce(sucm),
+    [18.8]+,A,():nonce(sucm);
 
     C: B.C.D.nonce(ausf).nonce(sucm), 
-    [2]-:<tmp(x1).nonce(bn)>,
-    [3]+,D,():<tmp(x1).nonce(bn)>,
-    [4]-:nonce(start),
-    [5]+,B,():nonce(start),
-    [8]-:<nonce(ue)>,
-    [9]+,B,(nonce(ausf).nonce(certc)):<nonce(ausf).nonce(certc)>,
-    [12]-:<tmp(x6).tmp(x7).tmp(x8).tmp(x9)>,
-    [13]+,B,():hash(<nonce(start).nonce(ue1).nonce(ausf).nonce(certc)>)<nonce(ue1).nonce(ausf).nonce(prekey)>,
-    [16]-:nonce(eapm),
-    [17]+,C,(nonce(sucm)):nonce(sucm);
+    [2.1]-:<tmp(x1).nonce(bn)>,
+    [3.1]+,D,():<tmp(x1).nonce(bn)>,
+    [4.3]-:nonce(start),
+    [5.3]+,B,():nonce(start),
+    [8.5]-:<nonce(ue)>,
+    [9.7]+,B,(nonce(ausf).nonce(certc)):<nonce(ausf).nonce(certc)>,
+    [12.7]-:<tmp(x6).tmp(x7).tmp(x8).tmp(x9)>,
+    [13.11]+,B,():hash(<nonce(start).nonce(ue1).nonce(ausf).nonce(certc)>)<nonce(ue1).nonce(ausf).nonce(prekey)>,
+    [16.9]-:nonce(eapm),
+    [17.15]+,C,(nonce(sucm)):nonce(sucm);
 
     D:C.D.nonce(start),
-    [3]-:<tmp(m1).nonce(bn)>,
-    [4]+,C,(nonce(start)):nonce(start)
+    [3.1]-:<tmp(m1).nonce(bn)>,
+    [4.3]+,C,(nonce(start)):nonce(start)
 }
 Environment:{
 [agent1] A [1] : <UE.SEAF.AUSF.UDM.nonce(supi).nonce(ue).nonce(ue1).nonce(prekey).nonce(certa).nonce(eapm)>;
