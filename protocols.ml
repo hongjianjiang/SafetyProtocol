@@ -439,11 +439,6 @@ let consMsgBySubs m patList =
   |`Aenc(m1,k1) -> (* submessage are m1 and k1*)
                   let numM1 = getPatNum m1 patList in (* construct_i_by_numM1_numK1 *)
                   let numK1 = getPatNum k1 patList in
-                  (* let agK = match k1 with
-                            |`Pk r -> sprintf "loc%sPk" r
-                            |`Sk r -> sprintf "loc%sSk" r
-                            |_ -> ""
-                  in *)
                   sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numK1 numM1 numK1^
                   sprintf "  var index: indexType;\n"^
                   sprintf "      ---msg : Message;\n  begin\n"^
@@ -580,7 +575,7 @@ let genExistCode () =
 
 (* Generating function matchAgent() code *)
 let genMatchAgent () =
-  sprintf "function matchAgent(Var locAg: AgentType; Var Ag: AgentType):boolean;  ---if ag equals to locAg which was derived from recieving msg, or anyAgent, then true
+  sprintf "function matchAgent(locAg: AgentType; Var Ag: AgentType):boolean;  ---if ag equals to locAg which was derived from recieving msg, or anyAgent, then true
   var flag : boolean;
   begin
     flag := false;
@@ -595,30 +590,9 @@ let genMatchAgent () =
     return flag;
   end;\n\n"
 ;;
-(* let genMatchTmp () =
-  sprintf "function matchTmp(Var locm:Message;Var m:Message):boolean; ---if m equals to locm which was derived from recieving msg, or tmp, then true
-  var flag : boolean;
-  var index :indexType;
-  begin 
-    flag := false;
-    get_msgNo(m,index);
-    if (m.msgType = tmp) then 
-      if (m.tmpPart =0 ) then 
-        flag := true;
-        m.tmpPart :=locm.tmpPart;
-      endif;
-    elsif (locm.msgType = m.msgType & locm.tmpPart = m.tmpPart) then 
-      flag := true;
-    elsif (index = m.tmpPart) then  
-      flag := true;
-    else 
-      flag := false;
-    endif;
-     return flag;
-  end;\n\n" *)
 
 let genMatchTmp () = 
-  sprintf "function matchTmp(Var locm:Message;Var m:Message):boolean; ---if m equals to locm which was derived from recieving msg, or tmp, then true
+  sprintf "function matchTmp(locm:Message;Var m:Message):boolean; ---if m equals to locm which was derived from recieving msg, or tmp, then true
   var flag : boolean;
   var index1,index2 :indexType;
   begin 
@@ -640,7 +614,7 @@ let genMatchTmp () =
 
 (* Generating function matchNonce() code *)
 let genMatchNonce () =
-  sprintf "function matchNonce(Var locNa: NonceType; Var Na: NonceType):boolean;  ---if Na equals to locNa which was derived from recieving msg, or anyNonce, then true
+  sprintf "function matchNonce(locNa: NonceType; Var Na: NonceType):boolean;  ---if Na equals to locNa which was derived from recieving msg, or anyNonce, then true
   var flag : boolean;
   begin
     flag := false;
@@ -656,7 +630,7 @@ let genMatchNonce () =
   end;\n\n"
 
 let genMatchNumber ()  = 
-  sprintf "function matchNumber(Var locNm: ConstType; Var Nm: ConstType):boolean;  ---if Nm equals to locNm which was derived from recieving msg, or anyNumber, then true
+  sprintf "function matchNumber(locNm: ConstType; Var Nm: ConstType):boolean;  ---if Nm equals to locNm which was derived from recieving msg, or anyNumber, then true
   var flag : boolean;
   begin
     flag := false;
@@ -678,22 +652,18 @@ let rec genMatchMsg ()=
   genMatch() ^ genMatchPat() 
 
 and genMatch () =
-  sprintf "function match(var m1,m2:Message):boolean;
+  sprintf "function match(m1:Message; var m2:Message):boolean;
   var concatFlag: boolean;
       i,msgNo: indexType;
   begin 
     if m1.msgType = tmp then  
-      return true;---matchTmp(m1,m2) ;
+      return true;
     elsif m1.msgType = agent & m2.msgType = agent then
-	    return matchAgent(m2.ag, m1.ag); ---ag and noncePart should be initiallized as anyAgent or anyNonce (m1.ag != anyAgent & m2.ag != anyAgent &)
+	    return matchAgent(m1.ag,m2.ag); ---ag and noncePart should be initiallized as anyAgent or anyNonce (m1.ag != anyAgent & m2.ag != anyAgent &)
     elsif m1.msgType = nonce & m2.msgType = nonce then
-	    return matchNonce(m2.noncePart, m1.noncePart); --- m1.noncePart != anyNonce & m2.noncePart != anyNonce &
+	    return matchNonce(m1.noncePart,m2.noncePart); --- m1.noncePart != anyNonce & m2.noncePart != anyNonce &
     elsif m1.msgType = number & m2.msgType = number then 
-      ---if matchNumber(m2.constPart,m1.constPart) then 
-        ---get_msgNo(m2,msgNo);
-        ---Spy_known[msgNo] :=true;
-      ---endif;
-      return matchNumber(m2.constPart,m1.constPart);
+      return matchNumber(m1.constPart,m2.constPart);
     elsif m1.msgType = key & m2.msgType = key then
       if m1.k.encType = PK then
         return (m1.k.encType = m2.k.encType) & (matchAgent(m1.k.ag, m2.k.ag));
@@ -725,20 +695,20 @@ and genMatch () =
   end;\n\n"
 
 and genMatchPat () =
-  sprintf "function matchPat(var m1:Message; sPatnSet: msgSet):boolean;
+  sprintf "function matchPat(m1:Message; sPatnSet: msgSet):boolean;
   var flag:boolean;
       i : indexType;
   begin
     flag := false;
     i := 1;
     while (i<sPatnSet.length+1) do
-      if(match(msgs[sPatnSet.content[i]],m1)) then
+      if(match(m1,msgs[sPatnSet.content[i]])) then
         flag := true;
       endif;
       i := i+1;
     end;
     return flag;
-  end;\n"
+  end;\n\n"
 ;;
 
   let atom2Str atoms =
