@@ -439,11 +439,6 @@ let consMsgBySubs m patList =
   |`Aenc(m1,k1) -> (* submessage are m1 and k1*)
                   let numM1 = getPatNum m1 patList in (* construct_i_by_numM1_numK1 *)
                   let numK1 = getPatNum k1 patList in
-                  (* let agK = match k1 with
-                            |`Pk r -> sprintf "loc%sPk" r
-                            |`Sk r -> sprintf "loc%sSk" r
-                            |_ -> ""
-                  in *)
                   sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numK1 numM1 numK1^
                   sprintf "  var index: indexType;\n"^
                   sprintf "      ---msg : Message;\n  begin\n"^
