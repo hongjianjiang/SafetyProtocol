@@ -297,9 +297,29 @@ function inverseKey(msgK:Message):Message;
   end;
 --- Sorry, construct_function of this pattern has not been written!
 
-function construct2By11(msgNo11, msgNo12:indexType):indexType;
+function construct2By11(msgNo11, msgNo12:indexType):Message;
   var index : indexType;
-      ---msg : Message;
+      msg : Message;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = e) then
+       if (msgs[i].expMsg1 = msgNo11 & msgs[i].expMsg2 = msgNo12) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := e;
+     msg.expMsg1 := msgNo11;
+     msg.expMsg2 := msgNo12;
+     msg.length := 1;
+   endif;
+   return msg;
+  end;
+function constructIndex2By11(msgNo11, msgNo12:indexType):indexType;
+  var index : indexType;
   begin
    index := 0;
    for i :indexType do
@@ -310,34 +330,46 @@ function construct2By11(msgNo11, msgNo12:indexType):indexType;
      endif;
    endfor;
    if (index = 0) then 
-     msg_end := msg_end + 1;
-     index := msg_end;
-     msgs[index].msgType := e;
-     msgs[index].expMsg1 := msgNo11;
-     msgs[index].expMsg2 := msgNo12;
-     msgs[index].length := 1;
+     index := msg_end+1;
    endif;
    return index;
   end;
-function construct3By21(msgNo21, msgNo12:indexType):indexType;
+function construct3By21(msgNo21, msgNo12:indexType):Message;
   var index : indexType;
-      ---msg : Message;
+      msg : Message;
   begin
    index := 0;
    for i :indexType do
      if (msgs[i].msgType = mod) then
        if (msgs[i].modMsg1 = msgNo21 & msgs[i].modMsg2 = msgNo12) then
          index := i;
+         msg := msgs[index];
        endif;
      endif;
    endfor;
    if (index = 0) then 
-     msg_end := msg_end + 1;
-     index := msg_end;
-     msgs[index].msgType := mod;
-     msgs[index].modMsg1 := msgNo21;
-     msgs[index].modMsg2 := msgNo12;
-     msgs[index].length := 1;
+     msg.msgType := mod;
+     msg.modMsg1 := msgNo21;
+     msg.modMsg2 := msgNo12;
+     msg.length := 1;
+   endif;
+   return msg;
+  end;
+function constructIndex3By21(msgNo21, msgNo12:indexType):indexType;
+  var index : indexType;
+  msg:Message;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = mod) then
+       if (msgs[i].modMsg1 = msgNo21 & msgs[i].modMsg2 = msgNo12) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+      index:=msg_end + 1;
    endif;
    return index;
   end;
@@ -345,9 +377,29 @@ function construct3By21(msgNo21, msgNo12:indexType):indexType;
 
 --- Sorry, construct_function of this pattern has not been written!
 
-function construct6By41(msgNo41, msgNo12:indexType):indexType;
+function construct6By41(msgNo41, msgNo12:indexType):Message;
   var index : indexType;
-      ---msg : Message;
+      msg : Message;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = e) then
+       if (msgs[i].expMsg1 = msgNo41 & msgs[i].expMsg2 = msgNo12) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := e;
+     msg.expMsg1 := msgNo41;
+     msg.expMsg2 := msgNo12;
+     msg.length := 1;
+   endif;
+   return msg;
+  end;
+function constructIndex6By41(msgNo41, msgNo12:indexType):indexType;
+  var index : indexType;
   begin
    index := 0;
    for i :indexType do
@@ -358,40 +410,72 @@ function construct6By41(msgNo41, msgNo12:indexType):indexType;
      endif;
    endfor;
    if (index = 0) then 
-     msg_end := msg_end + 1;
-     index := msg_end;
-     msgs[index].msgType := e;
-     msgs[index].expMsg1 := msgNo41;
-     msgs[index].expMsg2 := msgNo12;
-     msgs[index].length := 1;
+     index := msg_end+1;
    endif;
    return index;
   end;
-function construct7By61(msgNo61, msgNo12:indexType):indexType;
+function construct7By61(msgNo61, msgNo12:indexType):Message;
   var index : indexType;
-      ---msg : Message;
+      msg : Message;
   begin
    index := 0;
    for i :indexType do
      if (msgs[i].msgType = mod) then
        if (msgs[i].modMsg1 = msgNo61 & msgs[i].modMsg2 = msgNo12) then
          index := i;
+         msg := msgs[index];
        endif;
      endif;
    endfor;
    if (index = 0) then 
-     msg_end := msg_end + 1;
-     index := msg_end;
-     msgs[index].msgType := mod;
-     msgs[index].modMsg1 := msgNo61;
-     msgs[index].modMsg2 := msgNo12;
-     msgs[index].length := 1;
+     msg.msgType := mod;
+     msg.modMsg1 := msgNo61;
+     msg.modMsg2 := msgNo12;
+     msg.length := 1;
+   endif;
+   return msg;
+  end;
+function constructIndex7By61(msgNo61, msgNo12:indexType):indexType;
+  var index : indexType;
+  msg:Message;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = mod) then
+       if (msgs[i].modMsg1 = msgNo61 & msgs[i].modMsg2 = msgNo12) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+      index:=msg_end + 1;
    endif;
    return index;
   end;
-function construct8By57(msgNo51, msgNo72:indexType):indexType;
+function construct8By57(msgNo51, msgNo72:indexType):Message;
   var index: indexType;
-      ---msg : Message;
+      msg : Message;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = senc) then
+       if (msgs[i].sencMsg = msgNo51 & msgs[i].sencKey = msgNo72) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := senc;
+     msg.sencMsg := msgNo51;
+     msg.sencKey := msgNo72;
+     msg.length := 1;
+   endif;
+   return msg;
+  end;
+function constructIndex8By57(msgNo51, msgNo72:indexType):indexType;
+  var index: indexType;
   begin
    index := 0;
    for i :indexType do
@@ -402,12 +486,7 @@ function construct8By57(msgNo51, msgNo72:indexType):indexType;
      endif;
    endfor;
    if (index = 0) then 
-     msg_end := msg_end + 1;
-     index := msg_end;
-     msgs[index].msgType := senc;
-     msgs[index].sencMsg := msgNo51;
-     msgs[index].sencKey := msgNo72;
-     msgs[index].length := 1;
+      index:= msg_end + 1;
    endif;
    return index;
   end;
@@ -415,9 +494,29 @@ function construct8By57(msgNo51, msgNo72:indexType):indexType;
 
 --- Sorry, construct_function of this pattern has not been written!
 
-function construct11By107(msgNo101, msgNo72:indexType):indexType;
+function construct11By107(msgNo101, msgNo72:indexType):Message;
   var index: indexType;
-      ---msg : Message;
+      msg : Message;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = senc) then
+       if (msgs[i].sencMsg = msgNo101 & msgs[i].sencKey = msgNo72) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := senc;
+     msg.sencMsg := msgNo101;
+     msg.sencKey := msgNo72;
+     msg.length := 1;
+   endif;
+   return msg;
+  end;
+function constructIndex11By107(msgNo101, msgNo72:indexType):indexType;
+  var index: indexType;
   begin
    index := 0;
    for i :indexType do
@@ -428,12 +527,7 @@ function construct11By107(msgNo101, msgNo72:indexType):indexType;
      endif;
    endfor;
    if (index = 0) then 
-     msg_end := msg_end + 1;
-     index := msg_end;
-     msgs[index].msgType := senc;
-     msgs[index].sencMsg := msgNo101;
-     msgs[index].sencKey := msgNo72;
-     msgs[index].length := 1;
+      index:= msg_end + 1;
    endif;
    return index;
   end;
@@ -1684,17 +1778,23 @@ ruleset i:msgLen do
     rule "constructExp 2"  --pat2
       i<=pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] &
       j<=pat1Set.length & pat1Set.content[j] != 0 & Spy_known[pat1Set.content[j]] &
-      matchPat(msgs[construct2By11(pat1Set.content[i],pat1Set.content[j])], sPat2Set) &
-      !Spy_known[construct2By11(pat1Set.content[i],pat1Set.content[j])] 
+      matchPat(construct2By11(pat1Set.content[i],pat1Set.content[j]), sPat2Set) &
+      !Spy_known[constructIndex2By11(pat1Set.content[i],pat1Set.content[j])] 
       ==>
-      var construtExpNo:indexType;
+      var expMsgNo:indexType;
+      expMsg:Message;
       begin
         put "rule constructExp 2\n";
-        construtExpNo := construct2By11(pat1Set.content[i],pat1Set.content[j]);
-        Spy_known[construtExpNo]:=true;
-        if (!exist(pat2Set,construtExpNo)) then
+        expMsgNo := constructIndex2By11(pat1Set.content[i],pat1Set.content[j]);
+        if expMsgNo = msg_end + 1 then 
+          msg_end := msg_end + 1;
+          expMsg := construct2By11(pat1Set.content[i],pat1Set.content[j]);
+          msgs[expMsgNo] := expMsg;
+        endif;
+        Spy_known[expMsgNo]:=true;
+        if (!exist(pat2Set,expMsgNo)) then
           pat2Set.length:=pat2Set.length+1;
-          pat2Set.content[pat2Set.length]:=construtExpNo;
+          pat2Set.content[pat2Set.length]:=expMsgNo;
         endif;
       end;
   endruleset;
@@ -1741,17 +1841,23 @@ ruleset i:msgLen do
     rule "constructMod 3"  --pat3
       i<=pat2Set.length & pat2Set.content[i] != 0 & Spy_known[pat2Set.content[i]] &
       j<=pat1Set.length & pat1Set.content[j] != 0 & Spy_known[pat1Set.content[j]] &
-      matchPat(msgs[construct3By21(pat2Set.content[i],pat1Set.content[j])], sPat3Set) &
-      !Spy_known[construct3By21(pat2Set.content[i],pat1Set.content[j])]
+      matchPat(construct3By21(pat2Set.content[i],pat1Set.content[j]), sPat3Set) &
+      !Spy_known[constructIndex3By21(pat2Set.content[i],pat1Set.content[j])]
       ==>
-      var constructModNo:indexType;
+      var modMsgNo:indexType;
+      modMsg:Message;
       begin
         put "rule constructMod 3\n";
-        constructModNo := construct3By21(pat2Set.content[i],pat1Set.content[j]);
-        Spy_known[constructModNo]:=true;
-        if (!exist(pat3Set,constructModNo)) then
+        modMsgNo := constructIndex3By21(pat2Set.content[i],pat1Set.content[j]);
+        if modMsgNo = msg_end + 1 then
+          msg_end := msg_end + 1;
+          modMsg := construct3By21(pat2Set.content[i],pat1Set.content[j]);
+          msgs[modMsgNo] := modMsg;
+        endif;
+        Spy_known[modMsgNo]:=true;
+        if (!exist(pat3Set,modMsgNo)) then
           pat3Set.length:=pat3Set.length+1;
-          pat3Set.content[pat3Set.length]:=constructModNo;
+          pat3Set.content[pat3Set.length]:=modMsgNo;
         endif;
       end;
   endruleset;
@@ -1784,17 +1890,23 @@ ruleset i:msgLen do
     rule "constructExp 6"  --pat6
       i<=pat4Set.length & pat4Set.content[i] != 0 & Spy_known[pat4Set.content[i]] &
       j<=pat1Set.length & pat1Set.content[j] != 0 & Spy_known[pat1Set.content[j]] &
-      matchPat(msgs[construct6By41(pat4Set.content[i],pat1Set.content[j])], sPat6Set) &
-      !Spy_known[construct6By41(pat4Set.content[i],pat1Set.content[j])] 
+      matchPat(construct6By41(pat4Set.content[i],pat1Set.content[j]), sPat6Set) &
+      !Spy_known[constructIndex6By41(pat4Set.content[i],pat1Set.content[j])] 
       ==>
-      var construtExpNo:indexType;
+      var expMsgNo:indexType;
+      expMsg:Message;
       begin
         put "rule constructExp 6\n";
-        construtExpNo := construct6By41(pat4Set.content[i],pat1Set.content[j]);
-        Spy_known[construtExpNo]:=true;
-        if (!exist(pat6Set,construtExpNo)) then
+        expMsgNo := constructIndex6By41(pat4Set.content[i],pat1Set.content[j]);
+        if expMsgNo = msg_end + 1 then 
+          msg_end := msg_end + 1;
+          expMsg := construct6By41(pat4Set.content[i],pat1Set.content[j]);
+          msgs[expMsgNo] := expMsg;
+        endif;
+        Spy_known[expMsgNo]:=true;
+        if (!exist(pat6Set,expMsgNo)) then
           pat6Set.length:=pat6Set.length+1;
-          pat6Set.content[pat6Set.length]:=construtExpNo;
+          pat6Set.content[pat6Set.length]:=expMsgNo;
         endif;
       end;
   endruleset;
@@ -1841,17 +1953,23 @@ ruleset i:msgLen do
     rule "constructMod 7"  --pat7
       i<=pat6Set.length & pat6Set.content[i] != 0 & Spy_known[pat6Set.content[i]] &
       j<=pat1Set.length & pat1Set.content[j] != 0 & Spy_known[pat1Set.content[j]] &
-      matchPat(msgs[construct7By61(pat6Set.content[i],pat1Set.content[j])], sPat7Set) &
-      !Spy_known[construct7By61(pat6Set.content[i],pat1Set.content[j])]
+      matchPat(construct7By61(pat6Set.content[i],pat1Set.content[j]), sPat7Set) &
+      !Spy_known[constructIndex7By61(pat6Set.content[i],pat1Set.content[j])]
       ==>
-      var constructModNo:indexType;
+      var modMsgNo:indexType;
+      modMsg:Message;
       begin
         put "rule constructMod 7\n";
-        constructModNo := construct7By61(pat6Set.content[i],pat1Set.content[j]);
-        Spy_known[constructModNo]:=true;
-        if (!exist(pat7Set,constructModNo)) then
+        modMsgNo := constructIndex7By61(pat6Set.content[i],pat1Set.content[j]);
+        if modMsgNo = msg_end + 1 then
+          msg_end := msg_end + 1;
+          modMsg := construct7By61(pat6Set.content[i],pat1Set.content[j]);
+          msgs[modMsgNo] := modMsg;
+        endif;
+        Spy_known[modMsgNo]:=true;
+        if (!exist(pat7Set,modMsgNo)) then
           pat7Set.length:=pat7Set.length+1;
-          pat7Set.content[pat7Set.length]:=constructModNo;
+          pat7Set.content[pat7Set.length]:=modMsgNo;
         endif;
       end;
   endruleset;
@@ -1889,21 +2007,25 @@ ruleset i:msgLen do
     rule "sencrypt 8"  --pat8
       i<=pat5Set.length & pat5Set.content[i] != 0 & Spy_known[pat5Set.content[i]] &
       j<=pat7Set.length & pat7Set.content[j] != 0 & Spy_known[pat7Set.content[j]] &
-      matchPat(msgs[construct8By57(pat5Set.content[i],pat7Set.content[j])], sPat8Set) &
-      !Spy_known[construct8By57(pat5Set.content[i],pat7Set.content[j])] 
+      matchPat(construct8By57(pat5Set.content[i],pat7Set.content[j]), sPat8Set) &
+      !Spy_known[constructIndex8By57(pat5Set.content[i],pat7Set.content[j])] 
        ==>
       var encMsgNo:indexType;
+      encMsg:Message;
       begin
         put "rule sencrypt8\n";
         if (msgs[pat7Set.content[j]].k.encType=MsgK) then
-          encMsgNo := construct8By57(pat5Set.content[i],pat7Set.content[j]);
+          encMsgNo := constructIndex8By57(pat5Set.content[i],pat7Set.content[j]);
+          if encMsgNo = msg_end + 1 then 
+             msg_end :=msg_end + 1;
+             encMsg:= construct8By57(pat5Set.content[i],pat7Set.content[j]);
+             msgs[encMsgNo] := encMsg;
+          endif;
           if (!exist(pat8Set,encMsgNo)) then
             pat8Set.length := pat8Set.length+1;
             pat8Set.content[pat8Set.length]:=encMsgNo;
           endif;
-          if (!Spy_known[encMsgNo]) then
-            Spy_known[encMsgNo] := true;
-          endif;
+          Spy_known[encMsgNo] := true;
         endif;
       end;
   endruleset;
@@ -1941,21 +2063,25 @@ ruleset i:msgLen do
     rule "sencrypt 11"  --pat11
       i<=pat10Set.length & pat10Set.content[i] != 0 & Spy_known[pat10Set.content[i]] &
       j<=pat7Set.length & pat7Set.content[j] != 0 & Spy_known[pat7Set.content[j]] &
-      matchPat(msgs[construct11By107(pat10Set.content[i],pat7Set.content[j])], sPat11Set) &
-      !Spy_known[construct11By107(pat10Set.content[i],pat7Set.content[j])] 
+      matchPat(construct11By107(pat10Set.content[i],pat7Set.content[j]), sPat11Set) &
+      !Spy_known[constructIndex11By107(pat10Set.content[i],pat7Set.content[j])] 
        ==>
       var encMsgNo:indexType;
+      encMsg:Message;
       begin
         put "rule sencrypt11\n";
         if (msgs[pat7Set.content[j]].k.encType=MsgK) then
-          encMsgNo := construct11By107(pat10Set.content[i],pat7Set.content[j]);
+          encMsgNo := constructIndex11By107(pat10Set.content[i],pat7Set.content[j]);
+          if encMsgNo = msg_end + 1 then 
+             msg_end :=msg_end + 1;
+             encMsg:= construct11By107(pat10Set.content[i],pat7Set.content[j]);
+             msgs[encMsgNo] := encMsg;
+          endif;
           if (!exist(pat11Set,encMsgNo)) then
             pat11Set.length := pat11Set.length+1;
             pat11Set.content[pat11Set.length]:=encMsgNo;
           endif;
-          if (!Spy_known[encMsgNo]) then
-            Spy_known[encMsgNo] := true;
-          endif;
+          Spy_known[encMsgNo] := true;
         endif;
       end;
   endruleset;

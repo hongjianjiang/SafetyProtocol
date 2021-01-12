@@ -439,9 +439,28 @@ let consMsgBySubs m patList =
   |`Aenc(m1,k1) -> (* submessage are m1 and k1*)
                   let numM1 = getPatNum m1 patList in (* construct_i_by_numM1_numK1 *)
                   let numK1 = getPatNum k1 patList in
-                  sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numK1 numM1 numK1^
+                  sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):Message;\n" i numM1 numK1 numM1 numK1^
                   sprintf "  var index: indexType;\n"^
-                  sprintf "      ---msg : Message;\n  begin\n"^
+                  sprintf "      msg : Message;\n  begin\n"^
+                  sprintf "   index := 0;\n"^      
+                  sprintf "   for i :indexType do\n"^
+                  sprintf "     if (msgs[i].msgType = aenc) then\n"^
+                  sprintf "       if (msgs[i].aencMsg = msgNo%d1 & msgs[i].aencKey = msgNo%d2) then\n" numM1 numK1 ^
+                  sprintf "         index := i;\n" ^
+                  sprintf "         msg := msgs[index];\n" ^
+                  sprintf "       endif;\n" ^
+                  sprintf "     endif;\n" ^
+                  sprintf "   endfor;\n" ^
+                  sprintf "   if (index = 0) then \n"^
+                  sprintf "     msg.msgType := aenc;\n" ^
+                  sprintf "     msg.aencMsg := msgNo%d1;\n" numM1 ^
+                  sprintf "     msg.aencKey := msgNo%d2;\n" numK1 ^
+                  sprintf "     msg.length := 1;\n"^
+                  sprintf "   endif;\n"^
+                  sprintf "   return msg;\n" ^
+                  sprintf "  end;\n\n"  ^ 
+                  sprintf "function constructIndex%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numK1 numM1 numK1^
+                  sprintf "  var index: indexType;\n  begin\n"^
                   sprintf "   index := 0;\n"^      
                   sprintf "   for i :indexType do\n"^
                   sprintf "     if (msgs[i].msgType = aenc) then\n"^
@@ -451,22 +470,36 @@ let consMsgBySubs m patList =
                   sprintf "     endif;\n" ^
                   sprintf "   endfor;\n" ^
                   sprintf "   if (index = 0) then \n"^
-                  sprintf "     msg_end := msg_end + 1;\n" ^
-                  sprintf "     index := msg_end;\n" ^
-                  sprintf "     msgs[index].msgType := aenc;\n" ^
-                  sprintf "     msgs[index].aencMsg := msgNo%d1;\n" numM1 ^
-                  sprintf "     msgs[index].aencKey := msgNo%d2;\n" numK1 ^
-                  sprintf "     msgs[index].length := 1;\n"^
+                  sprintf "     index := msg_end + 1;\n" ^
                   sprintf "   endif;\n"^
                   sprintf "   return index;\n" ^
                   sprintf "  end;\n\n" 
   |`Senc(m1,symK) -> (* submessage are m1 and symK *)
                   let numM1 = getPatNum m1 patList in (* construct_i_by_numM1_numK1 *)
                   let numK = getPatNum symK patList in
-                  sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numK numM1 numK^
+                  sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):Message;\n" i numM1 numK numM1 numK^
                   sprintf "  var index: indexType;\n"^
-                  sprintf "      ---msg : Message;\n  begin\n"^
+                  sprintf "      msg : Message;\n  begin\n"^
                   sprintf "   index := 0;\n"^      
+                  sprintf "   for i :indexType do\n"^
+                  sprintf "     if (msgs[i].msgType = senc) then\n"^
+                  sprintf "       if (msgs[i].sencMsg = msgNo%d1 & msgs[i].sencKey = msgNo%d2) then\n" numM1 numK ^
+                  sprintf "         index := i;\n" ^
+                  sprintf "         msg := msgs[index];\n" ^
+                  sprintf "       endif;\n" ^
+                  sprintf "     endif;\n" ^
+                  sprintf "   endfor;\n" ^
+                  sprintf "   if (index = 0) then \n"^
+                  sprintf "     msg.msgType := senc;\n" ^
+                  sprintf "     msg.sencMsg := msgNo%d1;\n" numM1 ^
+                  sprintf "     msg.sencKey := msgNo%d2;\n" numK ^
+                  sprintf "     msg.length := 1;\n"^
+                  sprintf "   endif;\n"^
+                  sprintf "   return msg;\n" ^
+                  sprintf "  end;\n" ^ 
+                  sprintf "function constructIndex%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numK numM1 numK^
+                  sprintf "  var index: indexType;\n  begin\n"^
+                  sprintf "   index := 0;\n"^  
                   sprintf "   for i :indexType do\n"^
                   sprintf "     if (msgs[i].msgType = senc) then\n"^
                   sprintf "       if (msgs[i].sencMsg = msgNo%d1 & msgs[i].sencKey = msgNo%d2) then\n" numM1 numK ^
@@ -475,12 +508,7 @@ let consMsgBySubs m patList =
                   sprintf "     endif;\n" ^
                   sprintf "   endfor;\n" ^
                   sprintf "   if (index = 0) then \n"^
-                  sprintf "     msg_end := msg_end + 1;\n" ^
-                  sprintf "     index := msg_end;\n" ^
-                  sprintf "     msgs[index].msgType := senc;\n" ^
-                  sprintf "     msgs[index].sencMsg := msgNo%d1;\n" numM1 ^
-                  sprintf "     msgs[index].sencKey := msgNo%d2;\n" numK ^
-                  sprintf "     msgs[index].length := 1;\n"^
+                  sprintf "      index:= msg_end + 1;\n" ^
                   sprintf "   endif;\n"^
                   sprintf "   return index;\n" ^
                   sprintf "  end;\n"
@@ -489,33 +517,66 @@ let consMsgBySubs m patList =
                   let msgNoStr = String.concat ~sep:"," (List.mapi ~f:(fun j m -> sprintf "msgNo%d" (j+1)) msgs) in
                   let ifStr = String.concat ~sep:" & " (List.mapi ~f:(fun j m -> sprintf "msgs[i].concatPart[%d] = msgNo%d" (j+1) (j+1) )msgs)
                   in
-                  let assignStr = String.concat (List.mapi ~f:(fun j m -> sprintf "     msgs[index].concatPart[%d] := msgNo%d;\n" (j+1) (j+1)) msgs)
+                  let assignStr = String.concat (List.mapi ~f:(fun j m -> sprintf "     msg.concatPart[%d] := msgNo%d;\n" (j+1) (j+1)) msgs)
                   in
-                  sprintf "function construct%dBy%s(%s:indexType):indexType;\n" i subMsgNo msgNoStr ^
+                  sprintf "function construct%dBy%s(%s:indexType):Message;\n" i subMsgNo msgNoStr ^
                   sprintf "  var index : indexType;\n"^
-                  sprintf "      ---msg : Message;\n  begin\n"^
+                  sprintf "      msg : Message;\n  begin\n"^
                   sprintf "   index := 0;\n"^ 
                   sprintf "   for i : indexType do\n"^
                   sprintf "     if (msgs[i].msgType = concat & msgs[i].length = %d) then\n" (List.length msgs) ^
                   sprintf "       if (%s) then\n" ifStr ^
-                  sprintf "         index := i;"^
-                  sprintf "       endif;"^
+                  sprintf "         index := i;\n"^
+                  sprintf "         msg := msgs[index];\n" ^ 
+                  sprintf "       endif;\n"^
                   sprintf "     endif;\n" ^
                   sprintf "   endfor;\n"^
                   sprintf "   if (index = 0) then \n"^
-                  sprintf "     msg_end := msg_end + 1;\n" ^
-                  sprintf "     index := msg_end;\n" ^
-                  sprintf "     msgs[index].msgType := concat;\n" ^
+                  sprintf "     msg.msgType := concat;\n" ^
                   sprintf "%s" assignStr ^
-                  sprintf "     msgs[index].length := %d;\n" (List.length msgs)^
+                  sprintf "     msg.length := %d;\n" (List.length msgs)^
+                  sprintf "   endif;\n"^
+                  sprintf "   return msg;\n" ^
+                  sprintf "  end;\n\n"  ^
+                  sprintf "function constructIndex%dBy%s(%s:indexType):indexType;\n" i subMsgNo msgNoStr ^
+                  sprintf "  var index : indexType;\n  begin\n"^
+                  sprintf "   index := 0;\n"^ 
+                  sprintf "   for i : indexType do\n"^
+                  sprintf "     if (msgs[i].msgType = concat & msgs[i].length = %d) then\n" (List.length msgs) ^
+                  sprintf "       if (%s) then\n" ifStr ^
+                  sprintf "         index := i;\n"^
+                  sprintf "       endif;\n"^
+                  sprintf "     endif;\n" ^
+                  sprintf "   endfor;\n"^
+                  sprintf "   if (index = 0) then \n"^
+                  sprintf "     index:=msg_end+1;\n" ^
                   sprintf "   endif;\n"^
                   sprintf "   return index;\n" ^
                   sprintf "  end;\n\n"        
   |`Exp(m1,m2) ->  let numM1 = getPatNum m1 patList in (* construct_i_by_numM1_numK1 *)
                    let numM2 = getPatNum m2 patList in
-                   sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numM2 numM1 numM2 ^
+                   sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):Message;\n" i numM1 numM2 numM1 numM2 ^
                    sprintf "  var index : indexType;\n"^
-                   sprintf "      ---msg : Message;\n  begin\n"^
+                   sprintf "      msg : Message;\n  begin\n"^
+                   sprintf "   index := 0;\n"^ 
+                   sprintf "   for i :indexType do\n"^
+                   sprintf "     if (msgs[i].msgType = e) then\n"^
+                   sprintf "       if (msgs[i].expMsg1 = msgNo%d1 & msgs[i].expMsg2 = msgNo%d2) then\n" numM1 numM2 ^
+                   sprintf "         index := i;\n" ^
+                   sprintf "         msg := msgs[index];\n" ^
+                   sprintf "       endif;\n" ^
+                   sprintf "     endif;\n" ^
+                   sprintf "   endfor;\n" ^  
+                   sprintf "   if (index = 0) then \n"^
+                   sprintf "     msg.msgType := e;\n" ^
+                   sprintf "     msg.expMsg1 := msgNo%d1;\n" numM1 ^
+                   sprintf "     msg.expMsg2 := msgNo%d2;\n" numM2 ^
+                   sprintf "     msg.length := 1;\n"^
+                   sprintf "   endif;\n"^
+                   sprintf "   return msg;\n" ^
+                   sprintf "  end;\n" ^
+                   sprintf "function constructIndex%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numM2 numM1 numM2 ^
+                   sprintf "  var index : indexType;\n  begin\n"^
                    sprintf "   index := 0;\n"^ 
                    sprintf "   for i :indexType do\n"^
                    sprintf "     if (msgs[i].msgType = e) then\n"^
@@ -525,35 +586,45 @@ let consMsgBySubs m patList =
                    sprintf "     endif;\n" ^
                    sprintf "   endfor;\n" ^  
                    sprintf "   if (index = 0) then \n"^
-                   sprintf "     msg_end := msg_end + 1;\n" ^
-                   sprintf "     index := msg_end;\n" ^
-                   sprintf "     msgs[index].msgType := e;\n" ^
-                   sprintf "     msgs[index].expMsg1 := msgNo%d1;\n" numM1 ^
-                   sprintf "     msgs[index].expMsg2 := msgNo%d2;\n" numM2 ^
-                   sprintf "     msgs[index].length := 1;\n"^
+                   sprintf "     index := msg_end+1;\n" ^
                    sprintf "   endif;\n"^
                    sprintf "   return index;\n" ^
                    sprintf "  end;\n"
   |`Mod(m1,m2) ->  let numM1 = getPatNum m1 patList in (* construct_i_by_numM1_numK1 *)
                    let numM2 = getPatNum m2 patList in
-                   sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numM2 numM1 numM2 ^
+                   sprintf "function construct%dBy%d%d(msgNo%d1, msgNo%d2:indexType):Message;\n" i numM1 numM2 numM1 numM2 ^
                    sprintf "  var index : indexType;\n"^
-                   sprintf "      ---msg : Message;\n  begin\n"^
+                   sprintf "      msg : Message;\n  begin\n"^
                    sprintf "   index := 0;\n"^ 
                    sprintf "   for i :indexType do\n"^
                    sprintf "     if (msgs[i].msgType = mod) then\n"^
                    sprintf "       if (msgs[i].modMsg1 = msgNo%d1 & msgs[i].modMsg2 = msgNo%d2) then\n" numM1 numM2 ^
                    sprintf "         index := i;\n" ^
+                   sprintf "         msg := msgs[index];\n" ^
                    sprintf "       endif;\n" ^
                    sprintf "     endif;\n" ^
                    sprintf "   endfor;\n" ^  
                    sprintf "   if (index = 0) then \n"^
-                   sprintf "     msg_end := msg_end + 1;\n" ^
-                   sprintf "     index := msg_end;\n" ^
-                   sprintf "     msgs[index].msgType := mod;\n" ^
-                   sprintf "     msgs[index].modMsg1 := msgNo%d1;\n" numM1 ^
-                   sprintf "     msgs[index].modMsg2 := msgNo%d2;\n" numM2 ^
-                   sprintf "     msgs[index].length := 1;\n"^
+                   sprintf "     msg.msgType := mod;\n" ^
+                   sprintf "     msg.modMsg1 := msgNo%d1;\n" numM1 ^
+                   sprintf "     msg.modMsg2 := msgNo%d2;\n" numM2 ^
+                   sprintf "     msg.length := 1;\n"^
+                   sprintf "   endif;\n"^
+                   sprintf "   return msg;\n" ^
+                   sprintf "  end;\n" ^ 
+                   sprintf "function constructIndex%dBy%d%d(msgNo%d1, msgNo%d2:indexType):indexType;\n" i numM1 numM2 numM1 numM2 ^
+                   sprintf "  var index : indexType;\n  msg:Message;\n  begin\n"^
+                   sprintf "   index := 0;\n"^ 
+                   sprintf "   for i :indexType do\n"^
+                   sprintf "     if (msgs[i].msgType = mod) then\n"^
+                   sprintf "       if (msgs[i].modMsg1 = msgNo%d1 & msgs[i].modMsg2 = msgNo%d2) then\n" numM1 numM2 ^
+                   sprintf "         index := i;\n" ^
+                   sprintf "         msg := msgs[index];\n" ^
+                   sprintf "       endif;\n" ^
+                   sprintf "     endif;\n" ^
+                   sprintf "   endfor;\n" ^  
+                   sprintf "   if (index = 0) then \n"^
+                   sprintf "      index:=msg_end + 1;\n" ^
                    sprintf "   endif;\n"^
                    sprintf "   return index;\n" ^
                    sprintf "  end;\n"
@@ -2007,39 +2078,45 @@ let sencryptRule (m,m2) patList =
   | `K(r1,r2) ->sprintf "    rule \"sencrypt %d\"  --pat%d\n" i i ^
   sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" mNum mNum mNum ^
   sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" kNum kNum kNum ^
-  sprintf "      matchPat(msgs[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])], sPat%dSet) &\n" i mNum kNum mNum kNum i ^ 
-  sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n       ==>\n" i mNum kNum mNum kNum ^
-  sprintf "      var encMsgNo:indexType;\n"^
+  sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i mNum kNum mNum kNum i ^ 
+  sprintf "      !Spy_known[constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n       ==>\n" i mNum kNum mNum kNum ^
+  sprintf "      var encMsgNo:indexType;\n      encMsg:Message;\n"^
   sprintf "      begin\n"^
   sprintf "        put \"rule sencrypt%d\\n\";\n" i^
   sprintf "        if (msgs[pat%dSet.content[j]].k.encType=Symk) then\n" kNum^ (*ag=intruder.B*)
-  sprintf "          encMsgNo := construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i mNum kNum mNum kNum^
+  sprintf "          encMsgNo := constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i mNum kNum mNum kNum^
+  sprintf "          if encMsgNo = msg_end + 1 then \n" ^ 
+  sprintf "             msg_end :=msg_end + 1;\n" ^
+  sprintf "             encMsg:= construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i mNum kNum mNum kNum ^
+  sprintf "             msgs[encMsgNo] := encMsg;\n" ^
+  sprintf "          endif;\n" ^ 
   sprintf "          if (!exist(pat%dSet,encMsgNo)) then\n" i^
   sprintf "            pat%dSet.length := pat%dSet.length+1;\n" i i^
   sprintf "            pat%dSet.content[pat%dSet.length]:=encMsgNo;\n" i i^
   sprintf "          endif;\n"^
-  sprintf "          if (!Spy_known[encMsgNo]) then\n"^
-  sprintf "            Spy_known[encMsgNo] := true;\n"^
-  sprintf "          endif;\n"^
+  sprintf "          Spy_known[encMsgNo] := true;\n"^
   sprintf "        endif;\n"^
   sprintf "      end;\n"
   | _->sprintf "    rule \"sencrypt %d\"  --pat%d\n" i i ^
   sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" mNum mNum mNum ^
   sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" kNum kNum kNum ^
-  sprintf "      matchPat(msgs[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])], sPat%dSet) &\n" i mNum kNum mNum kNum i ^ 
-  sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n       ==>\n" i mNum kNum mNum kNum ^
-  sprintf "      var encMsgNo:indexType;\n"^
+  sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i mNum kNum mNum kNum i ^ 
+  sprintf "      !Spy_known[constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n       ==>\n" i mNum kNum mNum kNum ^
+  sprintf "      var encMsgNo:indexType;\n      encMsg:Message;\n"^
   sprintf "      begin\n"^
   sprintf "        put \"rule sencrypt%d\\n\";\n" i^
   sprintf "        if (msgs[pat%dSet.content[j]].k.encType=MsgK) then\n" kNum^ (*ag=intruder.B*)
-  sprintf "          encMsgNo := construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i mNum kNum mNum kNum^
+  sprintf "          encMsgNo := constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i mNum kNum mNum kNum^
+  sprintf "          if encMsgNo = msg_end + 1 then \n" ^ 
+  sprintf "             msg_end :=msg_end + 1;\n" ^
+  sprintf "             encMsg:= construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i mNum kNum mNum kNum ^
+  sprintf "             msgs[encMsgNo] := encMsg;\n" ^
+  sprintf "          endif;\n" ^ 
   sprintf "          if (!exist(pat%dSet,encMsgNo)) then\n" i^
   sprintf "            pat%dSet.length := pat%dSet.length+1;\n" i i^
   sprintf "            pat%dSet.content[pat%dSet.length]:=encMsgNo;\n" i i^
   sprintf "          endif;\n"^
-  sprintf "          if (!Spy_known[encMsgNo]) then\n"^
-  sprintf "            Spy_known[encMsgNo] := true;\n"^
-  sprintf "          endif;\n"^
+  sprintf "          Spy_known[encMsgNo] := true;\n"^
   sprintf "        endif;\n"^
   sprintf "      end;\n"
 ;;
@@ -2115,19 +2192,22 @@ and printEncRule (m,k) i i1 i2 =
   sprintf "    rule \"aencrypt %d\"	---pat%d\n" i i^
   sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" i1 i1 i1 ^
   sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" i2 i2 i2 ^
-  sprintf "      matchPat(msgs[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])], sPat%dSet) &\n" i i1 i2 i1 i2 i ^ 
-  sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n    ==>\n" i i1 i2 i1 i2 ^
-  sprintf "      var encMsgNo:indexType;\n"^
+  sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i i1 i2 i1 i2 i ^ 
+  sprintf "      !Spy_known[constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n    ==>\n" i i1 i2 i1 i2 ^
+  sprintf "      var encMsgNo:indexType;\n      encMsg:Message;\n"^
   sprintf "      begin\n"^
   sprintf "        put \"rule aencrypt%d\\n\";\n" i^
   sprintf "        if (msgs[pat%dSet.content[j]].k.encType=PK) then\n" i2^ (*ag=intruder.B*)
-  sprintf "          encMsgNo := construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i i1 i2 i1 i2^
+  sprintf "          encMsgNo := constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i i1 i2 i1 i2^
+  sprintf "          if encMsgNo = msg_end + 1 then \n" ^ 
+  sprintf "             msg_end :=msg_end + 1;\n" ^
+  sprintf "             encMsg := construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i i1 i2 i1 i2^
+  sprintf "             msgs[encMsgNo] := encMsg;\n" ^
+  sprintf "          endif;\n" ^ 
   sprintf "          if (!exist(pat%dSet,encMsgNo)) then\n" i^
   sprintf "            pat%dSet.length := pat%dSet.length+1;\n            pat%dSet.content[pat%dSet.length]:=encMsgNo;\n" i i i i^
   sprintf "          endif;\n"^
-  sprintf "          if (!Spy_known[encMsgNo]) then\n"^
-  sprintf "            Spy_known[encMsgNo] := true;\n"^
-  sprintf "          endif;\n"^
+  sprintf "          Spy_known[encMsgNo] := true;\n"^
   sprintf "        endif;\n"^
   sprintf "      end;\n"
   (*printf "    end;\n";*)
@@ -2175,11 +2255,16 @@ let enconcatRule msgs patList =
   let patSetStr = String.concat ~sep:"," (List.mapi ~f:(fun j m -> sprintf "pat%dSet.content[i%d]" (getPatNum m patList) (j+1)) msgs)
   in
   str1 ^ 
-  sprintf " &\n      matchPat(msgs[construct%dBy%s(%s)], sPat%dSet)&\n" i subMsgNo patSetStr i ^
-  sprintf "      !Spy_known[construct%dBy%s(%s)] \n      ==>\n" i subMsgNo patSetStr ^ 
-  sprintf "      var concatMsgNo:indexType;\n      begin\n" ^
+  sprintf " &\n      matchPat(construct%dBy%s(%s), sPat%dSet)&\n" i subMsgNo patSetStr i ^
+  sprintf "      !Spy_known[constructIndex%dBy%s(%s)] \n      ==>\n" i subMsgNo patSetStr ^ 
+  sprintf "      var concatMsgNo:indexType;\n      concatMsg:Message;\n      begin\n" ^
   sprintf "        put \"rule enconcat%d\\n\";\n" i^
-  sprintf "        concatMsgNo := construct%dBy%s(%s);\n" i subMsgNo patSetStr ^
+  sprintf "        concatMsgNo := constructIndex%dBy%s(%s);\n" i subMsgNo patSetStr ^
+  sprintf "        if concatMsgNo = msg_end + 1 then \n" ^ 
+  sprintf "          msg_end :=msg_end + 1;\n" ^
+  sprintf "          concatMsg:= construct%dBy%s(%s);\n" i subMsgNo patSetStr ^
+  sprintf "          msgs[concatMsgNo] := concatMsg;\n" ^
+  sprintf "        endif;\n" ^ 
   sprintf "        Spy_known[concatMsgNo]:=true;\n" ^
   sprintf "        if (!exist(pat%dSet,concatMsgNo)) then\n" i ^
   sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
@@ -2233,16 +2318,21 @@ let destructModRule (m1,m2) patList =
     sprintf "    rule \"constructMod %d\"  --pat%d\n" i i ^
     sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" m1Num m1Num m1Num ^
     sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" m2Num m2Num m2Num ^
-    sprintf "      matchPat(msgs[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])], sPat%dSet) &\n" i m1Num m2Num m1Num m2Num i ^ 
-    sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])]\n      ==>\n" i m1Num m2Num m1Num m2Num ^
-    sprintf "      var constructModNo:indexType;\n"^
+    sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i m1Num m2Num m1Num m2Num i ^ 
+    sprintf "      !Spy_known[constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])]\n      ==>\n" i m1Num m2Num m1Num m2Num ^
+    sprintf "      var modMsgNo:indexType;\n      modMsg:Message;\n"^
     sprintf "      begin\n"^
     sprintf "        put \"rule constructMod %d\\n\";\n" i^
-    sprintf "        constructModNo := construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i m1Num m2Num m1Num m2Num ^
-    sprintf "        Spy_known[constructModNo]:=true;\n" ^
-    sprintf "        if (!exist(pat%dSet,constructModNo)) then\n" i ^
+    sprintf "        modMsgNo := constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i m1Num m2Num m1Num m2Num ^
+    sprintf "        if modMsgNo = msg_end + 1 then\n" ^
+    sprintf "          msg_end := msg_end + 1;\n" ^ 
+    sprintf "          modMsg := construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i m1Num m2Num m1Num m2Num ^
+    sprintf "          msgs[modMsgNo] := modMsg;\n" ^
+    sprintf "        endif;\n" ^
+    sprintf "        Spy_known[modMsgNo]:=true;\n" ^
+    sprintf "        if (!exist(pat%dSet,modMsgNo)) then\n" i ^
     sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
-    sprintf "          pat%dSet.content[pat%dSet.length]:=constructModNo;\n" i i ^
+    sprintf "          pat%dSet.content[pat%dSet.length]:=modMsgNo;\n" i i ^
     sprintf "        endif;\n" ^
     sprintf "      end;\n"
 
@@ -2295,16 +2385,21 @@ let destructExpRule (m1,m2) patList =
     sprintf "    rule \"constructExp %d\"  --pat%d\n" i i ^
     sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" m1Num m1Num m1Num ^
     sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" m2Num m2Num m2Num ^
-    sprintf "      matchPat(msgs[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])], sPat%dSet) &\n" i m1Num m2Num m1Num m2Num i ^ 
-    sprintf "      !Spy_known[construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n      ==>\n" i m1Num m2Num m1Num m2Num ^
-    sprintf "      var construtExpNo:indexType;\n"^
+    sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i m1Num m2Num m1Num m2Num i ^ 
+    sprintf "      !Spy_known[constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n      ==>\n" i m1Num m2Num m1Num m2Num ^
+    sprintf "      var expMsgNo:indexType;\n      expMsg:Message;\n"^
     sprintf "      begin\n"^
     sprintf "        put \"rule constructExp %d\\n\";\n" i^
-    sprintf "        construtExpNo := construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i m1Num m2Num m1Num m2Num ^
-    sprintf "        Spy_known[construtExpNo]:=true;\n" ^
-    sprintf "        if (!exist(pat%dSet,construtExpNo)) then\n" i ^
+    sprintf "        expMsgNo := constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i m1Num m2Num m1Num m2Num ^
+    sprintf "        if expMsgNo = msg_end + 1 then \n" ^ 
+    sprintf "          msg_end := msg_end + 1;\n" ^ 
+    sprintf "          expMsg := construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]);\n" i m1Num m2Num m1Num m2Num ^
+    sprintf "          msgs[expMsgNo] := expMsg;\n" ^
+    sprintf "        endif;\n" ^
+    sprintf "        Spy_known[expMsgNo]:=true;\n" ^
+    sprintf "        if (!exist(pat%dSet,expMsgNo)) then\n" i ^
     sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
-    sprintf "          pat%dSet.content[pat%dSet.length]:=construtExpNo;\n" i i ^
+    sprintf "          pat%dSet.content[pat%dSet.length]:=expMsgNo;\n" i i ^
     sprintf "        endif;\n" ^
     sprintf "      end;\n"
 
