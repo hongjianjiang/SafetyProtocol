@@ -650,10 +650,7 @@ let genMatchAgent () =
   var flag : boolean;
   begin
     flag := false;
-    if (Ag = anyAgent) then
-      flag := true;
-      Ag := locAg;
-    elsif (locAg = Ag) then
+    if (Ag = anyAgent | locAg = Ag) then
       flag := true;
     else
       flag := false;
@@ -671,12 +668,9 @@ let genMatchTmp () =
     get_msgNo(m,index2);
     get_msgNo(locm,index1);
     if (m.msgType = tmp) then 
-      if (m.tmpPart =0 ) then 
+      if (m.tmpPart =0 | index1 = index2) then 
         flag := true;
-        m :=locm;
       endif;
-    elsif (index1 = index2) then 
-      flag := true;
     else 
       flag := false;
     endif;
@@ -689,11 +683,8 @@ let genMatchNonce () =
   var flag : boolean;
   begin
     flag := false;
-    if (Na = anyNonce) then
+    if (Na = anyNonce | locNa = Na) then
       flag := true;
-      Na := locNa;
-    elsif (locNa = Na) then
-      flag:=true;
     else
       flag := false;
     endif;
@@ -705,11 +696,8 @@ let genMatchNumber ()  =
   var flag : boolean;
   begin
     flag := false;
-    if (Nm = anyNumber) then
+    if (Nm = anyNumber | locNm = Nm) then
       flag := true;
-      Nm := locNm;
-    elsif (locNm = Nm) then
-      flag:=true;
     else
       flag := false;
     endif;

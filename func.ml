@@ -641,6 +641,7 @@ let rec getMsgs actions =
     sprintf "   if(flag_pat%d) then\n" patNum ^
     sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
+    sprintf "%s" (atoms2Str1 atoms rolename msgofRolename) ^
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
@@ -654,6 +655,7 @@ let rec getMsgs actions =
     sprintf "   if(flag_pat%d & %s_known[msg.sencKey]) then\n" patNum rolename ^
     sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
+    sprintf "%s" (atoms2Str1 atoms rolename msgofRolename) ^
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
@@ -667,6 +669,7 @@ let rec getMsgs actions =
     sprintf "   if(flag_pat%d) then\n" patNum ^
     sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
+    sprintf "%s" (atoms2Str1 atoms rolename msgofRolename) ^
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
@@ -740,18 +743,6 @@ let rec getMsgs actions =
       |_ -> ()
     done;
     String.concat ~sep:"," !str'
-  (* let loc = "role"^rolename^"[i].loc" in
-    String.concat ~sep:"," (List.map ~f:(fun a ->
-    match a with
-    |`Var n -> loc ^ n
-    |`Str r -> loc ^ r
-    |`Pk r -> loc ^ r
-    |`Sk r -> loc ^ r
-    |`K (r1,r2) -> sprintf "%s%s," loc r1 ^
-                   sprintf "%s%s" loc r2
-    |_ -> "null") atoms)
-  *)
-  
   and atoms2Str atoms rolename msgofRolename = 
     (* let loc = "role"^rolename^"[i].loc_" in   *)
     let atoms' = ref [] in
@@ -817,7 +808,71 @@ let rec getMsgs actions =
       |_ -> ()
     done;
     String.concat ~sep:" & " !strlist
-  
+    and atoms2Str1 atoms rolename msgofRolename = 
+    (* let loc = "role"^rolename^"[i].loc_" in   *)
+    let atoms' = ref [] in
+    let strlist1 = ref [] in
+    for i = 0 to (List.length atoms)-1 do
+      match List.nth atoms i with
+      |Some (`Var n) -> let n' = "nonce_"^n in
+                        if listwithout !atoms' n' then
+                        begin 
+                          atoms' := !atoms'@[n'];
+                          let nstr = sprintf "       if role%s[i].%s = anyNonce then\n        role%s[i].%s :=role%s[i].loc%s;\n       endif;\n" rolename n rolename n rolename n in
+                          strlist1 := !strlist1@[nstr];
+                        end
+      |Some (`Const n) -> let n' = "number_"^n in
+                        if listwithout !atoms' n' then
+                        begin 
+                          atoms' := !atoms'@[n'];
+                          let nstr = sprintf "       if role%s[i].%s = anyNumber then\n        role%s[i].%s :=role%s[i].loc%s;\n       endif;\n" rolename n rolename n rolename n in
+                          strlist1 := !strlist1@[nstr];
+                        end
+      |Some (`Tmp m) -> let m' = "tmp_"^m in 
+                        if listwithout !atoms' m' then 
+                        begin 
+                          atoms' :=!atoms' @ [m'];
+                          let mstr = sprintf "       if role%s[i].%s.tmpPart = 0 then\n        role%s[i].%s :=role%s[i].loc%s;\n       endif;\n" rolename m rolename m rolename m in
+                          strlist1 := !strlist1@[mstr];
+                        end
+      |Some (`Str r) -> let r' = "agent_"^r in
+                        if listwithout !atoms' r' then 
+                        begin
+                          atoms' := !atoms'@[r'];
+                          let rstr = sprintf "       if role%s[i].%s = anyAgent then\n        role%s[i].%s :=role%s[i].loc%s;\n       endif;\n" rolename r rolename r rolename r in
+                          strlist1 := !strlist1@[rstr];
+                        end
+      |Some (`Pk r) ->let r' = "pk_"^r in
+                      if listwithout !atoms' r' then 
+                      begin
+                        atoms' := !atoms'@[r'];
+                        let rstr = sprintf "       if role%s[i].%s = anyAgent then\n        role%s[i].%s :=role%s[i].loc%s;\n       endif;\n" rolename r rolename r rolename r in
+                        strlist1 := !strlist1@[rstr];
+                      end
+      |Some (`Sk r) ->let r' = "sk_"^r in
+                      if listwithout !atoms' r' then 
+                      begin
+                        atoms' := !atoms'@[r'];
+                        let rstr = sprintf "       if role%s[i].%s = anyAgent then\n        role%s[i].%s :=role%s[i].loc%s;\n       endif;\n" rolename r rolename r rolename r in
+                        strlist1 := !strlist1@[rstr]
+                      end
+      |Some (`K(r1,r2)) ->let r1' = "symk1_"^r1 in
+                          if listwithout !atoms' r1' then
+                          begin
+                            atoms' := !atoms'@[r1'];
+                            let r1str = sprintf "       if role%s[i].%s = anyAgent then\n        role%s[i].%s :=role%s[i].loc%s;\n       endif;\n" rolename r1 rolename r1 rolename r1 in
+                            strlist1 := !strlist1@[r1str];
+                          end;
+                          let r2' = "symk2_"^r2 in
+                          if listwithout !atoms' r2' then
+                          begin 
+                            atoms' := !atoms'@[r2'];
+                            let r2str = sprintf "       if role%s[i].%s = anyAgent then\n        role%s[i].%s :=role%s[i].loc%s;\n       endif;\n" rolename r2 rolename r2 rolename r2 in
+                            strlist1 := !strlist1@[r2str];
+                          end
+      |_ -> () 
+      done;
+      String.concat ~sep:"" !strlist1
   (*   
     let strlist = (List.map ~f:(fun  a ->
     match a with

@@ -1376,10 +1376,7 @@ function matchAgent(locAg: AgentType; Var Ag: AgentType):boolean;  ---if ag equa
   var flag : boolean;
   begin
     flag := false;
-    if (Ag = anyAgent) then
-      flag := true;
-      Ag := locAg;
-    elsif (locAg = Ag) then
+    if (Ag = anyAgent | locAg = Ag) then
       flag := true;
     else
       flag := false;
@@ -1395,12 +1392,9 @@ function matchTmp(locm:Message;Var m:Message):boolean; ---if m equals to locm wh
     get_msgNo(m,index2);
     get_msgNo(locm,index1);
     if (m.msgType = tmp) then 
-      if (m.tmpPart =0 ) then 
+      if (m.tmpPart =0 | index1 = index2) then 
         flag := true;
-        m :=locm;
       endif;
-    elsif (index1 = index2) then 
-      flag := true;
     else 
       flag := false;
     endif;
@@ -1411,11 +1405,8 @@ function matchNonce(locNa: NonceType; Var Na: NonceType):boolean;  ---if Na equa
   var flag : boolean;
   begin
     flag := false;
-    if (Na = anyNonce) then
+    if (Na = anyNonce | locNa = Na) then
       flag := true;
-      Na := locNa;
-    elsif (locNa = Na) then
-      flag:=true;
     else
       flag := false;
     endif;
@@ -1426,11 +1417,8 @@ function matchNumber(locNm: ConstType; Var Nm: ConstType):boolean;  ---if Nm equ
   var flag : boolean;
   begin
     flag := false;
-    if (Nm = anyNumber) then
+    if (Nm = anyNumber | locNm = Nm) then
       flag := true;
-      Nm := locNm;
-    elsif (locNm = Nm) then
-      flag:=true;
     else
       flag := false;
     endif;
@@ -1528,6 +1516,9 @@ begin
    if(flag_pat4) then
      destruct4(agmsg,msg,roleA[i].locm2);
      if(matchTmp(roleA[i].locm2, roleA[i].m2))then
+       if roleA[i].m2.tmpPart = 0 then
+        roleA[i].m2 :=roleA[i].locm2;
+       endif;
        ch[2].empty:=true;
        clear ch[2].msg;
        roleA[i].st := A3;
@@ -1572,6 +1563,9 @@ begin
    if(flag_pat9) then
      destruct9(agmsg,msg,roleB[i].locm1);
      if(matchTmp(roleB[i].locm1, roleB[i].m1))then
+       if roleB[i].m1.tmpPart = 0 then
+        roleB[i].m1 :=roleB[i].locm1;
+       endif;
        ch[1].empty:=true;
        clear ch[1].msg;
        roleB[i].st := B2;
@@ -1612,6 +1606,18 @@ begin
    if(flag_pat11 & B_known[msg.sencKey]) then
      destruct11(agmsg,msg,roleB[i].locm3,roleB[i].locm2,roleB[i].locx,roleB[i].locp);
      if(matchTmp(roleB[i].locm3, roleB[i].m3) & matchTmp(roleB[i].locm2, roleB[i].m2) & matchNumber(roleB[i].locx, roleB[i].x) & matchNumber(roleB[i].locp, roleB[i].p))then
+       if roleB[i].m3.tmpPart = 0 then
+        roleB[i].m3 :=roleB[i].locm3;
+       endif;
+       if roleB[i].m2.tmpPart = 0 then
+        roleB[i].m2 :=roleB[i].locm2;
+       endif;
+       if roleB[i].x = anyNumber then
+        roleB[i].x :=roleB[i].locx;
+       endif;
+       if roleB[i].p = anyNumber then
+        roleB[i].p :=roleB[i].locp;
+       endif;
        ch[3].empty:=true;
        clear ch[3].msg;
        roleB[i].st := B1;
