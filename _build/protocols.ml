@@ -2,77 +2,6 @@ open Core
 open Proctype
 open Func
 
-  
-let rec print_message m=
-  match m with 
-  | `Null -> sprintf ""
-  | `Var i -> sprintf "%s" i 
-  | `Str r -> sprintf "%s" r
-  | `Const i -> sprintf "%s" i
-  | `Tmp m -> sprintf "%s" m
-  | `Exp (m,i) -> sprintf "exp(%s,%s)" (print_message m) (print_message i) 
-  | `Concat ms-> String.concat ~sep:"." (List.map ~f:print_message ms)
-  | `Aenc (m1,m2)-> sprintf "aenc{%s}%s" (print_message m1) (print_message m2)
-  | `Senc (m1,m2) -> sprintf "senc{%s}%s" (print_message m1) (print_message m2)
-  | `Hash (m1,m2) -> sprintf("hash(%s)%s") (print_message m1) (print_message m2)
-  | `Mod (m1,m2) -> sprintf ("mod(%s,%s)") (print_message m1) (print_message m2)
-  | `Pk r -> sprintf "pk(%s)" r
-  | `Sk r -> sprintf "sk(%s)" r 
-  | `K (r1,r2) -> sprintf "k(%s,%s)" r1 r2
-
-let rec print_knowledge  knws = 
-  match knws with 
-  | `Null -> sprintf "\n" 
-  | `Knowledge (r,m) ->  sprintf ("%s:%s\n") r  (print_message m)
-  | `Knowledge_list kns -> String.concat ~sep:"\n" (List.map ~f:print_knowledge kns)
-
-  let print_sign s = 
-    match s with 
-    | `Plus -> "+"
-    | `Minus -> "-"
-
-  let rec print_action actions = 
-    match actions with 
-      | `Null -> sprintf "\n"
-      | `Send (seq,st,s,r,ms,m) -> sprintf "[%d] %s %s (%s):%s" seq  (print_sign s) r (String.concat ~sep:"," (List.map ~f:print_message ms)) (print_message m)
-      | `Receive (seq,s,m) -> sprintf "[%d] %s :%s" seq  (print_sign s) (print_message m)
-      | `Actlist arr ->String.concat ~sep:"\n" (List.map ~f:print_action arr)
-    
-let rec print_agents ags = 
-  match ags with 
-  | `Null -> sprintf "\n"
-  | `Agent (n,ms,actlist) -> sprintf "%s:%s\n%s" n (String.concat ~sep:"," (List.map ~f:print_message ms)) (String.concat ~sep:"\n" (List.map ~f:print_action actlist))
-  | `Agentlist als -> String.concat ~sep:"\n" (List.map ~f:print_agents als)
-
-
-let rec print_function f=
-  match f with 
-  | `Pk c -> sprintf "pk"
-  | `Sk s -> sprintf "sk"
-  | `Exp e -> sprintf "exp"
-  | `Mod m -> sprintf "mod"
-
-let rec print_type types = 
-  match types with 
-  | `Null -> sprintf "\n"
-  | `Number ms -> sprintf "Number:%s" (String.concat ~sep:"," (List.map ~f:print_message ms))
-  | `Function fs -> sprintf "Function:%s" (String.concat ~sep:"," (List.map ~f:print_function fs))
-  | `Agent rs -> sprintf "Agent:%s" (String.concat ~sep:"," rs)
-  | `Modelist ls -> String.concat ~sep:"\n" (List.map ~f:print_type ls)
-
-let rec print_env envs = 
-  match envs with 
-  | `Null -> sprintf "\n"
-  | `Env_agent (r,i,m)->sprintf "%s[%d]:%s" r i (print_message m)
-  | `Envlist es ->String.concat ~sep:"\n" (List.map ~f:print_env es)
-
-let rec print_goal gs = 
-  match gs with 
-  |`Secretgoal (id,m) -> sprintf "%s,%s" id (print_message m)
-  |`Secretgoal1 (id,m,r1,r2) -> sprintf "%s,%s,%s,%s" id (print_message m) r1 r2
-  |`Agreegoal (id,r1,r2,m) -> sprintf "%s,%s,%s,%s" id r1 r2 (print_message m)
-  |`Goallist gs -> String.concat (List.map ~f:print_goal gs)
-  |`Null -> sprintf ""
 
   (*-----------------------------------transition part-------------------------------------------------*)
   let printMurphiConsTypeVars ag k env=
@@ -650,7 +579,10 @@ let genMatchAgent () =
   var flag : boolean;
   begin
     flag := false;
-    if (Ag = anyAgent | locAg = Ag) then
+    if (Ag = anyAgent) then
+      flag := true;
+      Ag := locAg;
+    elsif (locAg = Ag) then
       flag := true;
     else
       flag := false;
@@ -668,7 +600,10 @@ let genMatchTmp () =
     get_msgNo(m,index2);
     get_msgNo(locm,index1);
     if (m.msgType = tmp) then 
-      if (m.tmpPart =0 | index1 = index2) then 
+      if (m.tmpPart =0) then 
+        flag := true;
+        m:=locm;
+      elsif ( index1 = index2) then 
         flag := true;
       endif;
     else 
@@ -683,20 +618,27 @@ let genMatchNonce () =
   var flag : boolean;
   begin
     flag := false;
-    if (Na = anyNonce | locNa = Na) then
+    if (Na = anyNonce) then
       flag := true;
+      Na := locNa;
+    elsif (locNa = Na) then
+      flag:=true;
     else
       flag := false;
     endif;
     return flag;
   end;\n\n"
+;;
 
 let genMatchNumber ()  = 
   sprintf "function matchNumber(locNm: ConstType; Var Nm: ConstType):boolean;  ---if Nm equals to locNm which was derived from recieving msg, or anyNumber, then true
   var flag : boolean;
   begin
     flag := false;
-    if (Nm = anyNumber | locNm = Nm) then
+    if (Nm = anyNumber) then
+      flag := true;
+      Nm := locNm;
+    elsif locNm = Nm then 
       flag := true;
     else
       flag := false;
@@ -1616,7 +1558,6 @@ let genCons m i patList =
                     let keyNum = getPatNum k1 patlist in        
                     match m1 with
                     |`Concat msgs ->let m1Atoms = getAtoms m1 in
-                    let () = print_endline (sprintf "%s\n" (atoms2Parms1 atoms)) in 
                                     let m1Num = getPatNum m1 patlist in
                                     str1 ^
                                     sprintf "  var k1:KeyType;\n" ^
@@ -2499,7 +2440,6 @@ let print_startstate r num m knws ag=
   let msgOfKnws = getMsgOfRoles knws in
   let nlist = getNonces msgOfKnws in
   let rlist = getRolesFromKnws knws [] in
-  let () = print_endline (sprintf "%s\n" (String.concat ~sep:"," rlist)) in 
   let clist = del_duplicate (getConsts msgOfKnws) in
   let allOfAct =  (getAllActsList ag) in
   let patlist = List.concat (List.map ~f:getPatList (allOfAct)) in (*get all patterns from actions*)
