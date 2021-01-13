@@ -2431,7 +2431,7 @@ let print_murphiRules_EncsDecs agents knws =
 let trActionsToMurphi agents knws =
                             print_procedures agents knws^ (*print prcedures and functions. *)                   
                             print_murphiRule agents knws^ (* print rules for roleA and roleB *)
-                            print_murphiRule_ofIntruder agents ^ (* print rules for intruder *)
+                            print_murphiRule_ofIntruder agents knws ^ (* print rules for intruder *)
                             print_murphiRules_EncsDecs agents knws
 
 (*-----------------------------------------------------------------------------------------------*)
@@ -2574,13 +2574,13 @@ let rec initSpatSet actions patlist=
   let non_equivalent = getEqvlMsgPattern non_dup in *)
   match actions with
   |`Null -> ""
-  |`Send(seq, st,s, r, ms, m) ->let patNum = (getPatNum m patlist) in
+  |`Send(seq,s, r, ms, m) ->let patNum = (getPatNum m patlist) in
                               let atoms = getAtoms m in
                               let atoms = del_duplicate atoms in
                               sprintf "  for i : role%sNums do\n" r ^
                               sprintf "    constructSpat%d(%s, gnum);\n" patNum (atoms2Str atoms r) ^
                               sprintf "  endfor;\n"
-  |`Receive(seq, st,s, m) ->let patNum = (getPatNum m patlist) in
+  |`Receive(seq,s, m) ->let patNum = (getPatNum m patlist) in
                            let atoms = getAtoms m in
                            let atoms = del_duplicate atoms in
                            sprintf "  for i : role%sNums do\n" "" ^

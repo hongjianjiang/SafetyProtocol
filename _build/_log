@@ -17,12 +17,10 @@ File "func.ml", line 47, characters 8-22:
 Warning 39: unused rec flag.
 File "func.ml", line 109, characters 8-12:
 Warning 39: unused rec flag.
-File "func.ml", line 575, characters 8-16:
-Warning 39: unused rec flag.
-File "func.ml", line 36, characters 19-21:
-Warning 27: unused variable st.
-File "func.ml", line 37, characters 22-24:
-Warning 27: unused variable st.
+File "func.ml", line 36, characters 15-18:
+Warning 27: unused variable seq.
+File "func.ml", line 37, characters 18-21:
+Warning 27: unused variable seq.
 File "func.ml", line 49, characters 8-9:
 Warning 27: unused variable c.
 File "func.ml", line 50, characters 8-9:
@@ -57,17 +55,11 @@ File "func.ml", line 334, characters 4-16:
 Warning 32: unused value agentSStatus.
 File "func.ml", line 352, characters 14-16:
 Warning 27: unused variable ms.
-File "func.ml", line 359, characters 11-15:
+File "func.ml", line 360, characters 14-18:
 Warning 27: unused variable seq1.
-File "func.ml", line 359, characters 16-18:
-Warning 27: unused variable st.
-File "func.ml", line 359, characters 19-20:
+File "func.ml", line 360, characters 19-20:
 Warning 27: unused variable s.
-File "func.ml", line 359, characters 21-22:
-Warning 27: unused variable r.
-File "func.ml", line 359, characters 23-26:
-Warning 27: unused variable mls.
-File "func.ml", line 359, characters 27-28:
+File "func.ml", line 360, characters 21-22:
 Warning 27: unused variable m.
 File "func.ml", line 366, characters 14-16:
 Warning 27: unused variable ms.
@@ -77,43 +69,35 @@ File "func.ml", line 372, characters 14-16:
 Warning 27: unused variable ms.
 File "func.ml", line 378, characters 11-14:
 Warning 27: unused variable seq.
-File "func.ml", line 378, characters 15-17:
-Warning 27: unused variable st.
-File "func.ml", line 378, characters 18-19:
+File "func.ml", line 378, characters 15-16:
 Warning 27: unused variable s.
-File "func.ml", line 378, characters 20-21:
+File "func.ml", line 378, characters 17-18:
 Warning 27: unused variable r.
-File "func.ml", line 378, characters 22-25:
+File "func.ml", line 378, characters 19-22:
 Warning 27: unused variable mls.
-File "func.ml", line 378, characters 26-27:
+File "func.ml", line 378, characters 23-24:
 Warning 27: unused variable m.
 File "func.ml", line 379, characters 14-17:
 Warning 27: unused variable seq.
-File "func.ml", line 379, characters 18-20:
-Warning 27: unused variable st.
-File "func.ml", line 379, characters 21-22:
+File "func.ml", line 379, characters 18-19:
 Warning 27: unused variable s.
-File "func.ml", line 379, characters 23-24:
+File "func.ml", line 379, characters 20-21:
 Warning 27: unused variable m.
 File "func.ml", line 385, characters 11-14:
 Warning 27: unused variable seq.
-File "func.ml", line 385, characters 15-17:
-Warning 27: unused variable st.
-File "func.ml", line 385, characters 18-19:
+File "func.ml", line 385, characters 15-16:
 Warning 27: unused variable s.
-File "func.ml", line 385, characters 20-21:
+File "func.ml", line 385, characters 17-18:
 Warning 27: unused variable r.
-File "func.ml", line 385, characters 22-25:
+File "func.ml", line 385, characters 19-22:
 Warning 27: unused variable mls.
-File "func.ml", line 385, characters 26-27:
+File "func.ml", line 385, characters 23-24:
 Warning 27: unused variable m.
 File "func.ml", line 386, characters 14-17:
 Warning 27: unused variable seq.
-File "func.ml", line 386, characters 18-20:
-Warning 27: unused variable st.
-File "func.ml", line 386, characters 21-22:
+File "func.ml", line 386, characters 18-19:
 Warning 27: unused variable s.
-File "func.ml", line 386, characters 23-24:
+File "func.ml", line 386, characters 20-21:
 Warning 27: unused variable m.
 File "func.ml", line 417, characters 18-19:
 Warning 27: unused variable m.
@@ -157,123 +141,115 @@ File "func.ml", line 466, characters 18-20:
 Warning 27: unused variable r2.
 File "func.ml", line 546, characters 11-14:
 Warning 27: unused variable seq.
-File "func.ml", line 546, characters 15-17:
-Warning 27: unused variable st.
-File "func.ml", line 546, characters 18-19:
+File "func.ml", line 546, characters 15-16:
 Warning 27: unused variable s.
-File "func.ml", line 546, characters 20-21:
+File "func.ml", line 546, characters 17-18:
 Warning 27: unused variable r.
-File "func.ml", line 546, characters 22-25:
+File "func.ml", line 546, characters 19-22:
 Warning 27: unused variable mls.
 File "func.ml", line 547, characters 14-17:
 Warning 27: unused variable seq.
-File "func.ml", line 547, characters 18-20:
-Warning 27: unused variable st.
-File "func.ml", line 547, characters 21-22:
+File "func.ml", line 547, characters 18-19:
 Warning 27: unused variable s.
-File "func.ml", line 551, characters 24-27:
+File "func.ml", line 551, characters 21-24:
 Warning 27: unused variable mls.
-File "func.ml", line 551, characters 22-23:
+File "func.ml", line 551, characters 19-20:
 Warning 27: unused variable r.
-File "func.ml", line 551, characters 20-21:
+File "func.ml", line 551, characters 17-18:
 Warning 27: unused variable s.
-File "func.ml", line 551, characters 17-19:
-Warning 27: unused variable st.
 File "func.ml", line 551, characters 13-16:
 Warning 27: unused variable seq.
-File "func.ml", line 571, characters 18-19:
+File "func.ml", line 571, characters 15-16:
 Warning 27: unused variable s.
-File "func.ml", line 571, characters 22-24:
+File "func.ml", line 571, characters 19-21:
 Warning 27: unused variable ms.
-File "func.ml", line 572, characters 21-22:
+File "func.ml", line 572, characters 18-19:
 Warning 27: unused variable s.
-File "func.ml", line 578, characters 15-17:
-Warning 27: unused variable st.
-File "func.ml", line 578, characters 18-19:
-Warning 27: unused variable s.
-File "func.ml", line 578, characters 22-24:
-Warning 27: unused variable ms.
-File "func.ml", line 579, characters 14-17:
+File "func.ml", line 578, characters 11-14:
 Warning 27: unused variable seq.
-File "func.ml", line 579, characters 18-20:
-Warning 27: unused variable st.
-File "func.ml", line 579, characters 21-22:
+File "func.ml", line 578, characters 15-16:
 Warning 27: unused variable s.
-File "func.ml", line 579, characters 23-24:
-Warning 27: unused variable m.
-File "func.ml", line 578, characters 135-137:
-Warning 27: unused variable m1.
-File "func.ml", line 578, characters 132-134:
-Warning 27: unused variable s1.
-File "func.ml", line 578, characters 123-127:
-Warning 27: unused variable seq1.
-File "func.ml", line 601, characters 10-11:
-Warning 27: unused variable m.
-File "func.ml", line 602, characters 10-12:
-Warning 27: unused variable m1.
-File "func.ml", line 602, characters 13-15:
-Warning 27: unused variable m2.
-File "func.ml", line 603, characters 10-12:
-Warning 27: unused variable m1.
-File "func.ml", line 603, characters 13-15:
-Warning 27: unused variable m2.
-File "func.ml", line 604, characters 12-13:
-Warning 27: unused variable m.
-File "func.ml", line 604, characters 14-15:
-Warning 27: unused variable k.
-File "func.ml", line 605, characters 12-13:
-Warning 27: unused variable m.
-File "func.ml", line 605, characters 14-15:
-Warning 27: unused variable k.
-File "func.ml", line 606, characters 11-14:
-Warning 27: unused variable m.
-File "func.ml", line 607, characters 9-10:
+File "func.ml", line 578, characters 17-18:
 Warning 27: unused variable r.
-File "func.ml", line 608, characters 9-10:
-Warning 27: unused variable r.
-File "func.ml", line 609, characters 9-11:
-Warning 27: unused variable r1.
-File "func.ml", line 609, characters 12-14:
-Warning 27: unused variable r2.
-File "func.ml", line 631, characters 29-30:
-Warning 27: unused variable i.
-File "func.ml", line 631, characters 37-50:
-Warning 27: unused variable msgofRolename.
-File "func.ml", line 702, characters 27-28:
-Warning 27: unused variable n.
-File "func.ml", line 703, characters 27-28:
-Warning 27: unused variable r.
-File "func.ml", line 724, characters 12-14:
-Warning 27: unused variable m1.
-File "func.ml", line 724, characters 15-17:
-Warning 27: unused variable m2.
-File "func.ml", line 738, characters 11-13:
-Warning 27: unused variable m1.
-File "func.ml", line 738, characters 14-16:
-Warning 27: unused variable m2.
-File "func.ml", line 832, characters 31-44:
-Warning 27: unused variable msgofRolename.
-File "func.ml", line 897, characters 34-47:
-Warning 27: unused variable msgofRolename.
-File "func.ml", line 979, characters 16-18:
-Warning 27: unused variable st.
-File "func.ml", line 979, characters 20-21:
-Warning 27: unused variable s.
-File "func.ml", line 979, characters 22-23:
-Warning 27: unused variable r.
-File "func.ml", line 979, characters 24-26:
+File "func.ml", line 578, characters 19-21:
 Warning 27: unused variable ms.
-File "func.ml", line 984, characters 19-21:
-Warning 27: unused variable st.
-File "func.ml", line 984, characters 22-23:
+File "func.ml", line 578, characters 22-23:
+Warning 27: unused variable m.
+File "func.ml", line 579, characters 18-19:
 Warning 27: unused variable s.
-File "func.ml", line 1015, characters 33-35:
-Warning 27: unused variable st.
-File "func.ml", line 1015, characters 36-37:
+File "func.ml", line 579, characters 20-21:
+Warning 27: unused variable m.
+File "func.ml", line 579, characters 126-129:
+Warning 27: unused variable ms1.
+File "func.ml", line 579, characters 120-122:
+Warning 27: unused variable s1.
+File "func.ml", line 579, characters 115-119:
+Warning 27: unused variable seq1.
+File "func.ml", line 603, characters 10-11:
+Warning 27: unused variable m.
+File "func.ml", line 604, characters 10-12:
+Warning 27: unused variable m1.
+File "func.ml", line 604, characters 13-15:
+Warning 27: unused variable m2.
+File "func.ml", line 605, characters 10-12:
+Warning 27: unused variable m1.
+File "func.ml", line 605, characters 13-15:
+Warning 27: unused variable m2.
+File "func.ml", line 606, characters 12-13:
+Warning 27: unused variable m.
+File "func.ml", line 606, characters 14-15:
+Warning 27: unused variable k.
+File "func.ml", line 607, characters 12-13:
+Warning 27: unused variable m.
+File "func.ml", line 607, characters 14-15:
+Warning 27: unused variable k.
+File "func.ml", line 608, characters 11-14:
+Warning 27: unused variable m.
+File "func.ml", line 609, characters 9-10:
 Warning 27: unused variable r.
-File "func.ml", line 1063, characters 6-10:
+File "func.ml", line 610, characters 9-10:
+Warning 27: unused variable r.
+File "func.ml", line 611, characters 9-11:
+Warning 27: unused variable r1.
+File "func.ml", line 611, characters 12-14:
+Warning 27: unused variable r2.
+File "func.ml", line 633, characters 29-30:
+Warning 27: unused variable i.
+File "func.ml", line 633, characters 37-50:
+Warning 27: unused variable msgofRolename.
+File "func.ml", line 704, characters 27-28:
+Warning 27: unused variable n.
+File "func.ml", line 705, characters 27-28:
+Warning 27: unused variable r.
+File "func.ml", line 726, characters 12-14:
+Warning 27: unused variable m1.
+File "func.ml", line 726, characters 15-17:
+Warning 27: unused variable m2.
+File "func.ml", line 740, characters 11-13:
+Warning 27: unused variable m1.
+File "func.ml", line 740, characters 14-16:
+Warning 27: unused variable m2.
+File "func.ml", line 834, characters 31-44:
+Warning 27: unused variable msgofRolename.
+File "func.ml", line 899, characters 34-47:
+Warning 27: unused variable msgofRolename.
+File "func.ml", line 981, characters 17-18:
+Warning 27: unused variable s.
+File "func.ml", line 981, characters 19-20:
+Warning 27: unused variable r.
+File "func.ml", line 981, characters 21-23:
+Warning 27: unused variable ms.
+File "func.ml", line 986, characters 19-20:
+Warning 27: unused variable s.
+File "func.ml", line 1016, characters 33-35:
+Warning 27: unused variable st.
+File "func.ml", line 1016, characters 36-37:
+Warning 27: unused variable r.
+File "func.ml", line 1068, characters 6-10:
 Warning 26: unused variable msgs.
-File "func.ml", line 1070, characters 52-53:
+File "func.ml", line 1070, characters 6-11:
+Warning 26: unused variable msgs2.
+File "func.ml", line 1077, characters 52-53:
 Warning 27: unused variable i.
 # Target: tmrLexer.mll, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mll, file:tmrLexer.mll, lexer, ocaml, ocamllex, quiet, short_paths, thread }
 /Users/sword/.opam/4.04.0/bin/ocamllex.opt -q tmrLexer.mll # cached
@@ -1503,17 +1479,13 @@ File "protocols.ml", line 2460, characters 91-99:
 Warning 27: unused variable r1'r2'.
 File "protocols.ml", line 2577, characters 9-12:
 Warning 27: unused variable seq.
-File "protocols.ml", line 2577, characters 14-16:
-Warning 27: unused variable st.
-File "protocols.ml", line 2577, characters 17-18:
+File "protocols.ml", line 2577, characters 13-14:
 Warning 27: unused variable s.
-File "protocols.ml", line 2577, characters 23-25:
+File "protocols.ml", line 2577, characters 19-21:
 Warning 27: unused variable ms.
 File "protocols.ml", line 2583, characters 12-15:
 Warning 27: unused variable seq.
-File "protocols.ml", line 2583, characters 17-19:
-Warning 27: unused variable st.
-File "protocols.ml", line 2583, characters 20-21:
+File "protocols.ml", line 2583, characters 16-17:
 Warning 27: unused variable s.
 File "protocols.ml", line 2620, characters 46-47:
 Warning 27: unused variable i.
@@ -1534,9 +1506,13 @@ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -
 + ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o getModelString.cmo getModelString.ml
 findlib: [WARNING] Interface base.cmi occurs in several directories: ., /Users/sword/.opam/4.04.0/lib/base
 # Target: tmrRetparser.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:tmrRetparser.ml, ocaml, ocamldep, quiet, short_paths, thread }
-ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules tmrRetparser.ml > tmrRetparser.ml.depends # cached
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules tmrRetparser.ml > tmrRetparser.ml.depends
 # Target: tmrRetparser.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:tmrRetparser.cmo, file:tmrRetparser.ml, implem, ocaml, quiet, short_paths, thread }
-ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o tmrRetparser.cmo tmrRetparser.ml # cached
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o tmrRetparser.cmo tmrRetparser.ml
++ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o tmrRetparser.cmo tmrRetparser.ml
+findlib: [WARNING] Interface base.cmi occurs in several directories: ., /Users/sword/.opam/4.04.0/lib/base
+File "tmrRetparser.ml", line 2222, characters 45-48:
+Warning 27: unused variable seq.
 # Target: getModelString.byte, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, debug, dont_link_with, extension:byte, file:getModelString.byte, link, ocaml, program, quiet, short_paths, thread }
 ocamlfind ocamlc -linkpkg -g -thread -package core proctype.cmo func.cmo protocols.cmo tmrRetparser.cmo tmrLexer.cmo getModelString.cmo -o getModelString.byte
 + ocamlfind ocamlc -linkpkg -g -thread -package core proctype.cmo func.cmo protocols.cmo tmrRetparser.cmo tmrLexer.cmo getModelString.cmo -o getModelString.byte

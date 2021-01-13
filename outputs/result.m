@@ -2552,6 +2552,46 @@ rule "intruderGetMsgFromCh[4]"
     endif;
   end;
 
+---rule of intruder to emit msg into ch[4].
+ruleset i: msgLen do
+  ruleset j: roleANums do
+    rule "intruderEmitMsgIntoCh[4]"
+      roleA[j].st = A2 & ch[4].empty=true & i <= pat16Set.length & pat16Set.content[i] != 0 & Spy_known[pat16Set.content[i]] ---& matchPat(msgs[pat16Set.content[i]], sPat16Set)
+      ==>
+      begin
+        if (!emit[pat16Set.content[i]]) then  
+          clear ch[4];
+          ch[4].msg:=msgs[pat16Set.content[i]];
+          ch[4].sender:=Intruder;
+          ch[4].receiver:=roleA[j].A;
+          ch[4].empty:=false;
+          emit[pat16Set.content[i]] := true;
+          put "intruder emit msg into ch[4].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[2].
+ruleset i: msgLen do
+  ruleset j: roleSNums do
+    rule "intruderEmitMsgIntoCh[2]"
+      roleS[j].st = S1 & ch[2].empty=true & i <= pat11Set.length & pat11Set.content[i] != 0 & Spy_known[pat11Set.content[i]] ---& matchPat(msgs[pat11Set.content[i]], sPat11Set)
+      ==>
+      begin
+        if (!emit[pat11Set.content[i]]) then  
+          clear ch[2];
+          ch[2].msg:=msgs[pat11Set.content[i]];
+          ch[2].sender:=Intruder;
+          ch[2].receiver:=roleS[j].S;
+          ch[2].empty:=false;
+          emit[pat11Set.content[i]] := true;
+          put "intruder emit msg into ch[2].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
 ---rule of intruder to emit msg into ch[1].
 ruleset i: msgLen do
   ruleset j: roleBNums do
@@ -2587,46 +2627,6 @@ ruleset i: msgLen do
           ch[3].empty:=false;
           emit[pat12Set.content[i]] := true;
           put "intruder emit msg into ch[3].\n";
-        endif;
-      end;
-  endruleset;
-endruleset;
-
----rule of intruder to emit msg into ch[2].
-ruleset i: msgLen do
-  ruleset j: roleSNums do
-    rule "intruderEmitMsgIntoCh[2]"
-      roleS[j].st = S1 & ch[2].empty=true & i <= pat11Set.length & pat11Set.content[i] != 0 & Spy_known[pat11Set.content[i]] ---& matchPat(msgs[pat11Set.content[i]], sPat11Set)
-      ==>
-      begin
-        if (!emit[pat11Set.content[i]]) then  
-          clear ch[2];
-          ch[2].msg:=msgs[pat11Set.content[i]];
-          ch[2].sender:=Intruder;
-          ch[2].receiver:=roleS[j].S;
-          ch[2].empty:=false;
-          emit[pat11Set.content[i]] := true;
-          put "intruder emit msg into ch[2].\n";
-        endif;
-      end;
-  endruleset;
-endruleset;
-
----rule of intruder to emit msg into ch[4].
-ruleset i: msgLen do
-  ruleset j: roleANums do
-    rule "intruderEmitMsgIntoCh[4]"
-      roleA[j].st = A2 & ch[4].empty=true & i <= pat16Set.length & pat16Set.content[i] != 0 & Spy_known[pat16Set.content[i]] ---& matchPat(msgs[pat16Set.content[i]], sPat16Set)
-      ==>
-      begin
-        if (!emit[pat16Set.content[i]]) then  
-          clear ch[4];
-          ch[4].msg:=msgs[pat16Set.content[i]];
-          ch[4].sender:=Intruder;
-          ch[4].receiver:=roleA[j].A;
-          ch[4].empty:=false;
-          emit[pat16Set.content[i]] := true;
-          put "intruder emit msg into ch[4].\n";
         endif;
       end;
   endruleset;

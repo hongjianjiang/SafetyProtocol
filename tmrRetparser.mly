@@ -160,8 +160,8 @@ sign:
   |PLUS {`Plus}
 ;
 action:
-   | LEFT_MIDBRACE;seq=INT;PERIOD;st=INT;RIGHT_MIDBRACE;s=sign;COMMA;r=IDENT;COMMA;LEFT_BRACK;ms=message_list;RIGHT_BRACK;COLON;m=message{`Send (seq,st,s,r,ms,m)}
-  | LEFT_MIDBRACE;seq=INT;PERIOD;st=INT;RIGHT_MIDBRACE;s=sign;COLON;m=message {`Receive (seq,st,s,m)}
+   | LEFT_MIDBRACE;seq=INT;RIGHT_MIDBRACE;s=sign;COMMA;r=IDENT;COMMA;LEFT_BRACK;ms=message_list;RIGHT_BRACK;COLON;m=message{`Send (seq,s,r,ms,m)}
+  | LEFT_MIDBRACE;seq=INT;RIGHT_MIDBRACE;s=sign;COLON;m=message {`Receive (seq,s,m)}
   | LEFT_BRACE;acts = action_list; RIGHT_BRACE { `Actlist acts}
 ;
 

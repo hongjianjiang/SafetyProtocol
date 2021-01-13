@@ -8,13 +8,13 @@ Knowledges:{
 }
 Agents:{
     A:A.B,
-    [1.1]+,B,(Na.A.B): aenc{<nonce(Na).A>}pk(B),
-    [2.2]-:aenc{<nonce(Na).nonce(Nb)>}pk(A),
-    [3.3]+,B,():aenc{nonce(Nb)}pk(B);
+    [1]+,B,(Na.A.B): aenc{<nonce(Na).A>}pk(B),
+    [2]-:aenc{<nonce(Na).nonce(Nb)>}pk(A),
+    [3]+,B,():aenc{nonce(Nb)}pk(B);
     B:B.nonce(Nb),
-    [1.1]-:aenc{<nonce(Na).A>}pk(B),
-    [2.2]+,A,(Nb):aenc{<nonce(Na).nonce(Nb)>}pk(A),
-    [3.3]-:aenc{nonce(Nb)}pk(B)
+    [1]-:aenc{<nonce(Na).A>}pk(B),
+    [2]+,A,(Nb):aenc{<nonce(Na).nonce(Nb)>}pk(A),
+    [3]-:aenc{nonce(Nb)}pk(B)
 }
 Environment:{
 [agent1] A [1] : <Alice.Intruder.nonce(Na)>;
