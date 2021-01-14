@@ -245,11 +245,11 @@ File "func.ml", line 1016, characters 33-35:
 Warning 27: unused variable st.
 File "func.ml", line 1016, characters 36-37:
 Warning 27: unused variable r.
-File "func.ml", line 1068, characters 6-10:
+File "func.ml", line 1065, characters 6-10:
 Warning 26: unused variable msgs.
-File "func.ml", line 1070, characters 6-11:
+File "func.ml", line 1067, characters 6-11:
 Warning 26: unused variable msgs2.
-File "func.ml", line 1077, characters 52-53:
+File "func.ml", line 1073, characters 52-53:
 Warning 27: unused variable i.
 # Target: tmrLexer.mll, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mll, file:tmrLexer.mll, lexer, ocaml, ocamllex, quiet, short_paths, thread }
 /Users/sword/.opam/4.04.0/bin/ocamllex.opt -q tmrLexer.mll # cached
@@ -1506,13 +1506,9 @@ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -
 + ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o getModelString.cmo getModelString.ml
 findlib: [WARNING] Interface base.cmi occurs in several directories: ., /Users/sword/.opam/4.04.0/lib/base
 # Target: tmrRetparser.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:tmrRetparser.ml, ocaml, ocamldep, quiet, short_paths, thread }
-ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules tmrRetparser.ml > tmrRetparser.ml.depends
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules tmrRetparser.ml > tmrRetparser.ml.depends # cached
 # Target: tmrRetparser.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:tmrRetparser.cmo, file:tmrRetparser.ml, implem, ocaml, quiet, short_paths, thread }
-ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o tmrRetparser.cmo tmrRetparser.ml
-+ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o tmrRetparser.cmo tmrRetparser.ml
-findlib: [WARNING] Interface base.cmi occurs in several directories: ., /Users/sword/.opam/4.04.0/lib/base
-File "tmrRetparser.ml", line 2222, characters 45-48:
-Warning 27: unused variable seq.
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o tmrRetparser.cmo tmrRetparser.ml # cached
 # Target: getModelString.byte, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, debug, dont_link_with, extension:byte, file:getModelString.byte, link, ocaml, program, quiet, short_paths, thread }
 ocamlfind ocamlc -linkpkg -g -thread -package core proctype.cmo func.cmo protocols.cmo tmrRetparser.cmo tmrLexer.cmo getModelString.cmo -o getModelString.byte
 + ocamlfind ocamlc -linkpkg -g -thread -package core proctype.cmo func.cmo protocols.cmo tmrRetparser.cmo tmrLexer.cmo getModelString.cmo -o getModelString.byte

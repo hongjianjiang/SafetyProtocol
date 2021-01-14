@@ -1058,10 +1058,7 @@ let genCodeOfIntruderEmitMsg (seq,st,r,m) patList=
 
 let print_murphiRule_ofIntruder agents knws=
   let rolelist = getRolesFromKnws knws [] in (* Get role list:[A;B;...] *)
-  let () = print_endline (sprintf "%s" (String.concat ~sep:"," rolelist)) in 
   let actOfAgent = List.map ~f:(fun r->getActsList agents r) rolelist in (*get role's action*)
-  let () = print_endline (sprintf "%s" (String.concat ~sep:"\n" (List.map ~f:(fun as1 -> String.concat (List.mapi ~f:(fun i a->print_action a (i+1) ) as1)) actOfAgent))) in 
-  (* let () = print_endline (sprintf "%s" (String.concat ~sep:"\n" (List.map ~f:(fun as1 -> (sprintf "%d" (List.length as1))) actOfAgent))) in  *)
   let actions = getAllActsList agents in
   let sendActions = List.concat (List.map ~f:getAllSendActs actions ) in 
   let receActions = List.concat (List.map ~f:getAllReceActs actions ) in
@@ -1069,12 +1066,10 @@ let print_murphiRule_ofIntruder agents knws=
   let msgs1 = List.concat (List.map ~f:getMsgs (sendActions)) in    (* get all msgs from actions *)
   let msgs2 = List.concat (List.mapi ~f:(fun i a->getMsgs1 a sendActions (i+1) ) (actions)) in    (* get all msgs from actions *)
   let try1 = List.concat (List.map ~f:(fun aas ->List.concat (List.mapi ~f:(fun i a->getMsgs1 a actions (i+1) ) aas)) actOfAgent) in 
-  let () = print_endline (sprintf "%d\n" (List.length try1)) in 
   let patlist = List.concat (List.map ~f:getPatList (actions)) in (*get all patterns from actions*)
   let non_dup = del_duplicate patlist in (* delete duplicate *)
   let non_equivalent = getEqvlMsgPattern non_dup in
   let getMsgStr = String.concat (List.map ~f:(fun m -> genCodeOfIntruderGetMsg m non_equivalent) msgs1) in
   let emitMsgStr = String.concat (List.mapi ~f:(fun i m -> genCodeOfIntruderEmitMsg m non_equivalent) try1) in
-  (* let () = print_endline (sprintf "%s\n" (String.concat (List.map ~f:(fun x->let (seq,st,r,m) = x in sprintf "%d,%d,%s;"seq st r) msgs2))) in  *)
   getMsgStr ^ emitMsgStr      
   

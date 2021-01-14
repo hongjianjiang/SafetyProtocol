@@ -45,7 +45,7 @@ Agents:{
     [8]-:<nonce(ue)>,
     [9]+,B,(nonce(ausf).nonce(certc)):<nonce(ausf).nonce(certc)>,
     [12]-:<tmp(x6).tmp(x7).tmp(x8).tmp(x9)>,
-    [12]+,B,():hash(<nonce(start).nonce(ue1).nonce(ausf).nonce(certc)>)<nonce(ue1).nonce(ausf).nonce(prekey)>,
+    [13]+,B,():hash(<nonce(start).nonce(ue1).nonce(ausf).nonce(certc)>)<nonce(ue1).nonce(ausf).nonce(prekey)>,
     [16]-:nonce(eapm),
     [17]+,C,(nonce(sucm)):nonce(sucm);
 

@@ -1,7 +1,8 @@
 const
   roleANum:1;
-  roleSNum:1;
   roleBNum:1;
+  roleCNum:1;
+  roleDNum:1;
   totalFact:100;
   msgLength:5;
   chanNum:18;
@@ -9,14 +10,15 @@ const
 type
   indexType:0..totalFact;
   roleANums:1..roleANum;
-  roleSNums:1..roleSNum;
   roleBNums:1..roleBNum;
+  roleCNums:1..roleCNum;
+  roleDNums:1..roleDNum;
   msgLen:0..msgLength;
   chanNums:0..chanNum;
   invokeNums:0..invokeNum;
 
-  AgentType : enum{anyAgent,Intruder, Alice, Bob, Server}; ---Intruder 
-  NonceType : enum{anyNonce, Na, N, Kab, Nb, na, n, kab, nb};
+  AgentType : enum{anyAgent,Intruder, UE, SEAF, AUSF, UDM}; ---Intruder 
+  NonceType : enum{anyNonce, supi, ue, ue1, prekey, certa, eapm, bn, ausf, sucm, certc, start};
   ConstType : enum{anyNumber};
   MsgType : enum {null,agent,nonce,key,aenc,senc,concat,hash,tmp,mod,e,number};
   
@@ -29,9 +31,10 @@ type
     m:indexType;
   end;
 
-  AStatus: enum{A1,A2};
-  SStatus: enum{S1,S2};
-  BStatus: enum{B1,B2,B3,B4};
+  AStatus: enum{A1,A2,A3,A4,A5,A6,A7,A8};
+  BStatus: enum{B1,B2,B3,B4,B5,B6,B7,B8,B9,B10,B11,B12,B13,B14,B15,B16};
+  CStatus: enum{C1,C2,C3,C4,C5,C6,C7,C8,C9,C10};
+  DStatus: enum{D1,D2};
 
   Message: record
     msgType : MsgType;
@@ -61,99 +64,235 @@ type
     empty : boolean;
   end;
   RoleA : record
-   Na : NonceType;
-   N : NonceType;
-   Kab : NonceType;
-   Nb : NonceType;
-   na : NonceType;
-   n : NonceType;
-   kab : NonceType;
-   nb : NonceType;
+   supi : NonceType;
+   ue : NonceType;
+   ue1 : NonceType;
+   prekey : NonceType;
+   certa : NonceType;
+   eapm : NonceType;
+   bn : NonceType;
+   ausf : NonceType;
+   sucm : NonceType;
+   certc : NonceType;
+   start : NonceType;
    A : AgentType;
-   S : AgentType;
    B : AgentType;
+   C : AgentType;
+   D : AgentType;
+   x10 : Message;
+   x1 : Message;
+   x2 : Message;
+   x3 : Message;
+   x4 : Message;
+   x5 : Message;
+   x6 : Message;
+   x7 : Message;
+   x8 : Message;
+   x9 : Message;
    m1 : Message;
-   m2 : Message;
 
-   locNa : NonceType;
-   locN : NonceType;
-   locKab : NonceType;
-   locNb : NonceType;
-   locna : NonceType;
-   locn : NonceType;
-   lockab : NonceType;
-   locnb : NonceType;
+   locsupi : NonceType;
+   locue : NonceType;
+   locue1 : NonceType;
+   locprekey : NonceType;
+   loccerta : NonceType;
+   loceapm : NonceType;
+   locbn : NonceType;
+   locausf : NonceType;
+   locsucm : NonceType;
+   loccertc : NonceType;
+   locstart : NonceType;
    locA : AgentType;
-   locS : AgentType;
    locB : AgentType;
+   locC : AgentType;
+   locD : AgentType;
+   locx10 : Message;
+   locx1 : Message;
+   locx2 : Message;
+   locx3 : Message;
+   locx4 : Message;
+   locx5 : Message;
+   locx6 : Message;
+   locx7 : Message;
+   locx8 : Message;
+   locx9 : Message;
    locm1 : Message;
-   locm2 : Message;
    
    st: AStatus;
    commit : boolean;
   end;
-  RoleS : record
-   Na : NonceType;
-   N : NonceType;
-   Kab : NonceType;
-   Nb : NonceType;
-   na : NonceType;
-   n : NonceType;
-   kab : NonceType;
-   nb : NonceType;
-   A : AgentType;
-   S : AgentType;
-   B : AgentType;
-   m1 : Message;
-   m2 : Message;
-
-   locNa : NonceType;
-   locN : NonceType;
-   locKab : NonceType;
-   locNb : NonceType;
-   locna : NonceType;
-   locn : NonceType;
-   lockab : NonceType;
-   locnb : NonceType;
-   locA : AgentType;
-   locS : AgentType;
-   locB : AgentType;
-   locm1 : Message;
-   locm2 : Message;
-   
-   st: SStatus;
-   commit : boolean;
-  end;
   RoleB : record
-   Na : NonceType;
-   N : NonceType;
-   Kab : NonceType;
-   Nb : NonceType;
-   na : NonceType;
-   n : NonceType;
-   kab : NonceType;
-   nb : NonceType;
+   supi : NonceType;
+   ue : NonceType;
+   ue1 : NonceType;
+   prekey : NonceType;
+   certa : NonceType;
+   eapm : NonceType;
+   bn : NonceType;
+   ausf : NonceType;
+   sucm : NonceType;
+   certc : NonceType;
+   start : NonceType;
    A : AgentType;
-   S : AgentType;
    B : AgentType;
+   C : AgentType;
+   D : AgentType;
+   x10 : Message;
+   x1 : Message;
+   x2 : Message;
+   x3 : Message;
+   x4 : Message;
+   x5 : Message;
+   x6 : Message;
+   x7 : Message;
+   x8 : Message;
+   x9 : Message;
    m1 : Message;
-   m2 : Message;
 
-   locNa : NonceType;
-   locN : NonceType;
-   locKab : NonceType;
-   locNb : NonceType;
-   locna : NonceType;
-   locn : NonceType;
-   lockab : NonceType;
-   locnb : NonceType;
+   locsupi : NonceType;
+   locue : NonceType;
+   locue1 : NonceType;
+   locprekey : NonceType;
+   loccerta : NonceType;
+   loceapm : NonceType;
+   locbn : NonceType;
+   locausf : NonceType;
+   locsucm : NonceType;
+   loccertc : NonceType;
+   locstart : NonceType;
    locA : AgentType;
-   locS : AgentType;
    locB : AgentType;
+   locC : AgentType;
+   locD : AgentType;
+   locx10 : Message;
+   locx1 : Message;
+   locx2 : Message;
+   locx3 : Message;
+   locx4 : Message;
+   locx5 : Message;
+   locx6 : Message;
+   locx7 : Message;
+   locx8 : Message;
+   locx9 : Message;
    locm1 : Message;
-   locm2 : Message;
    
    st: BStatus;
+   commit : boolean;
+  end;
+  RoleC : record
+   supi : NonceType;
+   ue : NonceType;
+   ue1 : NonceType;
+   prekey : NonceType;
+   certa : NonceType;
+   eapm : NonceType;
+   bn : NonceType;
+   ausf : NonceType;
+   sucm : NonceType;
+   certc : NonceType;
+   start : NonceType;
+   A : AgentType;
+   B : AgentType;
+   C : AgentType;
+   D : AgentType;
+   x10 : Message;
+   x1 : Message;
+   x2 : Message;
+   x3 : Message;
+   x4 : Message;
+   x5 : Message;
+   x6 : Message;
+   x7 : Message;
+   x8 : Message;
+   x9 : Message;
+   m1 : Message;
+
+   locsupi : NonceType;
+   locue : NonceType;
+   locue1 : NonceType;
+   locprekey : NonceType;
+   loccerta : NonceType;
+   loceapm : NonceType;
+   locbn : NonceType;
+   locausf : NonceType;
+   locsucm : NonceType;
+   loccertc : NonceType;
+   locstart : NonceType;
+   locA : AgentType;
+   locB : AgentType;
+   locC : AgentType;
+   locD : AgentType;
+   locx10 : Message;
+   locx1 : Message;
+   locx2 : Message;
+   locx3 : Message;
+   locx4 : Message;
+   locx5 : Message;
+   locx6 : Message;
+   locx7 : Message;
+   locx8 : Message;
+   locx9 : Message;
+   locm1 : Message;
+   
+   st: CStatus;
+   commit : boolean;
+  end;
+  RoleD : record
+   supi : NonceType;
+   ue : NonceType;
+   ue1 : NonceType;
+   prekey : NonceType;
+   certa : NonceType;
+   eapm : NonceType;
+   bn : NonceType;
+   ausf : NonceType;
+   sucm : NonceType;
+   certc : NonceType;
+   start : NonceType;
+   A : AgentType;
+   B : AgentType;
+   C : AgentType;
+   D : AgentType;
+   x10 : Message;
+   x1 : Message;
+   x2 : Message;
+   x3 : Message;
+   x4 : Message;
+   x5 : Message;
+   x6 : Message;
+   x7 : Message;
+   x8 : Message;
+   x9 : Message;
+   m1 : Message;
+
+   locsupi : NonceType;
+   locue : NonceType;
+   locue1 : NonceType;
+   locprekey : NonceType;
+   loccerta : NonceType;
+   loceapm : NonceType;
+   locbn : NonceType;
+   locausf : NonceType;
+   locsucm : NonceType;
+   loccertc : NonceType;
+   locstart : NonceType;
+   locA : AgentType;
+   locB : AgentType;
+   locC : AgentType;
+   locD : AgentType;
+   locx10 : Message;
+   locx1 : Message;
+   locx2 : Message;
+   locx3 : Message;
+   locx4 : Message;
+   locx5 : Message;
+   locx6 : Message;
+   locx7 : Message;
+   locx8 : Message;
+   locx9 : Message;
+   locm1 : Message;
+   
+   st: DStatus;
    commit : boolean;
   end;
 
@@ -165,8 +304,9 @@ type
 var
   ch : Array[chanNums] of Channel;
   roleA : Array[roleANums] of RoleA;
-  roleS : Array[roleSNums] of RoleS;
   roleB : Array[roleBNums] of RoleB;
+  roleC : Array[roleCNums] of RoleC;
+  roleD : Array[roleDNums] of RoleD;
 
   ---intruder    : RoleIntruder;
   msgs : Array[indexType] of Message;
@@ -203,10 +343,31 @@ var
   sPat15Set: msgSet;
   pat16Set: msgSet;
   sPat16Set: msgSet;
+  pat17Set: msgSet;
+  sPat17Set: msgSet;
+  pat18Set: msgSet;
+  sPat18Set: msgSet;
+  pat19Set: msgSet;
+  sPat19Set: msgSet;
+  pat20Set: msgSet;
+  sPat20Set: msgSet;
+  pat21Set: msgSet;
+  sPat21Set: msgSet;
+  pat22Set: msgSet;
+  sPat22Set: msgSet;
+  pat23Set: msgSet;
+  sPat23Set: msgSet;
+  pat24Set: msgSet;
+  sPat24Set: msgSet;
+  pat25Set: msgSet;
+  sPat25Set: msgSet;
+  pat26Set: msgSet;
+  sPat26Set: msgSet;
 
   A_known : Array[indexType] of boolean;
-  S_known : Array[indexType] of boolean;
   B_known : Array[indexType] of boolean;
+  C_known : Array[indexType] of boolean;
+  D_known : Array[indexType] of boolean;
   Spy_known: Array[indexType] of boolean;
   ---systemEvent   : array[eventNums] of Event;
   ---eve_end       : eventNums;
@@ -352,9 +513,126 @@ function inverseKey(msgK:Message):Message;
   end;
 --- Sorry, construct_function of this pattern has not been written!
 
+function construct2By11(msgNo1,msgNo2:indexType):Message;
+  var index : indexType;
+      msg : Message;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 2) then
+       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := concat;
+     msg.concatPart[1] := msgNo1;
+     msg.concatPart[2] := msgNo2;
+     msg.length := 2;
+   endif;
+   return msg;
+  end;
+
+function constructIndex2By11(msgNo1,msgNo2:indexType):indexType;
+  var index : indexType;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 2) then
+       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
+         index := i;
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     index:=msg_end+1;
+   endif;
+   return index;
+  end;
+
 --- Sorry, construct_function of this pattern has not been written!
 
-function construct3By1122(msgNo1,msgNo2,msgNo3,msgNo4:indexType):Message;
+function construct4By23(msgNo21, msgNo32:indexType):Message;
+  var index: indexType;
+      msg : Message;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = aenc) then
+       if (msgs[i].aencMsg = msgNo21 & msgs[i].aencKey = msgNo32) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := aenc;
+     msg.aencMsg := msgNo21;
+     msg.aencKey := msgNo32;
+     msg.length := 1;
+   endif;
+   return msg;
+  end;
+
+function constructIndex4By23(msgNo21, msgNo32:indexType):indexType;
+  var index: indexType;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = aenc) then
+       if (msgs[i].aencMsg = msgNo21 & msgs[i].aencKey = msgNo32) then
+         index := i;
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     index := msg_end + 1;
+   endif;
+   return index;
+  end;
+
+function construct5By13(msgNo11, msgNo32:indexType):Message;
+  var index: indexType;
+      msg : Message;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = aenc) then
+       if (msgs[i].aencMsg = msgNo11 & msgs[i].aencKey = msgNo32) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := aenc;
+     msg.aencMsg := msgNo11;
+     msg.aencKey := msgNo32;
+     msg.length := 1;
+   endif;
+   return msg;
+  end;
+
+function constructIndex5By13(msgNo11, msgNo32:indexType):indexType;
+  var index: indexType;
+  begin
+   index := 0;
+   for i :indexType do
+     if (msgs[i].msgType = aenc) then
+       if (msgs[i].aencMsg = msgNo11 & msgs[i].aencKey = msgNo32) then
+         index := i;
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     index := msg_end + 1;
+   endif;
+   return index;
+  end;
+
+function construct6By1111(msgNo1,msgNo2,msgNo3,msgNo4:indexType):Message;
   var index : indexType;
       msg : Message;
   begin
@@ -378,7 +656,7 @@ function construct3By1122(msgNo1,msgNo2,msgNo3,msgNo4:indexType):Message;
    return msg;
   end;
 
-function constructIndex3By1122(msgNo1,msgNo2,msgNo3,msgNo4:indexType):indexType;
+function constructIndex6By1111(msgNo1,msgNo2,msgNo3,msgNo4:indexType):indexType;
   var index : indexType;
   begin
    index := 0;
@@ -397,244 +675,7 @@ function constructIndex3By1122(msgNo1,msgNo2,msgNo3,msgNo4:indexType):indexType;
 
 --- Sorry, construct_function of this pattern has not been written!
 
-function construct5By34(msgNo31, msgNo42:indexType):Message;
-  var index: indexType;
-      msg : Message;
-  begin
-   index := 0;
-   for i :indexType do
-     if (msgs[i].msgType = senc) then
-       if (msgs[i].sencMsg = msgNo31 & msgs[i].sencKey = msgNo42) then
-         index := i;
-         msg := msgs[index];
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     msg.msgType := senc;
-     msg.sencMsg := msgNo31;
-     msg.sencKey := msgNo42;
-     msg.length := 1;
-   endif;
-   return msg;
-  end;
-function constructIndex5By34(msgNo31, msgNo42:indexType):indexType;
-  var index: indexType;
-  begin
-   index := 0;
-   for i :indexType do
-     if (msgs[i].msgType = senc) then
-       if (msgs[i].sencMsg = msgNo31 & msgs[i].sencKey = msgNo42) then
-         index := i;
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-      index:= msg_end + 1;
-   endif;
-   return index;
-  end;
-function construct6By1225(msgNo1,msgNo2,msgNo3,msgNo4:indexType):Message;
-  var index : indexType;
-      msg : Message;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 4) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2 & msgs[i].concatPart[3] = msgNo3 & msgs[i].concatPart[4] = msgNo4) then
-         index := i;
-         msg := msgs[index];
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     msg.msgType := concat;
-     msg.concatPart[1] := msgNo1;
-     msg.concatPart[2] := msgNo2;
-     msg.concatPart[3] := msgNo3;
-     msg.concatPart[4] := msgNo4;
-     msg.length := 4;
-   endif;
-   return msg;
-  end;
-
-function constructIndex6By1225(msgNo1,msgNo2,msgNo3,msgNo4:indexType):indexType;
-  var index : indexType;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 4) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2 & msgs[i].concatPart[3] = msgNo3 & msgs[i].concatPart[4] = msgNo4) then
-         index := i;
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     index:=msg_end+1;
-   endif;
-   return index;
-  end;
-
-function construct7By11(msgNo1,msgNo2:indexType):Message;
-  var index : indexType;
-      msg : Message;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 2) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
-         index := i;
-         msg := msgs[index];
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     msg.msgType := concat;
-     msg.concatPart[1] := msgNo1;
-     msg.concatPart[2] := msgNo2;
-     msg.length := 2;
-   endif;
-   return msg;
-  end;
-
-function constructIndex7By11(msgNo1,msgNo2:indexType):indexType;
-  var index : indexType;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 2) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
-         index := i;
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     index:=msg_end+1;
-   endif;
-   return index;
-  end;
-
-function construct8By74(msgNo71, msgNo42:indexType):Message;
-  var index: indexType;
-      msg : Message;
-  begin
-   index := 0;
-   for i :indexType do
-     if (msgs[i].msgType = senc) then
-       if (msgs[i].sencMsg = msgNo71 & msgs[i].sencKey = msgNo42) then
-         index := i;
-         msg := msgs[index];
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     msg.msgType := senc;
-     msg.sencMsg := msgNo71;
-     msg.sencKey := msgNo42;
-     msg.length := 1;
-   endif;
-   return msg;
-  end;
-function constructIndex8By74(msgNo71, msgNo42:indexType):indexType;
-  var index: indexType;
-  begin
-   index := 0;
-   for i :indexType do
-     if (msgs[i].msgType = senc) then
-       if (msgs[i].sencMsg = msgNo71 & msgs[i].sencKey = msgNo42) then
-         index := i;
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-      index:= msg_end + 1;
-   endif;
-   return index;
-  end;
-function construct9By18(msgNo1,msgNo2:indexType):Message;
-  var index : indexType;
-      msg : Message;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 2) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
-         index := i;
-         msg := msgs[index];
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     msg.msgType := concat;
-     msg.concatPart[1] := msgNo1;
-     msg.concatPart[2] := msgNo2;
-     msg.length := 2;
-   endif;
-   return msg;
-  end;
-
-function constructIndex9By18(msgNo1,msgNo2:indexType):indexType;
-  var index : indexType;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 2) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
-         index := i;
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     index:=msg_end+1;
-   endif;
-   return index;
-  end;
-
---- Sorry, construct_function of this pattern has not been written!
-
-function construct11By122105(msgNo1,msgNo2,msgNo3,msgNo4,msgNo5:indexType):Message;
-  var index : indexType;
-      msg : Message;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 5) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2 & msgs[i].concatPart[3] = msgNo3 & msgs[i].concatPart[4] = msgNo4 & msgs[i].concatPart[5] = msgNo5) then
-         index := i;
-         msg := msgs[index];
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     msg.msgType := concat;
-     msg.concatPart[1] := msgNo1;
-     msg.concatPart[2] := msgNo2;
-     msg.concatPart[3] := msgNo3;
-     msg.concatPart[4] := msgNo4;
-     msg.concatPart[5] := msgNo5;
-     msg.length := 5;
-   endif;
-   return msg;
-  end;
-
-function constructIndex11By122105(msgNo1,msgNo2,msgNo3,msgNo4,msgNo5:indexType):indexType;
-  var index : indexType;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 5) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2 & msgs[i].concatPart[3] = msgNo3 & msgs[i].concatPart[4] = msgNo4 & msgs[i].concatPart[5] = msgNo5) then
-         index := i;
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     index:=msg_end+1;
-   endif;
-   return index;
-  end;
-
-function construct12By188(msgNo1,msgNo2,msgNo3:indexType):Message;
+function construct8By111(msgNo1,msgNo2,msgNo3:indexType):Message;
   var index : indexType;
       msg : Message;
   begin
@@ -657,7 +698,7 @@ function construct12By188(msgNo1,msgNo2,msgNo3:indexType):Message;
    return msg;
   end;
 
-function constructIndex12By188(msgNo1,msgNo2,msgNo3:indexType):indexType;
+function constructIndex8By111(msgNo1,msgNo2,msgNo3:indexType):indexType;
   var index : indexType;
   begin
    index := 0;
@@ -674,7 +715,9 @@ function constructIndex12By188(msgNo1,msgNo2,msgNo3:indexType):indexType;
    return index;
   end;
 
-function construct13By12210(msgNo1,msgNo2,msgNo3,msgNo4:indexType):Message;
+--- Sorry, construct_function of this pattern has not been written!
+
+function construct10By5179(msgNo1,msgNo2,msgNo3,msgNo4:indexType):Message;
   var index : indexType;
       msg : Message;
   begin
@@ -698,7 +741,7 @@ function construct13By12210(msgNo1,msgNo2,msgNo3,msgNo4:indexType):Message;
    return msg;
   end;
 
-function constructIndex13By12210(msgNo1,msgNo2,msgNo3,msgNo4:indexType):indexType;
+function constructIndex10By5179(msgNo1,msgNo2,msgNo3,msgNo4:indexType):indexType;
   var index : indexType;
   begin
    index := 0;
@@ -717,47 +760,9 @@ function constructIndex13By12210(msgNo1,msgNo2,msgNo3,msgNo4:indexType):indexTyp
 
 --- Sorry, construct_function of this pattern has not been written!
 
-function construct15By1148(msgNo1,msgNo2,msgNo3:indexType):Message;
-  var index : indexType;
-      msg : Message;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 3) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2 & msgs[i].concatPart[3] = msgNo3) then
-         index := i;
-         msg := msgs[index];
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     msg.msgType := concat;
-     msg.concatPart[1] := msgNo1;
-     msg.concatPart[2] := msgNo2;
-     msg.concatPart[3] := msgNo3;
-     msg.length := 3;
-   endif;
-   return msg;
-  end;
+--- Sorry, construct_function of this pattern has not been written!
 
-function constructIndex15By1148(msgNo1,msgNo2,msgNo3:indexType):indexType;
-  var index : indexType;
-  begin
-   index := 0;
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length = 3) then
-       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2 & msgs[i].concatPart[3] = msgNo3) then
-         index := i;
-       endif;
-     endif;
-   endfor;
-   if (index = 0) then 
-     index:=msg_end+1;
-   endif;
-   return index;
-  end;
-
-function construct16By114(msgNo1,msgNo2:indexType):Message;
+function construct13By121(msgNo1,msgNo2:indexType):Message;
   var index : indexType;
       msg : Message;
   begin
@@ -779,7 +784,7 @@ function construct16By114(msgNo1,msgNo2:indexType):Message;
    return msg;
   end;
 
-function constructIndex16By114(msgNo1,msgNo2:indexType):indexType;
+function constructIndex13By121(msgNo1,msgNo2:indexType):indexType;
   var index : indexType;
   begin
    index := 0;
@@ -796,14 +801,189 @@ function constructIndex16By114(msgNo1,msgNo2:indexType):indexType;
    return index;
   end;
 
----pat1: N 
-procedure lookAddPat1(N:NonceType; Var msg:Message; Var num : indexType);
+--- Sorry, construct_function of this pattern has not been written!
+
+--- Sorry, construct_function of this pattern has not been written!
+
+--- Sorry, construct_function of this pattern has not been written!
+
+--- Sorry, construct_function of this pattern has not been written!
+
+function construct18By1617(msgNo1,msgNo2:indexType):Message;
+  var index : indexType;
+      msg : Message;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 2) then
+       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := concat;
+     msg.concatPart[1] := msgNo1;
+     msg.concatPart[2] := msgNo2;
+     msg.length := 2;
+   endif;
+   return msg;
+  end;
+
+function constructIndex18By1617(msgNo1,msgNo2:indexType):indexType;
+  var index : indexType;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 2) then
+       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
+         index := i;
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     index:=msg_end+1;
+   endif;
+   return index;
+  end;
+
+--- Sorry, construct_function of this pattern has not been written!
+
+--- Sorry, construct_function of this pattern has not been written!
+
+--- Sorry, construct_function of this pattern has not been written!
+
+--- Sorry, construct_function of this pattern has not been written!
+
+function construct23By19202122(msgNo1,msgNo2,msgNo3,msgNo4:indexType):Message;
+  var index : indexType;
+      msg : Message;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 4) then
+       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2 & msgs[i].concatPart[3] = msgNo3 & msgs[i].concatPart[4] = msgNo4) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := concat;
+     msg.concatPart[1] := msgNo1;
+     msg.concatPart[2] := msgNo2;
+     msg.concatPart[3] := msgNo3;
+     msg.concatPart[4] := msgNo4;
+     msg.length := 4;
+   endif;
+   return msg;
+  end;
+
+function constructIndex23By19202122(msgNo1,msgNo2,msgNo3,msgNo4:indexType):indexType;
+  var index : indexType;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 4) then
+       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2 & msgs[i].concatPart[3] = msgNo3 & msgs[i].concatPart[4] = msgNo4) then
+         index := i;
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     index:=msg_end+1;
+   endif;
+   return index;
+  end;
+
+function construct24By1(msgNo1:indexType):Message;
+  var index : indexType;
+      msg : Message;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 1) then
+       if (msgs[i].concatPart[1] = msgNo1) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := concat;
+     msg.concatPart[1] := msgNo1;
+     msg.length := 1;
+   endif;
+   return msg;
+  end;
+
+function constructIndex24By1(msgNo1:indexType):indexType;
+  var index : indexType;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 1) then
+       if (msgs[i].concatPart[1] = msgNo1) then
+         index := i;
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     index:=msg_end+1;
+   endif;
+   return index;
+  end;
+
+--- Sorry, construct_function of this pattern has not been written!
+
+function construct26By251(msgNo1,msgNo2:indexType):Message;
+  var index : indexType;
+      msg : Message;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 2) then
+       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
+         index := i;
+         msg := msgs[index];
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     msg.msgType := concat;
+     msg.concatPart[1] := msgNo1;
+     msg.concatPart[2] := msgNo2;
+     msg.length := 2;
+   endif;
+   return msg;
+  end;
+
+function constructIndex26By251(msgNo1,msgNo2:indexType):indexType;
+  var index : indexType;
+  begin
+   index := 0;
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length = 2) then
+       if (msgs[i].concatPart[1] = msgNo1 & msgs[i].concatPart[2] = msgNo2) then
+         index := i;
+       endif;
+     endif;
+   endfor;
+   if (index = 0) then 
+     index:=msg_end+1;
+   endif;
+   return index;
+  end;
+
+---pat1: supi 
+procedure lookAddPat1(supi:NonceType; Var msg:Message; Var num : indexType);
   Var index : indexType;
   begin
       index:=0;
       for i: indexType do
         if(msgs[i].msgType=nonce) then
-          if(msgs[i].noncePart=N) then
+          if(msgs[i].noncePart=supi) then
             index:=i;
           endif;
         endif;
@@ -812,14 +992,14 @@ procedure lookAddPat1(N:NonceType; Var msg:Message; Var num : indexType);
         msg_end := msg_end + 1 ;
         index := msg_end;
         msgs[index].msgType := nonce;
-        msgs[index].noncePart:=N; 
+        msgs[index].noncePart:=supi; 
         msgs[index].length := 1;
       endif;
       num:=index;
       msg:=msgs[index];
   end;
 
----pat1: N 
+---pat1: supi 
 procedure isPat1(msg:Message; Var flag:boolean);
   var flag1 : boolean;
   begin
@@ -830,15 +1010,15 @@ procedure isPat1(msg:Message; Var flag:boolean);
     flag := flag1;
   end;
 
----spat1: N 
-procedure constructSpat1(N:NonceType; Var num: indexType);
+---spat1: supi 
+procedure constructSpat1(supi:NonceType; Var num: indexType);
   Var i, index : indexType;
   begin
    index:=0;
    i := 1;
    while(i<= msg_end) do
       if (msgs[i].msgType = nonce) then
-        if (msgs[i].noncePart = N) then
+        if (msgs[i].noncePart = supi) then
           index := i;
         endif;
       endif;
@@ -848,7 +1028,7 @@ procedure constructSpat1(N:NonceType; Var num: indexType);
       msg_end := msg_end + 1 ;
       index := msg_end;
       msgs[index].msgType := nonce;
-      msgs[index].noncePart := N;
+      msgs[index].noncePart := supi;
       msgs[index].length := 1;
     endif;
     sPat1Set.length := sPat1Set.length + 1;
@@ -856,79 +1036,17 @@ procedure constructSpat1(N:NonceType; Var num: indexType);
     num := index;
   end;
 
----pat2: A 
-procedure lookAddPat2(A:AgentType; Var msg:Message; Var num : indexType);
- Var index : indexType;
- begin
-   index:=0;
-   for i: indexType do
-    if (msgs[i].msgType = agent) then
-      if (msgs[i].ag = A) then
-        index:=i;
-      endif;
-    endif;
-   endfor;
-   if(index=0) then
-     msg_end := msg_end + 1 ;
-     index := msg_end;
-     msgs[index].msgType := agent;
-     msgs[index].ag:=A; 
-     msgs[index].length := 1;
-   endif;
-   num:=index;
-   msg:=msgs[index];
-  end;
-
----pat2: A 
-procedure isPat2(msg:Message; Var flag:boolean);
-  var flag1 : boolean;
-  begin
-    flag1 := false;
-    if (msg.msgType = agent) then
-      flag1 := true;
-    endif;
-    flag := flag1;
-  end;
-
----spat2: A 
-procedure constructSpat2(A:AgentType; Var num: indexType);
-  Var i, index : indexType;
+---pat2: supi.ue 
+procedure lookAddPat2(supi:NonceType; ue:NonceType; Var msg:Message; Var num : indexType);
+  Var msg1,msg2: Message;
+     index,i1,i2:indexType;
   begin
    index:=0;
-   i := 1;
-   while(i<= msg_end) do
-      if (msgs[i].msgType = agent) then
-        if (msgs[i].ag = A) then
-          index := i;
-        endif;
-      endif;
-      i := i+1;
-    endwhile;
-    if(index=0) then
-      msg_end := msg_end + 1 ;
-      index := msg_end;
-      msgs[index].msgType := agent;
-      msgs[index].ag := A;
-      msgs[index].length := 1;
-    endif;
-    sPat2Set.length := sPat2Set.length + 1;
-    sPat2Set.content[sPat2Set.length] := index;
-    num := index;
-  end;
-
----pat3: Na.N.A.B 
-procedure lookAddPat3(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; Var msg:Message; Var num : indexType);
-  Var msg1,msg2,msg3,msg4: Message;
-     index,i1,i2,i3,i4:indexType;
-  begin
-   index:=0;
-   lookAddPat1(Na, msg1, i1);
-   lookAddPat1(N, msg2, i2);
-   lookAddPat2(A, msg3, i3);
-   lookAddPat2(B, msg4, i4);
+   lookAddPat1(supi, msg1, i1);
+   lookAddPat1(ue, msg2, i2);
    for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length=4) then
-       if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2 & msgs[i].concatPart[3]=i3 & msgs[i].concatPart[4]=i4) then
+     if (msgs[i].msgType = concat & msgs[i].length=2) then
+       if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2) then
           index:=i;
        endif;
      endif;
@@ -938,48 +1056,40 @@ procedure lookAddPat3(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; Var m
      index := msg_end;
      msgs[index].msgType := concat;
      msgs[index].concatPart[1]:=i1;
-     msgs[index].concatPart[2]:=i2;
-     msgs[index].concatPart[3]:=i3;
-     msgs[index].concatPart[4]:=i4; 
-     msgs[index].length := 4;
+     msgs[index].concatPart[2]:=i2; 
+     msgs[index].length := 2;
    endif;
    num:=index;
    msg:=msgs[index];
   end;
 
----pat3: Na.N.A.B 
-procedure isPat3(msg:Message; Var flag:boolean);
-  var flag1, flagPart1,flagPart2,flagPart3,flagPart4: boolean;
+---pat2: supi.ue 
+procedure isPat2(msg:Message; Var flag:boolean);
+  var flag1, flagPart1,flagPart2: boolean;
   begin
      flag1 := false;
      flagPart1 := false;
      flagPart2 := false;
-     flagPart3 := false;
-     flagPart4 := false;
      if(msg.msgType = concat) then
         isPat1(msgs[msg.concatPart[1]],flagPart1);
         isPat1(msgs[msg.concatPart[2]],flagPart2);
-        isPat2(msgs[msg.concatPart[3]],flagPart3);
-        isPat2(msgs[msg.concatPart[4]],flagPart4);
-       if (flagPart1 & flagPart2 & flagPart3 & flagPart4) then 
+       if (flagPart1 & flagPart2) then 
          flag1 := true;
        endif;
      endif;
      flag := flag1;
   end;
----spat3: Na.N.A.B 
-procedure constructSpat3(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; Var num: indexType);
-  Var i,index, i1, i2, i3, i4:indexType;
+---spat2: supi.ue 
+procedure constructSpat2(supi:NonceType; ue:NonceType; Var num: indexType);
+  Var i,index, i1, i2:indexType;
   begin
     index:=0;
-    constructSpat1(Na, i1);
-    constructSpat1(N, i2);
-    constructSpat2(A, i3);
-    constructSpat2(B, i4);
+    constructSpat1(supi, i1);
+    constructSpat1(ue, i2);
     i := 1;
     while(i<= msg_end) do
-      if (msgs[i].msgType = concat & msgs[i].length = 4) then
-        if (msgs[i].concatPart[1] = i1 & msgs[i].concatPart[2] = i2 & msgs[i].concatPart[3] = i3 & msgs[i].concatPart[4] = i4) then
+      if (msgs[i].msgType = concat & msgs[i].length = 2) then
+        if (msgs[i].concatPart[1] = i1 & msgs[i].concatPart[2] = i2) then
           index := i;
         endif;
       endif;
@@ -991,59 +1101,57 @@ procedure constructSpat3(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; Va
       msgs[index].msgType := concat;
       msgs[index].concatPart[1] := i1;
       msgs[index].concatPart[2] := i2;
-      msgs[index].concatPart[3] := i3;
-      msgs[index].concatPart[4] := i4;
-      msgs[index].length := 4;
+      msgs[index].length := 2;
     endif;
-    sPat3Set.length := sPat3Set.length + 1;
-    sPat3Set.content[sPat3Set.length] := index;
+    sPat2Set.length := sPat2Set.length + 1;
+    sPat2Set.content[sPat2Set.length] := index;
     num := index;
   end;
 
----pat4: k(A,S) 
-procedure lookAddPat4(Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num : indexType);
+---pat3: pk(D) 
+procedure lookAddPat3(DPk:AgentType; Var msg:Message; Var num : indexType);
   Var index : indexType;
   begin
-    index := 0;
-    for i :indexType do
-      if (msgs[i].msgType = key) then 
-        if (msgs[i].k.encType = Symk & msgs[i].k.ag1 = Asymk1 & msgs[i].k.ag2 = Ssymk2) then
-          index := i;
+    index:=0;
+    for i: indexType do
+      if (msgs[i].msgType = key) then
+        if (msgs[i].k.encType = PK & msgs[i].k.ag = DPk) then
+          index:=i;
         endif;
       endif;
     endfor;
-    if (index = 0) then
-      msg_end := msg_end + 1;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
       index := msg_end;
       msgs[index].msgType := key;
-      msgs[index].k.encType := Symk;
-      msgs[index].k.ag1:=Asymk1;
-      msgs[index].k.ag2:=Ssymk2;
+      msgs[index].k.encType:=PK; 
+      msgs[index].k.ag:=DPk;
+      msgs[index].length := 1;
     endif;
-    num := index;
-    msg := msgs[index];
+    num:=index;
+    msg:=msgs[index];
   end;
 
----pat4: k(A,S) 
-procedure isPat4(msg:Message; Var flag:boolean);
-  var flag1:boolean;
+---pat3: pk(D) 
+procedure isPat3(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
   begin
-    flag1:=false;
-    if msg.msgType = key & msg.k.encType = Symk then
-      flag1:=true;
+    flag1 := false;
+    if (msg.msgType = key & msg.k.encType = PK) then
+      flag1 := true;
     endif;
-    flag:=flag1;
+    flag := flag1;
   end;
 
----spat4: k(A,S) 
-procedure constructSpat4(Asymk1:AgentType; Ssymk2:AgentType; Var num: indexType);
+---spat3: pk(D) 
+procedure constructSpat3(DPk:AgentType; Var num: indexType);
   Var i, index : indexType;
   begin
    index:=0;
    i := 1;
    while(i<= msg_end) do
-      if (msgs[i].msgType = key & msgs[i].k.encType = Symk) then
-        if (msgs[i].k.ag1 = Asymk1 & msgs[i].k.ag2 = Ssymk2) then
+      if (msgs[i].msgType = key & msgs[i].k.encType = PK) then
+        if (msgs[i].k.ag = DPk) then
           index := i;
         endif;
       endif;
@@ -1053,27 +1161,26 @@ procedure constructSpat4(Asymk1:AgentType; Ssymk2:AgentType; Var num: indexType)
       msg_end := msg_end + 1 ;
       index := msg_end;
       msgs[index].msgType := key;
-      msgs[index].k.encType := Symk;
-      msgs[index].k.ag1 := Asymk1;
-      msgs[index].k.ag2 := Ssymk2;
+      msgs[index].k.encType := PK;
+      msgs[index].k.ag := DPk;
       msgs[index].length := 1;
     endif;
-    sPat4Set.length := sPat4Set.length + 1;
-    sPat4Set.content[sPat4Set.length] := index;
+    sPat3Set.length := sPat3Set.length + 1;
+    sPat3Set.content[sPat3Set.length] := index;
     num := index;
   end;
 
----pat5: senc{Na.N.A.B}k(A,S) 
-procedure lookAddPat5(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num : indexType);
+---pat4: aenc{supi.ue}pk(D) 
+procedure lookAddPat4(supi:NonceType; ue:NonceType; DPk:AgentType; Var msg:Message; Var num : indexType);
   Var msg1, msg2: Message;
       index,i1,i2:indexType;
   begin
    index:=0;
-   lookAddPat3(Na, N, A, B,msg1,i1);
-   lookAddPat4(Asymk1, Ssymk2,msg2,i2);
+   lookAddPat2(supi, ue,msg1,i1);
+   lookAddPat3(DPk,msg2,i2);
    for i : indexType do
-     if (msgs[i].msgType = senc) then
-       if (msgs[i].sencMsg = i1 & msgs[i].sencKey = i2) then
+     if (msgs[i].msgType = aenc) then
+       if (msgs[i].aencMsg = i1 & msgs[i].aencKey = i2) then
           index:=i;
        endif;
      endif;
@@ -1081,43 +1188,43 @@ procedure lookAddPat5(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; Asymk
    if(index=0) then
      msg_end := msg_end + 1 ;
      index := msg_end;
-     msgs[index].msgType := senc;
-     msgs[index].sencMsg := i1; 
-     msgs[index].sencKey := i2; 
-     msgs[index].length := 1;
+     msgs[index].msgType := aenc;
+     msgs[index].aencMsg := i1; 
+     msgs[index].aencKey := i2;     
+          msgs[index].length := 1;
    endif;
    num:=index;
    msg:=msgs[index];
   end;
 
----pat5: senc{Na.N.A.B}k(A,S) 
-procedure isPat5(msg:Message; Var flag:boolean);
+---pat4: aenc{supi.ue}pk(D) 
+procedure isPat4(msg:Message; Var flag:boolean);
   var flag1,flagPart1,flagPart2 : boolean;
   begin
     flag1 := false;
-    flagPart1:=false;
-    flagPart2:=false;
-    if msg.msgType = senc then
-      isPat3(msgs[msg.sencMsg],flagPart1);
-      isPat4(msgs[msg.sencKey],flagPart2);
-      if flagPart1 & flagPart2 then
+    flagPart1 := false;
+    flagPart2 := false;
+    if (msg.msgType = aenc) then
+      isPat2(msgs[msg.aencMsg],flagPart1);
+      isPat3(msgs[msg.aencKey],flagPart2);
+      if (flagPart1 & flagPart2) then 
         flag1 := true;
       endif;
     endif;
     flag := flag1;
   end;
 
----spat5: senc{Na.N.A.B}k(A,S) 
-procedure constructSpat5(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; Asymk1:AgentType; Ssymk2:AgentType; Var num: indexType);
+---spat4: aenc{supi.ue}pk(D) 
+procedure constructSpat4(supi:NonceType; ue:NonceType; DPk:AgentType; Var num: indexType);
   Var i,index,i1,i2:indexType;
   begin
     index:=0;
-    constructSpat3(Na, N, A, B, i1);
-    constructSpat4(Asymk1, Ssymk2, i2);
+    constructSpat2(supi, ue, i1);
+    constructSpat3(DPk, i2);
     i := 1;
     while(i <= msg_end) do
-      if (msgs[i].msgType = senc) then
-        if (msgs[i].sencMsg = i1 & msgs[i].sencKey = i2) then
+      if (msgs[i].msgType = aenc) then
+        if (msgs[i].aencMsg = i1 & msgs[i].aencKey = i2) then
            index:=i;
         endif;
       endif;
@@ -1126,9 +1233,82 @@ procedure constructSpat5(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; As
     if(index=0) then
       msg_end := msg_end + 1 ;
       index := msg_end;
-      msgs[index].msgType := senc;
-      msgs[index].sencMsg := i1; 
-      msgs[index].sencKey := i2; 
+      msgs[index].msgType := aenc;
+      msgs[index].aencMsg := i1; 
+      msgs[index].aencKey := i2; 
+      msgs[index].length := 1;
+    endif;
+    sPat4Set.length := sPat4Set.length + 1;
+    sPat4Set.content[sPat4Set.length] := index;
+    num := index;
+  end;
+
+---pat5: aenc{prekey}pk(C) 
+procedure lookAddPat5(prekey:NonceType; CPk:AgentType; Var msg:Message; Var num : indexType);
+  Var msg1, msg2: Message;
+      index,i1,i2:indexType;
+  begin
+   index:=0;
+   lookAddPat1(prekey,msg1,i1);
+   lookAddPat3(CPk,msg2,i2);
+   for i : indexType do
+     if (msgs[i].msgType = aenc) then
+       if (msgs[i].aencMsg = i1 & msgs[i].aencKey = i2) then
+          index:=i;
+       endif;
+     endif;
+   endfor;
+   if(index=0) then
+     msg_end := msg_end + 1 ;
+     index := msg_end;
+     msgs[index].msgType := aenc;
+     msgs[index].aencMsg := i1; 
+     msgs[index].aencKey := i2;     
+          msgs[index].length := 1;
+   endif;
+   num:=index;
+   msg:=msgs[index];
+  end;
+
+---pat5: aenc{prekey}pk(C) 
+procedure isPat5(msg:Message; Var flag:boolean);
+  var flag1,flagPart1,flagPart2 : boolean;
+  begin
+    flag1 := false;
+    flagPart1 := false;
+    flagPart2 := false;
+    if (msg.msgType = aenc) then
+      isPat1(msgs[msg.aencMsg],flagPart1);
+      isPat3(msgs[msg.aencKey],flagPart2);
+      if (flagPart1 & flagPart2) then 
+        flag1 := true;
+      endif;
+    endif;
+    flag := flag1;
+  end;
+
+---spat5: aenc{prekey}pk(C) 
+procedure constructSpat5(prekey:NonceType; CPk:AgentType; Var num: indexType);
+  Var i,index,i1,i2:indexType;
+  begin
+    index:=0;
+    constructSpat1(prekey, i1);
+    constructSpat3(CPk, i2);
+    i := 1;
+    while(i <= msg_end) do
+      if (msgs[i].msgType = aenc) then
+        if (msgs[i].aencMsg = i1 & msgs[i].aencKey = i2) then
+           index:=i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := aenc;
+      msgs[index].aencMsg := i1; 
+      msgs[index].aencKey := i2; 
       msgs[index].length := 1;
     endif;
     sPat5Set.length := sPat5Set.length + 1;
@@ -1136,16 +1316,16 @@ procedure constructSpat5(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; As
     num := index;
   end;
 
----pat6: N.A.B.senc{Na.N.A.B}k(A,S) 
-procedure lookAddPat6(N:NonceType; A:AgentType; B:AgentType; Na:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num : indexType);
+---pat6: start.ue1.ausf.certc 
+procedure lookAddPat6(start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; Var msg:Message; Var num : indexType);
   Var msg1,msg2,msg3,msg4: Message;
      index,i1,i2,i3,i4:indexType;
   begin
    index:=0;
-   lookAddPat1(N, msg1, i1);
-   lookAddPat2(A, msg2, i2);
-   lookAddPat2(B, msg3, i3);
-   lookAddPat5(Na, N, A, B, Asymk1, Ssymk2, msg4, i4);
+   lookAddPat1(start, msg1, i1);
+   lookAddPat1(ue1, msg2, i2);
+   lookAddPat1(ausf, msg3, i3);
+   lookAddPat1(certc, msg4, i4);
    for i : indexType do
      if (msgs[i].msgType = concat & msgs[i].length=4) then
        if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2 & msgs[i].concatPart[3]=i3 & msgs[i].concatPart[4]=i4) then
@@ -1167,7 +1347,7 @@ procedure lookAddPat6(N:NonceType; A:AgentType; B:AgentType; Na:NonceType; Asymk
    msg:=msgs[index];
   end;
 
----pat6: N.A.B.senc{Na.N.A.B}k(A,S) 
+---pat6: start.ue1.ausf.certc 
 procedure isPat6(msg:Message; Var flag:boolean);
   var flag1, flagPart1,flagPart2,flagPart3,flagPart4: boolean;
   begin
@@ -1178,24 +1358,24 @@ procedure isPat6(msg:Message; Var flag:boolean);
      flagPart4 := false;
      if(msg.msgType = concat) then
         isPat1(msgs[msg.concatPart[1]],flagPart1);
-        isPat2(msgs[msg.concatPart[2]],flagPart2);
-        isPat2(msgs[msg.concatPart[3]],flagPart3);
-        isPat5(msgs[msg.concatPart[4]],flagPart4);
+        isPat1(msgs[msg.concatPart[2]],flagPart2);
+        isPat1(msgs[msg.concatPart[3]],flagPart3);
+        isPat1(msgs[msg.concatPart[4]],flagPart4);
        if (flagPart1 & flagPart2 & flagPart3 & flagPart4) then 
          flag1 := true;
        endif;
      endif;
      flag := flag1;
   end;
----spat6: N.A.B.senc{Na.N.A.B}k(A,S) 
-procedure constructSpat6(N:NonceType; A:AgentType; B:AgentType; Na:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Var num: indexType);
+---spat6: start.ue1.ausf.certc 
+procedure constructSpat6(start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; Var num: indexType);
   Var i,index, i1, i2, i3, i4:indexType;
   begin
     index:=0;
-    constructSpat1(N, i1);
-    constructSpat2(A, i2);
-    constructSpat2(B, i3);
-    constructSpat5(Na, N, A, B, Asymk1, Ssymk2, i4);
+    constructSpat1(start, i1);
+    constructSpat1(ue1, i2);
+    constructSpat1(ausf, i3);
+    constructSpat1(certc, i4);
     i := 1;
     while(i<= msg_end) do
       if (msgs[i].msgType = concat & msgs[i].length = 4) then
@@ -1220,89 +1400,17 @@ procedure constructSpat6(N:NonceType; A:AgentType; B:AgentType; Na:NonceType; As
     num := index;
   end;
 
----pat7: Na.Kab 
-procedure lookAddPat7(Na:NonceType; Kab:NonceType; Var msg:Message; Var num : indexType);
-  Var msg1,msg2: Message;
-     index,i1,i2:indexType;
-  begin
-   index:=0;
-   lookAddPat1(Na, msg1, i1);
-   lookAddPat1(Kab, msg2, i2);
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length=2) then
-       if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2) then
-          index:=i;
-       endif;
-     endif;
-   endfor;
-   if(index=0) then
-     msg_end := msg_end + 1 ;
-     index := msg_end;
-     msgs[index].msgType := concat;
-     msgs[index].concatPart[1]:=i1;
-     msgs[index].concatPart[2]:=i2; 
-     msgs[index].length := 2;
-   endif;
-   num:=index;
-   msg:=msgs[index];
-  end;
-
----pat7: Na.Kab 
-procedure isPat7(msg:Message; Var flag:boolean);
-  var flag1, flagPart1,flagPart2: boolean;
-  begin
-     flag1 := false;
-     flagPart1 := false;
-     flagPart2 := false;
-     if(msg.msgType = concat) then
-        isPat1(msgs[msg.concatPart[1]],flagPart1);
-        isPat1(msgs[msg.concatPart[2]],flagPart2);
-       if (flagPart1 & flagPart2) then 
-         flag1 := true;
-       endif;
-     endif;
-     flag := flag1;
-  end;
----spat7: Na.Kab 
-procedure constructSpat7(Na:NonceType; Kab:NonceType; Var num: indexType);
-  Var i,index, i1, i2:indexType;
-  begin
-    index:=0;
-    constructSpat1(Na, i1);
-    constructSpat1(Kab, i2);
-    i := 1;
-    while(i<= msg_end) do
-      if (msgs[i].msgType = concat & msgs[i].length = 2) then
-        if (msgs[i].concatPart[1] = i1 & msgs[i].concatPart[2] = i2) then
-          index := i;
-        endif;
-      endif;
-      i := i+1;
-    endwhile;
-    if(index=0) then
-      msg_end := msg_end + 1 ;
-      index := msg_end;
-      msgs[index].msgType := concat;
-      msgs[index].concatPart[1] := i1;
-      msgs[index].concatPart[2] := i2;
-      msgs[index].length := 2;
-    endif;
-    sPat7Set.length := sPat7Set.length + 1;
-    sPat7Set.content[sPat7Set.length] := index;
-    num := index;
-  end;
-
----pat8: senc{Na.Kab}k(A,S) 
-procedure lookAddPat8(Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num : indexType);
+---pat7: hash(start.ue1.ausf.certc)sk(A) 
+procedure lookAddPat7(start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; ASk:AgentType; Var msg:Message; Var num : indexType);
   Var msg1, msg2: Message;
       index,i1,i2:indexType;
   begin
    index:=0;
-   lookAddPat7(Na, Kab,msg1,i1);
-   lookAddPat4(Asymk1, Ssymk2,msg2,i2);
+   lookAddPat6(start, ue1, ausf, certc,msg1,i1);
+   lookAddPat3(ASk,msg2,i2);
    for i : indexType do
-     if (msgs[i].msgType = senc) then
-       if (msgs[i].sencMsg = i1 & msgs[i].sencKey = i2) then
+     if (msgs[i].msgType = hash) then
+       if (msgs[i].hashMsg = i1 & msgs[i].hashKey = i2) then
           index:=i;
        endif;
      endif;
@@ -1310,43 +1418,43 @@ procedure lookAddPat8(Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:Agen
    if(index=0) then
      msg_end := msg_end + 1 ;
      index := msg_end;
-     msgs[index].msgType := senc;
-     msgs[index].sencMsg := i1; 
-     msgs[index].sencKey := i2; 
+     msgs[index].msgType := hash;
+     msgs[index].hashMsg := i1; 
+     msgs[index].hashKey := i2;
      msgs[index].length := 1;
    endif;
    num:=index;
    msg:=msgs[index];
   end;
 
----pat8: senc{Na.Kab}k(A,S) 
-procedure isPat8(msg:Message; Var flag:boolean);
+---pat7: hash(start.ue1.ausf.certc)sk(A) 
+procedure isPat7(msg:Message; Var flag:boolean);
   var flag1,flagPart1,flagPart2 : boolean;
   begin
     flag1 := false;
-    flagPart1:=false;
-    flagPart2:=false;
-    if msg.msgType = senc then
-      isPat7(msgs[msg.sencMsg],flagPart1);
-      isPat4(msgs[msg.sencKey],flagPart2);
-      if flagPart1 & flagPart2 then
+    flagPart1 := false;
+    flagPart2 := false;
+    if (msg.msgType = hash) then
+      isPat6(msgs[msg.hashMsg],flagPart1);
+      isPat3(msgs[msg.hashKey],flagPart2);
+      if (flagPart1 & flagPart2) then 
         flag1 := true;
       endif;
     endif;
     flag := flag1;
   end;
 
----spat8: senc{Na.Kab}k(A,S) 
-procedure constructSpat8(Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Var num: indexType);
+---spat7: hash(start.ue1.ausf.certc)sk(A) 
+procedure constructSpat7(start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; ASk:AgentType; Var num: indexType);
   Var i,index,i1,i2:indexType;
   begin
     index:=0;
-    constructSpat7(Na, Kab, i1);
-    constructSpat4(Asymk1, Ssymk2, i2);
+    constructSpat6(start, ue1, ausf, certc, i1);
+    constructSpat3(ASk, i2);
     i := 1;
     while(i <= msg_end) do
-      if (msgs[i].msgType = senc) then
-        if (msgs[i].sencMsg = i1 & msgs[i].sencKey = i2) then
+      if (msgs[i].msgType = hash) then
+        if (msgs[i].hashMsg = i1 & msgs[i].hashKey = i2) then
            index:=i;
         endif;
       endif;
@@ -1355,229 +1463,25 @@ procedure constructSpat8(Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:A
     if(index=0) then
       msg_end := msg_end + 1 ;
       index := msg_end;
-      msgs[index].msgType := senc;
-      msgs[index].sencMsg := i1; 
-      msgs[index].sencKey := i2; 
+      msgs[index].msgType := hash;
+      msgs[index].hashMsg := i1; 
+      msgs[index].hashKey := i2; 
       msgs[index].length := 1;
     endif;
-    sPat8Set.length := sPat8Set.length + 1;
-    sPat8Set.content[sPat8Set.length] := index;
+    sPat7Set.length := sPat7Set.length + 1;
+    sPat7Set.content[sPat7Set.length] := index;
     num := index;
   end;
 
----pat9: N.senc{Na.Kab}k(A,S) 
-procedure lookAddPat9(N:NonceType; Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num : indexType);
-  Var msg1,msg2: Message;
-     index,i1,i2:indexType;
-  begin
-   index:=0;
-   lookAddPat1(N, msg1, i1);
-   lookAddPat8(Na, Kab, Asymk1, Ssymk2, msg2, i2);
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length=2) then
-       if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2) then
-          index:=i;
-       endif;
-     endif;
-   endfor;
-   if(index=0) then
-     msg_end := msg_end + 1 ;
-     index := msg_end;
-     msgs[index].msgType := concat;
-     msgs[index].concatPart[1]:=i1;
-     msgs[index].concatPart[2]:=i2; 
-     msgs[index].length := 2;
-   endif;
-   num:=index;
-   msg:=msgs[index];
-  end;
-
----pat9: N.senc{Na.Kab}k(A,S) 
-procedure isPat9(msg:Message; Var flag:boolean);
-  var flag1, flagPart1,flagPart2: boolean;
-  begin
-     flag1 := false;
-     flagPart1 := false;
-     flagPart2 := false;
-     if(msg.msgType = concat) then
-        isPat1(msgs[msg.concatPart[1]],flagPart1);
-        isPat8(msgs[msg.concatPart[2]],flagPart2);
-       if (flagPart1 & flagPart2) then 
-         flag1 := true;
-       endif;
-     endif;
-     flag := flag1;
-  end;
----spat9: N.senc{Na.Kab}k(A,S) 
-procedure constructSpat9(N:NonceType; Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Var num: indexType);
-  Var i,index, i1, i2:indexType;
-  begin
-    index:=0;
-    constructSpat1(N, i1);
-    constructSpat8(Na, Kab, Asymk1, Ssymk2, i2);
-    i := 1;
-    while(i<= msg_end) do
-      if (msgs[i].msgType = concat & msgs[i].length = 2) then
-        if (msgs[i].concatPart[1] = i1 & msgs[i].concatPart[2] = i2) then
-          index := i;
-        endif;
-      endif;
-      i := i+1;
-    endwhile;
-    if(index=0) then
-      msg_end := msg_end + 1 ;
-      index := msg_end;
-      msgs[index].msgType := concat;
-      msgs[index].concatPart[1] := i1;
-      msgs[index].concatPart[2] := i2;
-      msgs[index].length := 2;
-    endif;
-    sPat9Set.length := sPat9Set.length + 1;
-    sPat9Set.content[sPat9Set.length] := index;
-    num := index;
-  end;
-
----pat10: m1 
-procedure lookAddPat10(m1:Message; Var msg:Message; Var num : indexType);
-  Var index : indexType;
-  begin
-    get_msgNo(msgs[m1.tmpPart],index); 
-    num:=index;
-    msg:=msgs[index];
-  end;
-
----pat10: m1 
-procedure isPat10(msg:Message; Var flag:boolean);
-  var flag1 : boolean;
-  begin
-    flag := true;
-  end;
-
----spat10: m1 
-procedure constructSpat10(m1:Message; Var num: indexType);
-  Var i, index : indexType;
-  begin
-   index:=0;
-   i := 1;
-   while(i<= msg_end) do
-      if (msgs[i].msgType = tmp) then
-        if (msgs[i].tmpPart = m1.tmpPart) then
-          index := i;
-        endif;
-      endif;
-      i := i+1;
-    endwhile;
-    if(index=0) then
-      msg_end := msg_end + 1 ;
-      index := msg_end;
-      msgs[index].msgType := tmp;
-      msgs[index].tmpPart := m1.tmpPart;
-      msgs[index].length := 1;
-    endif;
-    sPat10Set.length := sPat10Set.length + 1;
-    sPat10Set.content[sPat10Set.length] := index;
-    num := index;
-  end;
-
----pat11: N.A.B.m1.senc{Nb.N.A.B}k(B,S) 
-procedure lookAddPat11(N:NonceType; A:AgentType; B:AgentType; m1:Message; Nb:NonceType; Bsymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num : indexType);
-  Var msg1,msg2,msg3,msg4,msg5: Message;
-     index,i1,i2,i3,i4,i5:indexType;
-  begin
-   index:=0;
-   lookAddPat1(N, msg1, i1);
-   lookAddPat2(A, msg2, i2);
-   lookAddPat2(B, msg3, i3);
-   lookAddPat10(m1, msg4, i4);
-   lookAddPat5(Nb, N, A, B, Bsymk1, Ssymk2, msg5, i5);
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length=5) then
-       if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2 & msgs[i].concatPart[3]=i3 & msgs[i].concatPart[4]=i4 & msgs[i].concatPart[5]=i5) then
-          index:=i;
-       endif;
-     endif;
-   endfor;
-   if(index=0) then
-     msg_end := msg_end + 1 ;
-     index := msg_end;
-     msgs[index].msgType := concat;
-     msgs[index].concatPart[1]:=i1;
-     msgs[index].concatPart[2]:=i2;
-     msgs[index].concatPart[3]:=i3;
-     msgs[index].concatPart[4]:=i4;
-     msgs[index].concatPart[5]:=i5; 
-     msgs[index].length := 5;
-   endif;
-   num:=index;
-   msg:=msgs[index];
-  end;
-
----pat11: N.A.B.m1.senc{Nb.N.A.B}k(B,S) 
-procedure isPat11(msg:Message; Var flag:boolean);
-  var flag1, flagPart1,flagPart2,flagPart3,flagPart4,flagPart5: boolean;
-  begin
-     flag1 := false;
-     flagPart1 := false;
-     flagPart2 := false;
-     flagPart3 := false;
-     flagPart4 := false;
-     flagPart5 := false;
-     if(msg.msgType = concat) then
-        isPat1(msgs[msg.concatPart[1]],flagPart1);
-        isPat2(msgs[msg.concatPart[2]],flagPart2);
-        isPat2(msgs[msg.concatPart[3]],flagPart3);
-        isPat10(msgs[msg.concatPart[4]],flagPart4);
-        isPat5(msgs[msg.concatPart[5]],flagPart5);
-       if (flagPart1 & flagPart2 & flagPart3 & flagPart4 & flagPart5) then 
-         flag1 := true;
-       endif;
-     endif;
-     flag := flag1;
-  end;
----spat11: N.A.B.m1.senc{Nb.N.A.B}k(B,S) 
-procedure constructSpat11(N:NonceType; A:AgentType; B:AgentType; m1:Message; Nb:NonceType; Bsymk1:AgentType; Ssymk2:AgentType; Var num: indexType);
-  Var i,index, i1, i2, i3, i4, i5:indexType;
-  begin
-    index:=0;
-    constructSpat1(N, i1);
-    constructSpat2(A, i2);
-    constructSpat2(B, i3);
-    constructSpat10(m1, i4);
-    constructSpat5(Nb, N, A, B, Bsymk1, Ssymk2, i5);
-    i := 1;
-    while(i<= msg_end) do
-      if (msgs[i].msgType = concat & msgs[i].length = 5) then
-        if (msgs[i].concatPart[1] = i1 & msgs[i].concatPart[2] = i2 & msgs[i].concatPart[3] = i3 & msgs[i].concatPart[4] = i4 & msgs[i].concatPart[5] = i5) then
-          index := i;
-        endif;
-      endif;
-      i := i+1;
-    endwhile;
-    if(index=0) then
-      msg_end := msg_end + 1 ;
-      index := msg_end;
-      msgs[index].msgType := concat;
-      msgs[index].concatPart[1] := i1;
-      msgs[index].concatPart[2] := i2;
-      msgs[index].concatPart[3] := i3;
-      msgs[index].concatPart[4] := i4;
-      msgs[index].concatPart[5] := i5;
-      msgs[index].length := 5;
-    endif;
-    sPat11Set.length := sPat11Set.length + 1;
-    sPat11Set.content[sPat11Set.length] := index;
-    num := index;
-  end;
-
----pat12: N.senc{Na.Kab}k(A,S).senc{Nb.Kab}k(B,S) 
-procedure lookAddPat12(N:NonceType; Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Nb:NonceType; Bsymk1:AgentType; Var msg:Message; Var num : indexType);
+---pat8: ue1.ausf.prekey 
+procedure lookAddPat8(ue1:NonceType; ausf:NonceType; prekey:NonceType; Var msg:Message; Var num : indexType);
   Var msg1,msg2,msg3: Message;
      index,i1,i2,i3:indexType;
   begin
    index:=0;
-   lookAddPat1(N, msg1, i1);
-   lookAddPat8(Na, Kab, Asymk1, Ssymk2, msg2, i2);
-   lookAddPat8(Nb, Kab, Bsymk1, Ssymk2, msg3, i3);
+   lookAddPat1(ue1, msg1, i1);
+   lookAddPat1(ausf, msg2, i2);
+   lookAddPat1(prekey, msg3, i3);
    for i : indexType do
      if (msgs[i].msgType = concat & msgs[i].length=3) then
        if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2 & msgs[i].concatPart[3]=i3) then
@@ -1598,8 +1502,8 @@ procedure lookAddPat12(N:NonceType; Na:NonceType; Kab:NonceType; Asymk1:AgentTyp
    msg:=msgs[index];
   end;
 
----pat12: N.senc{Na.Kab}k(A,S).senc{Nb.Kab}k(B,S) 
-procedure isPat12(msg:Message; Var flag:boolean);
+---pat8: ue1.ausf.prekey 
+procedure isPat8(msg:Message; Var flag:boolean);
   var flag1, flagPart1,flagPart2,flagPart3: boolean;
   begin
      flag1 := false;
@@ -1608,22 +1512,22 @@ procedure isPat12(msg:Message; Var flag:boolean);
      flagPart3 := false;
      if(msg.msgType = concat) then
         isPat1(msgs[msg.concatPart[1]],flagPart1);
-        isPat8(msgs[msg.concatPart[2]],flagPart2);
-        isPat8(msgs[msg.concatPart[3]],flagPart3);
+        isPat1(msgs[msg.concatPart[2]],flagPart2);
+        isPat1(msgs[msg.concatPart[3]],flagPart3);
        if (flagPart1 & flagPart2 & flagPart3) then 
          flag1 := true;
        endif;
      endif;
      flag := flag1;
   end;
----spat12: N.senc{Na.Kab}k(A,S).senc{Nb.Kab}k(B,S) 
-procedure constructSpat12(N:NonceType; Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Nb:NonceType; Bsymk1:AgentType; Var num: indexType);
+---spat8: ue1.ausf.prekey 
+procedure constructSpat8(ue1:NonceType; ausf:NonceType; prekey:NonceType; Var num: indexType);
   Var i,index, i1, i2, i3:indexType;
   begin
     index:=0;
-    constructSpat1(N, i1);
-    constructSpat8(Na, Kab, Asymk1, Ssymk2, i2);
-    constructSpat8(Nb, Kab, Bsymk1, Ssymk2, i3);
+    constructSpat1(ue1, i1);
+    constructSpat1(ausf, i2);
+    constructSpat1(prekey, i3);
     i := 1;
     while(i<= msg_end) do
       if (msgs[i].msgType = concat & msgs[i].length = 3) then
@@ -1642,21 +1546,96 @@ procedure constructSpat12(N:NonceType; Na:NonceType; Kab:NonceType; Asymk1:Agent
       msgs[index].concatPart[3] := i3;
       msgs[index].length := 3;
     endif;
-    sPat12Set.length := sPat12Set.length + 1;
-    sPat12Set.content[sPat12Set.length] := index;
+    sPat8Set.length := sPat8Set.length + 1;
+    sPat8Set.content[sPat8Set.length] := index;
     num := index;
   end;
 
----pat13: N.A.B.m1 
-procedure lookAddPat13(N:NonceType; A:AgentType; B:AgentType; m1:Message; Var msg:Message; Var num : indexType);
+---pat9: hash(start.ue1.ausf.certc)ue1.ausf.prekey 
+procedure lookAddPat9(start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; prekey:NonceType; Var msg:Message; Var num : indexType);
+  Var msg1, msg2: Message;
+      index,i1,i2:indexType;
+  begin
+   index:=0;
+   lookAddPat6(start, ue1, ausf, certc,msg1,i1);
+   lookAddPat8(ue1, ausf, prekey,msg2,i2);
+   for i : indexType do
+     if (msgs[i].msgType = hash) then
+       if (msgs[i].hashMsg = i1 & msgs[i].hashKey = i2) then
+          index:=i;
+       endif;
+     endif;
+   endfor;
+   if(index=0) then
+     msg_end := msg_end + 1 ;
+     index := msg_end;
+     msgs[index].msgType := hash;
+     msgs[index].hashMsg := i1; 
+     msgs[index].hashKey := i2;
+     msgs[i2].k.encType := MsgK;
+     msgs[i2].k.m := i2;
+msgs[index].length := 1;
+   endif;
+   num:=index;
+   msg:=msgs[index];
+  end;
+
+---pat9: hash(start.ue1.ausf.certc)ue1.ausf.prekey 
+procedure isPat9(msg:Message; Var flag:boolean);
+  var flag1,flagPart1,flagPart2 : boolean;
+  begin
+    flag1 := false;
+    flagPart1 := false;
+    flagPart2 := false;
+    if (msg.msgType = hash) then
+      isPat6(msgs[msg.hashMsg],flagPart1);
+      isPat8(msgs[msg.hashKey],flagPart2);
+      if (flagPart1 & flagPart2) then 
+        flag1 := true;
+      endif;
+    endif;
+    flag := flag1;
+  end;
+
+---spat9: hash(start.ue1.ausf.certc)ue1.ausf.prekey 
+procedure constructSpat9(start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; prekey:NonceType; Var num: indexType);
+  Var i,index,i1,i2:indexType;
+  begin
+    index:=0;
+    constructSpat6(start, ue1, ausf, certc, i1);
+    constructSpat8(ue1, ausf, prekey, i2);
+    i := 1;
+    while(i <= msg_end) do
+      if (msgs[i].msgType = hash) then
+        if (msgs[i].hashMsg = i1 & msgs[i].hashKey = i2) then
+           index:=i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := hash;
+      msgs[index].hashMsg := i1; 
+      msgs[index].hashKey := i2; 
+      msgs[index].length := 1;
+    endif;
+    sPat9Set.length := sPat9Set.length + 1;
+    sPat9Set.content[sPat9Set.length] := index;
+    num := index;
+  end;
+
+---pat10: aenc{prekey}pk(C).certa.hash(start.ue1.ausf.certc)sk(A).hash(start.ue1.ausf.certc)ue1.ausf.prekey 
+procedure lookAddPat10(prekey:NonceType; CPk:AgentType; certa:NonceType; start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; ASk:AgentType; Var msg:Message; Var num : indexType);
   Var msg1,msg2,msg3,msg4: Message;
      index,i1,i2,i3,i4:indexType;
   begin
    index:=0;
-   lookAddPat1(N, msg1, i1);
-   lookAddPat2(A, msg2, i2);
-   lookAddPat2(B, msg3, i3);
-   lookAddPat10(m1, msg4, i4);
+   lookAddPat5(prekey, CPk, msg1, i1);
+   lookAddPat1(certa, msg2, i2);
+   lookAddPat7(start, ue1, ausf, certc, ASk, msg3, i3);
+   lookAddPat9(start, ue1, ausf, certc, prekey, msg4, i4);
    for i : indexType do
      if (msgs[i].msgType = concat & msgs[i].length=4) then
        if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2 & msgs[i].concatPart[3]=i3 & msgs[i].concatPart[4]=i4) then
@@ -1678,8 +1657,8 @@ procedure lookAddPat13(N:NonceType; A:AgentType; B:AgentType; m1:Message; Var ms
    msg:=msgs[index];
   end;
 
----pat13: N.A.B.m1 
-procedure isPat13(msg:Message; Var flag:boolean);
+---pat10: aenc{prekey}pk(C).certa.hash(start.ue1.ausf.certc)sk(A).hash(start.ue1.ausf.certc)ue1.ausf.prekey 
+procedure isPat10(msg:Message; Var flag:boolean);
   var flag1, flagPart1,flagPart2,flagPart3,flagPart4: boolean;
   begin
      flag1 := false;
@@ -1688,25 +1667,25 @@ procedure isPat13(msg:Message; Var flag:boolean);
      flagPart3 := false;
      flagPart4 := false;
      if(msg.msgType = concat) then
-        isPat1(msgs[msg.concatPart[1]],flagPart1);
-        isPat2(msgs[msg.concatPart[2]],flagPart2);
-        isPat2(msgs[msg.concatPart[3]],flagPart3);
-        isPat10(msgs[msg.concatPart[4]],flagPart4);
+        isPat5(msgs[msg.concatPart[1]],flagPart1);
+        isPat1(msgs[msg.concatPart[2]],flagPart2);
+        isPat7(msgs[msg.concatPart[3]],flagPart3);
+        isPat9(msgs[msg.concatPart[4]],flagPart4);
        if (flagPart1 & flagPart2 & flagPart3 & flagPart4) then 
          flag1 := true;
        endif;
      endif;
      flag := flag1;
   end;
----spat13: N.A.B.m1 
-procedure constructSpat13(N:NonceType; A:AgentType; B:AgentType; m1:Message; Var num: indexType);
+---spat10: aenc{prekey}pk(C).certa.hash(start.ue1.ausf.certc)sk(A).hash(start.ue1.ausf.certc)ue1.ausf.prekey 
+procedure constructSpat10(prekey:NonceType; CPk:AgentType; certa:NonceType; start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; ASk:AgentType; Var num: indexType);
   Var i,index, i1, i2, i3, i4:indexType;
   begin
     index:=0;
-    constructSpat1(N, i1);
-    constructSpat2(A, i2);
-    constructSpat2(B, i3);
-    constructSpat10(m1, i4);
+    constructSpat5(prekey, CPk, i1);
+    constructSpat1(certa, i2);
+    constructSpat7(start, ue1, ausf, certc, ASk, i3);
+    constructSpat9(start, ue1, ausf, certc, prekey, i4);
     i := 1;
     while(i<= msg_end) do
       if (msgs[i].msgType = concat & msgs[i].length = 4) then
@@ -1726,36 +1705,36 @@ procedure constructSpat13(N:NonceType; A:AgentType; B:AgentType; m1:Message; Var
       msgs[index].concatPart[4] := i4;
       msgs[index].length := 4;
     endif;
-    sPat13Set.length := sPat13Set.length + 1;
-    sPat13Set.content[sPat13Set.length] := index;
+    sPat10Set.length := sPat10Set.length + 1;
+    sPat10Set.content[sPat10Set.length] := index;
     num := index;
   end;
 
----pat14: m2 
-procedure lookAddPat14(m2:Message; Var msg:Message; Var num : indexType);
+---pat11: x10 
+procedure lookAddPat11(x10:Message; Var msg:Message; Var num : indexType);
   Var index : indexType;
   begin
-    get_msgNo(msgs[m2.tmpPart],index); 
+    get_msgNo(msgs[x10.tmpPart],index); 
     num:=index;
     msg:=msgs[index];
   end;
 
----pat14: m2 
-procedure isPat14(msg:Message; Var flag:boolean);
+---pat11: x10 
+procedure isPat11(msg:Message; Var flag:boolean);
   var flag1 : boolean;
   begin
     flag := true;
   end;
 
----spat14: m2 
-procedure constructSpat14(m2:Message; Var num: indexType);
+---spat11: x10 
+procedure constructSpat11(x10:Message; Var num: indexType);
   Var i, index : indexType;
   begin
    index:=0;
    i := 1;
    while(i<= msg_end) do
       if (msgs[i].msgType = tmp) then
-        if (msgs[i].tmpPart = m2.tmpPart) then
+        if (msgs[i].tmpPart = x10.tmpPart) then
           index := i;
         endif;
       endif;
@@ -1765,73 +1744,39 @@ procedure constructSpat14(m2:Message; Var num: indexType);
       msg_end := msg_end + 1 ;
       index := msg_end;
       msgs[index].msgType := tmp;
-      msgs[index].tmpPart := m2.tmpPart;
+      msgs[index].tmpPart := x10.tmpPart;
       msgs[index].length := 1;
     endif;
-    sPat14Set.length := sPat14Set.length + 1;
-    sPat14Set.content[sPat14Set.length] := index;
+    sPat11Set.length := sPat11Set.length + 1;
+    sPat11Set.content[sPat11Set.length] := index;
     num := index;
   end;
 
----pat15: N.m2.senc{Nb.Kab}k(B,S) 
-procedure lookAddPat15(N:NonceType; m2:Message; Nb:NonceType; Kab:NonceType; Bsymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num : indexType);
-  Var msg1,msg2,msg3: Message;
-     index,i1,i2,i3:indexType;
+---pat12: x1 
+procedure lookAddPat12(x1:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
   begin
-   index:=0;
-   lookAddPat1(N, msg1, i1);
-   lookAddPat14(m2, msg2, i2);
-   lookAddPat8(Nb, Kab, Bsymk1, Ssymk2, msg3, i3);
-   for i : indexType do
-     if (msgs[i].msgType = concat & msgs[i].length=3) then
-       if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2 & msgs[i].concatPart[3]=i3) then
-          index:=i;
-       endif;
-     endif;
-   endfor;
-   if(index=0) then
-     msg_end := msg_end + 1 ;
-     index := msg_end;
-     msgs[index].msgType := concat;
-     msgs[index].concatPart[1]:=i1;
-     msgs[index].concatPart[2]:=i2;
-     msgs[index].concatPart[3]:=i3; 
-     msgs[index].length := 3;
-   endif;
-   num:=index;
-   msg:=msgs[index];
+    get_msgNo(msgs[x1.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
   end;
 
----pat15: N.m2.senc{Nb.Kab}k(B,S) 
-procedure isPat15(msg:Message; Var flag:boolean);
-  var flag1, flagPart1,flagPart2,flagPart3: boolean;
+---pat12: x1 
+procedure isPat12(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
   begin
-     flag1 := false;
-     flagPart1 := false;
-     flagPart2 := false;
-     flagPart3 := false;
-     if(msg.msgType = concat) then
-        isPat1(msgs[msg.concatPart[1]],flagPart1);
-        isPat14(msgs[msg.concatPart[2]],flagPart2);
-        isPat8(msgs[msg.concatPart[3]],flagPart3);
-       if (flagPart1 & flagPart2 & flagPart3) then 
-         flag1 := true;
-       endif;
-     endif;
-     flag := flag1;
+    flag := true;
   end;
----spat15: N.m2.senc{Nb.Kab}k(B,S) 
-procedure constructSpat15(N:NonceType; m2:Message; Nb:NonceType; Kab:NonceType; Bsymk1:AgentType; Ssymk2:AgentType; Var num: indexType);
-  Var i,index, i1, i2, i3:indexType;
+
+---spat12: x1 
+procedure constructSpat12(x1:Message; Var num: indexType);
+  Var i, index : indexType;
   begin
-    index:=0;
-    constructSpat1(N, i1);
-    constructSpat14(m2, i2);
-    constructSpat8(Nb, Kab, Bsymk1, Ssymk2, i3);
-    i := 1;
-    while(i<= msg_end) do
-      if (msgs[i].msgType = concat & msgs[i].length = 3) then
-        if (msgs[i].concatPart[1] = i1 & msgs[i].concatPart[2] = i2 & msgs[i].concatPart[3] = i3) then
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = x1.tmpPart) then
           index := i;
         endif;
       endif;
@@ -1840,25 +1785,23 @@ procedure constructSpat15(N:NonceType; m2:Message; Nb:NonceType; Kab:NonceType; 
     if(index=0) then
       msg_end := msg_end + 1 ;
       index := msg_end;
-      msgs[index].msgType := concat;
-      msgs[index].concatPart[1] := i1;
-      msgs[index].concatPart[2] := i2;
-      msgs[index].concatPart[3] := i3;
-      msgs[index].length := 3;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := x1.tmpPart;
+      msgs[index].length := 1;
     endif;
-    sPat15Set.length := sPat15Set.length + 1;
-    sPat15Set.content[sPat15Set.length] := index;
+    sPat12Set.length := sPat12Set.length + 1;
+    sPat12Set.content[sPat12Set.length] := index;
     num := index;
   end;
 
----pat16: N.m2 
-procedure lookAddPat16(N:NonceType; m2:Message; Var msg:Message; Var num : indexType);
+---pat13: x1.bn 
+procedure lookAddPat13(x1:Message; bn:NonceType; Var msg:Message; Var num : indexType);
   Var msg1,msg2: Message;
      index,i1,i2:indexType;
   begin
    index:=0;
-   lookAddPat1(N, msg1, i1);
-   lookAddPat14(m2, msg2, i2);
+   lookAddPat12(x1, msg1, i1);
+   lookAddPat1(bn, msg2, i2);
    for i : indexType do
      if (msgs[i].msgType = concat & msgs[i].length=2) then
        if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2) then
@@ -1878,29 +1821,29 @@ procedure lookAddPat16(N:NonceType; m2:Message; Var msg:Message; Var num : index
    msg:=msgs[index];
   end;
 
----pat16: N.m2 
-procedure isPat16(msg:Message; Var flag:boolean);
+---pat13: x1.bn 
+procedure isPat13(msg:Message; Var flag:boolean);
   var flag1, flagPart1,flagPart2: boolean;
   begin
      flag1 := false;
      flagPart1 := false;
      flagPart2 := false;
      if(msg.msgType = concat) then
-        isPat1(msgs[msg.concatPart[1]],flagPart1);
-        isPat14(msgs[msg.concatPart[2]],flagPart2);
+        isPat12(msgs[msg.concatPart[1]],flagPart1);
+        isPat1(msgs[msg.concatPart[2]],flagPart2);
        if (flagPart1 & flagPart2) then 
          flag1 := true;
        endif;
      endif;
      flag := flag1;
   end;
----spat16: N.m2 
-procedure constructSpat16(N:NonceType; m2:Message; Var num: indexType);
+---spat13: x1.bn 
+procedure constructSpat13(x1:Message; bn:NonceType; Var num: indexType);
   Var i,index, i1, i2:indexType;
   begin
     index:=0;
-    constructSpat1(N, i1);
-    constructSpat14(m2, i2);
+    constructSpat12(x1, i1);
+    constructSpat1(bn, i2);
     i := 1;
     while(i<= msg_end) do
       if (msgs[i].msgType = concat & msgs[i].length = 2) then
@@ -1918,241 +1861,1040 @@ procedure constructSpat16(N:NonceType; m2:Message; Var num: indexType);
       msgs[index].concatPart[2] := i2;
       msgs[index].length := 2;
     endif;
+    sPat13Set.length := sPat13Set.length + 1;
+    sPat13Set.content[sPat13Set.length] := index;
+    num := index;
+  end;
+
+---pat14: x2 
+procedure lookAddPat14(x2:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
+  begin
+    get_msgNo(msgs[x2.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
+  end;
+
+---pat14: x2 
+procedure isPat14(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
+  begin
+    flag := true;
+  end;
+
+---spat14: x2 
+procedure constructSpat14(x2:Message; Var num: indexType);
+  Var i, index : indexType;
+  begin
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = x2.tmpPart) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := x2.tmpPart;
+      msgs[index].length := 1;
+    endif;
+    sPat14Set.length := sPat14Set.length + 1;
+    sPat14Set.content[sPat14Set.length] := index;
+    num := index;
+  end;
+
+---pat15: x3 
+procedure lookAddPat15(x3:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
+  begin
+    get_msgNo(msgs[x3.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
+  end;
+
+---pat15: x3 
+procedure isPat15(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
+  begin
+    flag := true;
+  end;
+
+---spat15: x3 
+procedure constructSpat15(x3:Message; Var num: indexType);
+  Var i, index : indexType;
+  begin
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = x3.tmpPart) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := x3.tmpPart;
+      msgs[index].length := 1;
+    endif;
+    sPat15Set.length := sPat15Set.length + 1;
+    sPat15Set.content[sPat15Set.length] := index;
+    num := index;
+  end;
+
+---pat16: x4 
+procedure lookAddPat16(x4:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
+  begin
+    get_msgNo(msgs[x4.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
+  end;
+
+---pat16: x4 
+procedure isPat16(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
+  begin
+    flag := true;
+  end;
+
+---spat16: x4 
+procedure constructSpat16(x4:Message; Var num: indexType);
+  Var i, index : indexType;
+  begin
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = x4.tmpPart) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := x4.tmpPart;
+      msgs[index].length := 1;
+    endif;
     sPat16Set.length := sPat16Set.length + 1;
     sPat16Set.content[sPat16Set.length] := index;
     num := index;
   end;
 
-procedure cons1(N:NonceType; Var msg:Message; Var num:indexType);
+---pat17: x5 
+procedure lookAddPat17(x5:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
+  begin
+    get_msgNo(msgs[x5.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
+  end;
+
+---pat17: x5 
+procedure isPat17(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
+  begin
+    flag := true;
+  end;
+
+---spat17: x5 
+procedure constructSpat17(x5:Message; Var num: indexType);
+  Var i, index : indexType;
+  begin
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = x5.tmpPart) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := x5.tmpPart;
+      msgs[index].length := 1;
+    endif;
+    sPat17Set.length := sPat17Set.length + 1;
+    sPat17Set.content[sPat17Set.length] := index;
+    num := index;
+  end;
+
+---pat18: x4.x5 
+procedure lookAddPat18(x4:Message; x5:Message; Var msg:Message; Var num : indexType);
+  Var msg1,msg2: Message;
+     index,i1,i2:indexType;
+  begin
+   index:=0;
+   lookAddPat16(x4, msg1, i1);
+   lookAddPat17(x5, msg2, i2);
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length=2) then
+       if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2) then
+          index:=i;
+       endif;
+     endif;
+   endfor;
+   if(index=0) then
+     msg_end := msg_end + 1 ;
+     index := msg_end;
+     msgs[index].msgType := concat;
+     msgs[index].concatPart[1]:=i1;
+     msgs[index].concatPart[2]:=i2; 
+     msgs[index].length := 2;
+   endif;
+   num:=index;
+   msg:=msgs[index];
+  end;
+
+---pat18: x4.x5 
+procedure isPat18(msg:Message; Var flag:boolean);
+  var flag1, flagPart1,flagPart2: boolean;
+  begin
+     flag1 := false;
+     flagPart1 := false;
+     flagPart2 := false;
+     if(msg.msgType = concat) then
+        isPat16(msgs[msg.concatPart[1]],flagPart1);
+        isPat17(msgs[msg.concatPart[2]],flagPart2);
+       if (flagPart1 & flagPart2) then 
+         flag1 := true;
+       endif;
+     endif;
+     flag := flag1;
+  end;
+---spat18: x4.x5 
+procedure constructSpat18(x4:Message; x5:Message; Var num: indexType);
+  Var i,index, i1, i2:indexType;
+  begin
+    index:=0;
+    constructSpat16(x4, i1);
+    constructSpat17(x5, i2);
+    i := 1;
+    while(i<= msg_end) do
+      if (msgs[i].msgType = concat & msgs[i].length = 2) then
+        if (msgs[i].concatPart[1] = i1 & msgs[i].concatPart[2] = i2) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := concat;
+      msgs[index].concatPart[1] := i1;
+      msgs[index].concatPart[2] := i2;
+      msgs[index].length := 2;
+    endif;
+    sPat18Set.length := sPat18Set.length + 1;
+    sPat18Set.content[sPat18Set.length] := index;
+    num := index;
+  end;
+
+---pat19: x6 
+procedure lookAddPat19(x6:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
+  begin
+    get_msgNo(msgs[x6.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
+  end;
+
+---pat19: x6 
+procedure isPat19(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
+  begin
+    flag := true;
+  end;
+
+---spat19: x6 
+procedure constructSpat19(x6:Message; Var num: indexType);
+  Var i, index : indexType;
+  begin
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = x6.tmpPart) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := x6.tmpPart;
+      msgs[index].length := 1;
+    endif;
+    sPat19Set.length := sPat19Set.length + 1;
+    sPat19Set.content[sPat19Set.length] := index;
+    num := index;
+  end;
+
+---pat20: x7 
+procedure lookAddPat20(x7:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
+  begin
+    get_msgNo(msgs[x7.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
+  end;
+
+---pat20: x7 
+procedure isPat20(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
+  begin
+    flag := true;
+  end;
+
+---spat20: x7 
+procedure constructSpat20(x7:Message; Var num: indexType);
+  Var i, index : indexType;
+  begin
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = x7.tmpPart) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := x7.tmpPart;
+      msgs[index].length := 1;
+    endif;
+    sPat20Set.length := sPat20Set.length + 1;
+    sPat20Set.content[sPat20Set.length] := index;
+    num := index;
+  end;
+
+---pat21: x8 
+procedure lookAddPat21(x8:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
+  begin
+    get_msgNo(msgs[x8.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
+  end;
+
+---pat21: x8 
+procedure isPat21(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
+  begin
+    flag := true;
+  end;
+
+---spat21: x8 
+procedure constructSpat21(x8:Message; Var num: indexType);
+  Var i, index : indexType;
+  begin
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = x8.tmpPart) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := x8.tmpPart;
+      msgs[index].length := 1;
+    endif;
+    sPat21Set.length := sPat21Set.length + 1;
+    sPat21Set.content[sPat21Set.length] := index;
+    num := index;
+  end;
+
+---pat22: x9 
+procedure lookAddPat22(x9:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
+  begin
+    get_msgNo(msgs[x9.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
+  end;
+
+---pat22: x9 
+procedure isPat22(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
+  begin
+    flag := true;
+  end;
+
+---spat22: x9 
+procedure constructSpat22(x9:Message; Var num: indexType);
+  Var i, index : indexType;
+  begin
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = x9.tmpPart) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := x9.tmpPart;
+      msgs[index].length := 1;
+    endif;
+    sPat22Set.length := sPat22Set.length + 1;
+    sPat22Set.content[sPat22Set.length] := index;
+    num := index;
+  end;
+
+---pat23: x6.x7.x8.x9 
+procedure lookAddPat23(x6:Message; x7:Message; x8:Message; x9:Message; Var msg:Message; Var num : indexType);
+  Var msg1,msg2,msg3,msg4: Message;
+     index,i1,i2,i3,i4:indexType;
+  begin
+   index:=0;
+   lookAddPat19(x6, msg1, i1);
+   lookAddPat20(x7, msg2, i2);
+   lookAddPat21(x8, msg3, i3);
+   lookAddPat22(x9, msg4, i4);
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length=4) then
+       if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2 & msgs[i].concatPart[3]=i3 & msgs[i].concatPart[4]=i4) then
+          index:=i;
+       endif;
+     endif;
+   endfor;
+   if(index=0) then
+     msg_end := msg_end + 1 ;
+     index := msg_end;
+     msgs[index].msgType := concat;
+     msgs[index].concatPart[1]:=i1;
+     msgs[index].concatPart[2]:=i2;
+     msgs[index].concatPart[3]:=i3;
+     msgs[index].concatPart[4]:=i4; 
+     msgs[index].length := 4;
+   endif;
+   num:=index;
+   msg:=msgs[index];
+  end;
+
+---pat23: x6.x7.x8.x9 
+procedure isPat23(msg:Message; Var flag:boolean);
+  var flag1, flagPart1,flagPart2,flagPart3,flagPart4: boolean;
+  begin
+     flag1 := false;
+     flagPart1 := false;
+     flagPart2 := false;
+     flagPart3 := false;
+     flagPart4 := false;
+     if(msg.msgType = concat) then
+        isPat19(msgs[msg.concatPart[1]],flagPart1);
+        isPat20(msgs[msg.concatPart[2]],flagPart2);
+        isPat21(msgs[msg.concatPart[3]],flagPart3);
+        isPat22(msgs[msg.concatPart[4]],flagPart4);
+       if (flagPart1 & flagPart2 & flagPart3 & flagPart4) then 
+         flag1 := true;
+       endif;
+     endif;
+     flag := flag1;
+  end;
+---spat23: x6.x7.x8.x9 
+procedure constructSpat23(x6:Message; x7:Message; x8:Message; x9:Message; Var num: indexType);
+  Var i,index, i1, i2, i3, i4:indexType;
+  begin
+    index:=0;
+    constructSpat19(x6, i1);
+    constructSpat20(x7, i2);
+    constructSpat21(x8, i3);
+    constructSpat22(x9, i4);
+    i := 1;
+    while(i<= msg_end) do
+      if (msgs[i].msgType = concat & msgs[i].length = 4) then
+        if (msgs[i].concatPart[1] = i1 & msgs[i].concatPart[2] = i2 & msgs[i].concatPart[3] = i3 & msgs[i].concatPart[4] = i4) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := concat;
+      msgs[index].concatPart[1] := i1;
+      msgs[index].concatPart[2] := i2;
+      msgs[index].concatPart[3] := i3;
+      msgs[index].concatPart[4] := i4;
+      msgs[index].length := 4;
+    endif;
+    sPat23Set.length := sPat23Set.length + 1;
+    sPat23Set.content[sPat23Set.length] := index;
+    num := index;
+  end;
+
+---pat24: ue 
+procedure lookAddPat24(ue:NonceType; Var msg:Message; Var num : indexType);
+  Var msg1: Message;
+     index,i1:indexType;
+  begin
+   index:=0;
+   lookAddPat1(ue, msg1, i1);
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length=1) then
+       if (msgs[i].concatPart[1]=i1) then
+          index:=i;
+       endif;
+     endif;
+   endfor;
+   if(index=0) then
+     msg_end := msg_end + 1 ;
+     index := msg_end;
+     msgs[index].msgType := concat;
+     msgs[index].concatPart[1]:=i1; 
+     msgs[index].length := 1;
+   endif;
+   num:=index;
+   msg:=msgs[index];
+  end;
+
+---pat24: ue 
+procedure isPat24(msg:Message; Var flag:boolean);
+  var flag1, flagPart1: boolean;
+  begin
+     flag1 := false;
+     flagPart1 := false;
+     if(msg.msgType = concat) then
+        isPat1(msgs[msg.concatPart[1]],flagPart1);
+       if (flagPart1) then 
+         flag1 := true;
+       endif;
+     endif;
+     flag := flag1;
+  end;
+---spat24: ue 
+procedure constructSpat24(ue:NonceType; Var num: indexType);
+  Var i,index, i1:indexType;
+  begin
+    index:=0;
+    constructSpat1(ue, i1);
+    i := 1;
+    while(i<= msg_end) do
+      if (msgs[i].msgType = concat & msgs[i].length = 1) then
+        if (msgs[i].concatPart[1] = i1) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := concat;
+      msgs[index].concatPart[1] := i1;
+      msgs[index].length := 1;
+    endif;
+    sPat24Set.length := sPat24Set.length + 1;
+    sPat24Set.content[sPat24Set.length] := index;
+    num := index;
+  end;
+
+---pat25: m1 
+procedure lookAddPat25(m1:Message; Var msg:Message; Var num : indexType);
+  Var index : indexType;
+  begin
+    get_msgNo(msgs[m1.tmpPart],index); 
+    num:=index;
+    msg:=msgs[index];
+  end;
+
+---pat25: m1 
+procedure isPat25(msg:Message; Var flag:boolean);
+  var flag1 : boolean;
+  begin
+    flag := true;
+  end;
+
+---spat25: m1 
+procedure constructSpat25(m1:Message; Var num: indexType);
+  Var i, index : indexType;
+  begin
+   index:=0;
+   i := 1;
+   while(i<= msg_end) do
+      if (msgs[i].msgType = tmp) then
+        if (msgs[i].tmpPart = m1.tmpPart) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := tmp;
+      msgs[index].tmpPart := m1.tmpPart;
+      msgs[index].length := 1;
+    endif;
+    sPat25Set.length := sPat25Set.length + 1;
+    sPat25Set.content[sPat25Set.length] := index;
+    num := index;
+  end;
+
+---pat26: m1.bn 
+procedure lookAddPat26(m1:Message; bn:NonceType; Var msg:Message; Var num : indexType);
+  Var msg1,msg2: Message;
+     index,i1,i2:indexType;
+  begin
+   index:=0;
+   lookAddPat25(m1, msg1, i1);
+   lookAddPat1(bn, msg2, i2);
+   for i : indexType do
+     if (msgs[i].msgType = concat & msgs[i].length=2) then
+       if (msgs[i].concatPart[1]=i1 & msgs[i].concatPart[2]=i2) then
+          index:=i;
+       endif;
+     endif;
+   endfor;
+   if(index=0) then
+     msg_end := msg_end + 1 ;
+     index := msg_end;
+     msgs[index].msgType := concat;
+     msgs[index].concatPart[1]:=i1;
+     msgs[index].concatPart[2]:=i2; 
+     msgs[index].length := 2;
+   endif;
+   num:=index;
+   msg:=msgs[index];
+  end;
+
+---pat26: m1.bn 
+procedure isPat26(msg:Message; Var flag:boolean);
+  var flag1, flagPart1,flagPart2: boolean;
+  begin
+     flag1 := false;
+     flagPart1 := false;
+     flagPart2 := false;
+     if(msg.msgType = concat) then
+        isPat25(msgs[msg.concatPart[1]],flagPart1);
+        isPat1(msgs[msg.concatPart[2]],flagPart2);
+       if (flagPart1 & flagPart2) then 
+         flag1 := true;
+       endif;
+     endif;
+     flag := flag1;
+  end;
+---spat26: m1.bn 
+procedure constructSpat26(m1:Message; bn:NonceType; Var num: indexType);
+  Var i,index, i1, i2:indexType;
+  begin
+    index:=0;
+    constructSpat25(m1, i1);
+    constructSpat1(bn, i2);
+    i := 1;
+    while(i<= msg_end) do
+      if (msgs[i].msgType = concat & msgs[i].length = 2) then
+        if (msgs[i].concatPart[1] = i1 & msgs[i].concatPart[2] = i2) then
+          index := i;
+        endif;
+      endif;
+      i := i+1;
+    endwhile;
+    if(index=0) then
+      msg_end := msg_end + 1 ;
+      index := msg_end;
+      msgs[index].msgType := concat;
+      msgs[index].concatPart[1] := i1;
+      msgs[index].concatPart[2] := i2;
+      msgs[index].length := 2;
+    endif;
+    sPat26Set.length := sPat26Set.length + 1;
+    sPat26Set.content[sPat26Set.length] := index;
+    num := index;
+  end;
+
+procedure cons1(supi:NonceType; Var msg:Message; Var num:indexType);
   begin
     clear msg;
-    clear num;    lookAddPat1(N,msg,num);
+    clear num;    lookAddPat1(supi,msg,num);
   end;
-procedure destruct1(agmsg:Message; msg:Message; Var N:NonceType);
+procedure destruct1(agmsg:Message; msg:Message; Var supi:NonceType);
   begin
-    N:=msg.noncePart;
+    supi:=msg.noncePart;
   end;
-procedure cons2(A:AgentType; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat2(A,msg,num);
-  end;
-procedure destruct2(agmsg:Message; msg:Message; Var A:AgentType);
-  begin
-    A:=msg.ag;
-  end;
-procedure cons3(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; Var msg:Message; Var num:indexType);
+procedure cons2(supi:NonceType; ue:NonceType; Var msg:Message; Var num:indexType);
   begin
     clear msg;
-    clear num;    lookAddPat3(Na, N, A, B,msg,num);
+    clear num;    lookAddPat2(supi, ue,msg,num);
   end;
-procedure destruct3(agmsg:Message; msg:Message; Var Na:NonceType; Var N:NonceType; Var A:AgentType; Var B:AgentType);
-  Var msgNum1,msgNum2,msgNum3,msgNum4: Message;
-      k: KeyType;
-  begin
-    msgNum1 := msgs[msg.concatPart[1]];
-    Na := msgNum1.noncePart;
-    msgNum2 := msgs[msg.concatPart[2]];
-    N := msgNum2.noncePart;
-    msgNum3 := msgs[msg.concatPart[3]];
-    A := msgNum3.ag;
-    msgNum4 := msgs[msg.concatPart[4]];
-    B := msgNum4.ag
-  end;
-procedure cons4(Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat4(Asymk1, Ssymk2,msg,num);
-  end;
-procedure cons5(Na:NonceType; N:NonceType; A:AgentType; B:AgentType; Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat5(Na, N, A, B, Asymk1, Ssymk2,msg,num);
-  end;
-procedure destruct5(agmsg:Message; msg:Message; Var Na:NonceType; Var N:NonceType; Var A:AgentType; Var B:AgentType; Var Asymk1:AgentType; Var Ssymk2:AgentType);
-  var k1:KeyType;
-      sencMsg:Message;
-    begin
-    clear sencMsg;
-    k1:=msgs[msg.sencKey].k;
-      Asymk1:=k1.ag1;
-      Ssymk2:=k1.ag2;
-    sencMsg:=msgs[msg.sencMsg];
-    destruct3(agmsg, sencMsg,Na, N, A, B);
-  end;
-procedure cons6(N:NonceType; A:AgentType; B:AgentType; Na:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat6(N, A, B, Na, Asymk1, Ssymk2,msg,num);
-  end;
-procedure destruct6(agmsg:Message; msg:Message; Var N:NonceType; Var A:AgentType; Var B:AgentType; Var Na:NonceType; Var Asymk1:AgentType; Var Ssymk2:AgentType);
-  Var msgNum1,msgNum2,msgNum3,msgNum4: Message;
-      k: KeyType;
-  begin
-    msgNum1 := msgs[msg.concatPart[1]];
-    N := msgNum1.noncePart;
-    msgNum2 := msgs[msg.concatPart[2]];
-    A := msgNum2.ag;
-    msgNum3 := msgs[msg.concatPart[3]];
-    B := msgNum3.ag;
-    msgNum4 := msgs[msg.concatPart[4]];
-    destruct5(agmsg, msgNum4,Na, N, A, B, Asymk1, Ssymk2)
-  end;
-procedure cons7(Na:NonceType; Kab:NonceType; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat7(Na, Kab,msg,num);
-  end;
-procedure destruct7(agmsg:Message; msg:Message; Var Na:NonceType; Var Kab:NonceType);
+procedure destruct2(agmsg:Message; msg:Message; Var supi:NonceType; Var ue:NonceType);
   Var msgNum1,msgNum2: Message;
       k: KeyType;
   begin
     msgNum1 := msgs[msg.concatPart[1]];
-    Na := msgNum1.noncePart;
+    supi := msgNum1.noncePart;
     msgNum2 := msgs[msg.concatPart[2]];
-    Kab := msgNum2.noncePart
+    ue := msgNum2.noncePart
   end;
-procedure cons8(Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num:indexType);
+procedure cons3(DPk:AgentType; Var msg:Message; Var num:indexType);
   begin
     clear msg;
-    clear num;    lookAddPat8(Na, Kab, Asymk1, Ssymk2,msg,num);
+    clear num;    lookAddPat3(DPk,msg,num);
   end;
-procedure destruct8(agmsg:Message; msg:Message; Var Na:NonceType; Var Kab:NonceType; Var Asymk1:AgentType; Var Ssymk2:AgentType);
+procedure cons4(supi:NonceType; ue:NonceType; DPk:AgentType; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat4(supi, ue, DPk,msg,num);
+  end;
+procedure destruct4(agmsg:Message; msg:Message; Var supi:NonceType; Var ue:NonceType; Var DPk:AgentType);
   var k1:KeyType;
-      sencMsg:Message;
-    begin
-    clear sencMsg;
-    k1:=msgs[msg.sencKey].k;
-      Asymk1:=k1.ag1;
-      Ssymk2:=k1.ag2;
-    sencMsg:=msgs[msg.sencMsg];
-    destruct7(agmsg, sencMsg,Na, Kab);
+      aencMsg:Message;
+      msgNo1:indexType;
+      msgNo2:indexType;
+      invmsg:Message;
+      begin
+    clear aencMsg;
+    get_msgNo(agmsg,msgNo1);
+    if A_known[msgNo1] |B_known[msgNo1] |C_known[msgNo1] |D_known[msgNo1] then 
+        k1:=msgs[msg.aencKey].k;
+        invmsg:=inverseKey(msgs[msg.aencKey]);
+        get_msgNo(invmsg,msgNo2);
+        if A_known[msgNo2] |B_known[msgNo2] |C_known[msgNo2] |D_known[msgNo2] then 
+            DPk := k1.ag;
+            aencMsg:=msgs[msg.aencMsg];
+            destruct2(agmsg, aencMsg,supi, ue);
+        else
+            clear supi;
+            clear ue;
+            clear DPk;
+        endif;
+    endif;
   end;
-procedure cons9(N:NonceType; Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num:indexType);
+procedure cons5(prekey:NonceType; CPk:AgentType; Var msg:Message; Var num:indexType);
   begin
     clear msg;
-    clear num;    lookAddPat9(N, Na, Kab, Asymk1, Ssymk2,msg,num);
+    clear num;    lookAddPat5(prekey, CPk,msg,num);
   end;
-procedure destruct9(agmsg:Message; msg:Message; Var N:NonceType; Var Na:NonceType; Var Kab:NonceType; Var Asymk1:AgentType; Var Ssymk2:AgentType);
+procedure destruct5(agmsg:Message; msg:Message; Var prekey:NonceType; Var CPk:AgentType);
+  var k1:KeyType;
+  var msgKey:Message;
+      msg1:Message;
+      invmsg:Message;
+  var msgNo1:indexType;
+      msgNo2:indexType;
+   begin
+      clear msg1;
+      get_msgNo(agmsg,msgNo1);
+      if A_known[msgNo1] |B_known[msgNo1] |C_known[msgNo1] |D_known[msgNo1] then 
+       msgKey := msgs[msg.aencKey];
+       invmsg := inverseKey(msgs[msg.aencKey]);
+       if A_known[msgNo2] |B_known[msgNo2] |C_known[msgNo2] |D_known[msgNo2] then 
+         k1 := msgs[msg.aencKey].k;
+         CPk := k1.ag;
+         msg1:=msgs[msg.aencMsg];
+         prekey:=msg1.noncePart;
+        else
+            clear prekey;
+            clear CPk;
+        endif;
+      endif;
+   end;
+procedure cons6(start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat6(start, ue1, ausf, certc,msg,num);
+  end;
+procedure destruct6(agmsg:Message; msg:Message; Var start:NonceType; Var ue1:NonceType; Var ausf:NonceType; Var certc:NonceType);
+  Var msgNum1,msgNum2,msgNum3,msgNum4: Message;
+      k: KeyType;
+  begin
+    msgNum1 := msgs[msg.concatPart[1]];
+    start := msgNum1.noncePart;
+    msgNum2 := msgs[msg.concatPart[2]];
+    ue1 := msgNum2.noncePart;
+    msgNum3 := msgs[msg.concatPart[3]];
+    ausf := msgNum3.noncePart;
+    msgNum4 := msgs[msg.concatPart[4]];
+    certc := msgNum4.noncePart
+  end;
+procedure cons7(start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; ASk:AgentType; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat7(start, ue1, ausf, certc, ASk,msg,num);
+  end;
+procedure cons8(ue1:NonceType; ausf:NonceType; prekey:NonceType; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat8(ue1, ausf, prekey,msg,num);
+  end;
+procedure destruct8(agmsg:Message; msg:Message; Var ue1:NonceType; Var ausf:NonceType; Var prekey:NonceType);
+  Var msgNum1,msgNum2,msgNum3: Message;
+      k: KeyType;
+  begin
+    msgNum1 := msgs[msg.concatPart[1]];
+    ue1 := msgNum1.noncePart;
+    msgNum2 := msgs[msg.concatPart[2]];
+    ausf := msgNum2.noncePart;
+    msgNum3 := msgs[msg.concatPart[3]];
+    prekey := msgNum3.noncePart
+  end;
+procedure cons9(start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; prekey:NonceType; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat9(start, ue1, ausf, certc, prekey,msg,num);
+  end;
+procedure cons10(prekey:NonceType; CPk:AgentType; certa:NonceType; start:NonceType; ue1:NonceType; ausf:NonceType; certc:NonceType; ASk:AgentType; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat10(prekey, CPk, certa, start, ue1, ausf, certc, ASk,msg,num);
+  end;
+procedure destruct10(agmsg:Message; msg:Message; Var prekey:NonceType; Var CPk:AgentType; Var certa:NonceType; Var start:NonceType; Var ue1:NonceType; Var ausf:NonceType; Var certc:NonceType; Var ASk:AgentType);
+  Var msgNum1,msgNum2,msgNum3,msgNum4: Message;
+      k: KeyType;
+  begin
+    msgNum1 := msgs[msg.concatPart[1]];
+    destruct5(agmsg, msgNum1,prekey, CPk);
+    msgNum2 := msgs[msg.concatPart[2]];
+    certa := msgNum2.noncePart;
+;
+
+  end;
+procedure cons11(x10:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat11(x10,msg,num);
+  end;
+procedure destruct11(agmsg:Message; msg:Message; Var x10:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x10:=msg;
+    x10.tmpPart:=msgNo;
+  end;
+procedure cons12(x1:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat12(x1,msg,num);
+  end;
+procedure destruct12(agmsg:Message; msg:Message; Var x1:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x1:=msg;
+    x1.tmpPart:=msgNo;
+  end;
+procedure cons13(x1:Message; bn:NonceType; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat13(x1, bn,msg,num);
+  end;
+procedure destruct13(agmsg:Message; msg:Message; Var x1:Message; Var bn:NonceType);
   Var msgNum1,msgNum2: Message;
       k: KeyType;
   begin
     msgNum1 := msgs[msg.concatPart[1]];
-    N := msgNum1.noncePart;
+    x1.msgType := tmp;
+    x1.tmpPart := msg.concatPart[1];
     msgNum2 := msgs[msg.concatPart[2]];
-    destruct8(agmsg, msgNum2,Na, Kab, Asymk1, Ssymk2)
+    bn := msgNum2.noncePart
   end;
-procedure cons10(m1:Message; Var msg:Message; Var num:indexType);
+procedure cons14(x2:Message; Var msg:Message; Var num:indexType);
   begin
     clear msg;
-    clear num;    lookAddPat10(m1,msg,num);
+    clear num;    lookAddPat14(x2,msg,num);
   end;
-procedure destruct10(agmsg:Message; msg:Message; Var m1:Message);
+procedure destruct14(agmsg:Message; msg:Message; Var x2:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x2:=msg;
+    x2.tmpPart:=msgNo;
+  end;
+procedure cons15(x3:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat15(x3,msg,num);
+  end;
+procedure destruct15(agmsg:Message; msg:Message; Var x3:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x3:=msg;
+    x3.tmpPart:=msgNo;
+  end;
+procedure cons16(x4:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat16(x4,msg,num);
+  end;
+procedure destruct16(agmsg:Message; msg:Message; Var x4:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x4:=msg;
+    x4.tmpPart:=msgNo;
+  end;
+procedure cons17(x5:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat17(x5,msg,num);
+  end;
+procedure destruct17(agmsg:Message; msg:Message; Var x5:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x5:=msg;
+    x5.tmpPart:=msgNo;
+  end;
+procedure cons18(x4:Message; x5:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat18(x4, x5,msg,num);
+  end;
+procedure destruct18(agmsg:Message; msg:Message; Var x4:Message; Var x5:Message);
+  Var msgNum1,msgNum2: Message;
+      k: KeyType;
+  begin
+    msgNum1 := msgs[msg.concatPart[1]];
+    x4.msgType := tmp;
+    x4.tmpPart := msg.concatPart[1];
+    msgNum2 := msgs[msg.concatPart[2]];
+    x5.msgType := tmp;
+    x5.tmpPart := msg.concatPart[2]
+  end;
+procedure cons19(x6:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat19(x6,msg,num);
+  end;
+procedure destruct19(agmsg:Message; msg:Message; Var x6:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x6:=msg;
+    x6.tmpPart:=msgNo;
+  end;
+procedure cons20(x7:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat20(x7,msg,num);
+  end;
+procedure destruct20(agmsg:Message; msg:Message; Var x7:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x7:=msg;
+    x7.tmpPart:=msgNo;
+  end;
+procedure cons21(x8:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat21(x8,msg,num);
+  end;
+procedure destruct21(agmsg:Message; msg:Message; Var x8:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x8:=msg;
+    x8.tmpPart:=msgNo;
+  end;
+procedure cons22(x9:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat22(x9,msg,num);
+  end;
+procedure destruct22(agmsg:Message; msg:Message; Var x9:Message);
+  var msgNo:indexType;
+  begin
+    get_msgNo(msg,msgNo);
+    x9:=msg;
+    x9.tmpPart:=msgNo;
+  end;
+procedure cons23(x6:Message; x7:Message; x8:Message; x9:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat23(x6, x7, x8, x9,msg,num);
+  end;
+procedure destruct23(agmsg:Message; msg:Message; Var x6:Message; Var x7:Message; Var x8:Message; Var x9:Message);
+  Var msgNum1,msgNum2,msgNum3,msgNum4: Message;
+      k: KeyType;
+  begin
+    msgNum1 := msgs[msg.concatPart[1]];
+    x6.msgType := tmp;
+    x6.tmpPart := msg.concatPart[1];
+    msgNum2 := msgs[msg.concatPart[2]];
+    x7.msgType := tmp;
+    x7.tmpPart := msg.concatPart[2];
+    msgNum3 := msgs[msg.concatPart[3]];
+    x8.msgType := tmp;
+    x8.tmpPart := msg.concatPart[3];
+    msgNum4 := msgs[msg.concatPart[4]];
+    x9.msgType := tmp;
+    x9.tmpPart := msg.concatPart[4]
+  end;
+procedure cons24(ue:NonceType; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat24(ue,msg,num);
+  end;
+procedure destruct24(agmsg:Message; msg:Message; Var ue:NonceType);
+  Var msgNum1: Message;
+      k: KeyType;
+  begin
+    msgNum1 := msgs[msg.concatPart[1]];
+    ue := msgNum1.noncePart
+  end;
+procedure cons25(m1:Message; Var msg:Message; Var num:indexType);
+  begin
+    clear msg;
+    clear num;    lookAddPat25(m1,msg,num);
+  end;
+procedure destruct25(agmsg:Message; msg:Message; Var m1:Message);
   var msgNo:indexType;
   begin
     get_msgNo(msg,msgNo);
     m1:=msg;
     m1.tmpPart:=msgNo;
   end;
-procedure cons11(N:NonceType; A:AgentType; B:AgentType; m1:Message; Nb:NonceType; Bsymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num:indexType);
+procedure cons26(m1:Message; bn:NonceType; Var msg:Message; Var num:indexType);
   begin
     clear msg;
-    clear num;    lookAddPat11(N, A, B, m1, Nb, Bsymk1, Ssymk2,msg,num);
+    clear num;    lookAddPat26(m1, bn,msg,num);
   end;
-procedure destruct11(agmsg:Message; msg:Message; Var N:NonceType; Var A:AgentType; Var B:AgentType; Var m1:Message; Var Nb:NonceType; Var Bsymk1:AgentType; Var Ssymk2:AgentType);
-  Var msgNum1,msgNum2,msgNum3,msgNum4,msgNum5: Message;
-      k: KeyType;
-  begin
-    msgNum1 := msgs[msg.concatPart[1]];
-    N := msgNum1.noncePart;
-    msgNum2 := msgs[msg.concatPart[2]];
-    A := msgNum2.ag;
-    msgNum3 := msgs[msg.concatPart[3]];
-    B := msgNum3.ag;
-    msgNum4 := msgs[msg.concatPart[4]];
-    m1.msgType := tmp;
-    m1.tmpPart := msg.concatPart[4];
-    msgNum5 := msgs[msg.concatPart[5]];
-    destruct5(agmsg, msgNum5,Nb, N, A, B, Bsymk1, Ssymk2)
-  end;
-procedure cons12(N:NonceType; Na:NonceType; Kab:NonceType; Asymk1:AgentType; Ssymk2:AgentType; Nb:NonceType; Bsymk1:AgentType; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat12(N, Na, Kab, Asymk1, Ssymk2, Nb, Bsymk1,msg,num);
-  end;
-procedure destruct12(agmsg:Message; msg:Message; Var N:NonceType; Var Na:NonceType; Var Kab:NonceType; Var Asymk1:AgentType; Var Ssymk2:AgentType; Var Nb:NonceType; Var Bsymk1:AgentType);
-  Var msgNum1,msgNum2,msgNum3: Message;
-      k: KeyType;
-  begin
-    msgNum1 := msgs[msg.concatPart[1]];
-    N := msgNum1.noncePart;
-    msgNum2 := msgs[msg.concatPart[2]];
-    destruct8(agmsg, msgNum2,Na, Kab, Asymk1, Ssymk2);
-    msgNum3 := msgs[msg.concatPart[3]];
-    destruct8(agmsg, msgNum3,Nb, Kab, Bsymk1, Ssymk2)
-  end;
-procedure cons13(N:NonceType; A:AgentType; B:AgentType; m1:Message; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat13(N, A, B, m1,msg,num);
-  end;
-procedure destruct13(agmsg:Message; msg:Message; Var N:NonceType; Var A:AgentType; Var B:AgentType; Var m1:Message);
-  Var msgNum1,msgNum2,msgNum3,msgNum4: Message;
-      k: KeyType;
-  begin
-    msgNum1 := msgs[msg.concatPart[1]];
-    N := msgNum1.noncePart;
-    msgNum2 := msgs[msg.concatPart[2]];
-    A := msgNum2.ag;
-    msgNum3 := msgs[msg.concatPart[3]];
-    B := msgNum3.ag;
-    msgNum4 := msgs[msg.concatPart[4]];
-    m1.msgType := tmp;
-    m1.tmpPart := msg.concatPart[4]
-  end;
-procedure cons14(m2:Message; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat14(m2,msg,num);
-  end;
-procedure destruct14(agmsg:Message; msg:Message; Var m2:Message);
-  var msgNo:indexType;
-  begin
-    get_msgNo(msg,msgNo);
-    m2:=msg;
-    m2.tmpPart:=msgNo;
-  end;
-procedure cons15(N:NonceType; m2:Message; Nb:NonceType; Kab:NonceType; Bsymk1:AgentType; Ssymk2:AgentType; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat15(N, m2, Nb, Kab, Bsymk1, Ssymk2,msg,num);
-  end;
-procedure destruct15(agmsg:Message; msg:Message; Var N:NonceType; Var m2:Message; Var Nb:NonceType; Var Kab:NonceType; Var Bsymk1:AgentType; Var Ssymk2:AgentType);
-  Var msgNum1,msgNum2,msgNum3: Message;
-      k: KeyType;
-  begin
-    msgNum1 := msgs[msg.concatPart[1]];
-    N := msgNum1.noncePart;
-    msgNum2 := msgs[msg.concatPart[2]];
-    m2.msgType := tmp;
-    m2.tmpPart := msg.concatPart[2];
-    msgNum3 := msgs[msg.concatPart[3]];
-    destruct8(agmsg, msgNum3,Nb, Kab, Bsymk1, Ssymk2)
-  end;
-procedure cons16(N:NonceType; m2:Message; Var msg:Message; Var num:indexType);
-  begin
-    clear msg;
-    clear num;    lookAddPat16(N, m2,msg,num);
-  end;
-procedure destruct16(agmsg:Message; msg:Message; Var N:NonceType; Var m2:Message);
+procedure destruct26(agmsg:Message; msg:Message; Var m1:Message; Var bn:NonceType);
   Var msgNum1,msgNum2: Message;
       k: KeyType;
   begin
     msgNum1 := msgs[msg.concatPart[1]];
-    N := msgNum1.noncePart;
+    m1.msgType := tmp;
+    m1.tmpPart := msg.concatPart[1];
     msgNum2 := msgs[msg.concatPart[2]];
-    m2.msgType := tmp;
-    m2.tmpPart := msg.concatPart[2]
+    bn := msgNum2.noncePart
   end;
 function exist(PatnSet:msgSet; msgNo:indexType):boolean;
   var flag:boolean;
@@ -2295,7 +3037,7 @@ var msg:Message;
     msgNo:indexType;
 begin
    clear msg;
-   cons6(roleA[i].N,roleA[i].A,roleA[i].B,roleA[i].Na,roleA[i].A,roleA[i].S,msg,msgNo);
+   cons4(roleA[i].supi,roleA[i].ue,roleA[i].D,msg,msgNo);
    ch[1].empty := false;
    ch[1].msg := msg;
    ch[1].sender := roleA[i].A;
@@ -2304,36 +3046,87 @@ begin
    put "roleA[i] in st1\n";
 end;
 rule " roleA2 "
-roleA[i].st = A2 & ch[4].empty = false & !roleA[i].commit
+roleA[i].st = A2 & ch[6].empty = false & !roleA[i].commit
 ==>
-var flag_pat9:boolean;
+var flag_pat1:boolean;
     msg:Message;
     msgNo:indexType;
     agmsg:Message;
 begin
    clear msg;
-   msg := ch[4].msg;
-   isPat9(msg, flag_pat9);
+   msg := ch[6].msg;
+   isPat1(msg, flag_pat1);
    agmsg.msgType := agent;
    agmsg.ag:=roleA[i].A;
    get_msgNo(agmsg,msgNo);
    A_known[msgNo] := true;
-   if(flag_pat9) then
-     destruct9(agmsg,msg,roleA[i].locN,roleA[i].locNa,roleA[i].locKab,roleA[i].locA,roleA[i].locS);
-     if(matchNonce(roleA[i].locN, roleA[i].N) & matchNonce(roleA[i].locNa, roleA[i].Na) & matchNonce(roleA[i].locKab, roleA[i].Kab) & matchAgent(roleA[i].locA, roleA[i].A) & matchAgent(roleA[i].locS, roleA[i].S))then
-       ch[4].empty:=true;
-       clear ch[4].msg;
-       roleA[i].st := A1;
+   if(flag_pat1) then
+     destruct1(agmsg,msg,roleA[i].locstart);
+     if(matchNonce(roleA[i].locstart, roleA[i].start))then
+       ch[6].empty:=true;
+       clear ch[6].msg;
+       roleA[i].st := A3;
      endif;
    endif;
    put "roleA[i] in st2\n";
-   roleA[i].commit := true;
 end;
-endruleset;
-
-ruleset i:roleSNums do
-rule " roleS1 "
-roleS[i].st = S1 & ch[2].empty = false & !roleS[i].commit
+rule " roleA3 "
+roleA[i].st = A3 & ch[7].empty = true & !roleA[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons1(roleA[i].ue1,msg,msgNo);
+   ch[7].empty := false;
+   ch[7].msg := msg;
+   ch[7].sender := roleA[i].A;
+   ch[7].receiver := Intruder;
+   roleA[i].st := A4;
+   put "roleA[i] in st3\n";
+end;
+rule " roleA4 "
+roleA[i].st = A4 & ch[10].empty = false & !roleA[i].commit
+==>
+var flag_pat2:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[10].msg;
+   isPat2(msg, flag_pat2);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleA[i].A;
+   get_msgNo(agmsg,msgNo);
+   A_known[msgNo] := true;
+   if(flag_pat2) then
+     destruct2(agmsg,msg,roleA[i].locausf,roleA[i].loccertc);
+     if(matchNonce(roleA[i].locausf, roleA[i].ausf) & matchNonce(roleA[i].loccertc, roleA[i].certc))then
+       ch[10].empty:=true;
+       clear ch[10].msg;
+       roleA[i].st := A5;
+     endif;
+   endif;
+   put "roleA[i] in st4\n";
+end;
+rule " roleA5 "
+roleA[i].st = A5 & ch[11].empty = true & !roleA[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons10(roleA[i].prekey,roleA[i].C,roleA[i].certa,roleA[i].start,roleA[i].ue1,roleA[i].ausf,roleA[i].certc,roleA[i].A,msg,msgNo);
+   ch[11].empty := false;
+   ch[11].msg := msg;
+   ch[11].sender := roleA[i].A;
+   ch[11].receiver := Intruder;
+   roleA[i].st := A6;
+   put "roleA[i] in st5\n";
+end;
+rule " roleA6 "
+roleA[i].st = A6 & ch[14].empty = false & !roleA[i].commit
 ==>
 var flag_pat11:boolean;
     msg:Message;
@@ -2341,37 +3134,62 @@ var flag_pat11:boolean;
     agmsg:Message;
 begin
    clear msg;
-   msg := ch[2].msg;
+   msg := ch[14].msg;
    isPat11(msg, flag_pat11);
    agmsg.msgType := agent;
-   agmsg.ag:=roleS[i].S;
+   agmsg.ag:=roleA[i].A;
    get_msgNo(agmsg,msgNo);
-   S_known[msgNo] := true;
+   A_known[msgNo] := true;
    if(flag_pat11) then
-     destruct11(agmsg,msg,roleS[i].locN,roleS[i].locA,roleS[i].locB,roleS[i].locm1,roleS[i].locNb,roleS[i].locB,roleS[i].locS);
-     if(matchNonce(roleS[i].locN, roleS[i].N) & matchAgent(roleS[i].locA, roleS[i].A) & matchAgent(roleS[i].locB, roleS[i].B) & matchTmp(roleS[i].locm1, roleS[i].m1) & matchNonce(roleS[i].locNb, roleS[i].Nb) & matchAgent(roleS[i].locB, roleS[i].B) & matchAgent(roleS[i].locS, roleS[i].S))then
-       ch[2].empty:=true;
-       clear ch[2].msg;
-       roleS[i].st := S2;
+     destruct11(agmsg,msg,roleA[i].locx10);
+     if(matchTmp(roleA[i].locx10, roleA[i].x10))then
+       ch[14].empty:=true;
+       clear ch[14].msg;
+       roleA[i].st := A7;
      endif;
    endif;
-   put "roleS[i] in st1\n";
+   put "roleA[i] in st6\n";
 end;
-rule " roleS2 "
-roleS[i].st = S2 & ch[3].empty = true & !roleS[i].commit 
+rule " roleA7 "
+roleA[i].st = A7 & ch[15].empty = true & !roleA[i].commit 
 ==>
 var msg:Message;
     msgNo:indexType;
 begin
    clear msg;
-   cons12(roleS[i].N,roleS[i].Na,roleS[i].Kab,roleS[i].A,roleS[i].S,roleS[i].Nb,roleS[i].B,msg,msgNo);
-   ch[3].empty := false;
-   ch[3].msg := msg;
-   ch[3].sender := roleS[i].S;
-   ch[3].receiver := Intruder;
-   roleS[i].st := S1;
-   put "roleS[i] in st2\n";
-   roleS[i].commit := true;
+   cons1(roleA[i].eapm,msg,msgNo);
+   ch[15].empty := false;
+   ch[15].msg := msg;
+   ch[15].sender := roleA[i].A;
+   ch[15].receiver := Intruder;
+   roleA[i].st := A8;
+   put "roleA[i] in st7\n";
+end;
+rule " roleA8 "
+roleA[i].st = A8 & ch[18].empty = false & !roleA[i].commit
+==>
+var flag_pat1:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[18].msg;
+   isPat1(msg, flag_pat1);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleA[i].A;
+   get_msgNo(agmsg,msgNo);
+   A_known[msgNo] := true;
+   if(flag_pat1) then
+     destruct1(agmsg,msg,roleA[i].locsucm);
+     if(matchNonce(roleA[i].locsucm, roleA[i].sucm))then
+       ch[18].empty:=true;
+       clear ch[18].msg;
+       roleA[i].st := A1;
+     endif;
+   endif;
+   put "roleA[i] in st8\n";
+   roleA[i].commit := true;
 end;
 endruleset;
 
@@ -2379,21 +3197,21 @@ ruleset i:roleBNums do
 rule " roleB1 "
 roleB[i].st = B1 & ch[1].empty = false & !roleB[i].commit
 ==>
-var flag_pat13:boolean;
+var flag_pat12:boolean;
     msg:Message;
     msgNo:indexType;
     agmsg:Message;
 begin
    clear msg;
    msg := ch[1].msg;
-   isPat13(msg, flag_pat13);
+   isPat12(msg, flag_pat12);
    agmsg.msgType := agent;
    agmsg.ag:=roleB[i].B;
    get_msgNo(agmsg,msgNo);
    B_known[msgNo] := true;
-   if(flag_pat13) then
-     destruct13(agmsg,msg,roleB[i].locN,roleB[i].locA,roleB[i].locB,roleB[i].locm1);
-     if(matchNonce(roleB[i].locN, roleB[i].N) & matchAgent(roleB[i].locA, roleB[i].A) & matchAgent(roleB[i].locB, roleB[i].B) & matchTmp(roleB[i].locm1, roleB[i].m1))then
+   if(flag_pat12) then
+     destruct12(agmsg,msg,roleB[i].locx1);
+     if(matchTmp(roleB[i].locx1, roleB[i].x1))then
        ch[1].empty:=true;
        clear ch[1].msg;
        roleB[i].st := B2;
@@ -2408,7 +3226,7 @@ var msg:Message;
     msgNo:indexType;
 begin
    clear msg;
-   cons11(roleB[i].N,roleB[i].A,roleB[i].B,roleB[i].m1,roleB[i].Nb,roleB[i].B,roleB[i].S,msg,msgNo);
+   cons13(roleB[i].x1,roleB[i].bn,msg,msgNo);
    ch[2].empty := false;
    ch[2].msg := msg;
    ch[2].sender := roleB[i].B;
@@ -2417,7 +3235,47 @@ begin
    put "roleB[i] in st2\n";
 end;
 rule " roleB3 "
-roleB[i].st = B3 & ch[3].empty = false & !roleB[i].commit
+roleB[i].st = B3 & ch[5].empty = false & !roleB[i].commit
+==>
+var flag_pat14:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[5].msg;
+   isPat14(msg, flag_pat14);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleB[i].B;
+   get_msgNo(agmsg,msgNo);
+   B_known[msgNo] := true;
+   if(flag_pat14) then
+     destruct14(agmsg,msg,roleB[i].locx2);
+     if(matchTmp(roleB[i].locx2, roleB[i].x2))then
+       ch[5].empty:=true;
+       clear ch[5].msg;
+       roleB[i].st := B4;
+     endif;
+   endif;
+   put "roleB[i] in st3\n";
+end;
+rule " roleB4 "
+roleB[i].st = B4 & ch[6].empty = true & !roleB[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons14(roleB[i].x2,msg,msgNo);
+   ch[6].empty := false;
+   ch[6].msg := msg;
+   ch[6].sender := roleB[i].B;
+   ch[6].receiver := Intruder;
+   roleB[i].st := B5;
+   put "roleB[i] in st4\n";
+end;
+rule " roleB5 "
+roleB[i].st = B5 & ch[7].empty = false & !roleB[i].commit
 ==>
 var flag_pat15:boolean;
     msg:Message;
@@ -2425,37 +3283,485 @@ var flag_pat15:boolean;
     agmsg:Message;
 begin
    clear msg;
-   msg := ch[3].msg;
+   msg := ch[7].msg;
    isPat15(msg, flag_pat15);
    agmsg.msgType := agent;
    agmsg.ag:=roleB[i].B;
    get_msgNo(agmsg,msgNo);
    B_known[msgNo] := true;
    if(flag_pat15) then
-     destruct15(agmsg,msg,roleB[i].locN,roleB[i].locm2,roleB[i].locNb,roleB[i].locKab,roleB[i].locB,roleB[i].locS);
-     if(matchNonce(roleB[i].locN, roleB[i].N) & matchTmp(roleB[i].locm2, roleB[i].m2) & matchNonce(roleB[i].locNb, roleB[i].Nb) & matchNonce(roleB[i].locKab, roleB[i].Kab) & matchAgent(roleB[i].locB, roleB[i].B) & matchAgent(roleB[i].locS, roleB[i].S))then
-       ch[3].empty:=true;
-       clear ch[3].msg;
-       roleB[i].st := B4;
+     destruct15(agmsg,msg,roleB[i].locx3);
+     if(matchTmp(roleB[i].locx3, roleB[i].x3))then
+       ch[7].empty:=true;
+       clear ch[7].msg;
+       roleB[i].st := B6;
      endif;
    endif;
-   put "roleB[i] in st3\n";
+   put "roleB[i] in st5\n";
 end;
-rule " roleB4 "
-roleB[i].st = B4 & ch[4].empty = true & !roleB[i].commit 
+rule " roleB6 "
+roleB[i].st = B6 & ch[8].empty = true & !roleB[i].commit 
 ==>
 var msg:Message;
     msgNo:indexType;
 begin
    clear msg;
-   cons16(roleB[i].N,roleB[i].m2,msg,msgNo);
+   cons15(roleB[i].x3,msg,msgNo);
+   ch[8].empty := false;
+   ch[8].msg := msg;
+   ch[8].sender := roleB[i].B;
+   ch[8].receiver := Intruder;
+   roleB[i].st := B7;
+   put "roleB[i] in st6\n";
+end;
+rule " roleB7 "
+roleB[i].st = B7 & ch[9].empty = false & !roleB[i].commit
+==>
+var flag_pat18:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[9].msg;
+   isPat18(msg, flag_pat18);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleB[i].B;
+   get_msgNo(agmsg,msgNo);
+   B_known[msgNo] := true;
+   if(flag_pat18) then
+     destruct18(agmsg,msg,roleB[i].locx4,roleB[i].locx5);
+     if(matchTmp(roleB[i].locx4, roleB[i].x4) & matchTmp(roleB[i].locx5, roleB[i].x5))then
+       ch[9].empty:=true;
+       clear ch[9].msg;
+       roleB[i].st := B8;
+     endif;
+   endif;
+   put "roleB[i] in st7\n";
+end;
+rule " roleB8 "
+roleB[i].st = B8 & ch[10].empty = true & !roleB[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons18(roleB[i].x4,roleB[i].x5,msg,msgNo);
+   ch[10].empty := false;
+   ch[10].msg := msg;
+   ch[10].sender := roleB[i].B;
+   ch[10].receiver := Intruder;
+   roleB[i].st := B9;
+   put "roleB[i] in st8\n";
+end;
+rule " roleB9 "
+roleB[i].st = B9 & ch[11].empty = false & !roleB[i].commit
+==>
+var flag_pat23:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[11].msg;
+   isPat23(msg, flag_pat23);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleB[i].B;
+   get_msgNo(agmsg,msgNo);
+   B_known[msgNo] := true;
+   if(flag_pat23) then
+     destruct23(agmsg,msg,roleB[i].locx6,roleB[i].locx7,roleB[i].locx8,roleB[i].locx9);
+     if(matchTmp(roleB[i].locx6, roleB[i].x6) & matchTmp(roleB[i].locx7, roleB[i].x7) & matchTmp(roleB[i].locx8, roleB[i].x8) & matchTmp(roleB[i].locx9, roleB[i].x9))then
+       ch[11].empty:=true;
+       clear ch[11].msg;
+       roleB[i].st := B10;
+     endif;
+   endif;
+   put "roleB[i] in st9\n";
+end;
+rule " roleB10 "
+roleB[i].st = B10 & ch[12].empty = true & !roleB[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons23(roleB[i].x6,roleB[i].x7,roleB[i].x8,roleB[i].x9,msg,msgNo);
+   ch[12].empty := false;
+   ch[12].msg := msg;
+   ch[12].sender := roleB[i].B;
+   ch[12].receiver := Intruder;
+   roleB[i].st := B11;
+   put "roleB[i] in st10\n";
+end;
+rule " roleB11 "
+roleB[i].st = B11 & ch[13].empty = false & !roleB[i].commit
+==>
+var flag_pat11:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[13].msg;
+   isPat11(msg, flag_pat11);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleB[i].B;
+   get_msgNo(agmsg,msgNo);
+   B_known[msgNo] := true;
+   if(flag_pat11) then
+     destruct11(agmsg,msg,roleB[i].locx10);
+     if(matchTmp(roleB[i].locx10, roleB[i].x10))then
+       ch[13].empty:=true;
+       clear ch[13].msg;
+       roleB[i].st := B12;
+     endif;
+   endif;
+   put "roleB[i] in st11\n";
+end;
+rule " roleB12 "
+roleB[i].st = B12 & ch[14].empty = true & !roleB[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons11(roleB[i].x10,msg,msgNo);
+   ch[14].empty := false;
+   ch[14].msg := msg;
+   ch[14].sender := roleB[i].B;
+   ch[14].receiver := Intruder;
+   roleB[i].st := B13;
+   put "roleB[i] in st12\n";
+end;
+rule " roleB13 "
+roleB[i].st = B13 & ch[15].empty = false & !roleB[i].commit
+==>
+var flag_pat1:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[15].msg;
+   isPat1(msg, flag_pat1);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleB[i].B;
+   get_msgNo(agmsg,msgNo);
+   B_known[msgNo] := true;
+   if(flag_pat1) then
+     destruct1(agmsg,msg,roleB[i].loceapm);
+     if(matchNonce(roleB[i].loceapm, roleB[i].eapm))then
+       ch[15].empty:=true;
+       clear ch[15].msg;
+       roleB[i].st := B14;
+     endif;
+   endif;
+   put "roleB[i] in st13\n";
+end;
+rule " roleB14 "
+roleB[i].st = B14 & ch[16].empty = true & !roleB[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons1(roleB[i].eapm,msg,msgNo);
+   ch[16].empty := false;
+   ch[16].msg := msg;
+   ch[16].sender := roleB[i].B;
+   ch[16].receiver := Intruder;
+   roleB[i].st := B15;
+   put "roleB[i] in st14\n";
+end;
+rule " roleB15 "
+roleB[i].st = B15 & ch[17].empty = false & !roleB[i].commit
+==>
+var flag_pat1:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[17].msg;
+   isPat1(msg, flag_pat1);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleB[i].B;
+   get_msgNo(agmsg,msgNo);
+   B_known[msgNo] := true;
+   if(flag_pat1) then
+     destruct1(agmsg,msg,roleB[i].locsucm);
+     if(matchNonce(roleB[i].locsucm, roleB[i].sucm))then
+       ch[17].empty:=true;
+       clear ch[17].msg;
+       roleB[i].st := B16;
+     endif;
+   endif;
+   put "roleB[i] in st15\n";
+end;
+rule " roleB16 "
+roleB[i].st = B16 & ch[18].empty = true & !roleB[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons1(roleB[i].sucm,msg,msgNo);
+   ch[18].empty := false;
+   ch[18].msg := msg;
+   ch[18].sender := roleB[i].B;
+   ch[18].receiver := Intruder;
+   roleB[i].st := B1;
+   put "roleB[i] in st16\n";
+   roleB[i].commit := true;
+end;
+endruleset;
+
+ruleset i:roleCNums do
+rule " roleC1 "
+roleC[i].st = C1 & ch[2].empty = false & !roleC[i].commit
+==>
+var flag_pat13:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[2].msg;
+   isPat13(msg, flag_pat13);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleC[i].C;
+   get_msgNo(agmsg,msgNo);
+   C_known[msgNo] := true;
+   if(flag_pat13) then
+     destruct13(agmsg,msg,roleC[i].locx1,roleC[i].locbn);
+     if(matchTmp(roleC[i].locx1, roleC[i].x1) & matchNonce(roleC[i].locbn, roleC[i].bn))then
+       ch[2].empty:=true;
+       clear ch[2].msg;
+       roleC[i].st := C2;
+     endif;
+   endif;
+   put "roleC[i] in st1\n";
+end;
+rule " roleC2 "
+roleC[i].st = C2 & ch[3].empty = true & !roleC[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons13(roleC[i].x1,roleC[i].bn,msg,msgNo);
+   ch[3].empty := false;
+   ch[3].msg := msg;
+   ch[3].sender := roleC[i].C;
+   ch[3].receiver := Intruder;
+   roleC[i].st := C3;
+   put "roleC[i] in st2\n";
+end;
+rule " roleC3 "
+roleC[i].st = C3 & ch[4].empty = false & !roleC[i].commit
+==>
+var flag_pat1:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[4].msg;
+   isPat1(msg, flag_pat1);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleC[i].C;
+   get_msgNo(agmsg,msgNo);
+   C_known[msgNo] := true;
+   if(flag_pat1) then
+     destruct1(agmsg,msg,roleC[i].locstart);
+     if(matchNonce(roleC[i].locstart, roleC[i].start))then
+       ch[4].empty:=true;
+       clear ch[4].msg;
+       roleC[i].st := C4;
+     endif;
+   endif;
+   put "roleC[i] in st3\n";
+end;
+rule " roleC4 "
+roleC[i].st = C4 & ch[5].empty = true & !roleC[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons1(roleC[i].start,msg,msgNo);
+   ch[5].empty := false;
+   ch[5].msg := msg;
+   ch[5].sender := roleC[i].C;
+   ch[5].receiver := Intruder;
+   roleC[i].st := C5;
+   put "roleC[i] in st4\n";
+end;
+rule " roleC5 "
+roleC[i].st = C5 & ch[8].empty = false & !roleC[i].commit
+==>
+var flag_pat24:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[8].msg;
+   isPat24(msg, flag_pat24);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleC[i].C;
+   get_msgNo(agmsg,msgNo);
+   C_known[msgNo] := true;
+   if(flag_pat24) then
+     destruct24(agmsg,msg,roleC[i].locue);
+     if(matchNonce(roleC[i].locue, roleC[i].ue))then
+       ch[8].empty:=true;
+       clear ch[8].msg;
+       roleC[i].st := C6;
+     endif;
+   endif;
+   put "roleC[i] in st5\n";
+end;
+rule " roleC6 "
+roleC[i].st = C6 & ch[9].empty = true & !roleC[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons2(roleC[i].ausf,roleC[i].certc,msg,msgNo);
+   ch[9].empty := false;
+   ch[9].msg := msg;
+   ch[9].sender := roleC[i].C;
+   ch[9].receiver := Intruder;
+   roleC[i].st := C7;
+   put "roleC[i] in st6\n";
+end;
+rule " roleC7 "
+roleC[i].st = C7 & ch[12].empty = false & !roleC[i].commit
+==>
+var flag_pat23:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[12].msg;
+   isPat23(msg, flag_pat23);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleC[i].C;
+   get_msgNo(agmsg,msgNo);
+   C_known[msgNo] := true;
+   if(flag_pat23) then
+     destruct23(agmsg,msg,roleC[i].locx6,roleC[i].locx7,roleC[i].locx8,roleC[i].locx9);
+     if(matchTmp(roleC[i].locx6, roleC[i].x6) & matchTmp(roleC[i].locx7, roleC[i].x7) & matchTmp(roleC[i].locx8, roleC[i].x8) & matchTmp(roleC[i].locx9, roleC[i].x9))then
+       ch[12].empty:=true;
+       clear ch[12].msg;
+       roleC[i].st := C8;
+     endif;
+   endif;
+   put "roleC[i] in st7\n";
+end;
+rule " roleC8 "
+roleC[i].st = C8 & ch[13].empty = true & !roleC[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons9(roleC[i].start,roleC[i].ue1,roleC[i].ausf,roleC[i].certc,roleC[i].prekey,msg,msgNo);
+   ch[13].empty := false;
+   ch[13].msg := msg;
+   ch[13].sender := roleC[i].C;
+   ch[13].receiver := Intruder;
+   roleC[i].st := C9;
+   put "roleC[i] in st8\n";
+end;
+rule " roleC9 "
+roleC[i].st = C9 & ch[16].empty = false & !roleC[i].commit
+==>
+var flag_pat1:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[16].msg;
+   isPat1(msg, flag_pat1);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleC[i].C;
+   get_msgNo(agmsg,msgNo);
+   C_known[msgNo] := true;
+   if(flag_pat1) then
+     destruct1(agmsg,msg,roleC[i].loceapm);
+     if(matchNonce(roleC[i].loceapm, roleC[i].eapm))then
+       ch[16].empty:=true;
+       clear ch[16].msg;
+       roleC[i].st := C10;
+     endif;
+   endif;
+   put "roleC[i] in st9\n";
+end;
+rule " roleC10 "
+roleC[i].st = C10 & ch[17].empty = true & !roleC[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons1(roleC[i].sucm,msg,msgNo);
+   ch[17].empty := false;
+   ch[17].msg := msg;
+   ch[17].sender := roleC[i].C;
+   ch[17].receiver := Intruder;
+   roleC[i].st := C1;
+   put "roleC[i] in st10\n";
+   roleC[i].commit := true;
+end;
+endruleset;
+
+ruleset i:roleDNums do
+rule " roleD1 "
+roleD[i].st = D1 & ch[3].empty = false & !roleD[i].commit
+==>
+var flag_pat26:boolean;
+    msg:Message;
+    msgNo:indexType;
+    agmsg:Message;
+begin
+   clear msg;
+   msg := ch[3].msg;
+   isPat26(msg, flag_pat26);
+   agmsg.msgType := agent;
+   agmsg.ag:=roleD[i].D;
+   get_msgNo(agmsg,msgNo);
+   D_known[msgNo] := true;
+   if(flag_pat26) then
+     destruct26(agmsg,msg,roleD[i].locm1,roleD[i].locbn);
+     if(matchTmp(roleD[i].locm1, roleD[i].m1) & matchNonce(roleD[i].locbn, roleD[i].bn))then
+       ch[3].empty:=true;
+       clear ch[3].msg;
+       roleD[i].st := D2;
+     endif;
+   endif;
+   put "roleD[i] in st1\n";
+end;
+rule " roleD2 "
+roleD[i].st = D2 & ch[4].empty = true & !roleD[i].commit 
+==>
+var msg:Message;
+    msgNo:indexType;
+begin
+   clear msg;
+   cons1(roleD[i].start,msg,msgNo);
    ch[4].empty := false;
    ch[4].msg := msg;
-   ch[4].sender := roleB[i].B;
+   ch[4].sender := roleD[i].D;
    ch[4].receiver := Intruder;
-   roleB[i].st := B1;
-   put "roleB[i] in st4\n";
-   roleB[i].commit := true;
+   roleD[i].st := D1;
+   put "roleD[i] in st2\n";
+   roleD[i].commit := true;
 end;
 endruleset;
 
@@ -2463,18 +3769,18 @@ endruleset;
 ---rule of intruder to get msg from ch[1] 
 rule "intruderGetMsgFromCh[1]" 
   ch[1].empty = false & ch[1].sender != Intruder ==>
-  var flag_pat6:boolean;
+  var flag_pat4:boolean;
       msgNo:indexType;
       msg:Message;
   begin
     msg := ch[1].msg;
     get_msgNo(msg, msgNo);
     msg.tmpPart := msgNo;
-    isPat6(msg,flag_pat6);
-    if (flag_pat6) then
-      if(!exist(pat6Set,msgNo)) then
-        pat6Set.length:=pat6Set.length+1;
-        pat6Set.content[pat6Set.length]:=msgNo;
+    isPat4(msg,flag_pat4);
+    if (flag_pat4) then
+      if(!exist(pat4Set,msgNo)) then
+        pat4Set.length:=pat4Set.length+1;
+        pat4Set.content[pat4Set.length]:=msgNo;
         Spy_known[msgNo] := true;
       endif;
       put "intruder get msg from ch[1].\n";
@@ -2483,37 +3789,198 @@ rule "intruderGetMsgFromCh[1]"
     endif;
   end;
 
----rule of intruder to get msg from ch[3] 
-rule "intruderGetMsgFromCh[3]" 
-  ch[3].empty = false & ch[3].sender != Intruder ==>
-  var flag_pat12:boolean;
+---rule of intruder to get msg from ch[7] 
+rule "intruderGetMsgFromCh[7]" 
+  ch[7].empty = false & ch[7].sender != Intruder ==>
+  var flag_pat1:boolean;
       msgNo:indexType;
       msg:Message;
   begin
-    msg := ch[3].msg;
+    msg := ch[7].msg;
     get_msgNo(msg, msgNo);
     msg.tmpPart := msgNo;
-    isPat12(msg,flag_pat12);
-    if (flag_pat12) then
-      if(!exist(pat12Set,msgNo)) then
-        pat12Set.length:=pat12Set.length+1;
-        pat12Set.content[pat12Set.length]:=msgNo;
+    isPat1(msg,flag_pat1);
+    if (flag_pat1) then
+      if(!exist(pat1Set,msgNo)) then
+        pat1Set.length:=pat1Set.length+1;
+        pat1Set.content[pat1Set.length]:=msgNo;
         Spy_known[msgNo] := true;
       endif;
-      put "intruder get msg from ch[3].\n";
-      ch[3].empty := true;
-      clear ch[3].msg;
+      put "intruder get msg from ch[7].\n";
+      ch[7].empty := true;
+      clear ch[7].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[11] 
+rule "intruderGetMsgFromCh[11]" 
+  ch[11].empty = false & ch[11].sender != Intruder ==>
+  var flag_pat10:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[11].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat10(msg,flag_pat10);
+    if (flag_pat10) then
+      if(!exist(pat10Set,msgNo)) then
+        pat10Set.length:=pat10Set.length+1;
+        pat10Set.content[pat10Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[11].\n";
+      ch[11].empty := true;
+      clear ch[11].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[15] 
+rule "intruderGetMsgFromCh[15]" 
+  ch[15].empty = false & ch[15].sender != Intruder ==>
+  var flag_pat1:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[15].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat1(msg,flag_pat1);
+    if (flag_pat1) then
+      if(!exist(pat1Set,msgNo)) then
+        pat1Set.length:=pat1Set.length+1;
+        pat1Set.content[pat1Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[15].\n";
+      ch[15].empty := true;
+      clear ch[15].msg;
     endif;
   end;
 
 ---rule of intruder to get msg from ch[2] 
 rule "intruderGetMsgFromCh[2]" 
   ch[2].empty = false & ch[2].sender != Intruder ==>
-  var flag_pat11:boolean;
+  var flag_pat13:boolean;
       msgNo:indexType;
       msg:Message;
   begin
     msg := ch[2].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat13(msg,flag_pat13);
+    if (flag_pat13) then
+      if(!exist(pat13Set,msgNo)) then
+        pat13Set.length:=pat13Set.length+1;
+        pat13Set.content[pat13Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[2].\n";
+      ch[2].empty := true;
+      clear ch[2].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[6] 
+rule "intruderGetMsgFromCh[6]" 
+  ch[6].empty = false & ch[6].sender != Intruder ==>
+  var flag_pat14:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[6].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat14(msg,flag_pat14);
+    if (flag_pat14) then
+      if(!exist(pat14Set,msgNo)) then
+        pat14Set.length:=pat14Set.length+1;
+        pat14Set.content[pat14Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[6].\n";
+      ch[6].empty := true;
+      clear ch[6].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[8] 
+rule "intruderGetMsgFromCh[8]" 
+  ch[8].empty = false & ch[8].sender != Intruder ==>
+  var flag_pat15:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[8].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat15(msg,flag_pat15);
+    if (flag_pat15) then
+      if(!exist(pat15Set,msgNo)) then
+        pat15Set.length:=pat15Set.length+1;
+        pat15Set.content[pat15Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[8].\n";
+      ch[8].empty := true;
+      clear ch[8].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[10] 
+rule "intruderGetMsgFromCh[10]" 
+  ch[10].empty = false & ch[10].sender != Intruder ==>
+  var flag_pat18:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[10].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat18(msg,flag_pat18);
+    if (flag_pat18) then
+      if(!exist(pat18Set,msgNo)) then
+        pat18Set.length:=pat18Set.length+1;
+        pat18Set.content[pat18Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[10].\n";
+      ch[10].empty := true;
+      clear ch[10].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[12] 
+rule "intruderGetMsgFromCh[12]" 
+  ch[12].empty = false & ch[12].sender != Intruder ==>
+  var flag_pat23:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[12].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat23(msg,flag_pat23);
+    if (flag_pat23) then
+      if(!exist(pat23Set,msgNo)) then
+        pat23Set.length:=pat23Set.length+1;
+        pat23Set.content[pat23Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[12].\n";
+      ch[12].empty := true;
+      clear ch[12].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[14] 
+rule "intruderGetMsgFromCh[14]" 
+  ch[14].empty = false & ch[14].sender != Intruder ==>
+  var flag_pat11:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[14].msg;
     get_msgNo(msg, msgNo);
     msg.tmpPart := msgNo;
     isPat11(msg,flag_pat11);
@@ -2523,27 +3990,188 @@ rule "intruderGetMsgFromCh[2]"
         pat11Set.content[pat11Set.length]:=msgNo;
         Spy_known[msgNo] := true;
       endif;
-      put "intruder get msg from ch[2].\n";
-      ch[2].empty := true;
-      clear ch[2].msg;
+      put "intruder get msg from ch[14].\n";
+      ch[14].empty := true;
+      clear ch[14].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[16] 
+rule "intruderGetMsgFromCh[16]" 
+  ch[16].empty = false & ch[16].sender != Intruder ==>
+  var flag_pat1:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[16].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat1(msg,flag_pat1);
+    if (flag_pat1) then
+      if(!exist(pat1Set,msgNo)) then
+        pat1Set.length:=pat1Set.length+1;
+        pat1Set.content[pat1Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[16].\n";
+      ch[16].empty := true;
+      clear ch[16].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[18] 
+rule "intruderGetMsgFromCh[18]" 
+  ch[18].empty = false & ch[18].sender != Intruder ==>
+  var flag_pat1:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[18].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat1(msg,flag_pat1);
+    if (flag_pat1) then
+      if(!exist(pat1Set,msgNo)) then
+        pat1Set.length:=pat1Set.length+1;
+        pat1Set.content[pat1Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[18].\n";
+      ch[18].empty := true;
+      clear ch[18].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[3] 
+rule "intruderGetMsgFromCh[3]" 
+  ch[3].empty = false & ch[3].sender != Intruder ==>
+  var flag_pat13:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[3].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat13(msg,flag_pat13);
+    if (flag_pat13) then
+      if(!exist(pat13Set,msgNo)) then
+        pat13Set.length:=pat13Set.length+1;
+        pat13Set.content[pat13Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[3].\n";
+      ch[3].empty := true;
+      clear ch[3].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[5] 
+rule "intruderGetMsgFromCh[5]" 
+  ch[5].empty = false & ch[5].sender != Intruder ==>
+  var flag_pat1:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[5].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat1(msg,flag_pat1);
+    if (flag_pat1) then
+      if(!exist(pat1Set,msgNo)) then
+        pat1Set.length:=pat1Set.length+1;
+        pat1Set.content[pat1Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[5].\n";
+      ch[5].empty := true;
+      clear ch[5].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[9] 
+rule "intruderGetMsgFromCh[9]" 
+  ch[9].empty = false & ch[9].sender != Intruder ==>
+  var flag_pat2:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[9].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat2(msg,flag_pat2);
+    if (flag_pat2) then
+      if(!exist(pat2Set,msgNo)) then
+        pat2Set.length:=pat2Set.length+1;
+        pat2Set.content[pat2Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[9].\n";
+      ch[9].empty := true;
+      clear ch[9].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[13] 
+rule "intruderGetMsgFromCh[13]" 
+  ch[13].empty = false & ch[13].sender != Intruder ==>
+  var flag_pat9:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[13].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat9(msg,flag_pat9);
+    if (flag_pat9) then
+      if(!exist(pat9Set,msgNo)) then
+        pat9Set.length:=pat9Set.length+1;
+        pat9Set.content[pat9Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[13].\n";
+      ch[13].empty := true;
+      clear ch[13].msg;
+    endif;
+  end;
+
+---rule of intruder to get msg from ch[17] 
+rule "intruderGetMsgFromCh[17]" 
+  ch[17].empty = false & ch[17].sender != Intruder ==>
+  var flag_pat1:boolean;
+      msgNo:indexType;
+      msg:Message;
+  begin
+    msg := ch[17].msg;
+    get_msgNo(msg, msgNo);
+    msg.tmpPart := msgNo;
+    isPat1(msg,flag_pat1);
+    if (flag_pat1) then
+      if(!exist(pat1Set,msgNo)) then
+        pat1Set.length:=pat1Set.length+1;
+        pat1Set.content[pat1Set.length]:=msgNo;
+        Spy_known[msgNo] := true;
+      endif;
+      put "intruder get msg from ch[17].\n";
+      ch[17].empty := true;
+      clear ch[17].msg;
     endif;
   end;
 
 ---rule of intruder to get msg from ch[4] 
 rule "intruderGetMsgFromCh[4]" 
   ch[4].empty = false & ch[4].sender != Intruder ==>
-  var flag_pat16:boolean;
+  var flag_pat1:boolean;
       msgNo:indexType;
       msg:Message;
   begin
     msg := ch[4].msg;
     get_msgNo(msg, msgNo);
     msg.tmpPart := msgNo;
-    isPat16(msg,flag_pat16);
-    if (flag_pat16) then
-      if(!exist(pat16Set,msgNo)) then
-        pat16Set.length:=pat16Set.length+1;
-        pat16Set.content[pat16Set.length]:=msgNo;
+    isPat1(msg,flag_pat1);
+    if (flag_pat1) then
+      if(!exist(pat1Set,msgNo)) then
+        pat1Set.length:=pat1Set.length+1;
+        pat1Set.content[pat1Set.length]:=msgNo;
         Spy_known[msgNo] := true;
       endif;
       put "intruder get msg from ch[4].\n";
@@ -2552,41 +4180,81 @@ rule "intruderGetMsgFromCh[4]"
     endif;
   end;
 
----rule of intruder to emit msg into ch[4].
+---rule of intruder to emit msg into ch[6].
 ruleset i: msgLen do
   ruleset j: roleANums do
-    rule "intruderEmitMsgIntoCh[4]"
-      roleA[j].st = A2 & ch[4].empty=true & i <= pat16Set.length & pat16Set.content[i] != 0 & Spy_known[pat16Set.content[i]] ---& matchPat(msgs[pat16Set.content[i]], sPat16Set)
+    rule "intruderEmitMsgIntoCh[6]"
+      roleA[j].st = A2 & ch[6].empty=true & i <= pat14Set.length & pat14Set.content[i] != 0 & Spy_known[pat14Set.content[i]] ---& matchPat(msgs[pat14Set.content[i]], sPat14Set)
       ==>
       begin
-        if (!emit[pat16Set.content[i]]) then  
-          clear ch[4];
-          ch[4].msg:=msgs[pat16Set.content[i]];
-          ch[4].sender:=Intruder;
-          ch[4].receiver:=roleA[j].A;
-          ch[4].empty:=false;
-          emit[pat16Set.content[i]] := true;
-          put "intruder emit msg into ch[4].\n";
+        if (!emit[pat14Set.content[i]]) then  
+          clear ch[6];
+          ch[6].msg:=msgs[pat14Set.content[i]];
+          ch[6].sender:=Intruder;
+          ch[6].receiver:=roleA[j].A;
+          ch[6].empty:=false;
+          emit[pat14Set.content[i]] := true;
+          put "intruder emit msg into ch[6].\n";
         endif;
       end;
   endruleset;
 endruleset;
 
----rule of intruder to emit msg into ch[2].
+---rule of intruder to emit msg into ch[10].
 ruleset i: msgLen do
-  ruleset j: roleSNums do
-    rule "intruderEmitMsgIntoCh[2]"
-      roleS[j].st = S1 & ch[2].empty=true & i <= pat11Set.length & pat11Set.content[i] != 0 & Spy_known[pat11Set.content[i]] ---& matchPat(msgs[pat11Set.content[i]], sPat11Set)
+  ruleset j: roleANums do
+    rule "intruderEmitMsgIntoCh[10]"
+      roleA[j].st = A4 & ch[10].empty=true & i <= pat18Set.length & pat18Set.content[i] != 0 & Spy_known[pat18Set.content[i]] ---& matchPat(msgs[pat18Set.content[i]], sPat18Set)
+      ==>
+      begin
+        if (!emit[pat18Set.content[i]]) then  
+          clear ch[10];
+          ch[10].msg:=msgs[pat18Set.content[i]];
+          ch[10].sender:=Intruder;
+          ch[10].receiver:=roleA[j].A;
+          ch[10].empty:=false;
+          emit[pat18Set.content[i]] := true;
+          put "intruder emit msg into ch[10].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[14].
+ruleset i: msgLen do
+  ruleset j: roleANums do
+    rule "intruderEmitMsgIntoCh[14]"
+      roleA[j].st = A6 & ch[14].empty=true & i <= pat11Set.length & pat11Set.content[i] != 0 & Spy_known[pat11Set.content[i]] ---& matchPat(msgs[pat11Set.content[i]], sPat11Set)
       ==>
       begin
         if (!emit[pat11Set.content[i]]) then  
-          clear ch[2];
-          ch[2].msg:=msgs[pat11Set.content[i]];
-          ch[2].sender:=Intruder;
-          ch[2].receiver:=roleS[j].S;
-          ch[2].empty:=false;
+          clear ch[14];
+          ch[14].msg:=msgs[pat11Set.content[i]];
+          ch[14].sender:=Intruder;
+          ch[14].receiver:=roleA[j].A;
+          ch[14].empty:=false;
           emit[pat11Set.content[i]] := true;
-          put "intruder emit msg into ch[2].\n";
+          put "intruder emit msg into ch[14].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[18].
+ruleset i: msgLen do
+  ruleset j: roleANums do
+    rule "intruderEmitMsgIntoCh[18]"
+      roleA[j].st = A8 & ch[18].empty=true & i <= pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] ---& matchPat(msgs[pat1Set.content[i]], sPat1Set)
+      ==>
+      begin
+        if (!emit[pat1Set.content[i]]) then  
+          clear ch[18];
+          ch[18].msg:=msgs[pat1Set.content[i]];
+          ch[18].sender:=Intruder;
+          ch[18].receiver:=roleA[j].A;
+          ch[18].empty:=false;
+          emit[pat1Set.content[i]] := true;
+          put "intruder emit msg into ch[18].\n";
         endif;
       end;
   endruleset;
@@ -2596,17 +4264,257 @@ endruleset;
 ruleset i: msgLen do
   ruleset j: roleBNums do
     rule "intruderEmitMsgIntoCh[1]"
-      roleB[j].st = B1 & ch[1].empty=true & i <= pat6Set.length & pat6Set.content[i] != 0 & Spy_known[pat6Set.content[i]] ---& matchPat(msgs[pat6Set.content[i]], sPat6Set)
+      roleB[j].st = B1 & ch[1].empty=true & i <= pat4Set.length & pat4Set.content[i] != 0 & Spy_known[pat4Set.content[i]] ---& matchPat(msgs[pat4Set.content[i]], sPat4Set)
       ==>
       begin
-        if (!emit[pat6Set.content[i]]) then  
+        if (!emit[pat4Set.content[i]]) then  
           clear ch[1];
-          ch[1].msg:=msgs[pat6Set.content[i]];
+          ch[1].msg:=msgs[pat4Set.content[i]];
           ch[1].sender:=Intruder;
           ch[1].receiver:=roleB[j].B;
           ch[1].empty:=false;
-          emit[pat6Set.content[i]] := true;
+          emit[pat4Set.content[i]] := true;
           put "intruder emit msg into ch[1].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[5].
+ruleset i: msgLen do
+  ruleset j: roleBNums do
+    rule "intruderEmitMsgIntoCh[5]"
+      roleB[j].st = B3 & ch[5].empty=true & i <= pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] ---& matchPat(msgs[pat1Set.content[i]], sPat1Set)
+      ==>
+      begin
+        if (!emit[pat1Set.content[i]]) then  
+          clear ch[5];
+          ch[5].msg:=msgs[pat1Set.content[i]];
+          ch[5].sender:=Intruder;
+          ch[5].receiver:=roleB[j].B;
+          ch[5].empty:=false;
+          emit[pat1Set.content[i]] := true;
+          put "intruder emit msg into ch[5].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[7].
+ruleset i: msgLen do
+  ruleset j: roleBNums do
+    rule "intruderEmitMsgIntoCh[7]"
+      roleB[j].st = B5 & ch[7].empty=true & i <= pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] ---& matchPat(msgs[pat1Set.content[i]], sPat1Set)
+      ==>
+      begin
+        if (!emit[pat1Set.content[i]]) then  
+          clear ch[7];
+          ch[7].msg:=msgs[pat1Set.content[i]];
+          ch[7].sender:=Intruder;
+          ch[7].receiver:=roleB[j].B;
+          ch[7].empty:=false;
+          emit[pat1Set.content[i]] := true;
+          put "intruder emit msg into ch[7].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[9].
+ruleset i: msgLen do
+  ruleset j: roleBNums do
+    rule "intruderEmitMsgIntoCh[9]"
+      roleB[j].st = B7 & ch[9].empty=true & i <= pat2Set.length & pat2Set.content[i] != 0 & Spy_known[pat2Set.content[i]] ---& matchPat(msgs[pat2Set.content[i]], sPat2Set)
+      ==>
+      begin
+        if (!emit[pat2Set.content[i]]) then  
+          clear ch[9];
+          ch[9].msg:=msgs[pat2Set.content[i]];
+          ch[9].sender:=Intruder;
+          ch[9].receiver:=roleB[j].B;
+          ch[9].empty:=false;
+          emit[pat2Set.content[i]] := true;
+          put "intruder emit msg into ch[9].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[11].
+ruleset i: msgLen do
+  ruleset j: roleBNums do
+    rule "intruderEmitMsgIntoCh[11]"
+      roleB[j].st = B9 & ch[11].empty=true & i <= pat10Set.length & pat10Set.content[i] != 0 & Spy_known[pat10Set.content[i]] ---& matchPat(msgs[pat10Set.content[i]], sPat10Set)
+      ==>
+      begin
+        if (!emit[pat10Set.content[i]]) then  
+          clear ch[11];
+          ch[11].msg:=msgs[pat10Set.content[i]];
+          ch[11].sender:=Intruder;
+          ch[11].receiver:=roleB[j].B;
+          ch[11].empty:=false;
+          emit[pat10Set.content[i]] := true;
+          put "intruder emit msg into ch[11].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[13].
+ruleset i: msgLen do
+  ruleset j: roleBNums do
+    rule "intruderEmitMsgIntoCh[13]"
+      roleB[j].st = B11 & ch[13].empty=true & i <= pat9Set.length & pat9Set.content[i] != 0 & Spy_known[pat9Set.content[i]] ---& matchPat(msgs[pat9Set.content[i]], sPat9Set)
+      ==>
+      begin
+        if (!emit[pat9Set.content[i]]) then  
+          clear ch[13];
+          ch[13].msg:=msgs[pat9Set.content[i]];
+          ch[13].sender:=Intruder;
+          ch[13].receiver:=roleB[j].B;
+          ch[13].empty:=false;
+          emit[pat9Set.content[i]] := true;
+          put "intruder emit msg into ch[13].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[15].
+ruleset i: msgLen do
+  ruleset j: roleBNums do
+    rule "intruderEmitMsgIntoCh[15]"
+      roleB[j].st = B13 & ch[15].empty=true & i <= pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] ---& matchPat(msgs[pat1Set.content[i]], sPat1Set)
+      ==>
+      begin
+        if (!emit[pat1Set.content[i]]) then  
+          clear ch[15];
+          ch[15].msg:=msgs[pat1Set.content[i]];
+          ch[15].sender:=Intruder;
+          ch[15].receiver:=roleB[j].B;
+          ch[15].empty:=false;
+          emit[pat1Set.content[i]] := true;
+          put "intruder emit msg into ch[15].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[17].
+ruleset i: msgLen do
+  ruleset j: roleCNums do
+    rule "intruderEmitMsgIntoCh[17]"
+      roleC[j].st = C15 & ch[17].empty=true & i <= pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] ---& matchPat(msgs[pat1Set.content[i]], sPat1Set)
+      ==>
+      begin
+        if (!emit[pat1Set.content[i]]) then  
+          clear ch[17];
+          ch[17].msg:=msgs[pat1Set.content[i]];
+          ch[17].sender:=Intruder;
+          ch[17].receiver:=roleC[j].C;
+          ch[17].empty:=false;
+          emit[pat1Set.content[i]] := true;
+          put "intruder emit msg into ch[17].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[2].
+ruleset i: msgLen do
+  ruleset j: roleCNums do
+    rule "intruderEmitMsgIntoCh[2]"
+      roleC[j].st = C1 & ch[2].empty=true & i <= pat13Set.length & pat13Set.content[i] != 0 & Spy_known[pat13Set.content[i]] ---& matchPat(msgs[pat13Set.content[i]], sPat13Set)
+      ==>
+      begin
+        if (!emit[pat13Set.content[i]]) then  
+          clear ch[2];
+          ch[2].msg:=msgs[pat13Set.content[i]];
+          ch[2].sender:=Intruder;
+          ch[2].receiver:=roleC[j].C;
+          ch[2].empty:=false;
+          emit[pat13Set.content[i]] := true;
+          put "intruder emit msg into ch[2].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[4].
+ruleset i: msgLen do
+  ruleset j: roleCNums do
+    rule "intruderEmitMsgIntoCh[4]"
+      roleC[j].st = C3 & ch[4].empty=true & i <= pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] ---& matchPat(msgs[pat1Set.content[i]], sPat1Set)
+      ==>
+      begin
+        if (!emit[pat1Set.content[i]]) then  
+          clear ch[4];
+          ch[4].msg:=msgs[pat1Set.content[i]];
+          ch[4].sender:=Intruder;
+          ch[4].receiver:=roleC[j].C;
+          ch[4].empty:=false;
+          emit[pat1Set.content[i]] := true;
+          put "intruder emit msg into ch[4].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[8].
+ruleset i: msgLen do
+  ruleset j: roleCNums do
+    rule "intruderEmitMsgIntoCh[8]"
+      roleC[j].st = C5 & ch[8].empty=true & i <= pat15Set.length & pat15Set.content[i] != 0 & Spy_known[pat15Set.content[i]] ---& matchPat(msgs[pat15Set.content[i]], sPat15Set)
+      ==>
+      begin
+        if (!emit[pat15Set.content[i]]) then  
+          clear ch[8];
+          ch[8].msg:=msgs[pat15Set.content[i]];
+          ch[8].sender:=Intruder;
+          ch[8].receiver:=roleC[j].C;
+          ch[8].empty:=false;
+          emit[pat15Set.content[i]] := true;
+          put "intruder emit msg into ch[8].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[12].
+ruleset i: msgLen do
+  ruleset j: roleCNums do
+    rule "intruderEmitMsgIntoCh[12]"
+      roleC[j].st = C7 & ch[12].empty=true & i <= pat23Set.length & pat23Set.content[i] != 0 & Spy_known[pat23Set.content[i]] ---& matchPat(msgs[pat23Set.content[i]], sPat23Set)
+      ==>
+      begin
+        if (!emit[pat23Set.content[i]]) then  
+          clear ch[12];
+          ch[12].msg:=msgs[pat23Set.content[i]];
+          ch[12].sender:=Intruder;
+          ch[12].receiver:=roleC[j].C;
+          ch[12].empty:=false;
+          emit[pat23Set.content[i]] := true;
+          put "intruder emit msg into ch[12].\n";
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+---rule of intruder to emit msg into ch[16].
+ruleset i: msgLen do
+  ruleset j: roleCNums do
+    rule "intruderEmitMsgIntoCh[16]"
+      roleC[j].st = C9 & ch[16].empty=true & i <= pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] ---& matchPat(msgs[pat1Set.content[i]], sPat1Set)
+      ==>
+      begin
+        if (!emit[pat1Set.content[i]]) then  
+          clear ch[16];
+          ch[16].msg:=msgs[pat1Set.content[i]];
+          ch[16].sender:=Intruder;
+          ch[16].receiver:=roleC[j].C;
+          ch[16].empty:=false;
+          emit[pat1Set.content[i]] := true;
+          put "intruder emit msg into ch[16].\n";
         endif;
       end;
   endruleset;
@@ -2614,37 +4522,37 @@ endruleset;
 
 ---rule of intruder to emit msg into ch[3].
 ruleset i: msgLen do
-  ruleset j: roleBNums do
+  ruleset j: roleDNums do
     rule "intruderEmitMsgIntoCh[3]"
-      roleB[j].st = B3 & ch[3].empty=true & i <= pat12Set.length & pat12Set.content[i] != 0 & Spy_known[pat12Set.content[i]] ---& matchPat(msgs[pat12Set.content[i]], sPat12Set)
+      roleD[j].st = D1 & ch[3].empty=true & i <= pat13Set.length & pat13Set.content[i] != 0 & Spy_known[pat13Set.content[i]] ---& matchPat(msgs[pat13Set.content[i]], sPat13Set)
       ==>
       begin
-        if (!emit[pat12Set.content[i]]) then  
+        if (!emit[pat13Set.content[i]]) then  
           clear ch[3];
-          ch[3].msg:=msgs[pat12Set.content[i]];
+          ch[3].msg:=msgs[pat13Set.content[i]];
           ch[3].sender:=Intruder;
-          ch[3].receiver:=roleB[j].B;
+          ch[3].receiver:=roleD[j].D;
           ch[3].empty:=false;
-          emit[pat12Set.content[i]] := true;
+          emit[pat13Set.content[i]] := true;
           put "intruder emit msg into ch[3].\n";
         endif;
       end;
   endruleset;
 endruleset;
---- enconcat and deconcat rules for pat: concat(Na.N.A.B)
+--- enconcat and deconcat rules for pat: concat(supi.ue)
 
 ruleset i:msgLen do 
-  rule "deconcat 3" --pat3
-    i<=pat3Set.length & pat3Set.content[i] != 0 & Spy_known[pat3Set.content[i]]   &
-    !(Spy_known[msgs[pat3Set.content[i]].concatPart[1]]&Spy_known[msgs[pat3Set.content[i]].concatPart[2]]&Spy_known[msgs[pat3Set.content[i]].concatPart[3]]&Spy_known[msgs[pat3Set.content[i]].concatPart[4]])
+  rule "deconcat 2" --pat2
+    i<=pat2Set.length & pat2Set.content[i] != 0 & Spy_known[pat2Set.content[i]]   &
+    !(Spy_known[msgs[pat2Set.content[i]].concatPart[1]]&Spy_known[msgs[pat2Set.content[i]].concatPart[2]])
     ==>
-    var msgPat1,msgPat2,msgPat3,msgPat4:indexType;
-        flagPat1,flagPat2,flagPat3,flagPat4:boolean;
+    var msgPat1,msgPat2:indexType;
+        flagPat1,flagPat2:boolean;
     begin
-      put "rule deconcat3\n";
-      if (!Spy_known[msgs[pat3Set.content[i]].concatPart[1]]) then
-        Spy_known[msgs[pat3Set.content[i]].concatPart[1]]:=true;
-        msgPat1 := msgs[pat3Set.content[i]].concatPart[1];
+      put "rule deconcat2\n";
+      if (!Spy_known[msgs[pat2Set.content[i]].concatPart[1]]) then
+        Spy_known[msgs[pat2Set.content[i]].concatPart[1]]:=true;
+        msgPat1 := msgs[pat2Set.content[i]].concatPart[1];
         isPat1(msgs[msgPat1],flagPat1);
         if (flagPat1) then
           if(!exist(pat1Set,msgPat1)) then
@@ -2653,9 +4561,9 @@ ruleset i:msgLen do
           endif;
         endif;
       endif;
-      if (!Spy_known[msgs[pat3Set.content[i]].concatPart[2]]) then
-        Spy_known[msgs[pat3Set.content[i]].concatPart[2]]:=true;
-        msgPat2 := msgs[pat3Set.content[i]].concatPart[2];
+      if (!Spy_known[msgs[pat2Set.content[i]].concatPart[2]]) then
+        Spy_known[msgs[pat2Set.content[i]].concatPart[2]]:=true;
+        msgPat2 := msgs[pat2Set.content[i]].concatPart[2];
         isPat1(msgs[msgPat2],flagPat2);
         if (flagPat2) then
           if(!exist(pat1Set,msgPat2)) then
@@ -2664,85 +4572,55 @@ ruleset i:msgLen do
           endif;
         endif;
       endif;
-      if (!Spy_known[msgs[pat3Set.content[i]].concatPart[3]]) then
-        Spy_known[msgs[pat3Set.content[i]].concatPart[3]]:=true;
-        msgPat3 := msgs[pat3Set.content[i]].concatPart[3];
-        isPat2(msgs[msgPat3],flagPat3);
-        if (flagPat3) then
-          if(!exist(pat2Set,msgPat3)) then
-             pat2Set.length:=pat2Set.length+1;
-             pat2Set.content[pat2Set.length] := msgPat3;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat3Set.content[i]].concatPart[4]]) then
-        Spy_known[msgs[pat3Set.content[i]].concatPart[4]]:=true;
-        msgPat4 := msgs[pat3Set.content[i]].concatPart[4];
-        isPat2(msgs[msgPat4],flagPat4);
-        if (flagPat4) then
-          if(!exist(pat2Set,msgPat4)) then
-             pat2Set.length:=pat2Set.length+1;
-             pat2Set.content[pat2Set.length] := msgPat4;
-          endif;
-        endif;
-      endif;
     end;
 endruleset;
 
 ruleset i1: msgLen do
-  ruleset i2: msgLen do
-  ruleset i3: msgLen do
-  ruleset i4: msgLen do 
-    rule "enconcat 3"	---pat3
+  ruleset i2: msgLen do 
+    rule "enconcat 2"	---pat2
       i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
       i2<=pat1Set.length & Spy_known[pat1Set.content[i2]] &
-      i3<=pat2Set.length & Spy_known[pat2Set.content[i3]] &
-      i4<=pat2Set.length & Spy_known[pat2Set.content[i4]] &
-      matchPat(construct3By1122(pat1Set.content[i1],pat1Set.content[i2],pat2Set.content[i3],pat2Set.content[i4]), sPat3Set)&
-      !Spy_known[constructIndex3By1122(pat1Set.content[i1],pat1Set.content[i2],pat2Set.content[i3],pat2Set.content[i4])] 
+      matchPat(construct2By11(pat1Set.content[i1],pat1Set.content[i2]), sPat2Set)&
+      !Spy_known[constructIndex2By11(pat1Set.content[i1],pat1Set.content[i2])] 
       ==>
       var concatMsgNo:indexType;
       concatMsg:Message;
       begin
-        put "rule enconcat3\n";
-        concatMsgNo := constructIndex3By1122(pat1Set.content[i1],pat1Set.content[i2],pat2Set.content[i3],pat2Set.content[i4]);
+        put "rule enconcat2\n";
+        concatMsgNo := constructIndex2By11(pat1Set.content[i1],pat1Set.content[i2]);
         if concatMsgNo = msg_end + 1 then 
           msg_end :=msg_end + 1;
-          concatMsg:= construct3By1122(pat1Set.content[i1],pat1Set.content[i2],pat2Set.content[i3],pat2Set.content[i4]);
+          concatMsg:= construct2By11(pat1Set.content[i1],pat1Set.content[i2]);
           msgs[concatMsgNo] := concatMsg;
         endif;
         Spy_known[concatMsgNo]:=true;
-        if (!exist(pat3Set,concatMsgNo)) then
-          pat3Set.length:=pat3Set.length+1;
-          pat3Set.content[pat3Set.length]:=concatMsgNo;
+        if (!exist(pat2Set,concatMsgNo)) then
+          pat2Set.length:=pat2Set.length+1;
+          pat2Set.content[pat2Set.length]:=concatMsgNo;
         endif;
       end;
 endruleset;
 endruleset;
-endruleset;
-endruleset;
 
---- encrypt and decrypt rules of pat senc(Na.N.A.B,k(A,S))
-ruleset i:msgLen do
-  rule "sdecrypt 5" --pat5
-    i<=pat5Set.length & pat5Set.content[i] != 0
-    & Spy_known[pat5Set.content[i]] & !Spy_known[msgs[pat5Set.content[i]].sencMsg]
-    ==>
+--- encrypt and decrypt rules of pat: aenc{supi.ue}pk(D), for intruder
+ruleset i:msgLen do 
+  rule "adecrypt 4"	---pat4
+    i<=pat4Set.length & pat4Set.content[i] != 0 & Spy_known[pat4Set.content[i]] &
+    !Spy_known[msgs[pat4Set.content[i]].aencMsg]  ==>
     var key_inv:Message;
-	      msgPat3,keyNo:indexType;
-	      flag_pat3:boolean;
+	      msgPat2:indexType;
+	      flag_pat2:boolean;
     begin
-      put "rule sdecrypt5\n";
-      key_inv := inverseKey(msgs[msgs[pat5Set.content[i]].sencKey]);
-      get_msgNo(key_inv,keyNo);
-      if ( (key_inv.k.encType = Symk & (key_inv.k.ag1 = Intruder | key_inv.k.ag2 = Intruder)) | Spy_known[keyNo]) then
-        Spy_known[msgs[pat5Set.content[i]].sencMsg]:=true;
-        msgPat3:=msgs[pat5Set.content[i]].sencMsg;
-        isPat3(msgs[msgPat3],flag_pat3);
-        if (flag_pat3) then
-          if (!exist(pat3Set,msgPat3)) then
-            pat3Set.length:=pat3Set.length+1;
-            pat3Set.content[pat3Set.length]:=msgPat3;
+      put "rule adecrypt4\n";
+      key_inv := inverseKey(msgs[msgs[pat4Set.content[i]].aencKey]);
+      if (key_inv.k.ag = Intruder) then
+        Spy_known[msgs[pat4Set.content[i]].aencMsg]:=true;
+        msgPat2:=msgs[pat4Set.content[i]].aencMsg;
+        isPat2(msgs[msgPat2],flag_pat2);
+        if (flag_pat2) then
+          if (!exist(pat2Set,msgPat2)) then
+            pat2Set.length:=pat2Set.length+1;
+            pat2Set.content[pat2Set.length]:=msgPat2;
           endif;
         endif;
       endif;
@@ -2751,21 +4629,75 @@ endruleset;
 
 ruleset i:msgLen do 
   ruleset j:msgLen do 
-    rule "sencrypt 5"  --pat5
-      i<=pat3Set.length & pat3Set.content[i] != 0 & Spy_known[pat3Set.content[i]] &
-      j<=pat4Set.length & pat4Set.content[j] != 0 & Spy_known[pat4Set.content[j]] &
-      matchPat(construct5By34(pat3Set.content[i],pat4Set.content[j]), sPat5Set) &
-      !Spy_known[constructIndex5By34(pat3Set.content[i],pat4Set.content[j])] 
-       ==>
+    rule "aencrypt 4"	---pat4
+      i<=pat2Set.length & pat2Set.content[i] != 0 & Spy_known[pat2Set.content[i]] &
+      j<=pat3Set.length & pat3Set.content[j] != 0 & Spy_known[pat3Set.content[j]] &
+      matchPat(construct4By23(pat2Set.content[i],pat3Set.content[j]), sPat4Set) &
+      !Spy_known[constructIndex4By23(pat2Set.content[i],pat3Set.content[j])] 
+    ==>
       var encMsgNo:indexType;
       encMsg:Message;
       begin
-        put "rule sencrypt5\n";
-        if (msgs[pat4Set.content[j]].k.encType=Symk) then
-          encMsgNo := constructIndex5By34(pat3Set.content[i],pat4Set.content[j]);
+        put "rule aencrypt4\n";
+        if (msgs[pat3Set.content[j]].k.encType=PK) then
+          encMsgNo := constructIndex4By23(pat2Set.content[i],pat3Set.content[j]);
           if encMsgNo = msg_end + 1 then 
              msg_end :=msg_end + 1;
-             encMsg:= construct5By34(pat3Set.content[i],pat4Set.content[j]);
+             encMsg := construct4By23(pat2Set.content[i],pat3Set.content[j]);
+             msgs[encMsgNo] := encMsg;
+          endif;
+          if (!exist(pat4Set,encMsgNo)) then
+            pat4Set.length := pat4Set.length+1;
+            pat4Set.content[pat4Set.length]:=encMsgNo;
+          endif;
+          Spy_known[encMsgNo] := true;
+        endif;
+      end;
+  endruleset;
+endruleset;
+
+--- encrypt and decrypt rules of pat: aenc{prekey}pk(C), for intruder
+ruleset i:msgLen do 
+  rule "adecrypt 5"	---pat5
+    i<=pat5Set.length & pat5Set.content[i] != 0 & Spy_known[pat5Set.content[i]] &
+    !Spy_known[msgs[pat5Set.content[i]].aencMsg]  ==>
+    var key_inv:Message;
+	      msgPat1:indexType;
+	      flag_pat1:boolean;
+    begin
+      put "rule adecrypt5\n";
+      key_inv := inverseKey(msgs[msgs[pat5Set.content[i]].aencKey]);
+      if (key_inv.k.ag = Intruder) then
+        Spy_known[msgs[pat5Set.content[i]].aencMsg]:=true;
+        msgPat1:=msgs[pat5Set.content[i]].aencMsg;
+        isPat1(msgs[msgPat1],flag_pat1);
+        if (flag_pat1) then
+          if (!exist(pat1Set,msgPat1)) then
+            pat1Set.length:=pat1Set.length+1;
+            pat1Set.content[pat1Set.length]:=msgPat1;
+          endif;
+        endif;
+      endif;
+    end;
+endruleset;
+
+ruleset i:msgLen do 
+  ruleset j:msgLen do 
+    rule "aencrypt 5"	---pat5
+      i<=pat1Set.length & pat1Set.content[i] != 0 & Spy_known[pat1Set.content[i]] &
+      j<=pat3Set.length & pat3Set.content[j] != 0 & Spy_known[pat3Set.content[j]] &
+      matchPat(construct5By13(pat1Set.content[i],pat3Set.content[j]), sPat5Set) &
+      !Spy_known[constructIndex5By13(pat1Set.content[i],pat3Set.content[j])] 
+    ==>
+      var encMsgNo:indexType;
+      encMsg:Message;
+      begin
+        put "rule aencrypt5\n";
+        if (msgs[pat3Set.content[j]].k.encType=PK) then
+          encMsgNo := constructIndex5By13(pat1Set.content[i],pat3Set.content[j]);
+          if encMsgNo = msg_end + 1 then 
+             msg_end :=msg_end + 1;
+             encMsg := construct5By13(pat1Set.content[i],pat3Set.content[j]);
              msgs[encMsgNo] := encMsg;
           endif;
           if (!exist(pat5Set,encMsgNo)) then
@@ -2778,7 +4710,7 @@ ruleset i:msgLen do
   endruleset;
 endruleset;
 
---- enconcat and deconcat rules for pat: concat(N.A.B.senc{Na.N.A.B}k(A,S))
+--- enconcat and deconcat rules for pat: concat(start.ue1.ausf.certc)
 
 ruleset i:msgLen do 
   rule "deconcat 6" --pat6
@@ -2803,33 +4735,33 @@ ruleset i:msgLen do
       if (!Spy_known[msgs[pat6Set.content[i]].concatPart[2]]) then
         Spy_known[msgs[pat6Set.content[i]].concatPart[2]]:=true;
         msgPat2 := msgs[pat6Set.content[i]].concatPart[2];
-        isPat2(msgs[msgPat2],flagPat2);
+        isPat1(msgs[msgPat2],flagPat2);
         if (flagPat2) then
-          if(!exist(pat2Set,msgPat2)) then
-             pat2Set.length:=pat2Set.length+1;
-             pat2Set.content[pat2Set.length] := msgPat2;
+          if(!exist(pat1Set,msgPat2)) then
+             pat1Set.length:=pat1Set.length+1;
+             pat1Set.content[pat1Set.length] := msgPat2;
           endif;
         endif;
       endif;
       if (!Spy_known[msgs[pat6Set.content[i]].concatPart[3]]) then
         Spy_known[msgs[pat6Set.content[i]].concatPart[3]]:=true;
         msgPat3 := msgs[pat6Set.content[i]].concatPart[3];
-        isPat2(msgs[msgPat3],flagPat3);
+        isPat1(msgs[msgPat3],flagPat3);
         if (flagPat3) then
-          if(!exist(pat2Set,msgPat3)) then
-             pat2Set.length:=pat2Set.length+1;
-             pat2Set.content[pat2Set.length] := msgPat3;
+          if(!exist(pat1Set,msgPat3)) then
+             pat1Set.length:=pat1Set.length+1;
+             pat1Set.content[pat1Set.length] := msgPat3;
           endif;
         endif;
       endif;
       if (!Spy_known[msgs[pat6Set.content[i]].concatPart[4]]) then
         Spy_known[msgs[pat6Set.content[i]].concatPart[4]]:=true;
         msgPat4 := msgs[pat6Set.content[i]].concatPart[4];
-        isPat5(msgs[msgPat4],flagPat4);
+        isPat1(msgs[msgPat4],flagPat4);
         if (flagPat4) then
-          if(!exist(pat5Set,msgPat4)) then
-             pat5Set.length:=pat5Set.length+1;
-             pat5Set.content[pat5Set.length] := msgPat4;
+          if(!exist(pat1Set,msgPat4)) then
+             pat1Set.length:=pat1Set.length+1;
+             pat1Set.content[pat1Set.length] := msgPat4;
           endif;
         endif;
       endif;
@@ -2842,20 +4774,20 @@ ruleset i1: msgLen do
   ruleset i4: msgLen do 
     rule "enconcat 6"	---pat6
       i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
-      i2<=pat2Set.length & Spy_known[pat2Set.content[i2]] &
-      i3<=pat2Set.length & Spy_known[pat2Set.content[i3]] &
-      i4<=pat5Set.length & Spy_known[pat5Set.content[i4]] &
-      matchPat(construct6By1225(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat5Set.content[i4]), sPat6Set)&
-      !Spy_known[constructIndex6By1225(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat5Set.content[i4])] 
+      i2<=pat1Set.length & Spy_known[pat1Set.content[i2]] &
+      i3<=pat1Set.length & Spy_known[pat1Set.content[i3]] &
+      i4<=pat1Set.length & Spy_known[pat1Set.content[i4]] &
+      matchPat(construct6By1111(pat1Set.content[i1],pat1Set.content[i2],pat1Set.content[i3],pat1Set.content[i4]), sPat6Set)&
+      !Spy_known[constructIndex6By1111(pat1Set.content[i1],pat1Set.content[i2],pat1Set.content[i3],pat1Set.content[i4])] 
       ==>
       var concatMsgNo:indexType;
       concatMsg:Message;
       begin
         put "rule enconcat6\n";
-        concatMsgNo := constructIndex6By1225(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat5Set.content[i4]);
+        concatMsgNo := constructIndex6By1111(pat1Set.content[i1],pat1Set.content[i2],pat1Set.content[i3],pat1Set.content[i4]);
         if concatMsgNo = msg_end + 1 then 
           msg_end :=msg_end + 1;
-          concatMsg:= construct6By1225(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat5Set.content[i4]);
+          concatMsg:= construct6By1111(pat1Set.content[i1],pat1Set.content[i2],pat1Set.content[i3],pat1Set.content[i4]);
           msgs[concatMsgNo] := concatMsg;
         endif;
         Spy_known[concatMsgNo]:=true;
@@ -2869,20 +4801,20 @@ endruleset;
 endruleset;
 endruleset;
 
---- enconcat and deconcat rules for pat: concat(Na.Kab)
+--- enconcat and deconcat rules for pat: concat(ue1.ausf.prekey)
 
 ruleset i:msgLen do 
-  rule "deconcat 7" --pat7
-    i<=pat7Set.length & pat7Set.content[i] != 0 & Spy_known[pat7Set.content[i]]   &
-    !(Spy_known[msgs[pat7Set.content[i]].concatPart[1]]&Spy_known[msgs[pat7Set.content[i]].concatPart[2]])
+  rule "deconcat 8" --pat8
+    i<=pat8Set.length & pat8Set.content[i] != 0 & Spy_known[pat8Set.content[i]]   &
+    !(Spy_known[msgs[pat8Set.content[i]].concatPart[1]]&Spy_known[msgs[pat8Set.content[i]].concatPart[2]]&Spy_known[msgs[pat8Set.content[i]].concatPart[3]])
     ==>
-    var msgPat1,msgPat2:indexType;
-        flagPat1,flagPat2:boolean;
+    var msgPat1,msgPat2,msgPat3:indexType;
+        flagPat1,flagPat2,flagPat3:boolean;
     begin
-      put "rule deconcat7\n";
-      if (!Spy_known[msgs[pat7Set.content[i]].concatPart[1]]) then
-        Spy_known[msgs[pat7Set.content[i]].concatPart[1]]:=true;
-        msgPat1 := msgs[pat7Set.content[i]].concatPart[1];
+      put "rule deconcat8\n";
+      if (!Spy_known[msgs[pat8Set.content[i]].concatPart[1]]) then
+        Spy_known[msgs[pat8Set.content[i]].concatPart[1]]:=true;
+        msgPat1 := msgs[pat8Set.content[i]].concatPart[1];
         isPat1(msgs[msgPat1],flagPat1);
         if (flagPat1) then
           if(!exist(pat1Set,msgPat1)) then
@@ -2891,9 +4823,177 @@ ruleset i:msgLen do
           endif;
         endif;
       endif;
-      if (!Spy_known[msgs[pat7Set.content[i]].concatPart[2]]) then
-        Spy_known[msgs[pat7Set.content[i]].concatPart[2]]:=true;
-        msgPat2 := msgs[pat7Set.content[i]].concatPart[2];
+      if (!Spy_known[msgs[pat8Set.content[i]].concatPart[2]]) then
+        Spy_known[msgs[pat8Set.content[i]].concatPart[2]]:=true;
+        msgPat2 := msgs[pat8Set.content[i]].concatPart[2];
+        isPat1(msgs[msgPat2],flagPat2);
+        if (flagPat2) then
+          if(!exist(pat1Set,msgPat2)) then
+             pat1Set.length:=pat1Set.length+1;
+             pat1Set.content[pat1Set.length] := msgPat2;
+          endif;
+        endif;
+      endif;
+      if (!Spy_known[msgs[pat8Set.content[i]].concatPart[3]]) then
+        Spy_known[msgs[pat8Set.content[i]].concatPart[3]]:=true;
+        msgPat3 := msgs[pat8Set.content[i]].concatPart[3];
+        isPat1(msgs[msgPat3],flagPat3);
+        if (flagPat3) then
+          if(!exist(pat1Set,msgPat3)) then
+             pat1Set.length:=pat1Set.length+1;
+             pat1Set.content[pat1Set.length] := msgPat3;
+          endif;
+        endif;
+      endif;
+    end;
+endruleset;
+
+ruleset i1: msgLen do
+  ruleset i2: msgLen do
+  ruleset i3: msgLen do 
+    rule "enconcat 8"	---pat8
+      i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
+      i2<=pat1Set.length & Spy_known[pat1Set.content[i2]] &
+      i3<=pat1Set.length & Spy_known[pat1Set.content[i3]] &
+      matchPat(construct8By111(pat1Set.content[i1],pat1Set.content[i2],pat1Set.content[i3]), sPat8Set)&
+      !Spy_known[constructIndex8By111(pat1Set.content[i1],pat1Set.content[i2],pat1Set.content[i3])] 
+      ==>
+      var concatMsgNo:indexType;
+      concatMsg:Message;
+      begin
+        put "rule enconcat8\n";
+        concatMsgNo := constructIndex8By111(pat1Set.content[i1],pat1Set.content[i2],pat1Set.content[i3]);
+        if concatMsgNo = msg_end + 1 then 
+          msg_end :=msg_end + 1;
+          concatMsg:= construct8By111(pat1Set.content[i1],pat1Set.content[i2],pat1Set.content[i3]);
+          msgs[concatMsgNo] := concatMsg;
+        endif;
+        Spy_known[concatMsgNo]:=true;
+        if (!exist(pat8Set,concatMsgNo)) then
+          pat8Set.length:=pat8Set.length+1;
+          pat8Set.content[pat8Set.length]:=concatMsgNo;
+        endif;
+      end;
+endruleset;
+endruleset;
+endruleset;
+
+--- enconcat and deconcat rules for pat: concat(aenc{prekey}pk(C).certa.hash(start.ue1.ausf.certc)sk(A).hash(start.ue1.ausf.certc)ue1.ausf.prekey)
+
+ruleset i:msgLen do 
+  rule "deconcat 10" --pat10
+    i<=pat10Set.length & pat10Set.content[i] != 0 & Spy_known[pat10Set.content[i]]   &
+    !(Spy_known[msgs[pat10Set.content[i]].concatPart[1]]&Spy_known[msgs[pat10Set.content[i]].concatPart[2]]&Spy_known[msgs[pat10Set.content[i]].concatPart[3]]&Spy_known[msgs[pat10Set.content[i]].concatPart[4]])
+    ==>
+    var msgPat1,msgPat2,msgPat3,msgPat4:indexType;
+        flagPat1,flagPat2,flagPat3,flagPat4:boolean;
+    begin
+      put "rule deconcat10\n";
+      if (!Spy_known[msgs[pat10Set.content[i]].concatPart[1]]) then
+        Spy_known[msgs[pat10Set.content[i]].concatPart[1]]:=true;
+        msgPat1 := msgs[pat10Set.content[i]].concatPart[1];
+        isPat5(msgs[msgPat1],flagPat1);
+        if (flagPat1) then
+          if(!exist(pat5Set,msgPat1)) then
+             pat5Set.length:=pat5Set.length+1;
+             pat5Set.content[pat5Set.length] := msgPat1;
+          endif;
+        endif;
+      endif;
+      if (!Spy_known[msgs[pat10Set.content[i]].concatPart[2]]) then
+        Spy_known[msgs[pat10Set.content[i]].concatPart[2]]:=true;
+        msgPat2 := msgs[pat10Set.content[i]].concatPart[2];
+        isPat1(msgs[msgPat2],flagPat2);
+        if (flagPat2) then
+          if(!exist(pat1Set,msgPat2)) then
+             pat1Set.length:=pat1Set.length+1;
+             pat1Set.content[pat1Set.length] := msgPat2;
+          endif;
+        endif;
+      endif;
+      if (!Spy_known[msgs[pat10Set.content[i]].concatPart[3]]) then
+        Spy_known[msgs[pat10Set.content[i]].concatPart[3]]:=true;
+        msgPat3 := msgs[pat10Set.content[i]].concatPart[3];
+        isPat7(msgs[msgPat3],flagPat3);
+        if (flagPat3) then
+          if(!exist(pat7Set,msgPat3)) then
+             pat7Set.length:=pat7Set.length+1;
+             pat7Set.content[pat7Set.length] := msgPat3;
+          endif;
+        endif;
+      endif;
+      if (!Spy_known[msgs[pat10Set.content[i]].concatPart[4]]) then
+        Spy_known[msgs[pat10Set.content[i]].concatPart[4]]:=true;
+        msgPat4 := msgs[pat10Set.content[i]].concatPart[4];
+        isPat9(msgs[msgPat4],flagPat4);
+        if (flagPat4) then
+          if(!exist(pat9Set,msgPat4)) then
+             pat9Set.length:=pat9Set.length+1;
+             pat9Set.content[pat9Set.length] := msgPat4;
+          endif;
+        endif;
+      endif;
+    end;
+endruleset;
+
+ruleset i1: msgLen do
+  ruleset i2: msgLen do
+  ruleset i3: msgLen do
+  ruleset i4: msgLen do 
+    rule "enconcat 10"	---pat10
+      i1<=pat5Set.length & Spy_known[pat5Set.content[i1]] &
+      i2<=pat1Set.length & Spy_known[pat1Set.content[i2]] &
+      i3<=pat7Set.length & Spy_known[pat7Set.content[i3]] &
+      i4<=pat9Set.length & Spy_known[pat9Set.content[i4]] &
+      matchPat(construct10By5179(pat5Set.content[i1],pat1Set.content[i2],pat7Set.content[i3],pat9Set.content[i4]), sPat10Set)&
+      !Spy_known[constructIndex10By5179(pat5Set.content[i1],pat1Set.content[i2],pat7Set.content[i3],pat9Set.content[i4])] 
+      ==>
+      var concatMsgNo:indexType;
+      concatMsg:Message;
+      begin
+        put "rule enconcat10\n";
+        concatMsgNo := constructIndex10By5179(pat5Set.content[i1],pat1Set.content[i2],pat7Set.content[i3],pat9Set.content[i4]);
+        if concatMsgNo = msg_end + 1 then 
+          msg_end :=msg_end + 1;
+          concatMsg:= construct10By5179(pat5Set.content[i1],pat1Set.content[i2],pat7Set.content[i3],pat9Set.content[i4]);
+          msgs[concatMsgNo] := concatMsg;
+        endif;
+        Spy_known[concatMsgNo]:=true;
+        if (!exist(pat10Set,concatMsgNo)) then
+          pat10Set.length:=pat10Set.length+1;
+          pat10Set.content[pat10Set.length]:=concatMsgNo;
+        endif;
+      end;
+endruleset;
+endruleset;
+endruleset;
+endruleset;
+
+--- enconcat and deconcat rules for pat: concat(x1.bn)
+
+ruleset i:msgLen do 
+  rule "deconcat 13" --pat13
+    i<=pat13Set.length & pat13Set.content[i] != 0 & Spy_known[pat13Set.content[i]]   &
+    !(Spy_known[msgs[pat13Set.content[i]].concatPart[1]]&Spy_known[msgs[pat13Set.content[i]].concatPart[2]])
+    ==>
+    var msgPat1,msgPat2:indexType;
+        flagPat1,flagPat2:boolean;
+    begin
+      put "rule deconcat13\n";
+      if (!Spy_known[msgs[pat13Set.content[i]].concatPart[1]]) then
+        Spy_known[msgs[pat13Set.content[i]].concatPart[1]]:=true;
+        msgPat1 := msgs[pat13Set.content[i]].concatPart[1];
+        isPat12(msgs[msgPat1],flagPat1);
+        if (flagPat1) then
+          if(!exist(pat12Set,msgPat1)) then
+             pat12Set.length:=pat12Set.length+1;
+             pat12Set.content[pat12Set.length] := msgPat1;
+          endif;
+        endif;
+      endif;
+      if (!Spy_known[msgs[pat13Set.content[i]].concatPart[2]]) then
+        Spy_known[msgs[pat13Set.content[i]].concatPart[2]]:=true;
+        msgPat2 := msgs[pat13Set.content[i]].concatPart[2];
         isPat1(msgs[msgPat2],flagPat2);
         if (flagPat2) then
           if(!exist(pat1Set,msgPat2)) then
@@ -2907,410 +5007,20 @@ endruleset;
 
 ruleset i1: msgLen do
   ruleset i2: msgLen do 
-    rule "enconcat 7"	---pat7
-      i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
-      i2<=pat1Set.length & Spy_known[pat1Set.content[i2]] &
-      matchPat(construct7By11(pat1Set.content[i1],pat1Set.content[i2]), sPat7Set)&
-      !Spy_known[constructIndex7By11(pat1Set.content[i1],pat1Set.content[i2])] 
-      ==>
-      var concatMsgNo:indexType;
-      concatMsg:Message;
-      begin
-        put "rule enconcat7\n";
-        concatMsgNo := constructIndex7By11(pat1Set.content[i1],pat1Set.content[i2]);
-        if concatMsgNo = msg_end + 1 then 
-          msg_end :=msg_end + 1;
-          concatMsg:= construct7By11(pat1Set.content[i1],pat1Set.content[i2]);
-          msgs[concatMsgNo] := concatMsg;
-        endif;
-        Spy_known[concatMsgNo]:=true;
-        if (!exist(pat7Set,concatMsgNo)) then
-          pat7Set.length:=pat7Set.length+1;
-          pat7Set.content[pat7Set.length]:=concatMsgNo;
-        endif;
-      end;
-endruleset;
-endruleset;
-
---- encrypt and decrypt rules of pat senc(Na.Kab,k(A,S))
-ruleset i:msgLen do
-  rule "sdecrypt 8" --pat8
-    i<=pat8Set.length & pat8Set.content[i] != 0
-    & Spy_known[pat8Set.content[i]] & !Spy_known[msgs[pat8Set.content[i]].sencMsg]
-    ==>
-    var key_inv:Message;
-	      msgPat7,keyNo:indexType;
-	      flag_pat7:boolean;
-    begin
-      put "rule sdecrypt8\n";
-      key_inv := inverseKey(msgs[msgs[pat8Set.content[i]].sencKey]);
-      get_msgNo(key_inv,keyNo);
-      if ( (key_inv.k.encType = Symk & (key_inv.k.ag1 = Intruder | key_inv.k.ag2 = Intruder)) | Spy_known[keyNo]) then
-        Spy_known[msgs[pat8Set.content[i]].sencMsg]:=true;
-        msgPat7:=msgs[pat8Set.content[i]].sencMsg;
-        isPat7(msgs[msgPat7],flag_pat7);
-        if (flag_pat7) then
-          if (!exist(pat7Set,msgPat7)) then
-            pat7Set.length:=pat7Set.length+1;
-            pat7Set.content[pat7Set.length]:=msgPat7;
-          endif;
-        endif;
-      endif;
-    end;
-endruleset;
-
-ruleset i:msgLen do 
-  ruleset j:msgLen do 
-    rule "sencrypt 8"  --pat8
-      i<=pat7Set.length & pat7Set.content[i] != 0 & Spy_known[pat7Set.content[i]] &
-      j<=pat4Set.length & pat4Set.content[j] != 0 & Spy_known[pat4Set.content[j]] &
-      matchPat(construct8By74(pat7Set.content[i],pat4Set.content[j]), sPat8Set) &
-      !Spy_known[constructIndex8By74(pat7Set.content[i],pat4Set.content[j])] 
-       ==>
-      var encMsgNo:indexType;
-      encMsg:Message;
-      begin
-        put "rule sencrypt8\n";
-        if (msgs[pat4Set.content[j]].k.encType=Symk) then
-          encMsgNo := constructIndex8By74(pat7Set.content[i],pat4Set.content[j]);
-          if encMsgNo = msg_end + 1 then 
-             msg_end :=msg_end + 1;
-             encMsg:= construct8By74(pat7Set.content[i],pat4Set.content[j]);
-             msgs[encMsgNo] := encMsg;
-          endif;
-          if (!exist(pat8Set,encMsgNo)) then
-            pat8Set.length := pat8Set.length+1;
-            pat8Set.content[pat8Set.length]:=encMsgNo;
-          endif;
-          Spy_known[encMsgNo] := true;
-        endif;
-      end;
-  endruleset;
-endruleset;
-
---- enconcat and deconcat rules for pat: concat(N.senc{Na.Kab}k(A,S))
-
-ruleset i:msgLen do 
-  rule "deconcat 9" --pat9
-    i<=pat9Set.length & pat9Set.content[i] != 0 & Spy_known[pat9Set.content[i]]   &
-    !(Spy_known[msgs[pat9Set.content[i]].concatPart[1]]&Spy_known[msgs[pat9Set.content[i]].concatPart[2]])
-    ==>
-    var msgPat1,msgPat2:indexType;
-        flagPat1,flagPat2:boolean;
-    begin
-      put "rule deconcat9\n";
-      if (!Spy_known[msgs[pat9Set.content[i]].concatPart[1]]) then
-        Spy_known[msgs[pat9Set.content[i]].concatPart[1]]:=true;
-        msgPat1 := msgs[pat9Set.content[i]].concatPart[1];
-        isPat1(msgs[msgPat1],flagPat1);
-        if (flagPat1) then
-          if(!exist(pat1Set,msgPat1)) then
-             pat1Set.length:=pat1Set.length+1;
-             pat1Set.content[pat1Set.length] := msgPat1;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat9Set.content[i]].concatPart[2]]) then
-        Spy_known[msgs[pat9Set.content[i]].concatPart[2]]:=true;
-        msgPat2 := msgs[pat9Set.content[i]].concatPart[2];
-        isPat8(msgs[msgPat2],flagPat2);
-        if (flagPat2) then
-          if(!exist(pat8Set,msgPat2)) then
-             pat8Set.length:=pat8Set.length+1;
-             pat8Set.content[pat8Set.length] := msgPat2;
-          endif;
-        endif;
-      endif;
-    end;
-endruleset;
-
-ruleset i1: msgLen do
-  ruleset i2: msgLen do 
-    rule "enconcat 9"	---pat9
-      i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
-      i2<=pat8Set.length & Spy_known[pat8Set.content[i2]] &
-      matchPat(construct9By18(pat1Set.content[i1],pat8Set.content[i2]), sPat9Set)&
-      !Spy_known[constructIndex9By18(pat1Set.content[i1],pat8Set.content[i2])] 
-      ==>
-      var concatMsgNo:indexType;
-      concatMsg:Message;
-      begin
-        put "rule enconcat9\n";
-        concatMsgNo := constructIndex9By18(pat1Set.content[i1],pat8Set.content[i2]);
-        if concatMsgNo = msg_end + 1 then 
-          msg_end :=msg_end + 1;
-          concatMsg:= construct9By18(pat1Set.content[i1],pat8Set.content[i2]);
-          msgs[concatMsgNo] := concatMsg;
-        endif;
-        Spy_known[concatMsgNo]:=true;
-        if (!exist(pat9Set,concatMsgNo)) then
-          pat9Set.length:=pat9Set.length+1;
-          pat9Set.content[pat9Set.length]:=concatMsgNo;
-        endif;
-      end;
-endruleset;
-endruleset;
-
---- enconcat and deconcat rules for pat: concat(N.A.B.m1.senc{Nb.N.A.B}k(B,S))
-
-ruleset i:msgLen do 
-  rule "deconcat 11" --pat11
-    i<=pat11Set.length & pat11Set.content[i] != 0 & Spy_known[pat11Set.content[i]]   &
-    !(Spy_known[msgs[pat11Set.content[i]].concatPart[1]]&Spy_known[msgs[pat11Set.content[i]].concatPart[2]]&Spy_known[msgs[pat11Set.content[i]].concatPart[3]]&Spy_known[msgs[pat11Set.content[i]].concatPart[4]]&Spy_known[msgs[pat11Set.content[i]].concatPart[5]])
-    ==>
-    var msgPat1,msgPat2,msgPat3,msgPat4,msgPat5:indexType;
-        flagPat1,flagPat2,flagPat3,flagPat4,flagPat5:boolean;
-    begin
-      put "rule deconcat11\n";
-      if (!Spy_known[msgs[pat11Set.content[i]].concatPart[1]]) then
-        Spy_known[msgs[pat11Set.content[i]].concatPart[1]]:=true;
-        msgPat1 := msgs[pat11Set.content[i]].concatPart[1];
-        isPat1(msgs[msgPat1],flagPat1);
-        if (flagPat1) then
-          if(!exist(pat1Set,msgPat1)) then
-             pat1Set.length:=pat1Set.length+1;
-             pat1Set.content[pat1Set.length] := msgPat1;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat11Set.content[i]].concatPart[2]]) then
-        Spy_known[msgs[pat11Set.content[i]].concatPart[2]]:=true;
-        msgPat2 := msgs[pat11Set.content[i]].concatPart[2];
-        isPat2(msgs[msgPat2],flagPat2);
-        if (flagPat2) then
-          if(!exist(pat2Set,msgPat2)) then
-             pat2Set.length:=pat2Set.length+1;
-             pat2Set.content[pat2Set.length] := msgPat2;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat11Set.content[i]].concatPart[3]]) then
-        Spy_known[msgs[pat11Set.content[i]].concatPart[3]]:=true;
-        msgPat3 := msgs[pat11Set.content[i]].concatPart[3];
-        isPat2(msgs[msgPat3],flagPat3);
-        if (flagPat3) then
-          if(!exist(pat2Set,msgPat3)) then
-             pat2Set.length:=pat2Set.length+1;
-             pat2Set.content[pat2Set.length] := msgPat3;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat11Set.content[i]].concatPart[4]]) then
-        Spy_known[msgs[pat11Set.content[i]].concatPart[4]]:=true;
-        msgPat4 := msgs[pat11Set.content[i]].concatPart[4];
-        isPat10(msgs[msgPat4],flagPat4);
-        if (flagPat4) then
-          if(!exist(pat10Set,msgPat4)) then
-             pat10Set.length:=pat10Set.length+1;
-             pat10Set.content[pat10Set.length] := msgPat4;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat11Set.content[i]].concatPart[5]]) then
-        Spy_known[msgs[pat11Set.content[i]].concatPart[5]]:=true;
-        msgPat5 := msgs[pat11Set.content[i]].concatPart[5];
-        isPat5(msgs[msgPat5],flagPat5);
-        if (flagPat5) then
-          if(!exist(pat5Set,msgPat5)) then
-             pat5Set.length:=pat5Set.length+1;
-             pat5Set.content[pat5Set.length] := msgPat5;
-          endif;
-        endif;
-      endif;
-    end;
-endruleset;
-
-ruleset i1: msgLen do
-  ruleset i2: msgLen do
-  ruleset i3: msgLen do
-  ruleset i4: msgLen do
-  ruleset i5: msgLen do 
-    rule "enconcat 11"	---pat11
-      i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
-      i2<=pat2Set.length & Spy_known[pat2Set.content[i2]] &
-      i3<=pat2Set.length & Spy_known[pat2Set.content[i3]] &
-      i4<=pat10Set.length & Spy_known[pat10Set.content[i4]] &
-      i5<=pat5Set.length & Spy_known[pat5Set.content[i5]] &
-      matchPat(construct11By122105(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat10Set.content[i4],pat5Set.content[i5]), sPat11Set)&
-      !Spy_known[constructIndex11By122105(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat10Set.content[i4],pat5Set.content[i5])] 
-      ==>
-      var concatMsgNo:indexType;
-      concatMsg:Message;
-      begin
-        put "rule enconcat11\n";
-        concatMsgNo := constructIndex11By122105(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat10Set.content[i4],pat5Set.content[i5]);
-        if concatMsgNo = msg_end + 1 then 
-          msg_end :=msg_end + 1;
-          concatMsg:= construct11By122105(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat10Set.content[i4],pat5Set.content[i5]);
-          msgs[concatMsgNo] := concatMsg;
-        endif;
-        Spy_known[concatMsgNo]:=true;
-        if (!exist(pat11Set,concatMsgNo)) then
-          pat11Set.length:=pat11Set.length+1;
-          pat11Set.content[pat11Set.length]:=concatMsgNo;
-        endif;
-      end;
-endruleset;
-endruleset;
-endruleset;
-endruleset;
-endruleset;
-
---- enconcat and deconcat rules for pat: concat(N.senc{Na.Kab}k(A,S).senc{Nb.Kab}k(B,S))
-
-ruleset i:msgLen do 
-  rule "deconcat 12" --pat12
-    i<=pat12Set.length & pat12Set.content[i] != 0 & Spy_known[pat12Set.content[i]]   &
-    !(Spy_known[msgs[pat12Set.content[i]].concatPart[1]]&Spy_known[msgs[pat12Set.content[i]].concatPart[2]]&Spy_known[msgs[pat12Set.content[i]].concatPart[3]])
-    ==>
-    var msgPat1,msgPat2,msgPat3:indexType;
-        flagPat1,flagPat2,flagPat3:boolean;
-    begin
-      put "rule deconcat12\n";
-      if (!Spy_known[msgs[pat12Set.content[i]].concatPart[1]]) then
-        Spy_known[msgs[pat12Set.content[i]].concatPart[1]]:=true;
-        msgPat1 := msgs[pat12Set.content[i]].concatPart[1];
-        isPat1(msgs[msgPat1],flagPat1);
-        if (flagPat1) then
-          if(!exist(pat1Set,msgPat1)) then
-             pat1Set.length:=pat1Set.length+1;
-             pat1Set.content[pat1Set.length] := msgPat1;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat12Set.content[i]].concatPart[2]]) then
-        Spy_known[msgs[pat12Set.content[i]].concatPart[2]]:=true;
-        msgPat2 := msgs[pat12Set.content[i]].concatPart[2];
-        isPat8(msgs[msgPat2],flagPat2);
-        if (flagPat2) then
-          if(!exist(pat8Set,msgPat2)) then
-             pat8Set.length:=pat8Set.length+1;
-             pat8Set.content[pat8Set.length] := msgPat2;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat12Set.content[i]].concatPart[3]]) then
-        Spy_known[msgs[pat12Set.content[i]].concatPart[3]]:=true;
-        msgPat3 := msgs[pat12Set.content[i]].concatPart[3];
-        isPat8(msgs[msgPat3],flagPat3);
-        if (flagPat3) then
-          if(!exist(pat8Set,msgPat3)) then
-             pat8Set.length:=pat8Set.length+1;
-             pat8Set.content[pat8Set.length] := msgPat3;
-          endif;
-        endif;
-      endif;
-    end;
-endruleset;
-
-ruleset i1: msgLen do
-  ruleset i2: msgLen do
-  ruleset i3: msgLen do 
-    rule "enconcat 12"	---pat12
-      i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
-      i2<=pat8Set.length & Spy_known[pat8Set.content[i2]] &
-      i3<=pat8Set.length & Spy_known[pat8Set.content[i3]] &
-      matchPat(construct12By188(pat1Set.content[i1],pat8Set.content[i2],pat8Set.content[i3]), sPat12Set)&
-      !Spy_known[constructIndex12By188(pat1Set.content[i1],pat8Set.content[i2],pat8Set.content[i3])] 
-      ==>
-      var concatMsgNo:indexType;
-      concatMsg:Message;
-      begin
-        put "rule enconcat12\n";
-        concatMsgNo := constructIndex12By188(pat1Set.content[i1],pat8Set.content[i2],pat8Set.content[i3]);
-        if concatMsgNo = msg_end + 1 then 
-          msg_end :=msg_end + 1;
-          concatMsg:= construct12By188(pat1Set.content[i1],pat8Set.content[i2],pat8Set.content[i3]);
-          msgs[concatMsgNo] := concatMsg;
-        endif;
-        Spy_known[concatMsgNo]:=true;
-        if (!exist(pat12Set,concatMsgNo)) then
-          pat12Set.length:=pat12Set.length+1;
-          pat12Set.content[pat12Set.length]:=concatMsgNo;
-        endif;
-      end;
-endruleset;
-endruleset;
-endruleset;
-
---- enconcat and deconcat rules for pat: concat(N.A.B.m1)
-
-ruleset i:msgLen do 
-  rule "deconcat 13" --pat13
-    i<=pat13Set.length & pat13Set.content[i] != 0 & Spy_known[pat13Set.content[i]]   &
-    !(Spy_known[msgs[pat13Set.content[i]].concatPart[1]]&Spy_known[msgs[pat13Set.content[i]].concatPart[2]]&Spy_known[msgs[pat13Set.content[i]].concatPart[3]]&Spy_known[msgs[pat13Set.content[i]].concatPart[4]])
-    ==>
-    var msgPat1,msgPat2,msgPat3,msgPat4:indexType;
-        flagPat1,flagPat2,flagPat3,flagPat4:boolean;
-    begin
-      put "rule deconcat13\n";
-      if (!Spy_known[msgs[pat13Set.content[i]].concatPart[1]]) then
-        Spy_known[msgs[pat13Set.content[i]].concatPart[1]]:=true;
-        msgPat1 := msgs[pat13Set.content[i]].concatPart[1];
-        isPat1(msgs[msgPat1],flagPat1);
-        if (flagPat1) then
-          if(!exist(pat1Set,msgPat1)) then
-             pat1Set.length:=pat1Set.length+1;
-             pat1Set.content[pat1Set.length] := msgPat1;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat13Set.content[i]].concatPart[2]]) then
-        Spy_known[msgs[pat13Set.content[i]].concatPart[2]]:=true;
-        msgPat2 := msgs[pat13Set.content[i]].concatPart[2];
-        isPat2(msgs[msgPat2],flagPat2);
-        if (flagPat2) then
-          if(!exist(pat2Set,msgPat2)) then
-             pat2Set.length:=pat2Set.length+1;
-             pat2Set.content[pat2Set.length] := msgPat2;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat13Set.content[i]].concatPart[3]]) then
-        Spy_known[msgs[pat13Set.content[i]].concatPart[3]]:=true;
-        msgPat3 := msgs[pat13Set.content[i]].concatPart[3];
-        isPat2(msgs[msgPat3],flagPat3);
-        if (flagPat3) then
-          if(!exist(pat2Set,msgPat3)) then
-             pat2Set.length:=pat2Set.length+1;
-             pat2Set.content[pat2Set.length] := msgPat3;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat13Set.content[i]].concatPart[4]]) then
-        Spy_known[msgs[pat13Set.content[i]].concatPart[4]]:=true;
-        msgPat4 := msgs[pat13Set.content[i]].concatPart[4];
-        isPat10(msgs[msgPat4],flagPat4);
-        if (flagPat4) then
-          if(!exist(pat10Set,msgPat4)) then
-             pat10Set.length:=pat10Set.length+1;
-             pat10Set.content[pat10Set.length] := msgPat4;
-          endif;
-        endif;
-      endif;
-    end;
-endruleset;
-
-ruleset i1: msgLen do
-  ruleset i2: msgLen do
-  ruleset i3: msgLen do
-  ruleset i4: msgLen do 
     rule "enconcat 13"	---pat13
-      i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
-      i2<=pat2Set.length & Spy_known[pat2Set.content[i2]] &
-      i3<=pat2Set.length & Spy_known[pat2Set.content[i3]] &
-      i4<=pat10Set.length & Spy_known[pat10Set.content[i4]] &
-      matchPat(construct13By12210(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat10Set.content[i4]), sPat13Set)&
-      !Spy_known[constructIndex13By12210(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat10Set.content[i4])] 
+      i1<=pat12Set.length & Spy_known[pat12Set.content[i1]] &
+      i2<=pat1Set.length & Spy_known[pat1Set.content[i2]] &
+      matchPat(construct13By121(pat12Set.content[i1],pat1Set.content[i2]), sPat13Set)&
+      !Spy_known[constructIndex13By121(pat12Set.content[i1],pat1Set.content[i2])] 
       ==>
       var concatMsgNo:indexType;
       concatMsg:Message;
       begin
         put "rule enconcat13\n";
-        concatMsgNo := constructIndex13By12210(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat10Set.content[i4]);
+        concatMsgNo := constructIndex13By121(pat12Set.content[i1],pat1Set.content[i2]);
         if concatMsgNo = msg_end + 1 then 
           msg_end :=msg_end + 1;
-          concatMsg:= construct13By12210(pat1Set.content[i1],pat2Set.content[i2],pat2Set.content[i3],pat10Set.content[i4]);
+          concatMsg:= construct13By121(pat12Set.content[i1],pat1Set.content[i2]);
           msgs[concatMsgNo] := concatMsg;
         endif;
         Spy_known[concatMsgNo]:=true;
@@ -3321,116 +5031,37 @@ ruleset i1: msgLen do
       end;
 endruleset;
 endruleset;
-endruleset;
-endruleset;
 
---- enconcat and deconcat rules for pat: concat(N.m2.senc{Nb.Kab}k(B,S))
+--- enconcat and deconcat rules for pat: concat(x4.x5)
 
 ruleset i:msgLen do 
-  rule "deconcat 15" --pat15
-    i<=pat15Set.length & pat15Set.content[i] != 0 & Spy_known[pat15Set.content[i]]   &
-    !(Spy_known[msgs[pat15Set.content[i]].concatPart[1]]&Spy_known[msgs[pat15Set.content[i]].concatPart[2]]&Spy_known[msgs[pat15Set.content[i]].concatPart[3]])
-    ==>
-    var msgPat1,msgPat2,msgPat3:indexType;
-        flagPat1,flagPat2,flagPat3:boolean;
-    begin
-      put "rule deconcat15\n";
-      if (!Spy_known[msgs[pat15Set.content[i]].concatPart[1]]) then
-        Spy_known[msgs[pat15Set.content[i]].concatPart[1]]:=true;
-        msgPat1 := msgs[pat15Set.content[i]].concatPart[1];
-        isPat1(msgs[msgPat1],flagPat1);
-        if (flagPat1) then
-          if(!exist(pat1Set,msgPat1)) then
-             pat1Set.length:=pat1Set.length+1;
-             pat1Set.content[pat1Set.length] := msgPat1;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat15Set.content[i]].concatPart[2]]) then
-        Spy_known[msgs[pat15Set.content[i]].concatPart[2]]:=true;
-        msgPat2 := msgs[pat15Set.content[i]].concatPart[2];
-        isPat14(msgs[msgPat2],flagPat2);
-        if (flagPat2) then
-          if(!exist(pat14Set,msgPat2)) then
-             pat14Set.length:=pat14Set.length+1;
-             pat14Set.content[pat14Set.length] := msgPat2;
-          endif;
-        endif;
-      endif;
-      if (!Spy_known[msgs[pat15Set.content[i]].concatPart[3]]) then
-        Spy_known[msgs[pat15Set.content[i]].concatPart[3]]:=true;
-        msgPat3 := msgs[pat15Set.content[i]].concatPart[3];
-        isPat8(msgs[msgPat3],flagPat3);
-        if (flagPat3) then
-          if(!exist(pat8Set,msgPat3)) then
-             pat8Set.length:=pat8Set.length+1;
-             pat8Set.content[pat8Set.length] := msgPat3;
-          endif;
-        endif;
-      endif;
-    end;
-endruleset;
-
-ruleset i1: msgLen do
-  ruleset i2: msgLen do
-  ruleset i3: msgLen do 
-    rule "enconcat 15"	---pat15
-      i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
-      i2<=pat14Set.length & Spy_known[pat14Set.content[i2]] &
-      i3<=pat8Set.length & Spy_known[pat8Set.content[i3]] &
-      matchPat(construct15By1148(pat1Set.content[i1],pat14Set.content[i2],pat8Set.content[i3]), sPat15Set)&
-      !Spy_known[constructIndex15By1148(pat1Set.content[i1],pat14Set.content[i2],pat8Set.content[i3])] 
-      ==>
-      var concatMsgNo:indexType;
-      concatMsg:Message;
-      begin
-        put "rule enconcat15\n";
-        concatMsgNo := constructIndex15By1148(pat1Set.content[i1],pat14Set.content[i2],pat8Set.content[i3]);
-        if concatMsgNo = msg_end + 1 then 
-          msg_end :=msg_end + 1;
-          concatMsg:= construct15By1148(pat1Set.content[i1],pat14Set.content[i2],pat8Set.content[i3]);
-          msgs[concatMsgNo] := concatMsg;
-        endif;
-        Spy_known[concatMsgNo]:=true;
-        if (!exist(pat15Set,concatMsgNo)) then
-          pat15Set.length:=pat15Set.length+1;
-          pat15Set.content[pat15Set.length]:=concatMsgNo;
-        endif;
-      end;
-endruleset;
-endruleset;
-endruleset;
-
---- enconcat and deconcat rules for pat: concat(N.m2)
-
-ruleset i:msgLen do 
-  rule "deconcat 16" --pat16
-    i<=pat16Set.length & pat16Set.content[i] != 0 & Spy_known[pat16Set.content[i]]   &
-    !(Spy_known[msgs[pat16Set.content[i]].concatPart[1]]&Spy_known[msgs[pat16Set.content[i]].concatPart[2]])
+  rule "deconcat 18" --pat18
+    i<=pat18Set.length & pat18Set.content[i] != 0 & Spy_known[pat18Set.content[i]]   &
+    !(Spy_known[msgs[pat18Set.content[i]].concatPart[1]]&Spy_known[msgs[pat18Set.content[i]].concatPart[2]])
     ==>
     var msgPat1,msgPat2:indexType;
         flagPat1,flagPat2:boolean;
     begin
-      put "rule deconcat16\n";
-      if (!Spy_known[msgs[pat16Set.content[i]].concatPart[1]]) then
-        Spy_known[msgs[pat16Set.content[i]].concatPart[1]]:=true;
-        msgPat1 := msgs[pat16Set.content[i]].concatPart[1];
-        isPat1(msgs[msgPat1],flagPat1);
+      put "rule deconcat18\n";
+      if (!Spy_known[msgs[pat18Set.content[i]].concatPart[1]]) then
+        Spy_known[msgs[pat18Set.content[i]].concatPart[1]]:=true;
+        msgPat1 := msgs[pat18Set.content[i]].concatPart[1];
+        isPat16(msgs[msgPat1],flagPat1);
         if (flagPat1) then
-          if(!exist(pat1Set,msgPat1)) then
-             pat1Set.length:=pat1Set.length+1;
-             pat1Set.content[pat1Set.length] := msgPat1;
+          if(!exist(pat16Set,msgPat1)) then
+             pat16Set.length:=pat16Set.length+1;
+             pat16Set.content[pat16Set.length] := msgPat1;
           endif;
         endif;
       endif;
-      if (!Spy_known[msgs[pat16Set.content[i]].concatPart[2]]) then
-        Spy_known[msgs[pat16Set.content[i]].concatPart[2]]:=true;
-        msgPat2 := msgs[pat16Set.content[i]].concatPart[2];
-        isPat14(msgs[msgPat2],flagPat2);
+      if (!Spy_known[msgs[pat18Set.content[i]].concatPart[2]]) then
+        Spy_known[msgs[pat18Set.content[i]].concatPart[2]]:=true;
+        msgPat2 := msgs[pat18Set.content[i]].concatPart[2];
+        isPat17(msgs[msgPat2],flagPat2);
         if (flagPat2) then
-          if(!exist(pat14Set,msgPat2)) then
-             pat14Set.length:=pat14Set.length+1;
-             pat14Set.content[pat14Set.length] := msgPat2;
+          if(!exist(pat17Set,msgPat2)) then
+             pat17Set.length:=pat17Set.length+1;
+             pat17Set.content[pat17Set.length] := msgPat2;
           endif;
         endif;
       endif;
@@ -3439,73 +5070,394 @@ endruleset;
 
 ruleset i1: msgLen do
   ruleset i2: msgLen do 
-    rule "enconcat 16"	---pat16
-      i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
-      i2<=pat14Set.length & Spy_known[pat14Set.content[i2]] &
-      matchPat(construct16By114(pat1Set.content[i1],pat14Set.content[i2]), sPat16Set)&
-      !Spy_known[constructIndex16By114(pat1Set.content[i1],pat14Set.content[i2])] 
+    rule "enconcat 18"	---pat18
+      i1<=pat16Set.length & Spy_known[pat16Set.content[i1]] &
+      i2<=pat17Set.length & Spy_known[pat17Set.content[i2]] &
+      matchPat(construct18By1617(pat16Set.content[i1],pat17Set.content[i2]), sPat18Set)&
+      !Spy_known[constructIndex18By1617(pat16Set.content[i1],pat17Set.content[i2])] 
       ==>
       var concatMsgNo:indexType;
       concatMsg:Message;
       begin
-        put "rule enconcat16\n";
-        concatMsgNo := constructIndex16By114(pat1Set.content[i1],pat14Set.content[i2]);
+        put "rule enconcat18\n";
+        concatMsgNo := constructIndex18By1617(pat16Set.content[i1],pat17Set.content[i2]);
         if concatMsgNo = msg_end + 1 then 
           msg_end :=msg_end + 1;
-          concatMsg:= construct16By114(pat1Set.content[i1],pat14Set.content[i2]);
+          concatMsg:= construct18By1617(pat16Set.content[i1],pat17Set.content[i2]);
           msgs[concatMsgNo] := concatMsg;
         endif;
         Spy_known[concatMsgNo]:=true;
-        if (!exist(pat16Set,concatMsgNo)) then
-          pat16Set.length:=pat16Set.length+1;
-          pat16Set.content[pat16Set.length]:=concatMsgNo;
+        if (!exist(pat18Set,concatMsgNo)) then
+          pat18Set.length:=pat18Set.length+1;
+          pat18Set.content[pat18Set.length]:=concatMsgNo;
+        endif;
+      end;
+endruleset;
+endruleset;
+
+--- enconcat and deconcat rules for pat: concat(x6.x7.x8.x9)
+
+ruleset i:msgLen do 
+  rule "deconcat 23" --pat23
+    i<=pat23Set.length & pat23Set.content[i] != 0 & Spy_known[pat23Set.content[i]]   &
+    !(Spy_known[msgs[pat23Set.content[i]].concatPart[1]]&Spy_known[msgs[pat23Set.content[i]].concatPart[2]]&Spy_known[msgs[pat23Set.content[i]].concatPart[3]]&Spy_known[msgs[pat23Set.content[i]].concatPart[4]])
+    ==>
+    var msgPat1,msgPat2,msgPat3,msgPat4:indexType;
+        flagPat1,flagPat2,flagPat3,flagPat4:boolean;
+    begin
+      put "rule deconcat23\n";
+      if (!Spy_known[msgs[pat23Set.content[i]].concatPart[1]]) then
+        Spy_known[msgs[pat23Set.content[i]].concatPart[1]]:=true;
+        msgPat1 := msgs[pat23Set.content[i]].concatPart[1];
+        isPat19(msgs[msgPat1],flagPat1);
+        if (flagPat1) then
+          if(!exist(pat19Set,msgPat1)) then
+             pat19Set.length:=pat19Set.length+1;
+             pat19Set.content[pat19Set.length] := msgPat1;
+          endif;
+        endif;
+      endif;
+      if (!Spy_known[msgs[pat23Set.content[i]].concatPart[2]]) then
+        Spy_known[msgs[pat23Set.content[i]].concatPart[2]]:=true;
+        msgPat2 := msgs[pat23Set.content[i]].concatPart[2];
+        isPat20(msgs[msgPat2],flagPat2);
+        if (flagPat2) then
+          if(!exist(pat20Set,msgPat2)) then
+             pat20Set.length:=pat20Set.length+1;
+             pat20Set.content[pat20Set.length] := msgPat2;
+          endif;
+        endif;
+      endif;
+      if (!Spy_known[msgs[pat23Set.content[i]].concatPart[3]]) then
+        Spy_known[msgs[pat23Set.content[i]].concatPart[3]]:=true;
+        msgPat3 := msgs[pat23Set.content[i]].concatPart[3];
+        isPat21(msgs[msgPat3],flagPat3);
+        if (flagPat3) then
+          if(!exist(pat21Set,msgPat3)) then
+             pat21Set.length:=pat21Set.length+1;
+             pat21Set.content[pat21Set.length] := msgPat3;
+          endif;
+        endif;
+      endif;
+      if (!Spy_known[msgs[pat23Set.content[i]].concatPart[4]]) then
+        Spy_known[msgs[pat23Set.content[i]].concatPart[4]]:=true;
+        msgPat4 := msgs[pat23Set.content[i]].concatPart[4];
+        isPat22(msgs[msgPat4],flagPat4);
+        if (flagPat4) then
+          if(!exist(pat22Set,msgPat4)) then
+             pat22Set.length:=pat22Set.length+1;
+             pat22Set.content[pat22Set.length] := msgPat4;
+          endif;
+        endif;
+      endif;
+    end;
+endruleset;
+
+ruleset i1: msgLen do
+  ruleset i2: msgLen do
+  ruleset i3: msgLen do
+  ruleset i4: msgLen do 
+    rule "enconcat 23"	---pat23
+      i1<=pat19Set.length & Spy_known[pat19Set.content[i1]] &
+      i2<=pat20Set.length & Spy_known[pat20Set.content[i2]] &
+      i3<=pat21Set.length & Spy_known[pat21Set.content[i3]] &
+      i4<=pat22Set.length & Spy_known[pat22Set.content[i4]] &
+      matchPat(construct23By19202122(pat19Set.content[i1],pat20Set.content[i2],pat21Set.content[i3],pat22Set.content[i4]), sPat23Set)&
+      !Spy_known[constructIndex23By19202122(pat19Set.content[i1],pat20Set.content[i2],pat21Set.content[i3],pat22Set.content[i4])] 
+      ==>
+      var concatMsgNo:indexType;
+      concatMsg:Message;
+      begin
+        put "rule enconcat23\n";
+        concatMsgNo := constructIndex23By19202122(pat19Set.content[i1],pat20Set.content[i2],pat21Set.content[i3],pat22Set.content[i4]);
+        if concatMsgNo = msg_end + 1 then 
+          msg_end :=msg_end + 1;
+          concatMsg:= construct23By19202122(pat19Set.content[i1],pat20Set.content[i2],pat21Set.content[i3],pat22Set.content[i4]);
+          msgs[concatMsgNo] := concatMsg;
+        endif;
+        Spy_known[concatMsgNo]:=true;
+        if (!exist(pat23Set,concatMsgNo)) then
+          pat23Set.length:=pat23Set.length+1;
+          pat23Set.content[pat23Set.length]:=concatMsgNo;
+        endif;
+      end;
+endruleset;
+endruleset;
+endruleset;
+endruleset;
+
+--- enconcat and deconcat rules for pat: concat(ue)
+
+ruleset i:msgLen do 
+  rule "deconcat 24" --pat24
+    i<=pat24Set.length & pat24Set.content[i] != 0 & Spy_known[pat24Set.content[i]]   &
+    !(Spy_known[msgs[pat24Set.content[i]].concatPart[1]])
+    ==>
+    var msgPat1:indexType;
+        flagPat1:boolean;
+    begin
+      put "rule deconcat24\n";
+      if (!Spy_known[msgs[pat24Set.content[i]].concatPart[1]]) then
+        Spy_known[msgs[pat24Set.content[i]].concatPart[1]]:=true;
+        msgPat1 := msgs[pat24Set.content[i]].concatPart[1];
+        isPat1(msgs[msgPat1],flagPat1);
+        if (flagPat1) then
+          if(!exist(pat1Set,msgPat1)) then
+             pat1Set.length:=pat1Set.length+1;
+             pat1Set.content[pat1Set.length] := msgPat1;
+          endif;
+        endif;
+      endif;
+    end;
+endruleset;
+
+ruleset i1: msgLen do 
+    rule "enconcat 24"	---pat24
+      i1<=pat1Set.length & Spy_known[pat1Set.content[i1]] &
+      matchPat(construct24By1(pat1Set.content[i1]), sPat24Set)&
+      !Spy_known[constructIndex24By1(pat1Set.content[i1])] 
+      ==>
+      var concatMsgNo:indexType;
+      concatMsg:Message;
+      begin
+        put "rule enconcat24\n";
+        concatMsgNo := constructIndex24By1(pat1Set.content[i1]);
+        if concatMsgNo = msg_end + 1 then 
+          msg_end :=msg_end + 1;
+          concatMsg:= construct24By1(pat1Set.content[i1]);
+          msgs[concatMsgNo] := concatMsg;
+        endif;
+        Spy_known[concatMsgNo]:=true;
+        if (!exist(pat24Set,concatMsgNo)) then
+          pat24Set.length:=pat24Set.length+1;
+          pat24Set.content[pat24Set.length]:=concatMsgNo;
+        endif;
+      end;
+endruleset;
+
+--- enconcat and deconcat rules for pat: concat(m1.bn)
+
+ruleset i:msgLen do 
+  rule "deconcat 26" --pat26
+    i<=pat26Set.length & pat26Set.content[i] != 0 & Spy_known[pat26Set.content[i]]   &
+    !(Spy_known[msgs[pat26Set.content[i]].concatPart[1]]&Spy_known[msgs[pat26Set.content[i]].concatPart[2]])
+    ==>
+    var msgPat1,msgPat2:indexType;
+        flagPat1,flagPat2:boolean;
+    begin
+      put "rule deconcat26\n";
+      if (!Spy_known[msgs[pat26Set.content[i]].concatPart[1]]) then
+        Spy_known[msgs[pat26Set.content[i]].concatPart[1]]:=true;
+        msgPat1 := msgs[pat26Set.content[i]].concatPart[1];
+        isPat25(msgs[msgPat1],flagPat1);
+        if (flagPat1) then
+          if(!exist(pat25Set,msgPat1)) then
+             pat25Set.length:=pat25Set.length+1;
+             pat25Set.content[pat25Set.length] := msgPat1;
+          endif;
+        endif;
+      endif;
+      if (!Spy_known[msgs[pat26Set.content[i]].concatPart[2]]) then
+        Spy_known[msgs[pat26Set.content[i]].concatPart[2]]:=true;
+        msgPat2 := msgs[pat26Set.content[i]].concatPart[2];
+        isPat1(msgs[msgPat2],flagPat2);
+        if (flagPat2) then
+          if(!exist(pat1Set,msgPat2)) then
+             pat1Set.length:=pat1Set.length+1;
+             pat1Set.content[pat1Set.length] := msgPat2;
+          endif;
+        endif;
+      endif;
+    end;
+endruleset;
+
+ruleset i1: msgLen do
+  ruleset i2: msgLen do 
+    rule "enconcat 26"	---pat26
+      i1<=pat25Set.length & Spy_known[pat25Set.content[i1]] &
+      i2<=pat1Set.length & Spy_known[pat1Set.content[i2]] &
+      matchPat(construct26By251(pat25Set.content[i1],pat1Set.content[i2]), sPat26Set)&
+      !Spy_known[constructIndex26By251(pat25Set.content[i1],pat1Set.content[i2])] 
+      ==>
+      var concatMsgNo:indexType;
+      concatMsg:Message;
+      begin
+        put "rule enconcat26\n";
+        concatMsgNo := constructIndex26By251(pat25Set.content[i1],pat1Set.content[i2]);
+        if concatMsgNo = msg_end + 1 then 
+          msg_end :=msg_end + 1;
+          concatMsg:= construct26By251(pat25Set.content[i1],pat1Set.content[i2]);
+          msgs[concatMsgNo] := concatMsg;
+        endif;
+        Spy_known[concatMsgNo]:=true;
+        if (!exist(pat26Set,concatMsgNo)) then
+          pat26Set.length:=pat26Set.length+1;
+          pat26Set.content[pat26Set.length]:=concatMsgNo;
         endif;
       end;
 endruleset;
 endruleset;
 
 startstate
-  roleA[1].A := Alice;
-  roleA[1].B := Bob;
-  roleA[1].Na := na;
-  roleA[1].N := n;
-    roleA[1].st := A1;
+  roleA[1].A := UE;
+  roleA[1].B := SEAF;
+  roleA[1].C := AUSF;
+  roleA[1].D := UDM;
+  roleA[1].supi := supi;
+  roleA[1].ue := ue;
+  roleA[1].ue1 := ue1;
+  roleA[1].prekey := prekey;
+  roleA[1].certa := certa;
+  roleA[1].eapm := eapm;
+  roleA[1].st := A1;
   roleA[1].commit := false;
-  roleA[1].Kab := anyNonce;
-  roleA[1].Nb := anyNonce;
-  roleA[1].S := anyAgent;
+  roleA[1].bn := anyNonce;
+  roleA[1].ausf := anyNonce;
+  roleA[1].sucm := anyNonce;
+  roleA[1].certc := anyNonce;
+  roleA[1].start := anyNonce;
+  roleA[1].x10.msgType := tmp;
+  roleA[1].x10.tmpPart := 0;
+  roleA[1].x1.msgType := tmp;
+  roleA[1].x1.tmpPart := 0;
+  roleA[1].x2.msgType := tmp;
+  roleA[1].x2.tmpPart := 0;
+  roleA[1].x3.msgType := tmp;
+  roleA[1].x3.tmpPart := 0;
+  roleA[1].x4.msgType := tmp;
+  roleA[1].x4.tmpPart := 0;
+  roleA[1].x5.msgType := tmp;
+  roleA[1].x5.tmpPart := 0;
+  roleA[1].x6.msgType := tmp;
+  roleA[1].x6.tmpPart := 0;
+  roleA[1].x7.msgType := tmp;
+  roleA[1].x7.tmpPart := 0;
+  roleA[1].x8.msgType := tmp;
+  roleA[1].x8.tmpPart := 0;
+  roleA[1].x9.msgType := tmp;
+  roleA[1].x9.tmpPart := 0;
   roleA[1].m1.msgType := tmp;
   roleA[1].m1.tmpPart := 0;
-  roleA[1].m2.msgType := tmp;
-  roleA[1].m2.tmpPart := 0;
 
-  roleS[1].Kab := kab;
-      roleS[1].st := S1;
-  roleS[1].commit := false;
-  roleS[1].Na := anyNonce;
-  roleS[1].N := anyNonce;
-  roleS[1].Nb := anyNonce;
-  roleS[1].A := anyAgent;
-  roleS[1].S := anyAgent;
-  roleS[1].B := anyAgent;
-  roleS[1].m1.msgType := tmp;
-  roleS[1].m1.tmpPart := 0;
-  roleS[1].m2.msgType := tmp;
-  roleS[1].m2.tmpPart := 0;
-
-  roleB[1].B := Bob;
-  roleB[1].S := Server;
-  roleB[1].Nb := nb;
-    roleB[1].st := B1;
+  roleB[1].A := UE;
+  roleB[1].B := SEAF;
+  roleB[1].C := AUSF;
+  roleB[1].bn := bn;
+  roleB[1].st := B1;
   roleB[1].commit := false;
-  roleB[1].Na := anyNonce;
-  roleB[1].N := anyNonce;
-  roleB[1].Kab := anyNonce;
-  roleB[1].A := anyAgent;
+  roleB[1].supi := anyNonce;
+  roleB[1].ue := anyNonce;
+  roleB[1].ue1 := anyNonce;
+  roleB[1].prekey := anyNonce;
+  roleB[1].certa := anyNonce;
+  roleB[1].eapm := anyNonce;
+  roleB[1].ausf := anyNonce;
+  roleB[1].sucm := anyNonce;
+  roleB[1].certc := anyNonce;
+  roleB[1].start := anyNonce;
+  roleB[1].D := anyAgent;
+  roleB[1].x10.msgType := tmp;
+  roleB[1].x10.tmpPart := 0;
+  roleB[1].x1.msgType := tmp;
+  roleB[1].x1.tmpPart := 0;
+  roleB[1].x2.msgType := tmp;
+  roleB[1].x2.tmpPart := 0;
+  roleB[1].x3.msgType := tmp;
+  roleB[1].x3.tmpPart := 0;
+  roleB[1].x4.msgType := tmp;
+  roleB[1].x4.tmpPart := 0;
+  roleB[1].x5.msgType := tmp;
+  roleB[1].x5.tmpPart := 0;
+  roleB[1].x6.msgType := tmp;
+  roleB[1].x6.tmpPart := 0;
+  roleB[1].x7.msgType := tmp;
+  roleB[1].x7.tmpPart := 0;
+  roleB[1].x8.msgType := tmp;
+  roleB[1].x8.tmpPart := 0;
+  roleB[1].x9.msgType := tmp;
+  roleB[1].x9.tmpPart := 0;
   roleB[1].m1.msgType := tmp;
   roleB[1].m1.tmpPart := 0;
-  roleB[1].m2.msgType := tmp;
-  roleB[1].m2.tmpPart := 0;
+
+  roleC[1].A := UE;
+  roleC[1].B := SEAF;
+  roleC[1].C := AUSF;
+  roleC[1].D := UDM;
+  roleC[1].ausf := ausf;
+  roleC[1].sucm := sucm;
+  roleC[1].certc := certc;
+  roleC[1].st := C1;
+  roleC[1].commit := false;
+  roleC[1].supi := anyNonce;
+  roleC[1].ue := anyNonce;
+  roleC[1].ue1 := anyNonce;
+  roleC[1].prekey := anyNonce;
+  roleC[1].certa := anyNonce;
+  roleC[1].eapm := anyNonce;
+  roleC[1].bn := anyNonce;
+  roleC[1].start := anyNonce;
+  roleC[1].x10.msgType := tmp;
+  roleC[1].x10.tmpPart := 0;
+  roleC[1].x1.msgType := tmp;
+  roleC[1].x1.tmpPart := 0;
+  roleC[1].x2.msgType := tmp;
+  roleC[1].x2.tmpPart := 0;
+  roleC[1].x3.msgType := tmp;
+  roleC[1].x3.tmpPart := 0;
+  roleC[1].x4.msgType := tmp;
+  roleC[1].x4.tmpPart := 0;
+  roleC[1].x5.msgType := tmp;
+  roleC[1].x5.tmpPart := 0;
+  roleC[1].x6.msgType := tmp;
+  roleC[1].x6.tmpPart := 0;
+  roleC[1].x7.msgType := tmp;
+  roleC[1].x7.tmpPart := 0;
+  roleC[1].x8.msgType := tmp;
+  roleC[1].x8.tmpPart := 0;
+  roleC[1].x9.msgType := tmp;
+  roleC[1].x9.tmpPart := 0;
+  roleC[1].m1.msgType := tmp;
+  roleC[1].m1.tmpPart := 0;
+
+  roleD[1].A := UE;
+  roleD[1].B := SEAF;
+  roleD[1].C := AUSF;
+  roleD[1].D := UDM;
+  roleD[1].start := start;
+  roleD[1].st := D1;
+  roleD[1].commit := false;
+  roleD[1].supi := anyNonce;
+  roleD[1].ue := anyNonce;
+  roleD[1].ue1 := anyNonce;
+  roleD[1].prekey := anyNonce;
+  roleD[1].certa := anyNonce;
+  roleD[1].eapm := anyNonce;
+  roleD[1].bn := anyNonce;
+  roleD[1].ausf := anyNonce;
+  roleD[1].sucm := anyNonce;
+  roleD[1].certc := anyNonce;
+  roleD[1].x10.msgType := tmp;
+  roleD[1].x10.tmpPart := 0;
+  roleD[1].x1.msgType := tmp;
+  roleD[1].x1.tmpPart := 0;
+  roleD[1].x2.msgType := tmp;
+  roleD[1].x2.tmpPart := 0;
+  roleD[1].x3.msgType := tmp;
+  roleD[1].x3.tmpPart := 0;
+  roleD[1].x4.msgType := tmp;
+  roleD[1].x4.tmpPart := 0;
+  roleD[1].x5.msgType := tmp;
+  roleD[1].x5.tmpPart := 0;
+  roleD[1].x6.msgType := tmp;
+  roleD[1].x6.tmpPart := 0;
+  roleD[1].x7.msgType := tmp;
+  roleD[1].x7.tmpPart := 0;
+  roleD[1].x8.msgType := tmp;
+  roleD[1].x8.tmpPart := 0;
+  roleD[1].x9.msgType := tmp;
+  roleD[1].x9.tmpPart := 0;
+  roleD[1].m1.msgType := tmp;
+  roleD[1].m1.tmpPart := 0;
 
 
 ---intruder.B := Bob;
@@ -3556,6 +5508,26 @@ startstate
     sPat15Set.content[i] := 0;
     pat16Set.content[i] := 0;
     sPat16Set.content[i] := 0;
+    pat17Set.content[i] := 0;
+    sPat17Set.content[i] := 0;
+    pat18Set.content[i] := 0;
+    sPat18Set.content[i] := 0;
+    pat19Set.content[i] := 0;
+    sPat19Set.content[i] := 0;
+    pat20Set.content[i] := 0;
+    sPat20Set.content[i] := 0;
+    pat21Set.content[i] := 0;
+    sPat21Set.content[i] := 0;
+    pat22Set.content[i] := 0;
+    sPat22Set.content[i] := 0;
+    pat23Set.content[i] := 0;
+    sPat23Set.content[i] := 0;
+    pat24Set.content[i] := 0;
+    sPat24Set.content[i] := 0;
+    pat25Set.content[i] := 0;
+    sPat25Set.content[i] := 0;
+    pat26Set.content[i] := 0;
+    sPat26Set.content[i] := 0;
     pat1Set.length := 0;
     sPat1Set.length := 0;
     pat2Set.length := 0;
@@ -3588,6 +5560,26 @@ startstate
     sPat15Set.length := 0;
     pat16Set.length := 0;
     sPat16Set.length := 0;
+    pat17Set.length := 0;
+    sPat17Set.length := 0;
+    pat18Set.length := 0;
+    sPat18Set.length := 0;
+    pat19Set.length := 0;
+    sPat19Set.length := 0;
+    pat20Set.length := 0;
+    sPat20Set.length := 0;
+    pat21Set.length := 0;
+    sPat21Set.length := 0;
+    pat22Set.length := 0;
+    sPat22Set.length := 0;
+    pat23Set.length := 0;
+    sPat23Set.length := 0;
+    pat24Set.length := 0;
+    sPat24Set.length := 0;
+    pat25Set.length := 0;
+    sPat25Set.length := 0;
+    pat26Set.length := 0;
+    sPat26Set.length := 0;
   endfor;
   for i:indexType do 
     Spy_known[i] := false;
@@ -3596,62 +5588,170 @@ startstate
     A_known[i] := false;
   endfor;
   for i:indexType do
-    S_known[i] := false;
-  endfor;
-  for i:indexType do
     B_known[i] := false;
   endfor;
+  for i:indexType do
+    C_known[i] := false;
+  endfor;
+  for i:indexType do
+    D_known[i] := false;
+  endfor;
+
+  for i:indexType do 
+    Spy_known[i] := false;
+  endfor;
+  msg_end:=msg_end+1;
+  msgs[msg_end].msgType := key;
+  msgs[msg_end].k.ag:=Intruder;
+  msgs[msg_end].k.encType:=SK;
+  msgs[msg_end].length := 1;
+  pat3Set.length := pat3Set.length + 1; 
+  pat3Set.content[pat3Set.length] :=msg_end;
+  Spy_known[msg_end] := true;
+    for i : roleANums do
+    msg_end := msg_end+1;
+    msgs[msg_end].msgType := key;
+    msgs[msg_end].k.ag := roleA[i].A;
+    msgs[msg_end].k.encType:=PK;
+    msgs[msg_end].length := 1;
+    pat3Set.length := pat3Set.length + 1;
+    pat3Set.content[pat3Set.length] :=msg_end;
+    Spy_known[msg_end] := true;
+    A_known[msg_end] := true;
+  endfor;
   for i : roleANums do
     msg_end := msg_end+1;
     msgs[msg_end].msgType := key;
-    msgs[msg_end].k.ag1 := roleA[i].A;
-    msgs[msg_end].k.ag2 := roleA[i].S;
-    msgs[msg_end].k.encType:=Symk;
+    msgs[msg_end].k.ag := roleA[i].A;
+    msgs[msg_end].k.encType:=SK;
     msgs[msg_end].length := 1;
-    pat4Set.length := pat4Set.length + 1;
-    pat4Set.content[pat4Set.length] :=msg_end;
-    Spy_known[msg_end] := true;
-  endfor;
-  for i : roleSNums do
-    msg_end := msg_end+1;
-    msgs[msg_end].msgType := key;
-    msgs[msg_end].k.ag1 := roleA[i].A;
-    msgs[msg_end].k.ag2 := roleA[i].B;
-    msgs[msg_end].k.encType:=Symk;
-    msgs[msg_end].length := 1;
-    pat4Set.length := pat4Set.length + 1;
-    pat4Set.content[pat4Set.length] :=msg_end;
-    Spy_known[msg_end] := true;
+    pat3Set.length := pat3Set.length + 1;
+    pat3Set.content[pat3Set.length] :=msg_end;
+    A_known[msg_end] := true;
   endfor;
   for i : roleBNums do
     msg_end := msg_end+1;
     msgs[msg_end].msgType := key;
-    msgs[msg_end].k.ag1 := roleS[i].S;
-    msgs[msg_end].k.ag2 := roleS[i].B;
-    msgs[msg_end].k.encType:=Symk;
+    msgs[msg_end].k.ag := roleB[i].B;
+    msgs[msg_end].k.encType:=PK;
     msgs[msg_end].length := 1;
-    pat4Set.length := pat4Set.length + 1;
-    pat4Set.content[pat4Set.length] :=msg_end;
+    pat3Set.length := pat3Set.length + 1;
+    pat3Set.content[pat3Set.length] :=msg_end;
     Spy_known[msg_end] := true;
+    B_known[msg_end] := true;
   endfor;
   for i : roleBNums do
-    constructSpat6(roleB[i].N,roleB[i].A,roleB[i].B,roleB[i].Na,roleB[i].A,roleB[i].S, gnum);
+    msg_end := msg_end+1;
+    msgs[msg_end].msgType := key;
+    msgs[msg_end].k.ag := roleB[i].B;
+    msgs[msg_end].k.encType:=SK;
+    msgs[msg_end].length := 1;
+    pat3Set.length := pat3Set.length + 1;
+    pat3Set.content[pat3Set.length] :=msg_end;
+    B_known[msg_end] := true;
+  endfor;
+  for i : roleCNums do
+    msg_end := msg_end+1;
+    msgs[msg_end].msgType := key;
+    msgs[msg_end].k.ag := roleC[i].C;
+    msgs[msg_end].k.encType:=PK;
+    msgs[msg_end].length := 1;
+    pat3Set.length := pat3Set.length + 1;
+    pat3Set.content[pat3Set.length] :=msg_end;
+    Spy_known[msg_end] := true;
+    C_known[msg_end] := true;
+  endfor;
+  for i : roleCNums do
+    msg_end := msg_end+1;
+    msgs[msg_end].msgType := key;
+    msgs[msg_end].k.ag := roleC[i].C;
+    msgs[msg_end].k.encType:=SK;
+    msgs[msg_end].length := 1;
+    pat3Set.length := pat3Set.length + 1;
+    pat3Set.content[pat3Set.length] :=msg_end;
+    C_known[msg_end] := true;
+  endfor;
+  for i : roleDNums do
+    msg_end := msg_end+1;
+    msgs[msg_end].msgType := key;
+    msgs[msg_end].k.ag := roleD[i].D;
+    msgs[msg_end].k.encType:=PK;
+    msgs[msg_end].length := 1;
+    pat3Set.length := pat3Set.length + 1;
+    pat3Set.content[pat3Set.length] :=msg_end;
+    Spy_known[msg_end] := true;
+    D_known[msg_end] := true;
+  endfor;
+  for i : roleDNums do
+    msg_end := msg_end+1;
+    msgs[msg_end].msgType := key;
+    msgs[msg_end].k.ag := roleD[i].D;
+    msgs[msg_end].k.encType:=SK;
+    msgs[msg_end].length := 1;
+    pat3Set.length := pat3Set.length + 1;
+    pat3Set.content[pat3Set.length] :=msg_end;
+    D_known[msg_end] := true;
   endfor;
   for i : roleBNums do
-    constructSpat12(roleB[i].N,roleB[i].Na,roleB[i].Kab,roleB[i].A,roleB[i].S,roleB[i].Nb,roleB[i].B, gnum);
+    constructSpat4(roleB[i].supi,roleB[i].ue,roleB[i].D, gnum);
   endfor;
-  for i : roleSNums do
-    constructSpat11(roleS[i].N,roleS[i].A,roleS[i].B,roleS[i].m1,roleS[i].Nb,roleS[i].B,roleS[i].S, gnum);
+  for i : roleBNums do
+    constructSpat1(roleB[i].ue1, gnum);
+  endfor;
+  for i : roleBNums do
+    constructSpat10(roleB[i].prekey,roleB[i].C,roleB[i].certa,roleB[i].start,roleB[i].ue1,roleB[i].ausf,roleB[i].certc,roleB[i].A, gnum);
+  endfor;
+  for i : roleBNums do
+    constructSpat1(roleB[i].eapm, gnum);
+  endfor;
+  for i : roleCNums do
+    constructSpat13(roleC[i].x1,roleC[i].bn, gnum);
   endfor;
   for i : roleANums do
-    constructSpat16(roleA[i].N,roleA[i].m2, gnum);
+    constructSpat14(roleA[i].x2, gnum);
+  endfor;
+  for i : roleCNums do
+    constructSpat15(roleC[i].x3, gnum);
+  endfor;
+  for i : roleANums do
+    constructSpat18(roleA[i].x4,roleA[i].x5, gnum);
+  endfor;
+  for i : roleCNums do
+    constructSpat23(roleC[i].x6,roleC[i].x7,roleC[i].x8,roleC[i].x9, gnum);
+  endfor;
+  for i : roleANums do
+    constructSpat11(roleA[i].x10, gnum);
+  endfor;
+  for i : roleCNums do
+    constructSpat1(roleC[i].eapm, gnum);
+  endfor;
+  for i : roleANums do
+    constructSpat1(roleA[i].sucm, gnum);
+  endfor;
+  for i : roleDNums do
+    constructSpat13(roleD[i].x1,roleD[i].bn, gnum);
+  endfor;
+  for i : roleBNums do
+    constructSpat1(roleB[i].start, gnum);
+  endfor;
+  for i : roleBNums do
+    constructSpat2(roleB[i].ausf,roleB[i].certc, gnum);
+  endfor;
+  for i : roleBNums do
+    constructSpat9(roleB[i].start,roleB[i].ue1,roleB[i].ausf,roleB[i].certc,roleB[i].prekey, gnum);
+  endfor;
+  for i : roleCNums do
+    constructSpat1(roleC[i].sucm, gnum);
+  endfor;
+  for i : roleCNums do
+    constructSpat1(roleC[i].start, gnum);
   endfor;
 
 end;
 
 invariant "secrecy1" 
 forall i:indexType do
-    (msgs[i].msgType=nonce & msgs[i].noncePart=kab)
+    (msgs[i].msgType=nonce & msgs[i].noncePart=prekey)
      ->
      Spy_known[i] = false
 end;

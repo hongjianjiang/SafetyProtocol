@@ -30,7 +30,7 @@ type sign = [
 ]
  
 type action = [
-  | `Send of int  * sign * roleName * message list * message 
+  | `Send of int * sign * roleName * message list * message 
   | `Receive of int  * sign * message
   | `Actlist of action list
   | `Null
