@@ -37,7 +37,13 @@ let rec print_knowledge  knws =
       | `Send (seq,s,r,ms,m) -> sprintf "[%d] %s %s (%s):%s" i  (print_sign s) r (String.concat ~sep:"," (List.map ~f:print_message ms)) (print_message m)
       | `Receive (seq,s,m) -> sprintf "[%d] %s :%s" i  (print_sign s) (print_message m)
       | `Actlist arr ->String.concat ~sep:"\n" (List.map ~f:(fun a->print_action a i ) arr)
-    
+
+  let rec print_action1 actions= 
+    match actions with 
+      | `Null -> sprintf "\n"
+      | `Send (seq,s,r,ms,m) -> sprintf "%s" (print_message m)
+      | `Receive (seq,s,m) -> sprintf "%s" (print_message m)
+      | `Actlist arr ->String.concat ~sep:"\n" (List.map ~f:(fun a->print_action1 a) arr)
 (* let rec print_agents ags = 
   match ags with 
   | `Null -> sprintf "\n"
@@ -89,6 +95,56 @@ let rec combination list n =
         let first_set = List.map (combination list' (n - 1)) ~f:(fun x -> ele::x) in
         first_set@(combination list' n)
     end
+
+
+let rec getAllActsList agents = 
+  match agents with 
+  | `Null -> []
+  | `Agent (n,ms,actlists) -> actlists
+  | `Agentlist als ->List.concat (List.map ~f:getAllActsList als)
+
+let rec getAllSendActs actions =
+  match actions with
+  | `Null -> []
+  | `Send (seq,s,r,mls,m) -> [actions]
+  | `Receive (seq,s,m) -> []
+  | `Actlist arr -> List.concat (List.map ~f:getAllSendActs arr)
+
+let rec getAllReceActs actions =
+  match actions with
+  | `Null -> []
+  | `Send (seq,s,r,mls,m) -> []
+  | `Receive (seq,s,m) -> [actions]
+  | `Actlist arr -> List.concat (List.map ~f:getAllReceActs arr)
+
+
+let rec getActsList agents roleName= 
+  match agents with 
+  | `Null -> []
+  | `Agent (n,ms,actlists) -> if n=roleName then actlists else []
+  | `Agentlist als ->getActs als roleName
+  and  getActs agents  roleName=   List.concat (List.map ~f:(fun a -> getActsList a roleName) agents)
+
+let rec getSendActsBySeq actions seq = 
+  match actions with 
+  | `Null -> []
+  | `Send (seq1,s,r,mls,m) -> if seq1 = seq then [`Send (seq1,s,r,mls,m)] else []
+  | `Receive (seq1,s,m) -> []
+  | `Actlist arr -> List.concat (List.map ~f:(fun x->getSendActsBySeq x seq) arr)
+
+let rec getRecvActsBySeq actions seq = 
+    match actions with 
+    | `Null -> []
+    | `Send (seq1,s,r,mls,m) -> []
+    | `Receive (seq1,s,m) -> if seq1 = seq then [actions] else [] 
+    | `Actlist arr -> List.concat (List.map ~f:(fun x->getRecvActsBySeq x seq) arr)
+
+let rec getmsgFromActs actions =
+  match actions with 
+  | `Null -> []
+  | `Send (seq1,s,r,mls,m) -> [m]
+  | `Receive (seq1,s,m) -> [m]
+  | `Actlist arr -> List.concat (List.map ~f:(fun x->getmsgFromActs x) arr)
 
 
 let print_option po=
@@ -152,8 +208,16 @@ let genSendGuard rolename i seq =
   sprintf "role%s[i].st = %s%d & ch[%d].empty = true & !role%s[i].commit \n==>\n" rolename rolename i seq rolename
 ;;
 
-let genRecvGuard rolename i seq =
-  sprintf "role%s[i].st = %s%d & ch[%d].empty = false & !role%s[i].commit & judge(ch[%d].msg,role%s[i].%s) \n==>\n" rolename rolename i seq rolename seq rolename rolename
+let genRecvGuard rolename i seq agents=
+  let allactions =getActsList agents rolename in 
+  let recvaction = List.hd_exn (List.concat (List.map ~f:(fun x->getRecvActsBySeq x seq) allactions)) in 
+  let msg = List.hd_exn (getmsgFromActs recvaction) in 
+  let flag = match msg with 
+  |`Tmp (name1) -> true 
+  | _ -> false
+  in 
+  let () = print_endline (sprintf "%s" (print_message msg)) in 
+  sprintf "role%s[i].st = %s%d & ch[%d].empty = false & !role%s[i].commit & judge(ch[%d].msg,role%s[i].%s,%s) \n==>\n" rolename rolename i seq rolename seq rolename rolename (if flag = true then (sprintf "role%s[i].%s" rolename (print_message msg)) else "msgs[0]")
 ;;
 
 (* Transforming the i-th action into murphy rule *)
@@ -347,46 +411,12 @@ let agentSStatus rlist lensOfrlist =
                                 let status = String.concat ~sep:"," !statuslist in
                                 sprintf "%sStatus: enum{%s}" r status ) rlist)
 
-
-let rec getActsList agents roleName= 
-  match agents with 
-  | `Null -> []
-  | `Agent (n,ms,actlists) -> if n=roleName then actlists else []
-  | `Agentlist als ->getActs als roleName
-  and  getActs agents  roleName=   List.concat (List.map ~f:(fun a -> getActsList a roleName) agents)
-
-let rec getSendActsBySeq actions seq = 
-  match actions with 
-  | `Null -> []
-  | `Send (seq1,s,r,mls,m) -> if seq1 = seq then [`Send (seq1,s,r,mls,m)] else []
-  | `Receive (seq1,s,m) -> []
-  | `Actlist arr -> List.concat (List.map ~f:(fun x->getSendActsBySeq x seq) arr)
-
 let rec getAgentRole agents = 
   match agents with 
   | `Null -> []
   | `Agent (n,ms,acts) -> if (List.length acts)>0 then [n] else []
   | `Agentlist als ->List.concat (List.map ~f:getAgentRole als)
 
-let rec getAllActsList agents = 
-  match agents with 
-  | `Null -> []
-  | `Agent (n,ms,actlists) -> actlists
-  | `Agentlist als ->List.concat (List.map ~f:getAllActsList als)
-
-let rec getAllSendActs actions =
-  match actions with
-  | `Null -> []
-  | `Send (seq,s,r,mls,m) -> [actions]
-  | `Receive (seq,s,m) -> []
-  | `Actlist arr -> List.concat (List.map ~f:getAllSendActs arr)
-
-let rec getAllReceActs actions =
-  match actions with
-  | `Null -> []
-  | `Send (seq,s,r,mls,m) -> []
-  | `Receive (seq,s,m) -> [actions]
-  | `Actlist arr -> List.concat (List.map ~f:getAllReceActs arr)
      
 let agentSStatus rlist lensOfrlist =
     String.concat ~sep:";\n  " (List.mapi ~f:(fun i r -> 
@@ -989,7 +1019,7 @@ let rec existInit msg atom =
   ;;
   
 
-  let rec trans act i rolename length msgOfrolename patlist=
+  let rec trans act i rolename length msgOfrolename patlist agents=
     match act with
     |`Null -> sprintf ""
     |`Send (seq, s,r,ms, m) ->let atoms = getAtoms m in
@@ -1000,9 +1030,9 @@ let rec existInit msg atom =
     |`Receive (seq,s,m) ->let atoms = getAtoms m in
                       let atoms = del_duplicate atoms in
                       genRuleName rolename i ^
-                      genRecvGuard rolename i seq^
+                      genRecvGuard rolename i seq agents^
                       (genRecvAct rolename seq i m atoms length msgOfrolename patlist)
-    | `Actlist arr -> String.concat (List.map ~f:(fun a-> trans a i rolename length msgOfrolename patlist)  arr)
+    | `Actlist arr -> String.concat (List.map ~f:(fun a-> trans a i rolename length msgOfrolename patlist agents)  arr)
   ;;
 
 let print_murphiRule agents knws =  (*printf "murphi code"*)
@@ -1023,7 +1053,7 @@ let print_murphiRule agents knws =  (*printf "murphi code"*)
                             in
                             let lenActs = List.length acts in
                             sprintf "ruleset i:role%sNums do\n" r ^
-                            String.concat (List.mapi ~f:(fun j act -> trans act (j+1) r lenActs msgofRole patlist) acts) ^
+                            String.concat (List.mapi ~f:(fun j act -> trans act (j+1) r lenActs msgofRole patlist agents) acts) ^
                             sprintf "endruleset;\n\n" ) rolelist)
 
 

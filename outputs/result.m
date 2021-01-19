@@ -521,10 +521,12 @@ function inverseKeyIndex(msgK:Message):indexType;
     get_msgNo(key_inv,index);
     return index;
   end;
-function judge(msg:Message;ag:AgentType) :boolean;
+function judge(msg:Message;ag:AgentType;msg1:Message) :boolean;
   begin
-    if msg.msgType = aenc then 
+    if msg.msgType = aenc & msg1.msgType != tmp then 
       return msgs[msg.aencKey].k.ag = ag;
+    elsif msg.msgType = aenc & msg1.msgType = tmp then 
+      return true;
     elsif msg.msgType = senc then 
       if msgs[msg.sencKey].k.m =0 then 
         return (msgs[msg.sencKey].k.ag1 = ag |msgs[msg.sencKey].k.ag2 = ag) 
@@ -2937,7 +2939,7 @@ begin
    put "roleA[i] in st1\n";
 end;
 rule " roleA2 "
-roleA[i].st = A2 & ch[6].empty = false & !roleA[i].commit & judge(ch[6].msg,roleA[i].A) 
+roleA[i].st = A2 & ch[6].empty = false & !roleA[i].commit & judge(ch[6].msg,roleA[i].A,msgs[0]) 
 ==>
 var flag_pat1:boolean;
     msg:Message;
@@ -2971,7 +2973,7 @@ begin
    put "roleA[i] in st3\n";
 end;
 rule " roleA4 "
-roleA[i].st = A4 & ch[10].empty = false & !roleA[i].commit & judge(ch[10].msg,roleA[i].A) 
+roleA[i].st = A4 & ch[10].empty = false & !roleA[i].commit & judge(ch[10].msg,roleA[i].A,msgs[0]) 
 ==>
 var flag_pat2:boolean;
     msg:Message;
@@ -3005,7 +3007,7 @@ begin
    put "roleA[i] in st5\n";
 end;
 rule " roleA6 "
-roleA[i].st = A6 & ch[14].empty = false & !roleA[i].commit & judge(ch[14].msg,roleA[i].A) 
+roleA[i].st = A6 & ch[14].empty = false & !roleA[i].commit & judge(ch[14].msg,roleA[i].A,roleA[i].x10) 
 ==>
 var flag_pat12:boolean;
     msg:Message;
@@ -3039,7 +3041,7 @@ begin
    put "roleA[i] in st7\n";
 end;
 rule " roleA8 "
-roleA[i].st = A8 & ch[18].empty = false & !roleA[i].commit & judge(ch[18].msg,roleA[i].A) 
+roleA[i].st = A8 & ch[18].empty = false & !roleA[i].commit & judge(ch[18].msg,roleA[i].A,msgs[0]) 
 ==>
 var flag_pat1:boolean;
     msg:Message;
@@ -3062,7 +3064,7 @@ endruleset;
 
 ruleset i:roleBNums do
 rule " roleB1 "
-roleB[i].st = B1 & ch[1].empty = false & !roleB[i].commit & judge(ch[1].msg,roleB[i].B) 
+roleB[i].st = B1 & ch[1].empty = false & !roleB[i].commit & judge(ch[1].msg,roleB[i].B,roleB[i].x1) 
 ==>
 var flag_pat13:boolean;
     msg:Message;
@@ -3096,7 +3098,7 @@ begin
    put "roleB[i] in st2\n";
 end;
 rule " roleB3 "
-roleB[i].st = B3 & ch[5].empty = false & !roleB[i].commit & judge(ch[5].msg,roleB[i].B) 
+roleB[i].st = B3 & ch[5].empty = false & !roleB[i].commit & judge(ch[5].msg,roleB[i].B,roleB[i].x2) 
 ==>
 var flag_pat15:boolean;
     msg:Message;
@@ -3130,7 +3132,7 @@ begin
    put "roleB[i] in st4\n";
 end;
 rule " roleB5 "
-roleB[i].st = B5 & ch[7].empty = false & !roleB[i].commit & judge(ch[7].msg,roleB[i].B) 
+roleB[i].st = B5 & ch[7].empty = false & !roleB[i].commit & judge(ch[7].msg,roleB[i].B,roleB[i].x3) 
 ==>
 var flag_pat16:boolean;
     msg:Message;
@@ -3164,7 +3166,7 @@ begin
    put "roleB[i] in st6\n";
 end;
 rule " roleB7 "
-roleB[i].st = B7 & ch[9].empty = false & !roleB[i].commit & judge(ch[9].msg,roleB[i].B) 
+roleB[i].st = B7 & ch[9].empty = false & !roleB[i].commit & judge(ch[9].msg,roleB[i].B,msgs[0]) 
 ==>
 var flag_pat19:boolean;
     msg:Message;
@@ -3198,7 +3200,7 @@ begin
    put "roleB[i] in st8\n";
 end;
 rule " roleB9 "
-roleB[i].st = B9 & ch[11].empty = false & !roleB[i].commit & judge(ch[11].msg,roleB[i].B) 
+roleB[i].st = B9 & ch[11].empty = false & !roleB[i].commit & judge(ch[11].msg,roleB[i].B,msgs[0]) 
 ==>
 var flag_pat24:boolean;
     msg:Message;
@@ -3232,7 +3234,7 @@ begin
    put "roleB[i] in st10\n";
 end;
 rule " roleB11 "
-roleB[i].st = B11 & ch[13].empty = false & !roleB[i].commit & judge(ch[13].msg,roleB[i].B) 
+roleB[i].st = B11 & ch[13].empty = false & !roleB[i].commit & judge(ch[13].msg,roleB[i].B,roleB[i].x10) 
 ==>
 var flag_pat12:boolean;
     msg:Message;
@@ -3266,7 +3268,7 @@ begin
    put "roleB[i] in st12\n";
 end;
 rule " roleB13 "
-roleB[i].st = B13 & ch[15].empty = false & !roleB[i].commit & judge(ch[15].msg,roleB[i].B) 
+roleB[i].st = B13 & ch[15].empty = false & !roleB[i].commit & judge(ch[15].msg,roleB[i].B,msgs[0]) 
 ==>
 var flag_pat1:boolean;
     msg:Message;
@@ -3300,7 +3302,7 @@ begin
    put "roleB[i] in st14\n";
 end;
 rule " roleB15 "
-roleB[i].st = B15 & ch[17].empty = false & !roleB[i].commit & judge(ch[17].msg,roleB[i].B) 
+roleB[i].st = B15 & ch[17].empty = false & !roleB[i].commit & judge(ch[17].msg,roleB[i].B,msgs[0]) 
 ==>
 var flag_pat1:boolean;
     msg:Message;
@@ -3338,7 +3340,7 @@ endruleset;
 
 ruleset i:roleCNums do
 rule " roleC1 "
-roleC[i].st = C1 & ch[2].empty = false & !roleC[i].commit & judge(ch[2].msg,roleC[i].C) 
+roleC[i].st = C1 & ch[2].empty = false & !roleC[i].commit & judge(ch[2].msg,roleC[i].C,msgs[0]) 
 ==>
 var flag_pat14:boolean;
     msg:Message;
@@ -3372,7 +3374,7 @@ begin
    put "roleC[i] in st2\n";
 end;
 rule " roleC3 "
-roleC[i].st = C3 & ch[4].empty = false & !roleC[i].commit & judge(ch[4].msg,roleC[i].C) 
+roleC[i].st = C3 & ch[4].empty = false & !roleC[i].commit & judge(ch[4].msg,roleC[i].C,msgs[0]) 
 ==>
 var flag_pat1:boolean;
     msg:Message;
@@ -3406,7 +3408,7 @@ begin
    put "roleC[i] in st4\n";
 end;
 rule " roleC5 "
-roleC[i].st = C5 & ch[8].empty = false & !roleC[i].commit & judge(ch[8].msg,roleC[i].C) 
+roleC[i].st = C5 & ch[8].empty = false & !roleC[i].commit & judge(ch[8].msg,roleC[i].C,msgs[0]) 
 ==>
 var flag_pat1:boolean;
     msg:Message;
@@ -3440,7 +3442,7 @@ begin
    put "roleC[i] in st6\n";
 end;
 rule " roleC7 "
-roleC[i].st = C7 & ch[12].empty = false & !roleC[i].commit & judge(ch[12].msg,roleC[i].C) 
+roleC[i].st = C7 & ch[12].empty = false & !roleC[i].commit & judge(ch[12].msg,roleC[i].C,msgs[0]) 
 ==>
 var flag_pat24:boolean;
     msg:Message;
@@ -3474,7 +3476,7 @@ begin
    put "roleC[i] in st8\n";
 end;
 rule " roleC9 "
-roleC[i].st = C9 & ch[16].empty = false & !roleC[i].commit & judge(ch[16].msg,roleC[i].C) 
+roleC[i].st = C9 & ch[16].empty = false & !roleC[i].commit & judge(ch[16].msg,roleC[i].C,msgs[0]) 
 ==>
 var flag_pat1:boolean;
     msg:Message;
@@ -3512,7 +3514,7 @@ endruleset;
 
 ruleset i:roleDNums do
 rule " roleD1 "
-roleD[i].st = D1 & ch[3].empty = false & !roleD[i].commit & judge(ch[3].msg,roleD[i].D) 
+roleD[i].st = D1 & ch[3].empty = false & !roleD[i].commit & judge(ch[3].msg,roleD[i].D,msgs[0]) 
 ==>
 var flag_pat14:boolean;
     msg:Message;

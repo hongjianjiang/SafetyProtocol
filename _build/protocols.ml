@@ -360,10 +360,12 @@ let genInverseKeyIndexCode ()=
   end;\n"
 
 let genJudgeCode () = 
-  sprintf "function judge(msg:Message;ag:AgentType) :boolean;
+  sprintf "function judge(msg:Message;ag:AgentType;msg1:Message) :boolean;
   begin
-    if msg.msgType = aenc then 
+    if msg.msgType = aenc & msg1.msgType != tmp then 
       return msgs[msg.aencKey].k.ag = ag;
+    elsif msg.msgType = aenc & msg1.msgType = tmp then 
+      return true;
     elsif msg.msgType = senc then 
       if msgs[msg.sencKey].k.m =0 then 
         return (msgs[msg.sencKey].k.ag1 = ag |msgs[msg.sencKey].k.ag2 = ag) 
