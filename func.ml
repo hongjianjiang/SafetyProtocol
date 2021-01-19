@@ -153,7 +153,7 @@ let genSendGuard rolename i seq =
 ;;
 
 let genRecvGuard rolename i seq =
-  sprintf "role%s[i].st = %s%d & ch[%d].empty = false & !role%s[i].commit\n==>\n" rolename rolename i seq rolename
+  sprintf "role%s[i].st = %s%d & ch[%d].empty = false & !role%s[i].commit & judge(ch[%d].msg,role%s[i].%s) \n==>\n" rolename rolename i seq rolename seq rolename rolename
 ;;
 
 (* Transforming the i-th action into murphy rule *)
@@ -634,8 +634,8 @@ let rec existInit msg atom =
     sprintf "   ch[%d].sender := role%s[i].%s;\n" seq rolename rolename ^ 
     sprintf "   ch[%d].receiver := Intruder;\n" seq ^
     sprintf "   role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
-    sprintf "   printMsg(msg);\n" ^ 
-    sprintf "   put \"\\n\";\n" ^ 
+    (* sprintf "   printMsg(msg);\n" ^ 
+    sprintf "   put \"\\n\";\n" ^  *)
     sprintf "   put \"role%s[i] in st%d\\n\";\n" rolename i ^
     commitStr ^
     sprintf "end;\n"
@@ -733,50 +733,49 @@ let rec existInit msg atom =
     let patNum = getPatNum m patlist in
     match m with 
     | `Aenc(m1,m2) ->
-    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\n    agmsg:Message;\nbegin\n" patNum ^ 
-    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n   agmsg.msgType := agent;\n   agmsg.ag:=role%s[i].%s;\n   get_msgNo(agmsg,msgNo);\n   %s_known[msgNo] := true;\n" seq patNum patNum rolename rolename rolename^ 
+    sprintf "var flag_pat%d:boolean;\n    msg:Message;\nbegin\n" patNum ^ 
+    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n" seq patNum patNum ^ 
     sprintf "   if(flag_pat%d) then\n" patNum ^
-    sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
+    sprintf "     destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
-    (* sprintf "%s" (atoms2Str1 atoms rolename msgofRolename) ^ *)
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
     sprintf "   endif;\n" ^
-    sprintf "   printMsg(msg);\n" ^ 
-    sprintf "   put \"\\n\";\n" ^ 
-    sprintf "   put \"role%s[i] in st%d\\n\";\n" rolename i ^
+    sprintf "       put \"role%s[i] in st%d\\n\";\n" rolename i ^
+    (* sprintf "   printMsg(msg);\n" ^ 
+    sprintf "   put \"\\n\";\n" ^  *)
     commitStr ^
     sprintf "end;\n"
     |`Senc(m1,m2)->
-    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\n    agmsg:Message;\nbegin\n" patNum ^ 
-    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n   agmsg.msgType := agent;\n   agmsg.ag:=role%s[i].%s;\n   get_msgNo(agmsg,msgNo);\n   %s_known[msgNo] := true;\n" seq patNum patNum rolename rolename rolename^ 
+    sprintf "var flag_pat%d:boolean;\n    msg:Message;\nbegin\n" patNum ^ 
+    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n" seq patNum patNum ^ 
     sprintf "   if(flag_pat%d & %s_known[msg.sencKey]) then\n" patNum rolename ^
-    sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
+    sprintf "     destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
     (* sprintf "%s" (atoms2Str1 atoms rolename msgofRolename) ^ *)
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
     sprintf "   endif;\n" ^
-    sprintf "   printMsg(msg);\n" ^ 
-    sprintf "   put \"\\n\";\n" ^ 
+    (* sprintf "   printMsg(msg);\n" ^ 
+    sprintf "   put \"\\n\";\n" ^  *)
     sprintf "   put \"role%s[i] in st%d\\n\";\n" rolename i ^
     commitStr ^
     sprintf "end;\n"
     |_->    
-    sprintf "var flag_pat%d:boolean;\n    msg:Message;\n    msgNo:indexType;\n    agmsg:Message;\nbegin\n" patNum ^ 
-    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n   agmsg.msgType := agent;\n   agmsg.ag:=role%s[i].%s;\n   get_msgNo(agmsg,msgNo);\n   %s_known[msgNo] := true;\n" seq patNum patNum rolename rolename rolename^ 
+    sprintf "var flag_pat%d:boolean;\n    msg:Message;\nbegin\n" patNum ^ 
+    sprintf "   clear msg;\n   msg := ch[%d].msg;\n   isPat%d(msg, flag_pat%d);\n" seq patNum patNum ^ 
     sprintf "   if(flag_pat%d) then\n" patNum ^
-    sprintf "     destruct%d(agmsg,msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
+    sprintf "     destruct%d(msg,%s);\n" patNum (recvAtoms2Str atoms rolename) ^
     sprintf "     if(%s)then\n" (atoms2Str atoms rolename msgofRolename) ^
     (* sprintf "%s" (atoms2Str1 atoms rolename msgofRolename) ^ *)
     sprintf "       ch[%d].empty:=true;\n       clear ch[%d].msg;\n" seq seq ^
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
     sprintf "   endif;\n" ^
-    sprintf "   printMsg(msg);\n" ^ 
-    sprintf "   put \"\\n\";\n" ^ 
+    (* sprintf "   printMsg(msg);\n" ^ 
+    sprintf "   put \"\\n\";\n" ^  *)
     sprintf "   put \"role%s[i] in st%d\\n\";\n" rolename i ^
     commitStr ^
     sprintf "end;\n"
@@ -1036,6 +1035,8 @@ let genCodeOfIntruderGetMsg (seq,st,r,m) patList =
   sprintf "  var flag_pat%d:boolean;\n      msgNo:indexType;\n      msg:Message;\n" j^
   sprintf "  begin\n" ^
   sprintf "    msg := ch[%d].msg;\n" seq ^ 
+  sprintf "    printMsg(ch[%d].msg);\n" seq ^
+
   sprintf "    get_msgNo(msg, msgNo);\n"^ 
   sprintf "    msg.tmpPart := msgNo;\n" ^
   sprintf "    isPat%d(msg,flag_pat%d);\n" j j^ 
@@ -1045,9 +1046,9 @@ let genCodeOfIntruderGetMsg (seq,st,r,m) patList =
   sprintf "        pat%dSet.content[pat%dSet.length]:=msgNo;\n" j j^
   sprintf "        Spy_known[msgNo] := true;\n"^
   sprintf "      endif;\n" ^
-  sprintf "      put \"intruder get msg from ch[%d].\\n\";\n" seq ^
   sprintf "      ch[%d].empty := true;\n      clear ch[%d].msg;\n" seq seq^
   sprintf "    endif;\n" ^
+  sprintf "    put \"intruder get msg from ch[%d].\\n\";\n" seq ^
   sprintf "  end;\n"
 ;;
 
@@ -1056,17 +1057,16 @@ let genCodeOfIntruderEmitMsg (seq,st,r,m) patList=
   let j = getPatNum m patList in
   let str1 = sprintf "\n---rule of intruder to emit msg into ch[%d].\n" seq ^ sprintf "ruleset i: msgLen do\n" in
   let str2 = sprintf "  ruleset j: role%sNums do\n" r in
-  let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      role%s[j].st = %s%d & ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n" r r st seq  j j j j j^ 
-             sprintf "      begin\n        if (!emit[pat%dSet.content[i]]) then  \n" j ^ 
-             sprintf "          clear ch[%d];\n" seq ^sprintf "          ch[%d].msg:=msgs[pat%dSet.content[i]];\n" seq j^
-             sprintf "          ch[%d].sender:=Intruder;\n" seq
+  let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      role%s[j].st = %s%d & ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] & !emit[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n" r r st seq  j j j j j j^ 
+             sprintf "      begin\n "   ^ 
+             sprintf "        clear ch[%d];\n" seq ^sprintf "        ch[%d].msg:=msgs[pat%dSet.content[i]];\n" seq j^
+             sprintf "        ch[%d].sender:=Intruder;\n" seq
   in
-  let str4 = sprintf "          ch[%d].receiver:=role%s[j].%s;\n" seq r r in
+  let str4 = sprintf "        ch[%d].receiver:=role%s[j].%s;\n" seq r r in
   str1 ^ str2 ^ str3^ str4 ^ 
-  sprintf "          ch[%d].empty:=false;\n" seq^
-  sprintf "          emit[pat%dSet.content[i]] := true;\n" j^
-  sprintf "          put \"intruder emit msg into ch[%d].\\n\";\n" seq ^
-  sprintf "        endif;\n"^
+  sprintf "        ch[%d].empty:=false;\n" seq^
+  sprintf "        emit[pat%dSet.content[i]] := true;\n" j^
+  sprintf "        put \"intruder emit msg into ch[%d].\\n\";\n" seq ^
   sprintf "      end;\n"^
   sprintf "  endruleset;\n"^
   sprintf "endruleset;\n"
