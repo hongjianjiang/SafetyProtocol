@@ -69,7 +69,7 @@ rule read =
   | "xor" {XOR}
   | "nonce" {NONCE}
   | "aenc" {AENC}
-  | "sig" {SIG}
+  | "sign" {SIGN}
   | "senc" {SENC}
   | "Actions:" {ACTIONS}
   | "Goals:" {GOALS}

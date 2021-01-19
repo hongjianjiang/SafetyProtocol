@@ -33,7 +33,7 @@ Algorithm:
 
 Memory usage:
 
-	* The size of each state is 42840 bits (rounded up to 5360 bytes).
+	* The size of each state is 43800 bits (rounded up to 5480 bytes).
 	* The memory allocated for the hash table and state queue is
 	  8 Mbytes.
 	  With states hash-compressed to 40 bits, the maximum size of
@@ -45,17 +45,21 @@ Memory usage:
 
 Warning: No trace will not be printed in the case of protocol errors!
          Check the options if you want to have error traces.
+aenc{concat(Na,Alice)}PK(Intruder)
 roleA[i] in st1
 intruder get msg from ch[1].
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule adecrypt5
 intruder emit msg into ch[1].
 intruder get msg from ch[1].
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt5
 rule deconcat3
 intruder emit msg into ch[1].
 rule adecrypt5
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule adecrypt5
 intruder emit msg into ch[1].
@@ -67,11 +71,14 @@ rule aencrypt5
 intruder emit msg into ch[1].
 rule aencrypt5
 rule deconcat3
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt5
 rule deconcat3
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule adecrypt5
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt5
 rule deconcat3
@@ -80,20 +87,25 @@ rule enconcat6
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 rule deconcat3
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule deconcat3
+aenc{concat(Na,Alice)}PK(Bob)
 roleB[i] in st1
 rule aencrypt7
 rule aencrypt5
 intruder emit msg into ch[1].
 rule enconcat6
 rule aencrypt5
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt5
 rule deconcat3
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt5
 rule deconcat3
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule deconcat3
 intruder emit msg into ch[1].
@@ -105,12 +117,16 @@ rule aencrypt7
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 rule enconcat6
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule enconcat6
+aenc{concat(Na,Alice)}PK(Bob)
 roleB[i] in st1
 rule deconcat3
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule deconcat3
+aenc{concat(Na,Nb)}PK(Alice)
 roleB[i] in st2
 rule aencrypt5
 intruder emit msg into ch[1].
@@ -120,14 +136,17 @@ intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 rule aencrypt7
 rule aencrypt5
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule enconcat6
 rule aencrypt5
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule enconcat6
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 rule deconcat3
+aenc{concat(Na,Alice)}PK(Bob)
 roleB[i] in st1
 rule aencrypt7
 rule aencrypt5
@@ -136,39 +155,50 @@ intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 intruder emit msg into ch[2].
 rule aencrypt7
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt7
+aenc{concat(Na,Alice)}PK(Bob)
 roleB[i] in st1
 rule enconcat6
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule enconcat6
+aenc{concat(Na,Nb)}PK(Alice)
 roleB[i] in st2
 rule deconcat3
 intruder get msg from ch[2].
+aenc{concat(Na,Nb)}PK(Alice)
 roleA[i] in st2
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 intruder emit msg into ch[2].
 rule aencrypt5
 intruder emit msg into ch[2].
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt5
 intruder emit msg into ch[1].
+aenc{concat(Na,Na)}PK(Alice)
 roleA[i] in st2
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 intruder emit msg into ch[2].
 rule aencrypt7
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt7
+aenc{concat(Na,Alice)}PK(Bob)
 roleB[i] in st1
 rule aencrypt7
 rule aencrypt5
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt7
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 rule enconcat6
+aenc{concat(Na,Alice)}PK(Bob)
 roleB[i] in st1
 rule aencrypt5
 intruder emit msg into ch[1].
@@ -177,39 +207,52 @@ rule aencrypt7
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
 intruder emit msg into ch[2].
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 intruder emit msg into ch[2].
+aenc{concat(Na,Alice)}PK(Bob)
 roleB[i] in st1
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
+aenc{concat(Na,Na)}PK(Alice)
 roleA[i] in st2
 rule aencrypt7
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt7
+aenc{concat(Na,Nb)}PK(Alice)
 roleB[i] in st2
 rule enconcat6
 intruder get msg from ch[2].
+aenc{concat(Na,Nb)}PK(Alice)
 roleA[i] in st2
-rule adecrypt7
 rule deconcat3
 intruder emit msg into ch[2].
 rule deconcat3
+aenc{Nb}PK(Intruder)
 roleA[i] in st3
 intruder emit msg into ch[2].
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 intruder emit msg into ch[2].
+aenc{concat(Na,Alice)}PK(Bob)
 roleB[i] in st1
 intruder emit msg into ch[1].
 intruder emit msg into ch[1].
+aenc{concat(Na,Na)}PK(Alice)
 roleA[i] in st2
 rule aencrypt5
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
+aenc{concat(Na,Na)}PK(Alice)
 roleA[i] in st2
 rule aencrypt5
 intruder emit msg into ch[2].
+aenc{concat(Na,Alice)}PK(Intruder)
 roleB[i] in st1
 rule aencrypt5
 intruder emit msg into ch[1].
+aenc{Na}PK(Intruder)
 roleA[i] in st3
 
 ==========================================================================
@@ -220,7 +263,7 @@ Result:
 
 State Space Explored:
 
-	95 states, 166 rules fired in 0.10s.
+	95 states, 165 rules fired in 0.10s.
 
 Analysis of State Space:
 

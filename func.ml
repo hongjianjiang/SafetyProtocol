@@ -13,11 +13,12 @@ let rec print_message m=
   | `Concat ms-> String.concat ~sep:"." (List.map ~f:print_message ms)
   | `Aenc (m1,m2)-> sprintf "aenc{%s}%s" (print_message m1) (print_message m2)
   | `Senc (m1,m2) -> sprintf "senc{%s}%s" (print_message m1) (print_message m2)
-  | `Hash (m1,m2) -> sprintf("hash(%s)%s") (print_message m1) (print_message m2)
+  | `Hash (m1) -> sprintf("hash(%s)") (print_message m1)
   | `Mod (m1,m2) -> sprintf ("mod(%s,%s)") (print_message m1) (print_message m2)
   | `Pk r -> sprintf "pk(%s)" r
   | `Sk r -> sprintf "sk(%s)" r 
   | `K (r1,r2) -> sprintf "k(%s,%s)" r1 r2
+  | `Sign (m1,m2) -> sprintf "sign(%s,%s)" (print_message m1) (print_message m2)
 
 let rec print_knowledge  knws = 
   match knws with 
@@ -163,7 +164,7 @@ let rec getAtoms msg =
   |`Str s 	-> [`Str s]
   |`Tmp mn -> [`Tmp mn]
   |`Concat msgs -> getEachAtoms msgs
-  |`Hash (m1,m2) 	->  List.concat (List.map ~f:getAtoms [m1;m2])
+  |`Hash (m1) 	->   List.concat (List.map ~f:getAtoms [m1])
   |`Aenc (m1,m2)-> List.concat (List.map ~f:getAtoms [m1;m2])
   |`Senc (m1,m2)-> List.concat (List.map ~f:getAtoms [m1;m2])
   |`Exp (m1,m2)-> List.concat (List.map ~f:getAtoms [m1;m2])
@@ -172,6 +173,7 @@ let rec getAtoms msg =
   |`Sk rolename -> [`Sk rolename]
   |`K (r1,r2)	-> [`K (r1,r2)] (* the symmetrix should be one atoms *)
   |`Const i -> [`Const i]
+  |`Sign (m1,m2) -> List.concat (List.map ~f:getAtoms [m1;m2])
 and getEachAtoms msgs =
   remove (List.concat (List.map ~f:getAtoms msgs)) `Null
 
@@ -462,8 +464,10 @@ let rec isSamePat m1 m2 =
   | (`K(r11,r12),`K(r21,r22)) -> true
   | (`Var n1,`Var n2) -> true
   | (`Concat msgs1,`Concat msgs2) -> isSameList msgs1 msgs2
-  | (`Hash(m1',k1'),`Hash(m2',k2')) -> if (isSamePat k1' k2') && (isSamePat m1' m2') then true else false
+  | (`Hash(m1'),`Hash(m2')) -> true
   | (`Str r1,`Str r2) -> true
+  | (`Sign(m1',k1'),`Sign(m2',k2')) -> if (isSamePat k1' k2') && (isSamePat m1' m2') then true else false
+
   | _ -> false
 
 and isSameList msgs1 msgs2 = 
@@ -504,7 +508,9 @@ let rec getSubMsg msg =
                     submsgs@[msg]
   |`Aenc (m,k) -> (getSubMsg m)@ (getSubMsg k)@[m;k]@[msg]
   |`Senc (m,k) -> (getSubMsg m)@ (getSubMsg k) @[m;k]@[msg]
-  |`Hash (m,k) -> (getSubMsg m)@ (getSubMsg k)@[m;k]@[msg]
+  |`Sign (m,k) -> (getSubMsg m)@ (getSubMsg k)@[m;k]@[msg]
+
+  |`Hash m -> (getSubMsg m)@[msg]
   |`Pk role -> [`Pk role]
   |`Sk role -> [`Sk role]
   |`K (r1,r2) -> [`K (r1,r2)]
@@ -604,6 +610,7 @@ let rec existInit msg atom =
     |`Exp(m1,m2) -> false
     |`Mod(m1,m2) -> false
     |`Aenc (m,k) -> false
+    |`Sign (m1,m2) ->false
     |`Senc (m,k) -> false
     |`Hash (m) -> false
     |`Pk r -> true
@@ -627,6 +634,8 @@ let rec existInit msg atom =
     sprintf "   ch[%d].sender := role%s[i].%s;\n" seq rolename rolename ^ 
     sprintf "   ch[%d].receiver := Intruder;\n" seq ^
     sprintf "   role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
+    sprintf "   printMsg(msg);\n" ^ 
+    sprintf "   put \"\\n\";\n" ^ 
     sprintf "   put \"role%s[i] in st%d\\n\";\n" rolename i ^
     commitStr ^
     sprintf "end;\n"
@@ -734,6 +743,8 @@ let rec existInit msg atom =
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
     sprintf "   endif;\n" ^
+    sprintf "   printMsg(msg);\n" ^ 
+    sprintf "   put \"\\n\";\n" ^ 
     sprintf "   put \"role%s[i] in st%d\\n\";\n" rolename i ^
     commitStr ^
     sprintf "end;\n"
@@ -748,6 +759,8 @@ let rec existInit msg atom =
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
     sprintf "   endif;\n" ^
+    sprintf "   printMsg(msg);\n" ^ 
+    sprintf "   put \"\\n\";\n" ^ 
     sprintf "   put \"role%s[i] in st%d\\n\";\n" rolename i ^
     commitStr ^
     sprintf "end;\n"
@@ -762,6 +775,8 @@ let rec existInit msg atom =
     sprintf "       role%s[i].st := %s%d;\n" rolename rolename ((i mod length)+1) ^
     sprintf "     endif;\n"^
     sprintf "   endif;\n" ^
+    sprintf "   printMsg(msg);\n" ^ 
+    sprintf "   put \"\\n\";\n" ^ 
     sprintf "   put \"role%s[i] in st%d\\n\";\n" rolename i ^
     commitStr ^
     sprintf "end;\n"
@@ -1037,6 +1052,7 @@ let genCodeOfIntruderGetMsg (seq,st,r,m) patList =
 ;;
 
 let genCodeOfIntruderEmitMsg (seq,st,r,m) patList= 
+  (* let () = print_endline(sprintf "%d-%d-%s" seq st r) in  *)
   let j = getPatNum m patList in
   let str1 = sprintf "\n---rule of intruder to emit msg into ch[%d].\n" seq ^ sprintf "ruleset i: msgLen do\n" in
   let str2 = sprintf "  ruleset j: role%sNums do\n" r in

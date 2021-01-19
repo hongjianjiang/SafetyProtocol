@@ -9,7 +9,7 @@ type token =
   | TMP
   | STRING of (string)
   | SK
-  | SIG
+  | SIGN
   | SENC
   | SEMICOLON
   | SECRETOF

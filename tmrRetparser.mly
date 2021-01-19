@@ -32,7 +32,7 @@
 %token RIGHT_ANGLEBARCK
 %token NONCE
 %token HASHCON
-%token SIG
+%token SIGN
 %token EXP
 %token MOD
 %token AENC
@@ -180,11 +180,10 @@ message:
   | MOD;LEFT_BRACK;m1=message;COMMA;m2=message;RIGHT_BRACK {`Mod (m1,m2)}
   /* | v1= message;MULTI;v2=message  {`Multi (v1,v2)} */
   | K;LEFT_BRACK;rlnm1=IDENT;COMMA;rlnm2=IDENT;RIGHT_BRACK { `K (rlnm1,rlnm2)}
-  | HASHCON;LEFT_BRACK;v1=message;RIGHT_BRACK;v2=message {`Hash (v1,v2)}
+  | HASHCON;LEFT_BRACK;v1=message;RIGHT_BRACK;{`Hash (v1)}
   | CONST;LEFT_BRACK;n = IDENT;RIGHT_BRACK{`Const n}
-  /*
-  | SIG;LEFT_BRACK;v=message;COMMA;k=message;RIGHT_BRACK {`Sig (v,k)}
-  | XOR;LEFT_BRACK;v1=message;COMMA;v2=message;RIGHT_BRACK {`Xor (v1,v2)} */
+  | SIGN;LEFT_BRACE;v=message;RIGHT_BRACE;k=message {`Sign (v,k)}
+  /* | XOR;LEFT_BRACK;v1=message;COMMA;v2=message;RIGHT_BRACK {`Xor (v1,v2)}  */
   | EXP;LEFT_BRACK;v=message;COMMA;i=message;RIGHT_BRACK {`Exp (v,i)} 
   | AENC;LEFT_BRACE;v1=message;RIGHT_BRACE;v2=message {`Aenc (v1,v2)}
   | SENC;LEFT_BRACE;v1=message;RIGHT_BRACE;v2=message {`Senc (v1,v2)} 

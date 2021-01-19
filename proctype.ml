@@ -18,7 +18,8 @@ type message = [
   | `Concat of message list
   | `Aenc of message * message   (* Asymmetric encryption *)
   | `Senc of message * message   (* Symmetric encryption *)
-  | `Hash of message * message
+  | `Sign of message * message 
+  | `Hash of message
   | `Pk of roleName
   | `Sk of roleName
   | `K of roleName * roleName
