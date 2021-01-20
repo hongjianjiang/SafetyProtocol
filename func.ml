@@ -125,6 +125,13 @@ let rec getActsList agents roleName=
   | `Agentlist als ->getActs als roleName
   and  getActs agents  roleName=   List.concat (List.map ~f:(fun a -> getActsList a roleName) agents)
 
+let rec getSeqByActions actions = 
+  match actions with
+  | `Null -> []
+  | `Send (seq,s,r,mls,m) -> [seq]
+  | `Receive (seq,s,m) -> [seq]
+  | `Actlist arr -> List.concat (List.map ~f:getSeqByActions arr)
+
 let rec getSendActsBySeq actions seq = 
   match actions with 
   | `Null -> []
@@ -216,7 +223,6 @@ let genRecvGuard rolename i seq agents=
   |`Tmp (name1) -> true 
   | _ -> false
   in 
-  let () = print_endline (sprintf "%s" (print_message msg)) in 
   sprintf "role%s[i].st = %s%d & ch[%d].empty = false & !role%s[i].commit & judge(ch[%d].msg,role%s[i].%s,%s) \n==>\n" rolename rolename i seq rolename seq rolename rolename (if flag = true then (sprintf "role%s[i].%s" rolename (print_message msg)) else "msgs[0]")
 ;;
 
@@ -329,7 +335,6 @@ let rec getEnvConsts env cs =
     and getConstInstances msgs cs =
         List.concat (List.map ~f:(fun m -> getConstInstance m cs) msgs)
       
-
 let getConstFromEnv env cs =
     let clist = getEnvConsts env cs in
       del_duplicate clist
@@ -464,6 +469,9 @@ let rlistToVars rlist =
 let rlistToKnows rlist =
     String.concat ~sep:"\n  " (List.map ~f:(fun r -> 
                   sprintf "%s_known : Array[indexType] of boolean;" r) rlist)
+let intruderEmitIntoCh slist = 
+    String.concat ~sep:"\n  "  (List.map ~f:(fun s -> 
+                  sprintf "IntruEmit%d : boolean;" s) slist)
 let rlistToState rlist =
     String.concat ~sep:"\n" (List.map ~f:(fun r -> 
                   sprintf "  for i:indexType do\n    %s_known[i] := false;\n  endfor;" r) rlist)
@@ -492,7 +500,7 @@ let rec isSamePat m1 m2 =
   | (`Pk r1,`Sk r2) -> true  (* sk(r1),pk(r1) are the same pat, they are stored into the same patSet*)
   | (`Sk r1,`Pk r2) -> true
   | (`K(r11,r12),`K(r21,r22)) -> true
-  | (`Var n1,`Var n2) -> true
+  | (`Var n1,`Var n2) -> if n1 = n2 then true else false
   | (`Concat msgs1,`Concat msgs2) -> isSameList msgs1 msgs2
   | (`Hash(m1'),`Hash(m2')) -> true
   | (`Str r1,`Str r2) -> true
@@ -1083,11 +1091,10 @@ let genCodeOfIntruderGetMsg (seq,st,r,m) patList =
 ;;
 
 let genCodeOfIntruderEmitMsg (seq,st,r,m) patList= 
-  (* let () = print_endline(sprintf "%d-%d-%s" seq st r) in  *)
   let j = getPatNum m patList in
   let str1 = sprintf "\n---rule of intruder to emit msg into ch[%d].\n" seq ^ sprintf "ruleset i: msgLen do\n" in
   let str2 = sprintf "  ruleset j: role%sNums do\n" r in
-  let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      role%s[j].st = %s%d & ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] & !emit[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n" r r st seq  j j j j j j^ 
+  let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      %s role%s[j].st = %s%d & ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] & !emit[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n" (if seq = 1 then sprintf "" else sprintf "IntruEmit%d = true &" (seq-1)) r r st seq  j j j j j j^ 
              sprintf "      begin\n "   ^ 
              sprintf "        clear ch[%d];\n" seq ^sprintf "        ch[%d].msg:=msgs[pat%dSet.content[i]];\n" seq j^
              sprintf "        ch[%d].sender:=Intruder;\n" seq
@@ -1096,6 +1103,9 @@ let genCodeOfIntruderEmitMsg (seq,st,r,m) patList=
   str1 ^ str2 ^ str3^ str4 ^ 
   sprintf "        ch[%d].empty:=false;\n" seq^
   sprintf "        emit[pat%dSet.content[i]] := true;\n" j^
+  sprintf "        IntruEmit%d := true;\n" seq ^
+  sprintf "        printMsg(ch[%d].msg);\n" seq ^
+  sprintf "        put \"---\";\n"; ^ 
   sprintf "        put \"intruder emit msg into ch[%d].\\n\";\n" seq ^
   sprintf "      end;\n"^
   sprintf "  endruleset;\n"^

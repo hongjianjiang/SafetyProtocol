@@ -18,6 +18,7 @@ open Func
     let actOfAgent = List.map ~f:(fun r->getActsList ag r) roleOfAgent in (*get role's action*)
     let lensOfactStr = List.map ~f: List.length actOfAgent in(*length of actor*)
     let allOfAct =  (getAllActsList ag) in
+    let seqlist = List.sort ~cmp:(fun x y -> x-y) (del_duplicate (List.concat (List.map ~f:getSeqByActions (allOfAct)))) in 
     let patlist = List.concat (List.map ~f:getPatList (allOfAct)) in (*get all patterns from actions*)
     let non_dup = del_duplicate patlist in (* delete duplicate *)
     let pats = getEqvlMsgPattern non_dup in 
@@ -105,11 +106,11 @@ var
   msgs : Array[indexType] of Message;
   msg_end: indexType;\n"^
     sprintf "%s\n" (printPatSetVars pats) ^
-    sprintf "  %s\n  Spy_known: Array[indexType] of boolean;
+    sprintf "  %s\n  Spy_known: Array[indexType] of boolean;\n  %s
   ---systemEvent   : array[eventNums] of Event;
   ---eve_end       : eventNums;
   emit: Array[indexType] of boolean;
-  gnum : indexType;\n\n" (rlistToKnows rlist )(* global num*)  
+  gnum : indexType;\n\n" (rlistToKnows rlist ) (intruderEmitIntoCh seqlist)(* global num*)  
    
 (*--------------------------------------------------------print precedure -----------------------------------------------------------*)
 
@@ -1098,7 +1099,6 @@ let genSynthCode m i patList =
   |`Hash (m1) -> begin
             let i1= getPatNum m1 patList in
             let m1Atoms = getAtoms m1 in  
-            let () = print_endline (sprintf "%d" (List.length m1Atoms)) in 
             str1 ^                                          
             sprintf "  Var msg1: Message;\n      index,i1:indexType;\n  begin\n"^
             sprintf "   index:=0;\n"^
@@ -1350,10 +1350,10 @@ let genSynthCode m i patList =
     |`Var n ->begin
               str1 ^ sprintf "  var flag1 : boolean;\n  begin
     flag1 := false;
-    if (msg.msgType = nonce) then
+    if (msg.msgType = nonce & msg.noncePart = %s) then
       flag1 := true;
     endif;
-    flag := flag1;\n  end;\n\n"
+    flag := flag1;\n  end;\n\n" n
     end;
     |`Tmp mn -> begin 
           str1 ^ sprintf "  var flag1 : boolean;\n  begin
@@ -3520,6 +3520,7 @@ let printImpofStart agents knws =
   for i:indexType do\n"
   in
   let allActions =  (getAllActsList agents) in
+  let seqlist = List.sort ~cmp:(fun x y -> x-y) (del_duplicate (List.concat (List.map ~f:getSeqByActions (allActions)))) in 
   let actions = List.concat (List.map ~f:getAllSendActs allActions ) in 
   let patlist = List.concat (List.map ~f:getPatList (allActions)) in (*get all patterns from actions*)
   let patlist = del_duplicate patlist in (* delete duplicate *)
@@ -3530,6 +3531,7 @@ let printImpofStart agents knws =
   let str3 = String.concat (List.mapi ~f:(fun i p -> sprintf "    pat%dSet.length := 0;\n" (getPatNum p patlist) ^
                                                      sprintf "    sPat%dSet.length := 0;\n" (getPatNum p patlist)) patlist)
   in
+  let intstr= String.concat  (List.map ~f:(fun s -> sprintf "    IntruEmit%d := false;\n" s) seqlist)in
   let skNum = getPatNum (`Sk "A") patlist in
   let str4 = if skNum <> 0 then sprintf "
   for i:indexType do 
@@ -3608,7 +3610,7 @@ let printImpofStart agents knws =
   " x constNum constNum constNum constNum 
     else "") clist)
   in
-  str1 ^ str2 ^ str3 ^ 
+  str1 ^ str2 ^ str3 ^ intstr ^
   "  endfor;
   for i:indexType do 
     Spy_known[i] := false;
