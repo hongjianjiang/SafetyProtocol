@@ -500,7 +500,7 @@ let rec isSamePat m1 m2 =
   | (`Pk r1,`Sk r2) -> true  (* sk(r1),pk(r1) are the same pat, they are stored into the same patSet*)
   | (`Sk r1,`Pk r2) -> true
   | (`K(r11,r12),`K(r21,r22)) -> true
-  | (`Var n1,`Var n2) -> if n1 = n2 then true else false
+  | (`Var n1,`Var n2) -> true
   | (`Concat msgs1,`Concat msgs2) -> isSameList msgs1 msgs2
   | (`Hash(m1'),`Hash(m2')) -> true
   | (`Str r1,`Str r2) -> true

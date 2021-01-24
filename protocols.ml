@@ -1350,10 +1350,10 @@ let genSynthCode m i patList =
     |`Var n ->begin
               str1 ^ sprintf "  var flag1 : boolean;\n  begin
     flag1 := false;
-    if (msg.msgType = nonce & msg.noncePart = %s) then
+    if (msg.msgType = nonce) then
       flag1 := true;
     endif;
-    flag := flag1;\n  end;\n\n" n
+    flag := flag1;\n  end;\n\n"  
     end;
     |`Tmp mn -> begin 
           str1 ^ sprintf "  var flag1 : boolean;\n  begin
