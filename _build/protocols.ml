@@ -3144,7 +3144,8 @@ let constructHashRule m1 (seq,st,r,m) patList   =
   sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
   sprintf "          pat%dSet.content[pat%dSet.length]:=hashMsgNo;\n" i i ^
   sprintf "        endif;\n" ^
-  sprintf "      end;\n"
+  sprintf "      end;\n" ^
+  sprintf "  %s" (if seq != 0 then sprintf "endruleset;\n" else "")
 
   let rec destructSignRule (m,k) patList=  
     (*printf "  adecrypt\n";*)
