@@ -33,7 +33,7 @@ Algorithm:
 
 Memory usage:
 
-	* The size of each state is 90456 bits (rounded up to 11312 bytes).
+	* The size of each state is 53200 bits (rounded up to 6656 bytes).
 	* The memory allocated for the hash table and state queue is
 	  8 Mbytes.
 	  With states hash-compressed to 40 bits, the maximum size of
@@ -45,47 +45,858 @@ Memory usage:
 
 Warning: No trace will not be printed in the case of protocol errors!
          Check the options if you want to have error traces.
+rule constructExp 2
 roleA[i] in st1
-aenc{concat(supi,ue)}PK(UDM)intruder get msg from ch[1].
+rule constructMod 3
+roleA[i] in st1
+rule constructExp 2
+mod{exp{g,x},p}intruder get msg from ch[1].
 roleB[i] in st1
-aenc{concat(supi,ue)}PK(UDM)---intruder emit msg into ch[1].
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+roleA[i] in st1
+rule constructMod 3
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st1
+rule constructMod 3
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st1
+rule decrypt mod 3
+rule constructExp 2
+mod{exp{g,x},p}---intruder emit msg into ch[1].
 roleB[i] in st2
 roleB[i] in st1
-concat(aenc{concat(supi,ue)}PK(UDM),anyNonce)intruder get msg from ch[2].
-roleC[i] in st1
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st1
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st1
+rule constructMod 3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[1].
 roleB[i] in st2
-rule deconcat14
-roleC[i] in st2
-concat(aenc{concat(supi,ue)}PK(UDM),anyNonce)intruder get msg from ch[2].
-roleC[i] in st1
-rule enconcat8
-rule enconcat2
-concat(aenc{concat(supi,ue)}PK(UDM),anyNonce)intruder get msg from ch[3].
-roleD[i] in st1
-rule deconcat14
-concat(aenc{concat(supi,ue)}PK(UDM),anyNonce)---intruder emit msg into ch[2].
-roleC[i] in st2
-rule enconcat2
-rule enconcat8
-rule deconcat14
-roleD[i] in st2
-rule enconcat8
-rule enconcat2
-concat(aenc{concat(supi,ue)}PK(UDM),anyNonce)---intruder emit msg into ch[2].
-rule deconcat14
-roleC[i] in st1
-concat(aenc{concat(supi,ue)}PK(UDM),anyNonce)intruder get msg from ch[3].
-roleD[i] in st1
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st1
+rule constructMod 3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+roleB[i] in st2
+rule constructExp 2
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+rule decrypt mod 3
+rule constructExp 2
+roleB[i] in st1
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+roleB[i] in st2
+roleA[i] in st1
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+roleB[i] in st2
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+roleB[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+rule constructMod 3
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+rule constructMod 3
+rule decrypt mod 3
+roleB[i] in st1
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+roleB[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+rule constructMod 3
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+rule constructMod 3
+rule decrypt mod 3
+roleB[i] in st1
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule constructMod 3
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+rule constructExp 2
+roleB[i] in st1
+rule decrypt mod 3
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st1
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st2
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule constructMod 3
+roleB[i] in st1
+rule decrypt mod 3
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st3
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule constructMod 3
+roleB[i] in st1
+rule decrypt mod 3
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st3
+mod{exp{g,x},p}---intruder emit msg into ch[1].
+mod{exp{g,g},p}---intruder emit msg into ch[1].
+rule constructMod 3
+roleB[i] in st1
+roleB[i] in st2
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+rule decrypt mod 3
+roleA[i] in st1
+mod{exp{g,y},p}intruder get msg from ch[2].
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+mod{exp{g,y},p}intruder get msg from ch[2].
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st2
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+roleB[i] in st2
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+roleB[i] in st2
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st1
+roleB[i] in st2
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule sdecrypt8
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleA[i] in st1
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}intruder get msg from ch[1].
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}intruder get msg from ch[1].
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st3
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule sdecrypt8
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st1
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule sdecrypt8
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+roleB[i] in st2
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+rule sdecrypt8
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}intruder get msg from ch[1].
+rule decrypt mod 3
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st2
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st3
+roleA[i] in st2
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}intruder get msg from ch[1].
+rule decrypt mod 3
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st2
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st3
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,x},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,g},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule sdecrypt8
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,x},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,g},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule sdecrypt8
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,g},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,x},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+rule sdecrypt8
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,x},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,g},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule sdecrypt8
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,g},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule decrypt mod 3
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,x},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+rule sdecrypt8
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+roleA[i] in st3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st2
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st3
+rule sdecrypt8
+rule decrypt mod 3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+rule sdecrypt8
+mod{exp{g,x},p}intruder get msg from ch[1].
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st2
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,x},p},x},p}intruder get msg from ch[3].
+roleB[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+roleB[i] in st3
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule decrypt mod 3
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+rule decrypt mod 3
+rule decrypt mod 3
+roleA[i] in st2
+rule sdecrypt8
+mod{exp{g,x},p}intruder get msg from ch[1].
+senc{Na}mod{exp{mod{exp{g,y},p},x},p}intruder get msg from ch[3].
+mod{exp{g,x},p}intruder get msg from ch[1].
+roleB[i] in st2
+roleA[i] in st3
+senc{Na}mod{exp{mod{exp{g,x},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+mod{exp{g,x},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+roleA[i] in st3
+roleB[i] in st2
+roleA[i] in st3
+senc{Na}mod{exp{mod{exp{g,g},p},x},p}intruder get msg from ch[3].
+roleB[i] in st1
+rule decrypt mod 3
+mod{exp{g,g},p}---intruder emit msg into ch[2].
+mod{exp{g,y},p}---intruder emit msg into ch[2].
+roleA[i] in st3
+rule decrypt mod 3
+mod{exp{g,y},p}intruder get msg from ch[2].
+roleA[i] in st3
+rule decrypt mod 3
+senc{Na}mod{exp{mod{exp{g,x},p},x},p}intruder get msg from ch[3].
+roleB[i] in st2
+rule sdecrypt8
 
 ==========================================================================
 
 Result:
 
-	Deadlocked state found.
+	Invariant "secrecy1" failed.
 
 State Space Explored:
 
-	30 states, 31 rules fired in 0.11s.
+	583 states, 842 rules fired in 0.10s.
 
 Analysis of State Space:
 

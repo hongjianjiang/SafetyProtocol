@@ -497,8 +497,8 @@ let rec isSamePat m1 m2 =
   | (`Mod(m11,m12),`Mod(m21,m22)) -> if (isSamePat m11 m21) && (isSamePat m12 m22) then true else false
   | (`Pk r1,`Pk r2) -> true
   | (`Sk r1,`Sk r2) -> true
-  | (`Pk r1,`Sk r2) -> true  (* sk(r1),pk(r1) are the same pat, they are stored into the same patSet*)
-  | (`Sk r1,`Pk r2) -> true
+  (* | (`Pk r1,`Sk r2) -> true  (* sk(r1),pk(r1) are the same pat, they are stored into the same patSet*)
+  | (`Sk r1,`Pk r2) -> true *)
   | (`K(r11,r12),`K(r21,r22)) -> true
   | (`Var n1,`Var n2) -> true
   | (`Concat msgs1,`Concat msgs2) -> isSameList msgs1 msgs2
@@ -547,7 +547,6 @@ let rec getSubMsg msg =
   |`Aenc (m,k) -> (getSubMsg m)@ (getSubMsg k)@[m;k]@[msg]
   |`Senc (m,k) -> (getSubMsg m)@ (getSubMsg k) @[m;k]@[msg]
   |`Sign (m,k) -> (getSubMsg m)@ (getSubMsg k)@[m;k]@[msg]
-
   |`Hash m -> (getSubMsg m)@[msg]
   |`Pk role -> [`Pk role]
   |`Sk role -> [`Sk role]
@@ -1094,7 +1093,9 @@ let genCodeOfIntruderEmitMsg (seq,st,r,m) patList=
   let j = getPatNum m patList in
   let str1 = sprintf "\n---rule of intruder to emit msg into ch[%d].\n" seq ^ sprintf "ruleset i: msgLen do\n" in
   let str2 = sprintf "  ruleset j: role%sNums do\n" r in
-  let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      %s role%s[j].st = %s%d & ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] & !emit[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n" (if seq = 1 then sprintf "" else sprintf "IntruEmit%d = true &" (seq-1)) r r st seq  j j j j j j^ 
+  let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      %s role%s[j].st = %s%d & ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] & !emit[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n" (if seq = 1 then sprintf "" else sprintf "IntruEmit%d = true &" (seq-1)) r r st seq  j j j j j j^
+  (* let str3 = sprintf "    rule \"intruderEmitMsgIntoCh[%d]\"\n" seq ^ sprintf "      role%s[j].st = %s%d & ch[%d].empty=true & i <= pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] & !emit[pat%dSet.content[i]] ---& matchPat(msgs[pat%dSet.content[i]], sPat%dSet)\n      ==>\n"  r r st seq  j j j j j j^  *)
+ 
              sprintf "      begin\n "   ^ 
              sprintf "        clear ch[%d];\n" seq ^sprintf "        ch[%d].msg:=msgs[pat%dSet.content[i]];\n" seq j^
              sprintf "        ch[%d].sender:=Intruder;\n" seq

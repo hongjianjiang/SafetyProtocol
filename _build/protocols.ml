@@ -20,10 +20,11 @@ open Func
     let allOfAct =  (getAllActsList ag) in
     let seqlist = List.sort ~cmp:(fun x y -> x-y) (del_duplicate (List.concat (List.map ~f:getSeqByActions (allOfAct)))) in 
     let patlist = List.concat (List.map ~f:getPatList (allOfAct)) in (*get all patterns from actions*)
-    let non_dup = del_duplicate patlist in (* delete duplicate *)
-    let pats = getEqvlMsgPattern non_dup in 
+    let patlist1 = patlist @ [`Sk "A"] in 
+    let non_dup1 = del_duplicate patlist1 in (* delete duplicate *)
+    let pats = getEqvlMsgPattern non_dup1 in 
     let() = print_endline (sprintf "%s" (String.concat ~sep:"\n" (List.mapi ~f:(fun i x -> sprintf "%d:%s" (i+1) (print_message x)) pats))) in 
-    let tlist = getTmp non_dup in 
+    let tlist = getTmp non_dup1 in 
     let concatParts = ref "\n    concatPart: Array[msgLen] of indexType;" in
     sprintf "const\n" ^
     String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "  role%sNum:1;" r) rlist) ^
@@ -2839,12 +2840,15 @@ let sdecryptRule (m,m2) patList =
   sprintf "    end;\n"
 ;;
 
-let sencryptRule (m,m2) patList =
+let sencryptRule (m,m2) (seq,st,r,m1) patList =
   let i = getPatNum (`Senc (m,m2)) patList in
   let mNum = getPatNum m patList in
   let kNum = getPatNum m2 patList in
   match m2 with 
-  | `K(r1,r2) ->sprintf "    rule \"sencrypt %d\"  --pat%d\n" i i ^
+  | `K(r1,r2) ->
+  sprintf "    %s" (if seq != 0 then sprintf "ruleset i1: role%sNums do\n" r else "") ^
+  sprintf "    rule \"sencrypt %d\"  --pat%d\n" i i ^
+  sprintf "%s" (if seq != 0 then sprintf "      role%s[i1].st = %s%d &" r r st else "") ^
   sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" mNum mNum mNum ^
   sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" kNum kNum kNum ^
   sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i mNum kNum mNum kNum i ^ 
@@ -2865,9 +2869,12 @@ let sencryptRule (m,m2) patList =
   sprintf "          endif;\n"^
   sprintf "          Spy_known[encMsgNo] := true;\n"^
   sprintf "        endif;\n"^
-  sprintf "      end;\n"
-  | _->sprintf "    rule \"sencrypt %d\"  --pat%d\n" i i ^
-  sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" mNum mNum mNum ^
+  sprintf "      end;\n" ^ 
+  sprintf "  %s" (if seq != 0 then sprintf "endruleset;\n" else "")
+  | _->
+  sprintf "    %s" (if seq != 0 then sprintf "ruleset i1: role%sNums do\n" r else "") ^
+  sprintf "    rule \"sencrypt %d\"  --pat%d\n" i i ^
+  sprintf "%s" (if seq != 0 then sprintf "      role%s[i1].st = %s%d &" r r st else "") ^  sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" mNum mNum mNum ^
   sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" kNum kNum kNum ^
   sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i mNum kNum mNum kNum i ^ 
   sprintf "      !Spy_known[constructIndex%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j])] \n       ==>\n" i mNum kNum mNum kNum ^
@@ -2887,7 +2894,8 @@ let sencryptRule (m,m2) patList =
   sprintf "          endif;\n"^
   sprintf "          Spy_known[encMsgNo] := true;\n"^
   sprintf "        endif;\n"^
-  sprintf "      end;\n"
+  sprintf "      end;\n" ^ 
+  sprintf "  %s" (if seq != 0 then sprintf "endruleset;\n" else "")
 ;;
 
 (* decryption rules for aenc(Na.A, Pk(B)), aenc(Na.Nb,Pk(A)) and aenc(Nb,Pk(B)) *)
@@ -2948,14 +2956,16 @@ sprintf "      endif;\n"^
 sprintf "    end;\n"
 
 (* encryption rules for aenc(Na.A, Pk(B)), aenc(Na.Nb,Pk(A)) and aenc(Nb,Pk(B))*)
-let rec aencryptRule (m,k) patList=
+let rec aencryptRule (m,k) (seq,st,r,m1) patList=
   (*printf "  aencrypt\n"*)
   let i = getPatNum (`Aenc (m,k)) patList in
   let i1 = getPatNum m patList in
   let i2 = getPatNum k patList in
-  printEncRule (m,k) i i1 i2
-and printEncRule (m,k) i i1 i2 =
+  printEncRule (m,k) (seq,st,r,m1)  i i1 i2
+and printEncRule (m,k) (seq,st,r,m1)  i i1 i2 =
+  sprintf "    %s" (if seq != 0 then sprintf "ruleset i1: role%sNums do\n" r else "") ^
   sprintf "    rule \"aencrypt %d\"	---pat%d\n" i i^
+  sprintf "%s" (if seq != 0 then sprintf "      role%s[i1].st = %s%d &" r r st else "") ^
   sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" i1 i1 i1 ^
   sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" i2 i2 i2 ^
   sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i i1 i2 i1 i2 i ^ 
@@ -2975,7 +2985,8 @@ and printEncRule (m,k) i i1 i2 =
   sprintf "          endif;\n"^
   sprintf "          Spy_known[encMsgNo] := true;\n"^
   sprintf "        endif;\n"^
-  sprintf "      end;\n"
+  sprintf "      end;\n" ^
+  sprintf "  %s" (if seq != 0 then sprintf "endruleset;\n" else "")
   (*printf "    end;\n";*)
 ;;
 
@@ -3010,9 +3021,10 @@ let deconcatRule msgs patList =
 ;;
 
 (* enconcat rules for concat msgs *)
-let enconcatRule msgs patList =
+let enconcatRule msgs (seq,st,r,m) patList =
   let i = getPatNum (`Concat msgs) patList in
   let str1 = sprintf "    rule \"enconcat %d\"	---pat%d\n" i i ^ 
+          sprintf "%s" (if seq != 0 then sprintf "      role%s[i].st = %s%d &" r r st else "") ^
             (String.concat ~sep:" &\n" (List.mapi ~f:(fun j m -> 
                                        sprintf "      i%d<=pat%dSet.length & Spy_known[pat%dSet.content[i%d]]" (j+1) (getPatNum m patList) (getPatNum m patList) (j+1)) msgs))
   in
@@ -3020,6 +3032,7 @@ let enconcatRule msgs patList =
   in
   let patSetStr = String.concat ~sep:"," (List.mapi ~f:(fun j m -> sprintf "pat%dSet.content[i%d]" (getPatNum m patList) (j+1)) msgs)
   in
+  sprintf "%s" (if seq != 0 then sprintf "    ruleset i: role%sNums do\n" r else "") ^
   str1 ^ 
   sprintf " &\n      matchPat(construct%dBy%s(%s), sPat%dSet)&\n" i subMsgNo patSetStr i ^
   sprintf "      !Spy_known[constructIndex%dBy%s(%s)] \n      ==>\n" i subMsgNo patSetStr ^ 
@@ -3036,7 +3049,9 @@ let enconcatRule msgs patList =
   sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
   sprintf "          pat%dSet.content[pat%dSet.length]:=concatMsgNo;\n" i i ^
   sprintf "        endif;\n" ^
-  sprintf "      end;\n"
+  sprintf "      end;\n"^
+  sprintf "  %s" (if seq != 0 then sprintf "endruleset;\n" else "")
+
 ;;
 
 (* destruct rules for mod msgs *)
@@ -3077,11 +3092,13 @@ let destructModRule (m1,m2) patList =
   sprintf "    end;\n"
 
 (* construct rules for mod msgs *)
-  let constructModRule (m1,m2) patList =
+  let constructModRule (m1,m2) (seq,st,r,m) patList =
     let i = getPatNum (`Mod (m1,m2)) patList in
     let m1Num = getPatNum m1 patList in
     let m2Num = getPatNum m2 patList in
+    sprintf "    %s" (if seq != 0 then sprintf "ruleset i1: role%sNums do\n" r else "") ^
     sprintf "    rule \"constructMod %d\"  --pat%d\n" i i ^
+    sprintf "%s" (if seq != 0 then sprintf "      role%s[i1].st = %s%d &" r r st else "") ^
     sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" m1Num m1Num m1Num ^
     sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" m2Num m2Num m2Num ^
     sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i m1Num m2Num m1Num m2Num i ^ 
@@ -3100,13 +3117,16 @@ let destructModRule (m1,m2) patList =
     sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
     sprintf "          pat%dSet.content[pat%dSet.length]:=modMsgNo;\n" i i ^
     sprintf "        endif;\n" ^
-    sprintf "      end;\n"
+    sprintf "      end;\n" ^
+    sprintf "  %s" (if seq != 0 then sprintf "endruleset;\n" else "")
 
 (* construct rule for hash msg*)
-let constructHashRule m patList =
-  let i = getPatNum (`Hash m) patList in
-  let m1Num = getPatNum m patList in
+let constructHashRule m1 (seq,st,r,m) patList   =
+  let i = getPatNum (`Hash m1) patList in
+  let m1Num = getPatNum m1 patList in
+  sprintf "    %s" (if seq != 0 then sprintf "ruleset i1: role%sNums do\n" r else "") ^
   sprintf "    rule \"constructHash %d\"  --pat%d\n" i i ^
+  sprintf "%s" (if seq != 0 then sprintf "      role%s[i1].st = %s%d &" r r st else "") ^
   sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" m1Num m1Num m1Num ^
   sprintf "      matchPat(construct%dBy%d(pat%dSet.content[i]), sPat%dSet) &\n" i m1Num  m1Num  i ^ 
   sprintf "      !Spy_known[constructIndex%dBy%d(pat%dSet.content[i])]\n      ==>\n" i m1Num  m1Num  ^
@@ -3126,15 +3146,37 @@ let constructHashRule m patList =
   sprintf "        endif;\n" ^
   sprintf "      end;\n"
 
+  let rec destructSignRule (m,k) patList=  
+    (*printf "  adecrypt\n";*)
+    let i = getPatNum (`Sign (m,k)) patList in
+    let i1 = getPatNum m patList in
+    let i2 = getPatNum k patList in
+    printDecRule (m,k) i i1 i2
+  and printDecRule (m,k) i i1 i2 =
+  sprintf "  rule \"destructSignRule %d\"	---pat%d\n" i i^
+  sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n    !Spy_known[msgs[pat%dSet.content[i]].signMsg]&\n    Spy_known[inverseKeyIndex(msgs[msgs[pat%dSet.content[i]].signKey])]  ==>\n" i i i i i ^
+  sprintf "    var key_inv:Message;\n	      msgPat%d:indexType;\n	      flag_pat%d:boolean;\n" i1 i1^
+  sprintf "    begin\n"^
+  sprintf "      put \"rule destructSignRule%d\\n\";\n" i^
+  sprintf "      Spy_known[msgs[pat%dSet.content[i]].signMsg]:=true;\n      msgPat%d:=msgs[pat%dSet.content[i]].signMsg;\n" i i1 i^
+  sprintf "      isPat%d(msgs[msgPat%d],flag_pat%d);\n      if (flag_pat%d) then\n" i1 i1 i1 i1^
+  sprintf "       if (!exist(pat%dSet,msgPat%d)) then\n" i1 i1^
+  sprintf "         pat%dSet.length:=pat%dSet.length+1;\n         pat%dSet.content[pat%dSet.length]:=msgPat%d;\n" i1 i1 i1 i1 i1^
+  sprintf "       endif;\n"^
+  sprintf "      endif;\n"^
+  sprintf "    end;\n"
+ 
 (* construct rules for sign msgs *)
-let rec constructSignRule (m,k) patList=
+let rec constructSignRule (m,k) (seq,st,r,m1) patList=
   (*printf "  aencrypt\n"*)
   let i = getPatNum (`Sign (m,k)) patList in
   let i1 = getPatNum m patList in
   let i2 = getPatNum k patList in
-  printEncRule (m,k) i i1 i2
-and printEncRule (m,k) i i1 i2 =
+  printEncRule (m,k) (seq,st,r,m1) i i1 i2
+and printEncRule (m,k) (seq,st,r,m1) i i1 i2 =
+  sprintf "    %s" (if seq != 0 then sprintf "ruleset i1: role%sNums do\n" r else "") ^
   sprintf "    rule \"constructSign %d\"	---pat%d\n" i i^
+  sprintf "%s" (if seq != 0 then sprintf "      role%s[i1].st = %s%d &" r r st else "") ^
   sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" i1 i1 i1 ^
   sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" i2 i2 i2 ^
   sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i i1 i2 i1 i2 i ^ 
@@ -3154,9 +3196,9 @@ and printEncRule (m,k) i i1 i2 =
   sprintf "          endif;\n"^
   sprintf "          Spy_known[signMsgNo] := true;\n"^
   sprintf "        endif;\n"^
-  sprintf "      end;\n"
-  (*printf "    end;\n";*)
-;;
+  sprintf "      end;\n" ^
+  sprintf "  %s" (if seq != 0 then sprintf "endruleset;\n" else "")
+  ;;
 
 (* destruct rules for exp msgs *)
 let destructExpRule (m1,m2) patList =
@@ -3200,11 +3242,13 @@ let destructExpRule (m1,m2) patList =
   sprintf "    end;\n"
 
   (* construct rules for mod msgs *)
-  let constructExpRule (m1,m2) patList =
+  let constructExpRule (m1,m2) (seq,st,r,m) patList =
     let i = getPatNum (`Exp (m1,m2)) patList in
     let m1Num = getPatNum m1 patList in
     let m2Num = getPatNum m2 patList in
+    sprintf "    %s" (if seq != 0 then sprintf "ruleset i1: role%sNums do\n" r else "") ^
     sprintf "    rule \"constructExp %d\"  --pat%d\n" i i ^
+    sprintf "%s" (if seq != 0 then sprintf "      role%s[i1].st = %s%d &" r r st else "") ^
     sprintf "      i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n" m1Num m1Num m1Num ^
     sprintf "      j<=pat%dSet.length & pat%dSet.content[j] != 0 & Spy_known[pat%dSet.content[j]] &\n" m2Num m2Num m2Num ^
     sprintf "      matchPat(construct%dBy%d%d(pat%dSet.content[i],pat%dSet.content[j]), sPat%dSet) &\n" i m1Num m2Num m1Num m2Num i ^ 
@@ -3223,8 +3267,11 @@ let destructExpRule (m1,m2) patList =
     sprintf "          pat%dSet.length:=pat%dSet.length+1;\n" i i ^
     sprintf "          pat%dSet.content[pat%dSet.length]:=expMsgNo;\n" i i ^
     sprintf "        endif;\n" ^
-    sprintf "      end;\n"
+    sprintf "      end;\n" ^
+    sprintf "  %s" (if seq != 0 then sprintf "endruleset;\n" else "")
 
+
+(* 
   let tdecryptRule m1 patList =
     let i = getPatNum (`Tmp m1) patList in
     let m1Num = getPatNum (`Exp (`Const "g",`Const "p")) patList in 
@@ -3256,48 +3303,53 @@ let destructExpRule (m1,m2) patList =
     sprintf "           pat%dSet.content[pat%dSet.length]:=msgNo;\n" m3Num m3Num ^  
     sprintf "         endif;\n"^
     sprintf "      endif;\n" ^
-    sprintf "    end;\n"     
+    sprintf "    end;\n"      *)
 
-let print_murphiRule_byPats pat i patList =
+let print_murphiRule_byPats pat i patList agents knws=
+  let rolelist = getRolesFromKnws knws [] in (* Get role list:[A;B;...] *)
+  let actOfAgent = List.map ~f:(fun r->getActsList agents r) rolelist in (*get role's action*)
+  let actions = getAllActsList agents in
+  let try1 = List.concat (List.map ~f:(fun aas ->List.concat (List.mapi ~f:(fun i a->getMsgs1 a actions (i+1) ) aas)) actOfAgent) in 
+  let (seq,st,r,m) = if (List.exists ~f:(fun x->let (seq1,st1,r1,m1) = x in let ms = getSubMsg m1 in (List.exists ~f:(fun x->pat = x) ms)) try1) 
+   then (List.find_exn ~f:(fun x->let (seq1,st1,r1,m1) = x in let ms = getSubMsg m1 in (List.exists ~f:(fun x->pat = x) ms)) try1)  else (0,0,"0",`Null) in 
+  (* let () = print_endline (sprintf "%d-%d-%s-%s" seq st r (print_message m)) in  *)
+  let () = print_endline (sprintf "%s"  (print_message pat)) in 
+  let () = print_endline (sprintf "%s" (String.concat ~sep:"," (List.map ~f:(fun x->let (seq,st,r,m) = x in print_message m) try1))) in 
   match pat with
-  |`Hash (m) -> sprintf "--- hash and dehash rules of pat: hash{%s}, for intruder\n" (print_message m)^
+  |`Hash (m1) -> sprintf "--- hash and dehash rules of pat: hash{%s}, for intruder\n" (print_message m)^
                           (* sprintf "ruleset i:msgLen do \n"^ *)
                           (* adecryptRule (m1,k1) patList^ *)
                           (* sprintf "endruleset;\n\n" ^ *)
                           sprintf "ruleset i:msgLen do \n  ruleset j:msgLen do \n"^
-                          constructHashRule m patList^
+                          constructHashRule m1 (seq,st,r,m) patList^
                           sprintf "  endruleset;\nendruleset;\n\n" 
   |`Aenc (m1,k1) -> sprintf "--- encrypt and decrypt rules of pat: aenc{%s}%s, for intruder\n" (print_message m1) (print_message k1)^
                           sprintf "ruleset i:msgLen do \n"^
                           adecryptRule (m1,k1) patList^
                           sprintf "endruleset;\n\n" ^
                           sprintf "ruleset i:msgLen do \n  ruleset j:msgLen do \n"^
-                          aencryptRule (m1,k1) patList^
+                          aencryptRule (m1,k1) (seq,st,r,m) patList^
                           sprintf "  endruleset;\nendruleset;\n\n" 
   |`Sign (m1,k1) -> sprintf "--- Sign and verify rules of pat: sign{%s}%s, for intruder\n" (print_message m1) (print_message k1)^
-                          (* sprintf "ruleset i:msgLen do \n"^ *)
-                          (* adecryptRule (m1,k1) patList^ *)
-                          (* sprintf "endruleset;\n\n" ^ *)
+                          sprintf "ruleset i:msgLen do \n"^
+                          destructSignRule (m1,k1) patList^
+                          sprintf "endruleset;\n\n" ^
                           sprintf "ruleset i:msgLen do \n  ruleset j:msgLen do \n"^
-                          constructSignRule (m1,k1) patList^
+                          constructSignRule (m1,k1) (seq,st,r,m) patList^
                           sprintf "  endruleset;\nendruleset;\n\n" 
   |`Senc (m1,`K(r1,r2)) ->sprintf "--- encrypt and decrypt rules of pat senc(%s,k(%s,%s))\n" (print_message m1) r1 r2 ^
                           sprintf "ruleset i:msgLen do\n" ^
                           sdecryptRule (m1,`K(r1,r2)) patList ^
                           sprintf "endruleset;\n\n" ^
                           sprintf "ruleset i:msgLen do \n  ruleset j:msgLen do \n" ^
-                          sencryptRule (m1,`K(r1,r2)) patList ^
+                          sencryptRule (m1,`K(r1,r2)) (seq,st,r,m) patList ^
                           sprintf "  endruleset;\nendruleset;\n\n"
-  (* |`Tmp (m1) -> sprintf "--- decrypt rules of pat tmp(%s)\n" (m1)   ^
-                          sprintf "ruleset i:msgLen do\n" ^
-                          tdecryptRule m1 patList ^
-                          sprintf "endruleset;\n\n"  *)
   |`Senc (m1,m2) ->sprintf "--- encrypt and decrypt rules of pat senc(%s,%s)\n" (print_message m1) (print_message m2) ^
                           sprintf "ruleset i:msgLen do\n" ^
                           sdecryptRule (m1,m2) patList ^
                           sprintf "endruleset;\n\n" ^
                           sprintf "ruleset i:msgLen do \n  ruleset j:msgLen do \n" ^
-                          sencryptRule (m1,m2) patList ^
+                          sencryptRule (m1,m2) (seq,st,r,m) patList ^
                           sprintf "  endruleset;\nendruleset;\n\n"
   |`Concat msgs -> sprintf "--- enconcat and deconcat rules for pat: concat(%s)\n\n" (print_message (`Concat msgs))^
 		   sprintf "ruleset i:msgLen do \n" ^
@@ -3305,7 +3357,7 @@ let print_murphiRule_byPats pat i patList =
        sprintf "endruleset;\n\n" ^
        String.concat ~sep:"\n  " (List.mapi ~f:(fun i m -> sprintf "ruleset i%d: msgLen do" (i+1)) msgs) ^ (* ruleset i:indexType do \n  ruleset j:indexType do *)
 		   sprintf " \n" ^
-       (enconcatRule msgs patList) ^
+       (enconcatRule msgs (seq,st,r,m) patList) ^
        String.concat ~sep:"\n" (List.map ~f:(fun m -> sprintf "endruleset;") msgs) ^
        sprintf "\n\n" 
   |`Mod (m1,m2) -> sprintf "--- construct mod and destruct mod rules of pat mod(%s,%s)\n" (print_message m1) (print_message m2) ^
@@ -3313,14 +3365,14 @@ let print_murphiRule_byPats pat i patList =
       destructModRule (m1,m2) patList ^
       sprintf "endruleset;\n\n" ^
       sprintf "ruleset i:msgLen do \n  ruleset j:msgLen do \n" ^
-      constructModRule (m1,m2) patList ^
+      constructModRule (m1,m2) (seq,st,r,m) patList ^
       sprintf "  endruleset;\nendruleset;\n\n"
   |`Exp (m1,m2) -> sprintf "--- construct exp and destruct exp rules of pat exp(%s,%s)\n" (print_message m1) (print_message m2) ^
       sprintf "ruleset i:msgLen do\n" ^
       destructExpRule (m1,m2) patList ^
       sprintf "endruleset;\n\n" ^
       sprintf "ruleset i:msgLen do \n  ruleset j:msgLen do \n" ^
-      constructExpRule (m1,m2) patList ^
+      constructExpRule (m1,m2) (seq,st,r,m) patList ^
       sprintf "  endruleset;\nendruleset;\n\n"
 
   |_ -> ""
@@ -3332,7 +3384,7 @@ let print_murphiRules_EncsDecs agents knws =
   let patlist = List.concat (List.map ~f:getPatList (actions)) in (*get all patterns from actions*)
 		     let patlist = del_duplicate patlist in (* delete duplicate *)
          let patlist = getEqvlMsgPattern patlist in (* delete equivalent class *) 
-         String.concat (List.mapi ~f:(fun i pat -> print_murphiRule_byPats pat (i+1) patlist ) patlist)
+         String.concat (List.mapi ~f:(fun i pat -> print_murphiRule_byPats pat (i+1) patlist agents knws) patlist)
 ;;
 
 let trActionsToMurphi agents knws =
@@ -3524,6 +3576,7 @@ let printImpofStart agents knws =
   let actions = List.concat (List.map ~f:getAllSendActs allActions ) in 
   let patlist = List.concat (List.map ~f:getPatList (allActions)) in (*get all patterns from actions*)
   let patlist = del_duplicate patlist in (* delete duplicate *)
+  let patlist = patlist @ [`Sk "A"] in 
   let patlist = getEqvlMsgPattern patlist in
   let str2 = String.concat (List.mapi ~f:(fun i p -> sprintf "    pat%dSet.content[i] := 0;\n" (getPatNum p patlist) ^
                                                      sprintf "    sPat%dSet.content[i] := 0;\n" (getPatNum p patlist)) patlist)
@@ -3555,6 +3608,7 @@ let printImpofStart agents knws =
                   sprintf "    msgs[msg_end].length := 1;\n" ^
                   sprintf "  endfor;\n") rlist) in 
   let pkNum = getPatNum (`Pk "A") patlist in
+  let skNum = getPatNum (`Sk "A") patlist in 
   let str5 = if pkNum <> 0 then String.concat (List.map ~f:(fun r -> sprintf "  for i : role%sNums do\n" r ^
                                                   sprintf "    msg_end := msg_end+1;\n    msgs[msg_end].msgType := key;\n" ^
                                                   sprintf "    msgs[msg_end].k.ag := role%s[i].%s;\n" r r^
@@ -3566,8 +3620,8 @@ let printImpofStart agents knws =
                                                   sprintf "  for i : role%sNums do\n" r ^
                                                   sprintf "    msg_end := msg_end+1;\n    msgs[msg_end].msgType := key;\n" ^
                                                   sprintf "    msgs[msg_end].k.ag := role%s[i].%s;\n" r r^
-                                                  sprintf "    msgs[msg_end].k.encType:=SK;\n    msgs[msg_end].length := 1;\n    pat%dSet.length := pat%dSet.length + 1;\n" pkNum pkNum ^
-                                                  sprintf "    pat%dSet.content[pat%dSet.length] :=msg_end;\n" pkNum pkNum ^
+                                                  sprintf "    msgs[msg_end].k.encType:=SK;\n    msgs[msg_end].length := 1;\n    pat%dSet.length := pat%dSet.length + 1;\n" skNum skNum ^
+                                                  sprintf "    pat%dSet.content[pat%dSet.length] :=msg_end;\n" skNum skNum ^
                                                   sprintf "    %s_known[msg_end] := true;\n" r^
                                                   sprintf "  endfor;\n"
                             ) rlist) else ""
