@@ -3562,7 +3562,7 @@ let printImpofStart agents knws =
   let str3 = String.concat (List.mapi ~f:(fun i p -> sprintf "    pat%dSet.length := 0;\n" (getPatNum p patlist) ^
                                                      sprintf "    sPat%dSet.length := 0;\n" (getPatNum p patlist)) patlist)
   in
-  let intstr= String.concat  (List.map ~f:(fun s -> sprintf "    IntruEmit%d := false;\n" s) seqlist)in
+  let intstr= String.concat  (List.map ~f:(fun s -> sprintf "    IntruEmit%d := false;\n" s) seqlist) in
   let skNum = getPatNum (`Sk "A") patlist in
   let str4 = if skNum <> 0 then sprintf "
   for i:indexType do 
@@ -3656,6 +3656,7 @@ let rec printGoal2Murphi g =
   |`Secretgoal (seq,m) -> printSecGoal (seq,m)
   |`Secretgoal1 (seq,m,r1,r2) -> printSecGoal1 (seq,m,r1,r2)
   |`Agreegoal (seq,r1,r2,m) -> printAgreeGoal (seq,r1,r2,m) 
+  |`Agreegoal1 (seq,seq1,r1,r2,m) -> printAgreeGoal1 (seq,seq1,r1,r2,m) 
   |`Goallist gols -> String.concat (List.map ~f:(fun g -> printGoal2Murphi g) gols)
 
 and printSecGoal (seq,m) =
@@ -3712,6 +3713,16 @@ and printAgreeGoal (seq,r1,r2,m) =
   sprintf "\ninvariant \"%s\"\n" seq ^
   sprintf "  forall i: role%sNums do\n" r2 ^
   sprintf "    role%s[i].commit = true \n    ->\n" r2 ^
+  sprintf "    (exists j: role%sNums do
+      ---role%s[j].commit = true &
+      role%s[i].%s = role%s[j].%s
+    endexists)
+  endforall;\n" r1 r1 r1 mstr r2 mstr
+and printAgreeGoal1 (seq,seq1,r1,r2,m) = 
+  let mstr = (print_message m) in
+  sprintf "\ninvariant \"%s\"\n" seq ^
+  sprintf "  forall i: role%sNums do\n" r2 ^
+  sprintf "    role%s[i].st = %s%d \n    ->\n" r2 r2 seq1^
   sprintf "    (exists j: role%sNums do
       ---role%s[j].commit = true &
       role%s[i].%s = role%s[j].%s

@@ -54,13 +54,13 @@ Agents:{
     [4]+,C,(nonce(start)):nonce(start)
 }
 Environment:{
-[agent1] A [1] : <UE.Intruder.AUSF.UDM.nonce(supi).nonce(ue).nonce(ue1).nonce(prekey).nonce(certA).nonce(eapm)>;
-[agent2] B [1] : <UE.SEAF.AUSF.nonce(seafn)>;
+[agent1] A [1] : <UE.SEAF.Intruder.UDM.nonce(supi).nonce(ue).nonce(ue1).nonce(prekey).nonce(certA).nonce(eapm)>;
+[agent2] B [1] : <UE.SEAF.Intruder.nonce(seafn)>;
 [agent3] C [1] : <UE.Intruder.AUSF.UDM.nonce(ausf).nonce(ausfn).nonce(sucm).nonce(certC).nonce(prekey)>;
-[agent4] D [1] : <UE.Intruder.AUSF.UDM.nonce(start)>
+[agent4] D [1] : <UE.SEAF.AUSF.UDM.nonce(start)>
 }
 Goals:{
-    [secrecy1] nonce(prekey);
-    [weakC] C non-injectively agrees with A on nonce(prekey)
+    [weakC:6] C non-injectively agrees with A on nonce(ausf);
+    [secrecy] nonce(prekey)
 }
 end

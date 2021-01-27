@@ -17,7 +17,7 @@ type
   chanNums:0..chanNum;
   invokeNums:0..invokeNum;
 
-  AgentType : enum{anyAgent,UE, Intruder, AUSF, UDM, SEAF}; ---Intruder 
+  AgentType : enum{anyAgent,UE, SEAF, Intruder, UDM, AUSF}; ---Intruder 
   NonceType : enum{anyNonce, supi, ue, ue1, prekey, certA, eapm, seafn, ausf, ausfn, sucm, certC, start};
   ConstType : enum{anyNumber};
   MsgType : enum {null,agent,nonce,key,aenc,senc,sign,concat,hash,tmp,mod,e,number};
@@ -5335,8 +5335,8 @@ endruleset;
 
 startstate
   roleA[1].A := UE;
-  roleA[1].B := Intruder;
-  roleA[1].C := AUSF;
+  roleA[1].B := SEAF;
+  roleA[1].C := Intruder;
   roleA[1].D := UDM;
   roleA[1].supi := supi;
   roleA[1].ue := ue;
@@ -5365,7 +5365,7 @@ startstate
 
   roleB[1].A := UE;
   roleB[1].B := SEAF;
-  roleB[1].C := AUSF;
+  roleB[1].C := Intruder;
   roleB[1].seafn := seafn;
   roleB[1].st := B1;
   roleB[1].commit := false;
@@ -5423,7 +5423,7 @@ startstate
   roleC[1].x1.tmpPart := 0;
 
   roleD[1].A := UE;
-  roleD[1].B := Intruder;
+  roleD[1].B := SEAF;
   roleD[1].C := AUSF;
   roleD[1].D := UDM;
   roleD[1].start := start;
@@ -5744,19 +5744,19 @@ startstate
 
 end;
 
-invariant "secrecy1" 
+invariant "weakC"
+  forall i: roleANums do
+    roleA[i].st = A6 
+    ->
+    (exists j: roleCNums do
+      ---roleC[j].commit = true &
+      roleC[i].ausf = roleA[j].ausf
+    endexists)
+  endforall;
+
+invariant "secrecy" 
 forall i:indexType do
     (msgs[i].msgType=nonce & msgs[i].noncePart=prekey)
      ->
      Spy_known[i] = false
 end;
-
-invariant "weakC"
-  forall i: roleANums do
-    roleA[i].commit = true 
-    ->
-    (exists j: roleCNums do
-      ---roleC[j].commit = true &
-      roleC[i].prekey = roleA[j].prekey
-    endexists)
-  endforall;

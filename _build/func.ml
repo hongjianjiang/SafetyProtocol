@@ -77,6 +77,7 @@ let rec print_goal gs =
   |`Secretgoal (id,m) -> sprintf "%s,%s" id (print_message m)
   |`Secretgoal1 (id,m,r1,r2) -> sprintf "%s,%s,%s,%s" id (print_message m) r1 r2
   |`Agreegoal (id,r1,r2,m) -> sprintf "%s,%s,%s,%s" id r1 r2 (print_message m)
+  |`Agreegoal1 (id,id1,r1,r2,m) -> sprintf "%s,%d,%s,%s,%s" id id1 r1 r2 (print_message m)
   |`Goallist gs -> String.concat (List.map ~f:print_goal gs)
   |`Null -> sprintf ""
 

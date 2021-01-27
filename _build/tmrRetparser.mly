@@ -136,6 +136,7 @@ goal:
   | LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE ; m=message { `Secretgoal (seq,m)}
   | LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE ; m=message; CONF; r1 = IDENT; AND; r2=IDENT { `Secretgoal1 (seq,m,r1,r2)}
   | LEFT_MIDBRACE; seq=IDENT; RIGHT_MIDBRACE ; r1=IDENT;NINJ;r2=IDENT;ON; m=message { `Agreegoal (seq,r1,r2,m)}
+  | LEFT_MIDBRACE; seq=IDENT; COLON; seq1=INT; RIGHT_MIDBRACE ; r1=IDENT;NINJ;r2=IDENT;ON; m=message { `Agreegoal1 (seq,seq1,r1,r2,m)}
   | LEFT_BRACE; gols = goal_list; RIGHT_BRACE {`Goallist gols };
 
 

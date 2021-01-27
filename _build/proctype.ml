@@ -66,6 +66,7 @@ type goal = [
   |`Secretgoal of identifier * message
   |`Secretgoal1 of identifier * message * roleName * roleName
   |`Agreegoal of identifier * roleName * roleName * message
+  |`Agreegoal1 of identifier * int * roleName * roleName * message
   |`Goallist of goal list
   |`Null
 ]

@@ -58,16 +58,6643 @@ rule deconcat15
 roleC[i] in st2
 concat(aenc{concat(supi,ue)}PK(UDM),seafn)intruder get msg from ch[2].
 roleC[i] in st1
+concat(aenc{concat(supi,ue)}PK(UDM),seafn,ausfn)intruder get msg from ch[3].
+roleD[i] in st1
+rule deconcat15
+concat(aenc{concat(supi,ue)}PK(UDM),seafn)---intruder emit msg into ch[2].
+roleC[i] in st2
+rule deconcat20
+roleD[i] in st2
+concat(aenc{concat(supi,ue)}PK(UDM),seafn)---intruder emit msg into ch[2].
+rule deconcat15
+roleC[i] in st1
+concat(aenc{concat(supi,ue)}PK(UDM),seafn,ausfn)intruder get msg from ch[3].
+roleD[i] in st1
+startintruder get msg from ch[4].
+roleC[i] in st3
+roleC[i] in st1
+rule deconcat15
+roleC[i] in st2
+rule deconcat20
+roleD[i] in st2
+roleC[i] in st4
+roleC[i] in st2
+rule deconcat15
+concat(aenc{concat(supi,ue)}PK(UDM),seafn,ausfn)intruder get msg from ch[3].
+roleD[i] in st1
+startintruder get msg from ch[4].
+roleC[i] in st3
+startintruder get msg from ch[5].
+roleB[i] in st3
+concat(aenc{concat(supi,ue)}PK(UDM),seafn,ausfn)intruder get msg from ch[3].
+roleD[i] in st1
+rule deconcat20
+rule deconcat15
+concat(aenc{concat(supi,ue)}PK(UDM),seafn,ausfn)---intruder emit msg into ch[3].
+rule deconcat15
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+rule deconcat20
+concat(aenc{concat(supi,ue)}PK(UDM),seafn,ausfn)---intruder emit msg into ch[3].
+roleD[i] in st2
+concat(aenc{concat(supi,ue)}PK(UDM),seafn,ausfn)---intruder emit msg into ch[3].
+rule deconcat20
+rule deconcat15
+roleD[i] in st1
+rule deconcat15
+startintruder get msg from ch[4].
+roleC[i] in st3
+startintruder get msg from ch[5].
+roleB[i] in st3
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+seafn---intruder emit msg into ch[4].
+roleD[i] in st1
+startintruder get msg from ch[4].
+roleC[i] in st3
+seafn---intruder emit msg into ch[4].
+ausfn---intruder emit msg into ch[4].
+roleD[i] in st1
+rule deconcat20
+rule deconcat15
+roleD[i] in st2
+rule deconcat15
+rule deconcat15
+roleC[i] in st4
+roleB[i] in st4
+rule deconcat17
+roleA[i] in st3
+rule deconcat20
+roleD[i] in st1
+roleC[i] in st3
+rule deconcat20
+seafn---intruder emit msg into ch[4].
+roleD[i] in st2
+roleC[i] in st4
+ausfn---intruder emit msg into ch[5].
+roleD[i] in st1
+roleC[i] in st3
+seafn---intruder emit msg into ch[5].
+roleD[i] in st1
+roleC[i] in st3
+seafn---intruder emit msg into ch[4].
+ausfn---intruder emit msg into ch[4].
+roleD[i] in st2
+rule deconcat20
+rule deconcat15
+startintruder get msg from ch[4].
+roleC[i] in st3
+rule deconcat15
+startintruder get msg from ch[5].
+roleB[i] in st3
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st3
+rule deconcat20
+roleD[i] in st1
+roleC[i] in st4
+rule deconcat20
+startintruder get msg from ch[4].
+roleC[i] in st3
+startintruder get msg from ch[5].
+roleB[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st3
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st3
+ausfn---intruder emit msg into ch[5].
+roleD[i] in st1
+roleC[i] in st4
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+roleC[i] in st3
+seafn---intruder emit msg into ch[5].
+roleD[i] in st1
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st3
+rule deconcat20
+rule deconcat15
+start---intruder emit msg into ch[4].
+rule deconcat20
+rule deconcat15
+roleC[i] in st4
+rule deconcat15
+rule deconcat15
+roleB[i] in st4
+rule deconcat17
+roleA[i] in st3
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+roleD[i] in st2
+roleC[i] in st4
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st3
+rule deconcat20
+seafn---intruder emit msg into ch[4].
+start---intruder emit msg into ch[4].
+rule deconcat20
+roleC[i] in st4
+roleB[i] in st4
+roleC[i] in st3
+roleB[i] in st3
+roleD[i] in st1
+roleB[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st4
+ausfn---intruder emit msg into ch[5].
+roleD[i] in st2
+roleC[i] in st4
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+roleD[i] in st1
+roleB[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st4
+seafn---intruder emit msg into ch[5].
+roleD[i] in st2
+roleC[i] in st4
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st3
+seafn---intruder emit msg into ch[4].
+ausfn---intruder emit msg into ch[4].
+start---intruder emit msg into ch[4].
+roleC[i] in st4
+start---intruder emit msg into ch[4].
+seafn---intruder emit msg into ch[4].
+ausfn---intruder emit msg into ch[4].
+rule deconcat20
+start---intruder emit msg into ch[4].
+seafn---intruder emit msg into ch[4].
+rule deconcat20
+rule deconcat15
+roleC[i] in st3
+rule deconcat20
+rule deconcat15
+startintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat15
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat20
+startintruder get msg from ch[4].
+roleC[i] in st4
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+roleB[i] in st3
+rule deconcat20
+roleD[i] in st1
+rule deconcat20
+roleD[i] in st1
+roleB[i] in st4
+seafn---intruder emit msg into ch[4].
+start---intruder emit msg into ch[4].
+ausfn---intruder emit msg into ch[4].
+rule deconcat20
+start---intruder emit msg into ch[5].
+roleC[i] in st3
+rule deconcat20
+seafn---intruder emit msg into ch[5].
+roleC[i] in st3
+rule deconcat20
+startintruder get msg from ch[5].
+roleB[i] in st3
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleD[i] in st2
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleC[i] in st3
+roleA[i] in st2
+ausfn---intruder emit msg into ch[5].
+startintruder get msg from ch[4].
+roleC[i] in st4
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+roleB[i] in st3
+ausfn---intruder emit msg into ch[5].
+roleD[i] in st1
+roleD[i] in st1
+roleB[i] in st4
+roleD[i] in st2
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleC[i] in st3
+roleA[i] in st2
+seafn---intruder emit msg into ch[5].
+startintruder get msg from ch[4].
+roleC[i] in st4
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+roleD[i] in st1
+roleD[i] in st1
+roleB[i] in st4
+ausfn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleC[i] in st3
+seafn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleC[i] in st3
+seafn---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st3
+startintruder get msg from ch[5].
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st3
+start---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st3
+start---intruder emit msg into ch[5].
+seafn---intruder emit msg into ch[5].
+roleC[i] in st3
+rule deconcat20
+seafn---intruder emit msg into ch[5].
+roleC[i] in st3
+rule deconcat20
+start---intruder emit msg into ch[5].
+roleC[i] in st3
+rule deconcat20
+rule deconcat15
+roleC[i] in st4
+rule deconcat20
+rule deconcat15
+rule deconcat20
+rule deconcat15
+roleB[i] in st4
+rule deconcat17
+rule deconcat15
+rule deconcat15
+roleA[i] in st3
+rule enconcat5
+roleB[i] in st6
+rule deconcat19
+roleC[i] in st6
+rule deconcat20
+start---intruder emit msg into ch[5].
+roleC[i] in st4
+rule deconcat20
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+roleD[i] in st2
+rule deconcat20
+roleD[i] in st2
+roleB[i] in st4
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleA[i] in st2
+start---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st3
+seafn---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st3
+seafn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleC[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st3
+rule deconcat20
+start---intruder emit msg into ch[5].
+roleC[i] in st4
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st3
+rule deconcat20
+seafn---intruder emit msg into ch[5].
+roleC[i] in st4
+rule deconcat20
+rule deconcat20
+roleB[i] in st4
+rule deconcat17
+roleA[i] in st3
+startintruder get msg from ch[4].
+roleB[i] in st3
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleC[i] in st4
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleA[i] in st3
+ausfn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleC[i] in st4
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+ausfn---intruder emit msg into ch[5].
+roleD[i] in st2
+roleD[i] in st2
+roleB[i] in st4
+roleD[i] in st1
+roleB[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleB[i] in st3
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleC[i] in st4
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleA[i] in st3
+seafn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleC[i] in st4
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+roleD[i] in st2
+roleD[i] in st2
+roleB[i] in st4
+roleD[i] in st1
+roleB[i] in st3
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+ausfn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleC[i] in st4
+roleC[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleC[i] in st4
+roleC[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st4
+roleB[i] in st4
+roleC[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st4
+roleC[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+start---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st4
+roleC[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+start---intruder emit msg into ch[5].
+seafn---intruder emit msg into ch[5].
+roleC[i] in st4
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st3
+rule deconcat20
+seafn---intruder emit msg into ch[5].
+roleC[i] in st4
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st3
+rule deconcat20
+start---intruder emit msg into ch[5].
+roleC[i] in st4
+rule deconcat20
+rule deconcat15
+startintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+rule deconcat20
+rule deconcat15
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat15
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule enconcat5
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleB[i] in st7
+start---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st4
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+startintruder get msg from ch[4].
+rule deconcat20
+startintruder get msg from ch[4].
+roleB[i] in st4
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleA[i] in st2
+rule deconcat20
+roleD[i] in st1
+rule deconcat20
+roleD[i] in st1
+roleA[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+start---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st4
+roleC[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleC[i] in st4
+roleC[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleC[i] in st4
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st4
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st4
+rule deconcat20
+startintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleB[i] in st3
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleC[i] in st4
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleD[i] in st1
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st1
+roleC[i] in st4
+roleD[i] in st1
+roleC[i] in st4
+roleA[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st3
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+ausfn---intruder emit msg into ch[5].
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleB[i] in st4
+roleD[i] in st2
+roleB[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleA[i] in st2
+roleD[i] in st1
+roleB[i] in st4
+roleD[i] in st1
+roleD[i] in st1
+roleA[i] in st3
+roleB[i] in st3
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleC[i] in st4
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleD[i] in st1
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st1
+roleC[i] in st4
+roleD[i] in st1
+roleC[i] in st4
+roleA[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st3
+ausfnintruder get msg from ch[5].
+roleB[i] in st3
+seafn---intruder emit msg into ch[5].
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleB[i] in st4
+roleD[i] in st2
+roleB[i] in st3
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleA[i] in st2
+roleD[i] in st1
+roleB[i] in st4
+roleD[i] in st1
+roleD[i] in st1
+roleA[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+roleB[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+startintruder get msg from ch[5].
+roleB[i] in st3
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+startintruder get msg from ch[5].
+roleB[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st4
+rule deconcat20
+startintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st4
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+rule deconcat15
+rule deconcat20
+rule deconcat15
+roleB[i] in st4
+rule deconcat20
+rule deconcat17
+rule deconcat15
+rule deconcat20
+rule deconcat15
+roleA[i] in st3
+rule deconcat15
+rule enconcat5
+rule deconcat15
+roleB[i] in st6
+rule deconcat19
+roleC[i] in st6
+rule deconcat5
+roleB[i] in st8
+roleB[i] in st3
+roleB[i] in st3
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+roleC[i] in st4
+roleB[i] in st4
+rule deconcat20
+start---intruder emit msg into ch[5].
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+roleD[i] in st2
+rule deconcat20
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+roleD[i] in st2
+roleA[i] in st3
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+roleB[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+startintruder get msg from ch[5].
+roleB[i] in st3
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+roleB[i] in st3
+roleC[i] in st3
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+roleB[i] in st3
+rule deconcat20
+roleC[i] in st4
+roleB[i] in st4
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+rule deconcat20
+start---intruder emit msg into ch[5].
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+roleC[i] in st4
+roleB[i] in st4
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+rule deconcat20
+seafn---intruder emit msg into ch[5].
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+rule deconcat17
+rule deconcat20
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+roleC[i] in st4
+roleB[i] in st4
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+roleD[i] in st2
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st2
+roleC[i] in st4
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+roleD[i] in st2
+roleC[i] in st4
+roleA[i] in st3
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleA[i] in st3
+roleD[i] in st1
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+roleD[i] in st1
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+roleC[i] in st4
+roleB[i] in st4
+ausfn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleB[i] in st4
+startintruder get msg from ch[4].
+roleB[i] in st3
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleD[i] in st2
+roleB[i] in st4
+roleD[i] in st2
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st4
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleB[i] in st4
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+roleD[i] in st2
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st2
+roleC[i] in st4
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+roleD[i] in st2
+roleC[i] in st4
+roleA[i] in st3
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+roleA[i] in st3
+roleD[i] in st1
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+roleD[i] in st1
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+roleC[i] in st4
+roleB[i] in st4
+seafn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleB[i] in st4
+startintruder get msg from ch[4].
+roleB[i] in st3
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleD[i] in st2
+roleB[i] in st4
+roleD[i] in st2
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st1
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+ausfn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleB[i] in st4
+roleC[i] in st4
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+seafn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleB[i] in st4
+roleC[i] in st4
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+seafn---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleB[i] in st4
+rule deconcat17
+roleA[i] in st3
+roleC[i] in st4
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+seafn---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleB[i] in st4
+roleC[i] in st4
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+start---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleB[i] in st4
+roleC[i] in st4
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+start---intruder emit msg into ch[5].
+seafn---intruder emit msg into ch[5].
+roleB[i] in st4
+rule deconcat20
+roleC[i] in st4
+roleB[i] in st4
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+rule deconcat20
+seafn---intruder emit msg into ch[5].
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+roleC[i] in st4
+roleB[i] in st4
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+rule deconcat20
+start---intruder emit msg into ch[5].
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+rule deconcat15
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+rule deconcat20
+rule deconcat15
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule deconcat15
+rule enconcat5
+roleB[i] in st6
+rule deconcat15
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule enconcat5
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleB[i] in st7
+rule enconcat5
+concat(ausf,certC,seafn)intruder get msg from ch[10].
+roleA[i] in st4
+roleC[i] in st4
+roleB[i] in st4
+roleC[i] in st4
+roleB[i] in st4
+start---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleB[i] in st4
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+startintruder get msg from ch[4].
+rule deconcat20
+startintruder get msg from ch[4].
+roleA[i] in st3
+rule deconcat20
+startintruder get msg from ch[4].
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+startintruder get msg from ch[4].
+roleA[i] in st3
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleD[i] in st1
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleD[i] in st1
+roleB[i] in st6
+roleC[i] in st4
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+start---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleB[i] in st4
+roleC[i] in st4
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+seafn---intruder emit msg into ch[5].
+ausfn---intruder emit msg into ch[5].
+roleB[i] in st4
+roleC[i] in st4
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+roleC[i] in st4
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st3
+roleA[i] in st2
+seafn---intruder emit msg into ch[5].
+start---intruder emit msg into ch[5].
+roleB[i] in st4
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st3
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+startintruder get msg from ch[5].
+roleB[i] in st4
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st3
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleB[i] in st4
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st3
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+roleA[i] in st3
+roleD[i] in st2
+roleC[i] in st4
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+roleC[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st1
+roleD[i] in st1
+roleA[i] in st3
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleA[i] in st2
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleD[i] in st1
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+roleB[i] in st3
+roleB[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleB[i] in st4
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleA[i] in st3
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleA[i] in st2
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st1
+roleD[i] in st1
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleB[i] in st6
+ausfnintruder get msg from ch[5].
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleB[i] in st4
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+roleA[i] in st3
+roleD[i] in st2
+roleC[i] in st4
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+roleC[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st1
+roleD[i] in st1
+roleA[i] in st3
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+roleA[i] in st2
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleD[i] in st1
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+ausfnintruder get msg from ch[5].
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+roleB[i] in st3
+roleB[i] in st3
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleB[i] in st4
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleA[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleD[i] in st2
+roleA[i] in st2
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st1
+roleD[i] in st1
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleB[i] in st6
+seafnintruder get msg from ch[5].
+
+Progress Report:
+
+	1000 states explored in 0.30s, with 1601 rules fired and 331 states in the queue.
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleB[i] in st3
+roleB[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+ausfnintruder get msg from ch[5].
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+ausfnintruder get msg from ch[5].
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleB[i] in st3
+roleB[i] in st3
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[5].
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+startintruder get msg from ch[5].
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleB[i] in st3
+roleB[i] in st3
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[5].
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+startintruder get msg from ch[5].
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleB[i] in st3
+roleB[i] in st3
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleB[i] in st3
+roleB[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+ausfnintruder get msg from ch[5].
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+ausfnintruder get msg from ch[5].
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleB[i] in st3
+roleB[i] in st3
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+startintruder get msg from ch[5].
+roleB[i] in st4
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st3
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st3
+rule deconcat20
+roleB[i] in st3
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+rule deconcat17
+rule deconcat15
+rule deconcat20
+rule deconcat15
+roleA[i] in st3
+rule deconcat20
+rule deconcat15
+rule enconcat5
+rule deconcat20
+rule deconcat15
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat19
+rule deconcat15
+rule deconcat15
+roleC[i] in st6
+rule deconcat5
+roleB[i] in st8
+rule deconcat5
+roleA[i] in st5
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+roleB[i] in st3
+roleB[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+seafnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleD[i] in st2
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleD[i] in st2
+roleB[i] in st6
+rule deconcat20
+roleD[i] in st1
+rule deconcat20
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+roleD[i] in st1
+rule deconcat20
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+seafnintruder get msg from ch[5].
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleB[i] in st3
+roleB[i] in st3
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[5].
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+startintruder get msg from ch[5].
+roleB[i] in st4
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleB[i] in st3
+roleB[i] in st3
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+ausfnintruder get msg from ch[5].
+roleB[i] in st4
+concat(seafn,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+ausfnintruder get msg from ch[5].
+roleB[i] in st4
+concat(start,seafn)intruder get msg from ch[6].
+roleC[i] in st4
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st3
+roleC[i] in st3
+roleA[i] in st3
+roleB[i] in st3
+roleB[i] in st3
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+seafnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+startintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+rule deconcat20
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat19
+rule enconcat5
+rule enconcat5
+roleC[i] in st6
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st2
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st2
+roleD[i] in st2
+roleC[i] in st4
+roleA[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+roleD[i] in st1
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleA[i] in st3
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+rule enconcat5
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+roleD[i] in st1
+roleC[i] in st4
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st4
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+roleD[i] in st1
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+rule deconcat19
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st2
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleB[i] in st6
+roleD[i] in st1
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleD[i] in st1
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st2
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st2
+roleD[i] in st2
+roleC[i] in st4
+roleA[i] in st3
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+roleD[i] in st1
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+roleA[i] in st3
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+rule enconcat5
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+roleD[i] in st1
+roleC[i] in st4
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st4
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+roleD[i] in st1
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+rule deconcat19
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleD[i] in st2
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleB[i] in st6
+roleD[i] in st1
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleD[i] in st1
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+startintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+startintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+roleB[i] in st4
+startintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+startintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+startintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+seafnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+roleB[i] in st4
+rule deconcat20
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+rule deconcat15
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule deconcat15
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+rule deconcat15
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule enconcat5
+rule deconcat19
+rule enconcat5
+rule enconcat5
+roleC[i] in st6
+rule deconcat15
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleB[i] in st7
+rule enconcat5
+concat(ausf,certC,seafn)intruder get msg from ch[10].
+roleA[i] in st4
+rule enconcat7
+rule enconcat7
+rule enconcat5
+concat(aenc{prekey}PK(Intruder),certA,sign{concat(start,ue1,ausf,certC)}SK(UE),senc{concat(start,ue1,ausf,certC)}hash(concat(ue1,ausf,prekey));)intruder get msg from ch[11].
+roleB[i] in st9
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+roleB[i] in st6
+roleA[i] in st3
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule deconcat20
+roleD[i] in st2
+rule deconcat20
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+roleD[i] in st2
+roleB[i] in st6
+rule enconcat5
+roleD[i] in st2
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+rule deconcat20
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule deconcat20
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+roleD[i] in st1
+rule deconcat20
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+rule deconcat20
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+rule deconcat20
+rule deconcat19
+rule enconcat5
+roleD[i] in st1
+rule deconcat20
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st6
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+seafnintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+startintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+startintruder get msg from ch[5].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+ausfnintruder get msg from ch[5].
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+roleC[i] in st4
+roleC[i] in st4
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleB[i] in st4
+roleB[i] in st4
+roleA[i] in st3
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st3
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[5].
+rule deconcat20
+startintruder get msg from ch[5].
+roleA[i] in st3
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st3
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule deconcat20
+roleB[i] in st6
+rule enconcat5
+rule deconcat20
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat19
+roleC[i] in st6
+rule deconcat19
+roleC[i] in st6
+rule enconcat5
+rule enconcat5
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleB[i] in st7
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleA[i] in st3
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st3
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+roleD[i] in st2
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+roleA[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+roleB[i] in st6
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+roleD[i] in st2
+roleC[i] in st4
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st4
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+rule deconcat19
+rule enconcat5
+roleC[i] in st3
+roleD[i] in st1
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+seafnintruder get msg from ch[5].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+roleD[i] in st1
+roleC[i] in st4
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st4
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st4
+rule deconcat19
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+ue1---intruder emit msg into ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+rule deconcat19
+	2000 states explored in 0.54s, with 3318 rules fired and 665 states in the queue.
+roleD[i] in st1
+roleC[i] in st3
+rule deconcat19
+roleD[i] in st1
+roleC[i] in st3
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleA[i] in st3
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+rule enconcat5
+startintruder get msg from ch[4].
+roleB[i] in st6
+roleD[i] in st2
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+rule enconcat5
+startintruder get msg from ch[4].
+roleB[i] in st6
+roleD[i] in st2
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleD[i] in st2
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+roleD[i] in st1
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+rule deconcat19
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st6
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleA[i] in st3
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st3
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+roleD[i] in st2
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleA[i] in st2
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+roleA[i] in st3
+concat(seafn,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+roleB[i] in st6
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+roleD[i] in st2
+roleC[i] in st4
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st4
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+rule deconcat19
+rule enconcat5
+roleC[i] in st3
+roleD[i] in st1
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+ausfnintruder get msg from ch[5].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+roleD[i] in st1
+roleC[i] in st4
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st4
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st4
+rule deconcat19
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+ue1---intruder emit msg into ch[7].
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+rule deconcat19
+roleD[i] in st1
+roleC[i] in st3
+rule deconcat19
+roleD[i] in st1
+roleC[i] in st3
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleA[i] in st3
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+rule enconcat5
+startintruder get msg from ch[4].
+roleB[i] in st6
+roleD[i] in st2
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[4].
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+startintruder get msg from ch[4].
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+rule enconcat5
+startintruder get msg from ch[4].
+roleB[i] in st6
+roleD[i] in st2
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleD[i] in st2
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+roleD[i] in st1
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st1
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+rule deconcat19
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st6
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[5].
+startintruder get msg from ch[5].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[5].
+startintruder get msg from ch[5].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[5].
+startintruder get msg from ch[5].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[5].
+startintruder get msg from ch[5].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[5].
+rule deconcat20
+startintruder get msg from ch[5].
+roleA[i] in st3
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st3
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+rule deconcat20
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st3
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st3
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+rule deconcat20
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule deconcat15
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule deconcat15
+rule enconcat5
+rule deconcat20
+rule deconcat15
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat20
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat20
+rule deconcat19
+rule deconcat15
+rule deconcat20
+rule deconcat15
+roleC[i] in st6
+rule enconcat5
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleB[i] in st7
+rule deconcat15
+rule deconcat5
+rule deconcat15
+roleB[i] in st8
+rule deconcat5
+roleA[i] in st5
+rule enconcat7
+rule enconcat5
+rule enconcat7
+rule enconcat5
+rule enconcat7
+rule enconcat7
+rule deconcat12
+roleB[i] in st10
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+rule deconcat20
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+startintruder get msg from ch[4].
+rule deconcat20
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+startintruder get msg from ch[4].
+rule deconcat20
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+roleD[i] in st2
+rule deconcat20
+startintruder get msg from ch[4].
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule deconcat20
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+rule deconcat20
+startintruder get msg from ch[4].
+rule deconcat20
+rule enconcat5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat20
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+rule deconcat20
+rule deconcat19
+rule enconcat5
+roleD[i] in st2
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat20
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st6
+rule deconcat20
+rule deconcat19
+roleD[i] in st1
+rule deconcat20
+roleD[i] in st1
+roleC[i] in st6
+rule deconcat20
+rule deconcat19
+roleD[i] in st1
+rule deconcat20
+roleD[i] in st1
+roleC[i] in st6
+rule deconcat20
+rule enconcat5
+roleD[i] in st1
+rule deconcat20
+rule enconcat5
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleD[i] in st1
+roleB[i] in st7
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+seafnintruder get msg from ch[5].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[5].
+startintruder get msg from ch[5].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+startintruder get msg from ch[5].
+startintruder get msg from ch[5].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(ausfn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(seafn,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)---intruder emit msg into ch[6].
+ausfnintruder get msg from ch[5].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+roleC[i] in st3
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st3
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st6
+concat(seafn,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+concat(start,seafn)intruder get msg from ch[6].
+roleA[i] in st2
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+rule deconcat20
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st3
+rule deconcat20
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+startintruder get msg from ch[5].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st3
+rule deconcat20
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat20
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat20
+rule deconcat19
+rule enconcat5
+rule deconcat20
+rule enconcat5
+roleC[i] in st6
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleB[i] in st7
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleB[i] in st7
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleB[i] in st7
+rule enconcat5
+rule deconcat5
+rule enconcat5
+roleB[i] in st8
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+startintruder get msg from ch[4].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleB[i] in st6
+start---intruder emit msg into ch[7].
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleA[i] in st3
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleB[i] in st6
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+seafnintruder get msg from ch[5].
+roleD[i] in st2
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+seafnintruder get msg from ch[5].
+roleB[i] in st6
+rule enconcat5
+seafnintruder get msg from ch[5].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+roleD[i] in st2
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st6
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+startintruder get msg from ch[4].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+rule enconcat5
+roleC[i] in st4
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st4
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st4
+rule deconcat19
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st4
+ue1---intruder emit msg into ch[7].
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+rule deconcat19
+roleC[i] in st3
+rule deconcat19
+roleC[i] in st3
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleD[i] in st1
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+rule enconcat5
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st6
+seafnintruder get msg from ch[5].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+seafnintruder get msg from ch[5].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+rule deconcat19
+rule enconcat5
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+rule enconcat5
+seafnintruder get msg from ch[5].
+roleD[i] in st1
+roleC[i] in st6
+ue1---intruder emit msg into ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st4
+rule deconcat19
+roleD[i] in st1
+roleC[i] in st4
+rule deconcat19
+roleD[i] in st1
+roleC[i] in st4
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+rule deconcat19
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+	3000 states explored in 0.88s, with 5267 rules fired and 995 states in the queue.
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+startintruder get msg from ch[4].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+startintruder get msg from ch[4].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleB[i] in st6
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+startintruder get msg from ch[4].
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+rule deconcat19
+rule enconcat5
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st6
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleD[i] in st1
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+rule deconcat19
+roleD[i] in st1
+roleD[i] in st1
+roleC[i] in st6
+rule deconcat19
+roleD[i] in st1
+roleD[i] in st1
+roleC[i] in st6
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleD[i] in st1
+roleB[i] in st7
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+ausfnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+startintruder get msg from ch[4].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleB[i] in st6
+start---intruder emit msg into ch[7].
+ausfnintruder get msg from ch[5].
+roleA[i] in st2
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleA[i] in st3
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleB[i] in st6
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+ausfnintruder get msg from ch[5].
+roleD[i] in st2
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+startintruder get msg from ch[4].
+ausfnintruder get msg from ch[5].
+roleB[i] in st6
+rule enconcat5
+ausfnintruder get msg from ch[5].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+roleD[i] in st2
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st4
+roleB[i] in st6
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+startintruder get msg from ch[4].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st4
+startintruder get msg from ch[4].
+roleC[i] in st4
+rule enconcat5
+roleC[i] in st4
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st4
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st4
+rule deconcat19
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st4
+ue1---intruder emit msg into ch[7].
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+rule deconcat19
+roleC[i] in st3
+rule deconcat19
+roleC[i] in st3
+rule enconcat5
+roleC[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleD[i] in st1
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+rule enconcat5
+ue1---intruder emit msg into ch[7].
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+rule enconcat5
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+roleB[i] in st6
+ausfnintruder get msg from ch[5].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+ausfnintruder get msg from ch[5].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+rule deconcat19
+rule enconcat5
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+rule enconcat5
+ausfnintruder get msg from ch[5].
+roleD[i] in st1
+roleC[i] in st6
+ue1---intruder emit msg into ch[7].
+roleD[i] in st1
+roleC[i] in st4
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st6
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st4
+rule deconcat19
+roleD[i] in st1
+roleC[i] in st4
+rule deconcat19
+roleD[i] in st1
+roleC[i] in st4
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st4
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st3
+rule deconcat19
+rule enconcat5
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+roleD[i] in st1
+roleC[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+ausfnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+startintruder get msg from ch[4].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+startintruder get msg from ch[4].
+roleA[i] in st2
+roleD[i] in st2
+roleA[i] in st3
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+ue1intruder get msg from ch[7].
+roleD[i] in st2
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleB[i] in st6
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+startintruder get msg from ch[4].
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+startintruder get msg from ch[4].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+startintruder get msg from ch[4].
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+startintruder get msg from ch[4].
+roleB[i] in st6
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st2
+roleC[i] in st5
+rule deconcat19
+rule enconcat5
+roleD[i] in st2
+rule enconcat5
+startintruder get msg from ch[4].
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule enconcat5
+roleD[i] in st2
+roleC[i] in st6
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleD[i] in st1
+roleB[i] in st5
+roleD[i] in st1
+roleD[i] in st1
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleD[i] in st1
+roleC[i] in st5
+rule deconcat19
+roleD[i] in st1
+roleD[i] in st1
+roleC[i] in st6
+rule deconcat19
+roleD[i] in st1
+roleD[i] in st1
+roleC[i] in st6
+rule enconcat5
+roleD[i] in st1
+rule enconcat5
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleD[i] in st1
+roleB[i] in st7
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+ausfnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+ausfnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+startintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+startintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat19
+rule enconcat5
+rule enconcat5
+roleC[i] in st6
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+startintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+startintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ausfn---intruder emit msg into ch[7].
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+ausfn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+concat(ausfn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+seafn---intruder emit msg into ch[7].
+ausfnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+seafn---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+start---intruder emit msg into ch[7].
+ausfnintruder get msg from ch[5].
+roleA[i] in st2
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+roleC[i] in st4
+roleB[i] in st5
+roleA[i] in st2
+start---intruder emit msg into ch[7].
+roleC[i] in st4
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+rule enconcat5
+ausfnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+roleC[i] in st3
+roleB[i] in st6
+roleA[i] in st2
+roleC[i] in st3
+roleB[i] in st5
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+roleC[i] in st3
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+concat(start,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+concat(seafn,seafn)---intruder emit msg into ch[6].
+roleA[i] in st3
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule enconcat5
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+startintruder get msg from ch[5].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+rule deconcat20
+rule enconcat5
+startintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st3
+rule deconcat20
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+rule deconcat20
+concat(seafn,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule deconcat20
+seafnintruder get msg from ch[5].
+roleA[i] in st2
+rule deconcat20
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st4
+roleA[i] in st3
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleC[i] in st4
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+rule deconcat20
+rule enconcat5
+seafnintruder get msg from ch[5].
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+roleC[i] in st4
+roleB[i] in st6
+rule deconcat20
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleC[i] in st3
+roleB[i] in st5
+rule deconcat20
+roleC[i] in st3
+rule deconcat20
+roleC[i] in st3
+roleB[i] in st6
+rule enconcat5
+roleC[i] in st3
+rule deconcat20
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st3
+rule deconcat20
+concat(start,seafn)---intruder emit msg into ch[6].
+rule deconcat20
+roleA[i] in st3
+rule enconcat5
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+ue1intruder get msg from ch[7].
+roleB[i] in st5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule enconcat5
+roleB[i] in st6
+rule deconcat20
+rule deconcat15
+rule deconcat20
+rule deconcat15
+roleB[i] in st6
+rule enconcat5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule deconcat15
+rule enconcat5
+concat(ue1,seafn)intruder get msg from ch[8].
+roleC[i] in st5
+rule deconcat19
+rule enconcat5
+rule deconcat20
+rule enconcat5
+rule deconcat20
+rule deconcat19
+rule enconcat5
+rule enconcat5
+roleC[i] in st6
+rule deconcat20
+rule enconcat5
+roleC[i] in st6
+rule deconcat20
+rule deconcat15
+concat(ausf,certC,ausfn)intruder get msg from ch[9].
+roleB[i] in st7
+rule enconcat5
+rule deconcat5
+rule deconcat15
+rule enconcat5
+rule enconcat5
+roleB[i] in st8
+rule deconcat15
+concat(ausf,certC,seafn)intruder get msg from ch[10].
+roleA[i] in st4
+rule enconcat7
+rule enconcat7
+rule enconcat5
+concat(aenc{prekey}PK(Intruder),certA,sign{concat(start,ue1,ausf,certC)}SK(UE),senc{concat(start,ue1,ausf,certC)}hash(concat(ue1,ausf,prekey));)intruder get msg from ch[11].
+roleB[i] in st9
+rule enconcat5
+rule enconcat7
+rule enconcat5
+rule enconcat7
+rule enconcat7
+rule enconcat7
+rule sdecrypt11
+rule destructSignRule9
+rule enconcat7
+rule adecrypt6
 
 ==========================================================================
 
 Result:
 
-	Deadlocked state found.
+	Invariant "secrecy" failed.
 
 State Space Explored:
 
-	14 states, 13 rules fired in 0.10s.
+	3746 states, 6634 rules fired in 1.13s.
 
 Analysis of State Space:
 
