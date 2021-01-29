@@ -12580,7 +12580,7 @@ return mu_false;
 };
 /*** end function declaration ***/
 
-mu_0_boolean mu_matchPat(mu_1_Message  mu_m1,mu_1_msgSet& mu_sPatnSet)
+mu_0_boolean mu_matchPat(mu_1_Message mu_m1,mu_1_msgSet& mu_sPatnSet)
 {
 /*** Variable declaration ***/
 mu_0_boolean mu_flag("flag",0);

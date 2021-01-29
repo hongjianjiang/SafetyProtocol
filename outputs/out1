@@ -5317,7 +5317,7 @@ rule enconcat5
 seafnintruder get msg from ch[5].
 ue1intruder get msg from ch[7].
 roleB[i] in st5
-	3000 states explored in 0.88s, with 5267 rules fired and 995 states in the queue.
+	3000 states explored in 0.83s, with 5267 rules fired and 995 states in the queue.
 roleC[i] in st4
 roleB[i] in st5
 roleA[i] in st2
@@ -6694,7 +6694,7 @@ Result:
 
 State Space Explored:
 
-	3746 states, 6634 rules fired in 1.13s.
+	3746 states, 6634 rules fired in 1.06s.
 
 Analysis of State Space:
 
