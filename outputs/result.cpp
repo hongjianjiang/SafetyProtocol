@@ -26485,7 +26485,6 @@ mu_roleB[1].mu_ausf = mu_anyNonce;
 mu_roleB[1].mu_ausfn = mu_anyNonce;
 mu_roleB[1].mu_sucm = mu_anyNonce;
 mu_roleB[1].mu_certC = mu_anyNonce;
-mu_roleB[1].mu_prekey = mu_anyNonce;
 mu_roleB[1].mu_start = mu_anyNonce;
 mu_roleB[1].mu_D = mu_anyAgent;
 mu_roleB[1].mu_x10.mu_msgType = mu_tmp;
@@ -26506,12 +26505,12 @@ mu_roleC[1].mu_ausf = mu_ausf;
 mu_roleC[1].mu_ausfn = mu_ausfn;
 mu_roleC[1].mu_sucm = mu_sucm;
 mu_roleC[1].mu_certC = mu_certC;
-mu_roleC[1].mu_prekey = mu_prekey;
 mu_roleC[1].mu_st = mu_C1;
 mu_roleC[1].mu_commit = mu_false;
 mu_roleC[1].mu_supi = mu_anyNonce;
 mu_roleC[1].mu_ue = mu_anyNonce;
 mu_roleC[1].mu_ue1 = mu_anyNonce;
+mu_roleC[1].mu_prekey = mu_anyNonce;
 mu_roleC[1].mu_certA = mu_anyNonce;
 mu_roleC[1].mu_eapm = mu_anyNonce;
 mu_roleC[1].mu_seafn = mu_anyNonce;
@@ -26544,7 +26543,6 @@ mu_roleD[1].mu_ausf = mu_anyNonce;
 mu_roleD[1].mu_ausfn = mu_anyNonce;
 mu_roleD[1].mu_sucm = mu_anyNonce;
 mu_roleD[1].mu_certC = mu_anyNonce;
-mu_roleD[1].mu_prekey = mu_anyNonce;
 mu_roleD[1].mu_x10.mu_msgType = mu_tmp;
 mu_roleD[1].mu_x10.mu_tmpPart = 0;
 mu_roleD[1].mu_m1.mu_msgType = mu_tmp;
@@ -26962,21 +26960,24 @@ unsigned short StartStateManager::numstartstates = 1;
 /********************
   Invariant records
  ********************/
-int mu__invariant_1044() // Invariant "secrecy"
+int mu__invariant_1044() // Invariant "weakC"
 {
 bool mu__quant1045; 
 mu__quant1045 = TRUE;
 {
-for(int mu_i = 0; mu_i <= 100; mu_i++) {
+for(int mu_i = 1; mu_i <= 1; mu_i++) {
 bool mu__boolexpr1046;
-bool mu__boolexpr1047;
-  if (!((mu_msgs[mu_i].mu_msgType) == (mu_nonce))) mu__boolexpr1047 = FALSE ;
+  if (!((mu_roleA[mu_i].mu_st) == (mu_A6))) mu__boolexpr1046 = TRUE ;
   else {
-  mu__boolexpr1047 = ((mu_msgs[mu_i].mu_noncePart) == (mu_prekey)) ; 
-}
-  if (!(mu__boolexpr1047)) mu__boolexpr1046 = TRUE ;
-  else {
-  mu__boolexpr1046 = ((mu_Spy_known[mu_i]) == (mu_false)) ; 
+bool mu__quant1047; 
+mu__quant1047 = FALSE;
+{
+for(int mu_j = 1; mu_j <= 1; mu_j++) {
+if ( ((mu_roleC[mu_i].mu_ausf) == (mu_roleA[mu_j].mu_ausf)) )
+  { mu__quant1047 = TRUE; break; }
+};
+};
+  mu__boolexpr1046 = (mu__quant1047) ; 
 }
 if ( !(mu__boolexpr1046) )
   { mu__quant1045 = FALSE; break; }
@@ -26985,51 +26986,17 @@ if ( !(mu__boolexpr1046) )
 return mu__quant1045;
 };
 
-bool mu__condition_1048() // Condition for Rule "secrecy"
+bool mu__condition_1048() // Condition for Rule "weakC"
 {
   return mu__invariant_1044( );
 }
 
 /**** end rule declaration ****/
 
-int mu__invariant_1049() // Invariant "weakC"
-{
-bool mu__quant1050; 
-mu__quant1050 = TRUE;
-{
-for(int mu_i = 1; mu_i <= 1; mu_i++) {
-bool mu__boolexpr1051;
-  if (!((mu_roleA[mu_i].mu_st) == (mu_A6))) mu__boolexpr1051 = TRUE ;
-  else {
-bool mu__quant1052; 
-mu__quant1052 = FALSE;
-{
-for(int mu_j = 1; mu_j <= 1; mu_j++) {
-if ( ((mu_roleC[mu_i].mu_ausf) == (mu_roleA[mu_j].mu_ausf)) )
-  { mu__quant1052 = TRUE; break; }
-};
-};
-  mu__boolexpr1051 = (mu__quant1052) ; 
-}
-if ( !(mu__boolexpr1051) )
-  { mu__quant1050 = FALSE; break; }
-};
-};
-return mu__quant1050;
-};
-
-bool mu__condition_1053() // Condition for Rule "weakC"
-{
-  return mu__invariant_1049( );
-}
-
-/**** end rule declaration ****/
-
 const rulerec invariants[] = {
-{"weakC", &mu__condition_1053, NULL, },
-{"secrecy", &mu__condition_1048, NULL, },
+{"weakC", &mu__condition_1048, NULL, },
 };
-const unsigned short numinvariants = 2;
+const unsigned short numinvariants = 1;
 
 /********************
   Normal/Canonicalization for scalarset
