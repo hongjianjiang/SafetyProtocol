@@ -2740,7 +2740,14 @@ let genCons m i patList =
   sprintf "    hashMsg:=msgs[msg.hashMsg];\n" ^
   sprintf "    destruct%d(hashMsg,%s);\n" m1Num (atom2Str m1Atoms) ^
   sprintf "  end;\n"
-
+  |`K (r1,r2) -> str1 ^ 
+  sprintf "  var k1:KeyType;\n" ^
+  sprintf "      msg1:Message;\n   begin\n" ^ 
+  sprintf "      clear msg1;\n" ^
+  sprintf "      k1 := msg.k;\n"^
+  sprintf "      %ssymk1 := k1.ag1;\n" r1 ^
+  sprintf "      %ssymk2 := k1.ag2;\n" r2 ^
+  sprintf "   end;\n"
   
   |_ -> ""
 
