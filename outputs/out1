@@ -33,7 +33,7 @@ Algorithm:
 
 Memory usage:
 
-	* The size of each state is 45456 bits (rounded up to 5688 bytes).
+	* The size of each state is 48696 bits (rounded up to 6088 bytes).
 	* The memory allocated for the hash table and state queue is
 	  8 Mbytes.
 	  With states hash-compressed to 40 bits, the maximum size of
@@ -46,125 +46,424 @@ Memory usage:
 Warning: No trace will not be printed in the case of protocol errors!
          Check the options if you want to have error traces.
 roleA[i] in st1
-aenc{concat(Na,Alice)}PK(Intruder)intruder get msg from ch[1].
-rule adecrypt5
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-rule aencrypt5
-rule deconcat3
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-rule adecrypt5
-rule deconcat3
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-aenc{concat(Na,Alice)}PK(Bob)---intruder emit msg into ch[1].
-rule enconcat6
-rule aencrypt5
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-rule aencrypt5
-rule deconcat3
-rule aencrypt5
-rule deconcat3
-rule enconcat6
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-aenc{concat(Na,Alice)}PK(Bob)---intruder emit msg into ch[1].
-rule deconcat3
-rule deconcat3
+intruder get msg from ch[1].
 roleB[i] in st1
-rule aencrypt7
-rule aencrypt5
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-rule enconcat6
-rule aencrypt5
-rule aencrypt7
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-aenc{concat(Na,Alice)}PK(Bob)---intruder emit msg into ch[1].
-rule enconcat6
-rule enconcat6
+rule deconcat5
+intruder emit msg into ch[1].
+intruder get msg from ch[1].
 roleB[i] in st1
-rule deconcat3
-roleB[i] in st2
-rule aencrypt5
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-rule aencrypt7
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-aenc{concat(Na,Alice)}PK(Bob)---intruder emit msg into ch[1].
-rule aencrypt7
-rule aencrypt5
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-aenc{concat(Na,Alice)}PK(Bob)---intruder emit msg into ch[1].
-rule aencrypt7
-rule aencrypt7
+rule sdecrypt4
+intruder emit msg into ch[1].
+rule deconcat5
+roleB[i] in st1
+rule deconcat5
+intruder emit msg into ch[1].
+rule enconcat6
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sdecrypt4
+roleB[i] in st1
+rule deconcat5
+roleB[i] in st1
+rule sdecrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[1].
+rule enconcat6
+intruder emit msg into ch[1].
+rule enconcat6
+rule sencrypt4
 roleB[i] in st1
 rule enconcat6
-roleB[i] in st2
-rule deconcat3
-aenc{concat(Na,Nb)}PK(Alice)intruder get msg from ch[2].
-roleA[i] in st2
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-aenc{concat(Na,Alice)}PK(Bob)---intruder emit msg into ch[1].
-rule aencrypt5
-aenc{concat(Na,Na)}PK(Alice)---intruder emit msg into ch[2].
-aenc{concat(Na,Alice)}PK(Intruder)---intruder emit msg into ch[1].
-aenc{concat(Na,Alice)}PK(Bob)---intruder emit msg into ch[1].
-rule aencrypt7
-rule aencrypt7
+rule sencrypt4
 roleB[i] in st1
-aenc{concat(Na,Na)}PK(Alice)---intruder emit msg into ch[2].
-aenc{concat(Na,Na)}PK(Alice)---intruder emit msg into ch[2].
+rule sdecrypt4
 roleB[i] in st1
-rule aencrypt7
-roleB[i] in st2
 rule enconcat6
-aenc{concat(Na,Nb)}PK(Alice)intruder get msg from ch[2].
-roleA[i] in st2
-rule deconcat3
-aenc{concat(Na,Nb)}PK(Alice)---intruder emit msg into ch[2].
-rule deconcat3
-roleA[i] in st3
-aenc{concat(Na,Na)}PK(Alice)---intruder emit msg into ch[2].
-aenc{concat(Na,Na)}PK(Alice)---intruder emit msg into ch[2].
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt7
+rule sencrypt4
 roleB[i] in st1
-rule aencrypt5
-roleA[i] in st2
-aenc{concat(Na,Na)}PK(Alice)---intruder emit msg into ch[2].
-aenc{concat(Na,Na)}PK(Alice)---intruder emit msg into ch[2].
-roleB[i] in st1
-rule aencrypt7
-roleB[i] in st2
-roleA[i] in st2
-roleB[i] in st1
-roleA[i] in st2
-aenc{concat(Na,Na)}PK(Alice)---intruder emit msg into ch[2].
-roleB[i] in st2
-rule aencrypt7
-aenc{concat(Na,Nb)}PK(Alice)intruder get msg from ch[2].
-roleA[i] in st2
-rule aencrypt7
-aenc{concat(Na,Nb)}PK(Alice)intruder get msg from ch[2].
-roleA[i] in st2
+rule sencrypt7
+rule sencrypt7
+intruder emit msg into ch[1].
 rule enconcat6
-aenc{concat(Na,Nb)}PK(Alice)---intruder emit msg into ch[2].
-roleA[i] in st3
-rule deconcat3
+roleB[i] in st1
+rule enconcat6
+rule sencrypt4
+roleB[i] in st1
+rule enconcat6
+rule sencrypt4
+roleB[i] in st1
+rule sencrypt7
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[1].
+rule enconcat6
+intruder emit msg into ch[1].
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt7
+roleB[i] in st1
+rule sencrypt7
+rule sencrypt7
+rule sencrypt4
+roleB[i] in st1
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt7
+roleB[i] in st1
+rule enconcat6
+roleB[i] in st1
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+rule sencrypt7
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+rule sencrypt4
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+rule sencrypt4
+roleB[i] in st1
 roleA[i] in st2
-rule deconcat3
-aenc{Nb}PK(Intruder)intruder get msg from ch[3].
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[1].
+rule sencrypt4
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt7
+rule sencrypt4
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+rule sencrypt7
+roleB[i] in st1
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+rule sencrypt7
+roleB[i] in st1
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt4
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+rule sencrypt7
+intruder emit msg into ch[1].
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt4
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt4
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt7
+intruder emit msg into ch[2].
+roleB[i] in st1
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+intruder emit msg into ch[1].
+roleB[i] in st1
 roleA[i] in st2
 roleB[i] in st1
 roleA[i] in st2
-aenc{concat(Na,Na)}PK(Alice)---intruder emit msg into ch[2].
-roleB[i] in st2
-rule aencrypt5
-roleA[i] in st3
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+rule sencrypt4
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+intruder emit msg into ch[2].
+intruder emit msg into ch[2].
+roleB[i] in st1
+rule sencrypt7
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
+roleB[i] in st1
+roleA[i] in st2
 
 ==========================================================================
 
-Result:
+Status:
 
-	Invariant "weakB" failed.
+	No error found.
 
 State Space Explored:
 
-	79 states, 110 rules fired in 0.10s.
+	161 states, 403 rules fired in 0.10s.
+
+Omission Probabilities (caused by Hash Compaction):
+
+	Pr[even one omitted state]    <= 0.000000
+	Pr[even one undetected error] <= 0.000000
+	Diameter of reachability graph: 11
 
 Analysis of State Space:
 

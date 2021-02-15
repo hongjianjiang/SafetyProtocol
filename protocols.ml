@@ -30,7 +30,7 @@ open Func
     String.concat ~sep:"\n" (List.map ~f:(fun r -> sprintf "  role%sNum:1;" r) rlist) ^
     "
   totalFact:100;
-  msgLength:5;
+  msgLength:10;
   chanNum:18;
   invokeNum:10;\n" ^
   
@@ -369,9 +369,9 @@ let genJudgeCode () =
     elsif msg.msgType = aenc & msg1.msgType = tmp then 
       return true;
     elsif msg.msgType = senc then 
-      if msgs[msg.sencKey].k.m =0 then 
-        return (msgs[msg.sencKey].k.ag1 = ag |msgs[msg.sencKey].k.ag2 = ag) 
-      endif;
+      ---if msgs[msg.sencKey].k.m =0 then 
+      return (msgs[msg.sencKey].k.ag1 = ag | msgs[msg.sencKey].k.ag2 = ag) 
+      ---endif;
     endif;
     return true;
   end;\n\n"
@@ -2397,6 +2397,17 @@ let genCons m i patList =
                             sprintf "      get_msgNo(%s,msgNo);\n" m1 ^
                             sprintf "      %s.tmpPart :=msgNo;\n" m1 ^
                             sprintf "   end;\n"
+                  |`Hash n ->let m1Atoms = getAtoms m1 in
+                            let m1Num = getPatNum m1 patlist in
+                            str1 ^ 
+                            sprintf "  var k1:KeyType;\n" ^
+                            sprintf "      msg1:Message;\n   begin\n" ^ (*,msgNum1,msgNum2*)
+                            sprintf "      clear msg1;\n" ^
+                            sprintf "      k1 := msgs[msg.aencKey].k;\n"^
+                            sprintf "      %s := k1.ag;" keyAg ^
+                            sprintf "      msg1:=msgs[msg.aencMsg];\n" ^
+                            sprintf "    destruct%d(msg1,%s);\n" m1Num (atom2Str m1Atoms) ^
+                            sprintf "   end;\n"
                   |_ -> ""     
   end 
   |`Sign(m1,k1) ->begin
@@ -2464,7 +2475,17 @@ let genCons m i patList =
                             sprintf "      msg1:=msgs[msg.aencMsg];\n" ^
                             sprintf "      %s:=msg1.constPart;\n" n ^
                             sprintf "   end;\n"
-                  
+                  |`Hash n ->let m1Atoms = getAtoms m1 in
+                            let m1Num = getPatNum m1 patlist in
+                            str1 ^ 
+                            sprintf "  var k1:KeyType;\n" ^
+                            sprintf "      msg1:Message;\n   begin\n" ^ (*,msgNum1,msgNum2*)
+                            sprintf "      clear msg1;\n" ^
+                            sprintf "      k1 := msgs[msg.aencKey].k;\n"^
+                            sprintf "      %s := k1.ag;" keyAg ^
+                            sprintf "      msg1:=msgs[msg.aencMsg];\n" ^
+                            sprintf "    destruct%d(msg1,%s);\n" m1Num (atom2Str m1Atoms) ^
+                            sprintf "   end;\n"
                   |`Pk r -> str1 ^ 
                             sprintf "  var k1:KeyType;\n" ^
                             sprintf "      msg1:Message;\n   begin\n" ^ (*,msgNum1,msgNum2*)
@@ -2641,6 +2662,17 @@ let genCons m i patList =
                                           sprintf "      sencMsg:=msgs[msg.sencMsg];\n" ^
                                           sprintf "      %ssymk1:=sencMsg.k.ag1;\n" r1' ^
                                           sprintf "      %ssymk2:=sencMsg.k.ag2;\n" r2' ^
+                                          sprintf "   end;\n"
+                          |`Hash n ->let m1Atoms = getAtoms m1 in
+                                          let m1Num = getPatNum m1 patlist in
+                                          str1 ^ 
+                                          sprintf "  var k1:KeyType;\n" ^
+                                          sprintf "      msg1:Message;\n   begin\n" ^ (*,msgNum1,msgNum2*)
+                                          sprintf "      clear msg1;\n" ^
+                                          sprintf "      k1 := msgs[msg.aencKey].k;\n"^
+                                          sprintf "      %s := k1.ag;" keyAg ^
+                                          sprintf "      msg1:=msgs[msg.aencMsg];\n" ^
+                                          sprintf "    destruct%d(msg1,%s);\n" m1Num (atom2Str m1Atoms) ^
                                           sprintf "   end;\n"
                           |_ ->""
     end
@@ -2896,11 +2928,12 @@ and printDecRule (m,k) i i1 i2 =
 match k with 
 |`Pk pka->sprintf "  rule \"adecrypt %d\"	---pat%d\n" i i^
 sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n    !Spy_known[msgs[pat%dSet.content[i]].aencMsg]&\n    Spy_known[inverseKeyIndex(msgs[msgs[pat%dSet.content[i]].aencKey])]  ==>\n" i i i i i ^
-sprintf "    var key_inv:Message;\n	      msgPat%d:indexType;\n	      flag_pat%d:boolean;\n" i1 i1^
+sprintf "    var key_inv:Message;\n	      msgPat%d:indexType;\n	      flag_pat%d:boolean;	      num:indexType;\n" i1 i1^
 sprintf "    begin\n"^
 sprintf "      put \"rule adecrypt%d\\n\";\n" i^
 sprintf "      key_inv := inverseKey(msgs[msgs[pat%dSet.content[i]].aencKey]);\n" i^
-sprintf "      if (key_inv.k.ag = Intruder) then\n"^
+sprintf "      get_msgNo(key_inv,num);\n" ^
+sprintf "      if (key_inv.k.ag = Intruder | Spy_known[num]) then\n"^
 sprintf "        Spy_known[msgs[pat%dSet.content[i]].aencMsg]:=true;\n        msgPat%d:=msgs[pat%dSet.content[i]].aencMsg;\n" i i1 i^
 sprintf "        isPat%d(msgs[msgPat%d],flag_pat%d);\n        if (flag_pat%d) then\n" i1 i1 i1 i1^
 sprintf "          if (!exist(pat%dSet,msgPat%d)) then\n" i1 i1^
@@ -2912,11 +2945,12 @@ sprintf "    end;\n"
 |`Sk sks ->
    sprintf "  rule \"adecrypt %d\"	---pat%d\n" i i^
    sprintf "    i<=pat%dSet.length & pat%dSet.content[i] != 0 & Spy_known[pat%dSet.content[i]] &\n    !Spy_known[msgs[pat%dSet.content[i]].aencMsg]\n        ==>\n" i i i i^
-   sprintf "    var key_inv:Message;\n	      msgPat%d:indexType;\n	      flag_pat%d:boolean;\n" i1 i1^
+   sprintf "    var key_inv:Message;\n	      msgPat%d:indexType;\n	      flag_pat%d:boolean;	      num:indexType;\n" i1 i1^
    sprintf "    begin\n"^
    sprintf "      put \"rule adecrypt%d\\n\";\n" i^
    sprintf "      key_inv := inverseKey(msgs[msgs[pat%dSet.content[i]].aencKey]);\n" i^
-   sprintf "      if (key_inv.k.ag = Intruder) then\n"^
+   sprintf "      get_msgNo(key_inv,num);\n" ^
+   sprintf "      if (key_inv.k.ag = Intruder | Spy_known[num]) then\n"^
    sprintf "        Spy_known[msgs[pat%dSet.content[i]].aencMsg]:=true;\n        msgPat%d:=msgs[pat%dSet.content[i]].aencMsg;\n" i i1 i^
    sprintf "        isPat%d(msgs[msgPat%d],flag_pat%d);\n        if (flag_pat%d) then\n" i1 i1 i1 i1^
    sprintf "          if (!exist(pat%dSet,msgPat%d)) then\n" i1 i1^

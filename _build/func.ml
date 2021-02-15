@@ -1073,8 +1073,6 @@ let genCodeOfIntruderGetMsg (seq,st,r,m) patList =
   sprintf "  var flag_pat%d:boolean;\n      msgNo:indexType;\n      msg:Message;\n" j^
   sprintf "  begin\n" ^
   sprintf "    msg := ch[%d].msg;\n" seq ^ 
-  sprintf "    printMsg(ch[%d].msg);\n" seq ^
-
   sprintf "    get_msgNo(msg, msgNo);\n"^ 
   sprintf "    msg.tmpPart := msgNo;\n" ^
   sprintf "    isPat%d(msg,flag_pat%d);\n" j j^ 
@@ -1106,8 +1104,6 @@ let genCodeOfIntruderEmitMsg (seq,st,r,m) patList=
   sprintf "        ch[%d].empty:=false;\n" seq^
   sprintf "        emit[pat%dSet.content[i]] := true;\n" j^
   sprintf "        IntruEmit%d := true;\n" seq ^
-  sprintf "        printMsg(ch[%d].msg);\n" seq ^
-  sprintf "        put \"---\";\n"; ^ 
   sprintf "        put \"intruder emit msg into ch[%d].\\n\";\n" seq ^
   sprintf "      end;\n"^
   sprintf "  endruleset;\n"^

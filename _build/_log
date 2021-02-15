@@ -33,7 +33,7 @@ File "protocols.ml", line 31, characters 5-6:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 32, characters 16-17:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 33, characters 14-15:
+File "protocols.ml", line 33, characters 15-16:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 34, characters 13-14:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
@@ -477,11 +477,11 @@ File "protocols.ml", line 370, characters 18-19:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 371, characters 34-35:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 372, characters 39-40:
+File "protocols.ml", line 372, characters 42-43:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 373, characters 76-77:
+File "protocols.ml", line 373, characters 75-76:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 374, characters 12-13:
+File "protocols.ml", line 374, characters 15-16:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 375, characters 10-11:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
@@ -1075,184 +1075,184 @@ File "protocols.ml", line 1367, characters 18-19:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
 File "protocols.ml", line 1368, characters 10-11:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3542, characters 45-46:
+File "protocols.ml", line 3576, characters 45-46:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3543, characters 19-20:
+File "protocols.ml", line 3577, characters 19-20:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3544, characters 24-25:
+File "protocols.ml", line 3578, characters 24-25:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3545, characters 9-10:
+File "protocols.ml", line 3579, characters 9-10:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3546, characters 0-1:
+File "protocols.ml", line 3580, characters 0-1:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3547, characters 21-22:
+File "protocols.ml", line 3581, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3548, characters 19-20:
+File "protocols.ml", line 3582, characters 19-20:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3549, characters 9-10:
+File "protocols.ml", line 3583, characters 9-10:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3550, characters 0-1:
+File "protocols.ml", line 3584, characters 0-1:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3551, characters 20-21:
+File "protocols.ml", line 3585, characters 20-21:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3552, characters 28-29:
+File "protocols.ml", line 3586, characters 28-29:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3553, characters 24-25:
+File "protocols.ml", line 3587, characters 24-25:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3554, characters 9-10:
+File "protocols.ml", line 3588, characters 9-10:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3555, characters 0-1:
+File "protocols.ml", line 3589, characters 0-1:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3556, characters 15-16:
+File "protocols.ml", line 3590, characters 15-16:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3574, characters 41-42:
+File "protocols.ml", line 3608, characters 41-42:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3575, characters 21-22:
+File "protocols.ml", line 3609, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3576, characters 26-27:
+File "protocols.ml", line 3610, characters 26-27:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3577, characters 9-10:
+File "protocols.ml", line 3611, characters 9-10:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3578, characters 21-22:
+File "protocols.ml", line 3612, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3579, characters 31-32:
+File "protocols.ml", line 3613, characters 31-32:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3580, characters 31-32:
+File "protocols.ml", line 3614, characters 31-32:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3581, characters 30-31:
+File "protocols.ml", line 3615, characters 30-31:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3582, characters 28-29:
+File "protocols.ml", line 3616, characters 28-29:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3583, characters 42-43:
+File "protocols.ml", line 3617, characters 42-43:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3584, characters 46-47:
+File "protocols.ml", line 3618, characters 46-47:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3585, characters 29-30:
+File "protocols.ml", line 3619, characters 29-30:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3615, characters 80-81:
+File "protocols.ml", line 3649, characters 80-81:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3616, characters 21-22:
+File "protocols.ml", line 3650, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3617, characters 33-34:
+File "protocols.ml", line 3651, characters 33-34:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3618, characters 31-32:
+File "protocols.ml", line 3652, characters 31-32:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3619, characters 28-29:
+File "protocols.ml", line 3653, characters 28-29:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3620, characters 42-43:
+File "protocols.ml", line 3654, characters 42-43:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3621, characters 46-47:
+File "protocols.ml", line 3655, characters 46-47:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3622, characters 29-30:
+File "protocols.ml", line 3656, characters 29-30:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3641, characters 80-81:
+File "protocols.ml", line 3675, characters 80-81:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3642, characters 21-22:
+File "protocols.ml", line 3676, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3643, characters 34-35:
+File "protocols.ml", line 3677, characters 34-35:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3644, characters 31-32:
+File "protocols.ml", line 3678, characters 31-32:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3645, characters 28-29:
+File "protocols.ml", line 3679, characters 28-29:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3646, characters 42-43:
+File "protocols.ml", line 3680, characters 42-43:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3647, characters 46-47:
+File "protocols.ml", line 3681, characters 46-47:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3648, characters 29-30:
+File "protocols.ml", line 3682, characters 29-30:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3653, characters 12-13:
+File "protocols.ml", line 3687, characters 12-13:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3654, characters 21-22:
+File "protocols.ml", line 3688, characters 21-22:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3655, characters 26-27:
+File "protocols.ml", line 3689, characters 26-27:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3723, characters 39-40:
+File "protocols.ml", line 3757, characters 39-40:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3724, characters 34-35:
+File "protocols.ml", line 3758, characters 34-35:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3725, characters 33-34:
+File "protocols.ml", line 3759, characters 33-34:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3726, characters 14-15:
+File "protocols.ml", line 3760, characters 14-15:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3733, characters 39-40:
+File "protocols.ml", line 3767, characters 39-40:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3734, characters 34-35:
+File "protocols.ml", line 3768, characters 34-35:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3735, characters 33-34:
+File "protocols.ml", line 3769, characters 33-34:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 3736, characters 14-15:
+File "protocols.ml", line 3770, characters 14-15:
 Warning 29: unescaped end-of-line in a string constant (non-portable code)
-File "protocols.ml", line 2836, characters 27-29:
+File "protocols.ml", line 2868, characters 27-29:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 2838, characters 23-25:
+File "protocols.ml", line 2870, characters 23-25:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 2860, characters 25-27:
+File "protocols.ml", line 2892, characters 25-27:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 2862, characters 27-29:
+File "protocols.ml", line 2894, characters 27-29:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 2864, characters 23-25:
+File "protocols.ml", line 2896, characters 23-25:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 2885, characters 25-27:
+File "protocols.ml", line 2917, characters 25-27:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 2953, characters 27-29:
+File "protocols.ml", line 2987, characters 27-29:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 2955, characters 23-25:
+File "protocols.ml", line 2989, characters 23-25:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 2976, characters 25-27:
+File "protocols.ml", line 3010, characters 25-27:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3014, characters 31-33:
+File "protocols.ml", line 3048, characters 31-33:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3022, characters 23-25:
+File "protocols.ml", line 3056, characters 23-25:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3040, characters 25-27:
+File "protocols.ml", line 3074, characters 25-27:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3086, characters 29-31:
+File "protocols.ml", line 3120, characters 29-31:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3088, characters 25-27:
+File "protocols.ml", line 3122, characters 25-27:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3108, characters 27-29:
+File "protocols.ml", line 3142, characters 27-29:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3114, characters 27-29:
+File "protocols.ml", line 3148, characters 27-29:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3116, characters 23-25:
+File "protocols.ml", line 3150, characters 23-25:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3135, characters 25-27:
+File "protocols.ml", line 3169, characters 25-27:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3165, characters 27-29:
+File "protocols.ml", line 3199, characters 27-29:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3167, characters 23-25:
+File "protocols.ml", line 3201, characters 23-25:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3188, characters 25-27:
+File "protocols.ml", line 3222, characters 25-27:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3237, characters 29-31:
+File "protocols.ml", line 3271, characters 29-31:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3239, characters 25-27:
+File "protocols.ml", line 3273, characters 25-27:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
-File "protocols.ml", line 3259, characters 27-29:
+File "protocols.ml", line 3293, characters 27-29:
 Warning 3: deprecated: Core.!=
 [since 2014-10] Use [phys_equal]
 File "protocols.ml", line 598, characters 77-78:
@@ -1327,161 +1327,165 @@ File "protocols.ml", line 2317, characters 26-29:
 Warning 27: unused variable m1'.
 File "protocols.ml", line 2317, characters 30-33:
 Warning 27: unused variable k1'.
-File "protocols.ml", line 2412, characters 27-31:
+File "protocols.ml", line 2400, characters 25-26:
+Warning 27: unused variable n.
+File "protocols.ml", line 2423, characters 27-31:
 Warning 27: unused variable msgs.
-File "protocols.ml", line 2424, characters 26-29:
-Warning 27: unused variable m1'.
-File "protocols.ml", line 2424, characters 30-33:
-Warning 27: unused variable k1'.
 File "protocols.ml", line 2435, characters 26-29:
 Warning 27: unused variable m1'.
 File "protocols.ml", line 2435, characters 30-33:
 Warning 27: unused variable k1'.
-File "protocols.ml", line 2522, characters 8-13:
-Warning 26: unused variable keyAg.
-File "protocols.ml", line 2531, characters 29-31:
-Warning 27: unused variable r1.
-File "protocols.ml", line 2531, characters 32-34:
-Warning 27: unused variable r2.
-File "protocols.ml", line 2538, characters 34-38:
-Warning 27: unused variable msgs.
-File "protocols.ml", line 2548, characters 34-37:
+File "protocols.ml", line 2446, characters 26-29:
 Warning 27: unused variable m1'.
-File "protocols.ml", line 2548, characters 38-41:
+File "protocols.ml", line 2446, characters 30-33:
 Warning 27: unused variable k1'.
-File "protocols.ml", line 2559, characters 34-37:
-Warning 27: unused variable m1'.
-File "protocols.ml", line 2559, characters 38-41:
-Warning 27: unused variable k1'.
-File "protocols.ml", line 2647, characters 77-78:
-Warning 27: unused variable m.
-File "protocols.ml", line 2659, characters 29-31:
-Warning 27: unused variable m1.
-File "protocols.ml", line 2659, characters 32-34:
-Warning 27: unused variable k1.
-File "protocols.ml", line 2663, characters 29-31:
-Warning 27: unused variable m1.
-File "protocols.ml", line 2663, characters 32-34:
-Warning 27: unused variable k2.
-File "protocols.ml", line 2667, characters 29-31:
-Warning 27: unused variable m1.
-File "protocols.ml", line 2667, characters 35-37:
-Warning 27: unused variable r1.
-File "protocols.ml", line 2667, characters 38-40:
-Warning 27: unused variable r2.
-File "protocols.ml", line 2671, characters 29-31:
-Warning 27: unused variable m1.
-File "protocols.ml", line 2671, characters 32-34:
-Warning 27: unused variable m2.
-File "protocols.ml", line 2704, characters 14-20:
-Warning 26: unused variable patNum.
-File "protocols.ml", line 2782, characters 6-10:
-Warning 26: unused variable kNum.
-File "protocols.ml", line 2784, characters 6-8:
-Warning 27: unused variable r1.
-File "protocols.ml", line 2784, characters 9-11:
-Warning 27: unused variable r2.
-File "protocols.ml", line 2830, characters 34-36:
-Warning 27: unused variable m1.
-File "protocols.ml", line 2835, characters 7-9:
-Warning 27: unused variable r1.
-File "protocols.ml", line 2835, characters 10-12:
-Warning 27: unused variable r2.
-File "protocols.ml", line 2895, characters 18-19:
-Warning 27: unused variable m.
-File "protocols.ml", line 2895, characters 28-30:
-Warning 27: unused variable i2.
-File "protocols.ml", line 2897, characters 5-8:
-Warning 27: unused variable pka.
-File "protocols.ml", line 2912, characters 5-8:
-Warning 27: unused variable sks.
-File "protocols.ml", line 2952, characters 18-19:
-Warning 27: unused variable m.
-File "protocols.ml", line 2952, characters 20-21:
-Warning 27: unused variable k.
-File "protocols.ml", line 2952, characters 33-35:
-Warning 27: unused variable m1.
-File "protocols.ml", line 2983, characters 61-62:
-Warning 27: unused variable m.
-File "protocols.ml", line 2984, characters 62-63:
-Warning 27: unused variable m.
-File "protocols.ml", line 2985, characters 63-64:
-Warning 27: unused variable m.
-File "protocols.ml", line 3011, characters 32-33:
-Warning 27: unused variable m.
-File "protocols.ml", line 3082, characters 41-42:
-Warning 27: unused variable m.
-File "protocols.ml", line 3111, characters 35-36:
-Warning 27: unused variable m.
-File "protocols.ml", line 3143, characters 20-21:
-Warning 27: unused variable m.
-File "protocols.ml", line 3143, characters 22-23:
-Warning 27: unused variable k.
-File "protocols.ml", line 3143, characters 30-32:
-Warning 27: unused variable i2.
-File "protocols.ml", line 3164, characters 18-19:
-Warning 27: unused variable m.
-File "protocols.ml", line 3164, characters 20-21:
-Warning 27: unused variable k.
-File "protocols.ml", line 3164, characters 33-35:
-Warning 27: unused variable m1.
-File "protocols.ml", line 3233, characters 41-42:
-Warning 27: unused variable m.
-File "protocols.ml", line 3296, characters 32-33:
-Warning 27: unused variable i.
-File "protocols.ml", line 3301, characters 62-64:
-Warning 27: unused variable r1.
-File "protocols.ml", line 3301, characters 58-61:
-Warning 27: unused variable st1.
-File "protocols.ml", line 3301, characters 53-57:
-Warning 27: unused variable seq1.
-File "protocols.ml", line 3302, characters 48-50:
-Warning 27: unused variable r1.
-File "protocols.ml", line 3302, characters 44-47:
-Warning 27: unused variable st1.
-File "protocols.ml", line 3302, characters 39-43:
-Warning 27: unused variable seq1.
-File "protocols.ml", line 3343, characters 54-55:
-Warning 27: unused variable m.
-File "protocols.ml", line 3346, characters 49-50:
-Warning 27: unused variable m.
-File "protocols.ml", line 3402, characters 82-84:
-Warning 27: unused variable r1.
-File "protocols.ml", line 3402, characters 90-92:
-Warning 27: unused variable r2.
-File "protocols.ml", line 3403, characters 82-84:
-Warning 27: unused variable r1.
-File "protocols.ml", line 3403, characters 90-92:
-Warning 27: unused variable r2.
-File "protocols.ml", line 3404, characters 81-83:
-Warning 27: unused variable r1.
-File "protocols.ml", line 3404, characters 84-86:
-Warning 27: unused variable r2.
-File "protocols.ml", line 3404, characters 91-99:
-Warning 27: unused variable r1'r2'.
-File "protocols.ml", line 3521, characters 9-12:
-Warning 27: unused variable seq.
-File "protocols.ml", line 3521, characters 13-14:
-Warning 27: unused variable s.
-File "protocols.ml", line 3521, characters 19-21:
-Warning 27: unused variable ms.
-File "protocols.ml", line 3527, characters 12-15:
-Warning 27: unused variable seq.
-File "protocols.ml", line 3527, characters 16-17:
-Warning 27: unused variable s.
-File "protocols.ml", line 3566, characters 46-47:
-Warning 27: unused variable i.
-File "protocols.ml", line 3569, characters 46-47:
-Warning 27: unused variable i.
-File "protocols.ml", line 3589, characters 6-13:
-Warning 26: unused variable roleStr.
-File "protocols.ml", line 3674, characters 8-9:
+File "protocols.ml", line 2478, characters 25-26:
 Warning 27: unused variable n.
-File "protocols.ml", line 3744, characters 11-12:
+File "protocols.ml", line 2552, characters 29-31:
+Warning 27: unused variable r1.
+File "protocols.ml", line 2552, characters 32-34:
+Warning 27: unused variable r2.
+File "protocols.ml", line 2559, characters 34-38:
+Warning 27: unused variable msgs.
+File "protocols.ml", line 2569, characters 34-37:
+Warning 27: unused variable m1'.
+File "protocols.ml", line 2569, characters 38-41:
+Warning 27: unused variable k1'.
+File "protocols.ml", line 2580, characters 34-37:
+Warning 27: unused variable m1'.
+File "protocols.ml", line 2580, characters 38-41:
+Warning 27: unused variable k1'.
+File "protocols.ml", line 2666, characters 33-34:
+Warning 27: unused variable n.
+File "protocols.ml", line 2679, characters 77-78:
+Warning 27: unused variable m.
+File "protocols.ml", line 2691, characters 29-31:
+Warning 27: unused variable m1.
+File "protocols.ml", line 2691, characters 32-34:
+Warning 27: unused variable k1.
+File "protocols.ml", line 2695, characters 29-31:
+Warning 27: unused variable m1.
+File "protocols.ml", line 2695, characters 32-34:
+Warning 27: unused variable k2.
+File "protocols.ml", line 2699, characters 29-31:
+Warning 27: unused variable m1.
+File "protocols.ml", line 2699, characters 35-37:
+Warning 27: unused variable r1.
+File "protocols.ml", line 2699, characters 38-40:
+Warning 27: unused variable r2.
+File "protocols.ml", line 2703, characters 29-31:
+Warning 27: unused variable m1.
+File "protocols.ml", line 2703, characters 32-34:
+Warning 27: unused variable m2.
+File "protocols.ml", line 2736, characters 14-20:
+Warning 26: unused variable patNum.
+File "protocols.ml", line 2814, characters 6-10:
+Warning 26: unused variable kNum.
+File "protocols.ml", line 2816, characters 6-8:
+Warning 27: unused variable r1.
+File "protocols.ml", line 2816, characters 9-11:
+Warning 27: unused variable r2.
+File "protocols.ml", line 2862, characters 34-36:
+Warning 27: unused variable m1.
+File "protocols.ml", line 2867, characters 7-9:
+Warning 27: unused variable r1.
+File "protocols.ml", line 2867, characters 10-12:
+Warning 27: unused variable r2.
+File "protocols.ml", line 2927, characters 18-19:
+Warning 27: unused variable m.
+File "protocols.ml", line 2927, characters 28-30:
+Warning 27: unused variable i2.
+File "protocols.ml", line 2929, characters 5-8:
+Warning 27: unused variable pka.
+File "protocols.ml", line 2945, characters 5-8:
+Warning 27: unused variable sks.
+File "protocols.ml", line 2986, characters 18-19:
+Warning 27: unused variable m.
+File "protocols.ml", line 2986, characters 20-21:
+Warning 27: unused variable k.
+File "protocols.ml", line 2986, characters 33-35:
+Warning 27: unused variable m1.
+File "protocols.ml", line 3017, characters 61-62:
+Warning 27: unused variable m.
+File "protocols.ml", line 3018, characters 62-63:
+Warning 27: unused variable m.
+File "protocols.ml", line 3019, characters 63-64:
+Warning 27: unused variable m.
+File "protocols.ml", line 3045, characters 32-33:
+Warning 27: unused variable m.
+File "protocols.ml", line 3116, characters 41-42:
+Warning 27: unused variable m.
+File "protocols.ml", line 3145, characters 35-36:
+Warning 27: unused variable m.
+File "protocols.ml", line 3177, characters 20-21:
+Warning 27: unused variable m.
+File "protocols.ml", line 3177, characters 22-23:
+Warning 27: unused variable k.
+File "protocols.ml", line 3177, characters 30-32:
+Warning 27: unused variable i2.
+File "protocols.ml", line 3198, characters 18-19:
+Warning 27: unused variable m.
+File "protocols.ml", line 3198, characters 20-21:
+Warning 27: unused variable k.
+File "protocols.ml", line 3198, characters 33-35:
+Warning 27: unused variable m1.
+File "protocols.ml", line 3267, characters 41-42:
+Warning 27: unused variable m.
+File "protocols.ml", line 3330, characters 32-33:
+Warning 27: unused variable i.
+File "protocols.ml", line 3335, characters 62-64:
+Warning 27: unused variable r1.
+File "protocols.ml", line 3335, characters 58-61:
+Warning 27: unused variable st1.
+File "protocols.ml", line 3335, characters 53-57:
+Warning 27: unused variable seq1.
+File "protocols.ml", line 3336, characters 48-50:
+Warning 27: unused variable r1.
+File "protocols.ml", line 3336, characters 44-47:
+Warning 27: unused variable st1.
+File "protocols.ml", line 3336, characters 39-43:
+Warning 27: unused variable seq1.
+File "protocols.ml", line 3377, characters 54-55:
+Warning 27: unused variable m.
+File "protocols.ml", line 3380, characters 49-50:
+Warning 27: unused variable m.
+File "protocols.ml", line 3436, characters 82-84:
+Warning 27: unused variable r1.
+File "protocols.ml", line 3436, characters 90-92:
+Warning 27: unused variable r2.
+File "protocols.ml", line 3437, characters 82-84:
+Warning 27: unused variable r1.
+File "protocols.ml", line 3437, characters 90-92:
+Warning 27: unused variable r2.
+File "protocols.ml", line 3438, characters 81-83:
+Warning 27: unused variable r1.
+File "protocols.ml", line 3438, characters 84-86:
+Warning 27: unused variable r2.
+File "protocols.ml", line 3438, characters 91-99:
+Warning 27: unused variable r1'r2'.
+File "protocols.ml", line 3555, characters 9-12:
+Warning 27: unused variable seq.
+File "protocols.ml", line 3555, characters 13-14:
+Warning 27: unused variable s.
+File "protocols.ml", line 3555, characters 19-21:
+Warning 27: unused variable ms.
+File "protocols.ml", line 3561, characters 12-15:
+Warning 27: unused variable seq.
+File "protocols.ml", line 3561, characters 16-17:
+Warning 27: unused variable s.
+File "protocols.ml", line 3600, characters 46-47:
+Warning 27: unused variable i.
+File "protocols.ml", line 3603, characters 46-47:
+Warning 27: unused variable i.
+File "protocols.ml", line 3623, characters 6-13:
+Warning 26: unused variable roleStr.
+File "protocols.ml", line 3708, characters 8-9:
+Warning 27: unused variable n.
+File "protocols.ml", line 3778, characters 11-12:
 Warning 27: unused variable t.
-File "protocols.ml", line 3758, characters 12-16:
+File "protocols.ml", line 3792, characters 12-16:
 Warning 27: unused variable outc.
-File "protocols.ml", line 3761, characters 16-17:
+File "protocols.ml", line 3795, characters 16-17:
 Warning 27: unused variable n.
 # Target: getModelString.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:getModelString.cmo, file:getModelString.ml, implem, ocaml, quiet, short_paths, thread }
 ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o getModelString.cmo getModelString.ml # cached
