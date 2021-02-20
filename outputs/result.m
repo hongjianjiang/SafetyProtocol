@@ -13,7 +13,7 @@ type
   chanNums:0..chanNum;
   invokeNums:0..invokeNum;
 
-  AgentType : enum{anyAgent,Alice, Intruder, Bob}; ---Intruder 
+  AgentType : enum{anyAgent,Intruder, Alice, Bob}; ---Intruder 
   NonceType : enum{anyNonce, Na, Nb, Nb1, kab};
   ConstType : enum{anyNumber};
   MsgType : enum {null,agent,nonce,key,aenc,senc,sign,concat,hash,tmp,mod,e,number};
@@ -202,7 +202,9 @@ procedure printMsg(msg:Message);
         put ")";
       elsif msg.k.encType=Symk then
         put "SymK(";
-        put msg.k.ag;
+        put msg.k.ag1;
+        put ",";
+        put msg.k.ag2;
         put ")";
       endif;
       elsif msg.msgType=aenc then
@@ -307,7 +309,7 @@ function judge(msg:Message;ag:AgentType;msg1:Message) :boolean;
       return true;
     elsif msg.msgType = senc then 
       ---if msgs[msg.sencKey].k.m =0 then 
-      return (msgs[msg.sencKey].k.ag1 = ag | msgs[msg.sencKey].k.ag2 = ag) 
+      return (msgs[msg.sencKey].k.ag1 = ag |msgs[msg.sencKey].k.ag2 = ag) 
       ---endif;
     endif;
     return true;
@@ -1256,7 +1258,6 @@ begin
        ch[1].empty:=true;
        clear ch[1].msg;
        roleB[i].st := B2;
-       put "test";
      endif;
    endif;
    put "roleB[i] in st1\n";
@@ -1729,7 +1730,7 @@ endruleset;
 
 startstate
   roleA[1].A := Alice;
-  roleA[1].B := Intruder;
+  roleA[1].B := Bob;
     roleA[1].Na := Na;
   roleA[1].st := A1;
   roleA[1].commit := false;
@@ -1737,7 +1738,7 @@ startstate
   roleA[1].Nb1 := anyNonce;
   roleA[1].kab := anyNonce;
 
-  roleB[1].A := Intruder;
+  roleB[1].A := Alice;
   roleB[1].B := Bob;
     roleB[1].Nb := Nb;
   roleB[1].Nb1 := Nb1;

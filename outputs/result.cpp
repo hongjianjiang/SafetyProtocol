@@ -217,7 +217,7 @@ class mu_1_AgentType: public mu__byte
   };
 };
 
-const char *mu_1_AgentType::values[] = {"anyAgent","Alice","Intruder","Bob",NULL };
+const char *mu_1_AgentType::values[] = {"anyAgent","Intruder","Alice","Bob",NULL };
 
 /*** end of enum declaration ***/
 mu_1_AgentType mu_1_AgentType_undefined_var;
@@ -3113,8 +3113,8 @@ const int mu_msgLength = 10;
 const int mu_chanNum = 18;
 const int mu_invokeNum = 10;
 const int mu_anyAgent = 1;
-const int mu_Alice = 2;
-const int mu_Intruder = 3;
+const int mu_Intruder = 2;
+const int mu_Alice = 3;
 const int mu_Bob = 4;
 const int mu_anyNonce = 5;
 const int mu_Na = 6;
@@ -3509,7 +3509,9 @@ else
 if ( (mu_msg.mu_k.mu_encType) == (mu_Symk) )
 {
 cout << "SymK(";
-cout << ( mu_msg.mu_k.mu_ag );
+cout << ( mu_msg.mu_k.mu_ag1 );
+cout << ",";
+cout << ( mu_msg.mu_k.mu_ag2 );
 cout << ")";
 }
 }
@@ -5665,7 +5667,7 @@ return mu_false;
 };
 /*** end function declaration ***/
 
-mu_0_boolean mu_matchPat(mu_1_Message mu_m1,mu_1_msgSet& mu_sPatnSet)
+mu_0_boolean mu_matchPat(mu_1_Message  mu_m1,mu_1_msgSet& mu_sPatnSet)
 {
 /*** Variable declaration ***/
 mu_0_boolean mu_flag("flag",0);
@@ -8554,7 +8556,6 @@ if ( mu__boolexpr294 )
 mu_ch[1].mu_empty = mu_true;
 mu_ch[1].mu_msg.clear();
 mu_roleB[mu_i].mu_st = mu_B2;
-cout << "test";
 }
 }
 cout << "roleB[i] in st1\n";
@@ -9235,14 +9236,14 @@ public:
   void Code(unsigned short r)
   {
 mu_roleA[1].mu_A = mu_Alice;
-mu_roleA[1].mu_B = mu_Intruder;
+mu_roleA[1].mu_B = mu_Bob;
 mu_roleA[1].mu_Na = mu_Na;
 mu_roleA[1].mu_st = mu_A1;
 mu_roleA[1].mu_commit = mu_false;
 mu_roleA[1].mu_Nb = mu_anyNonce;
 mu_roleA[1].mu_Nb1 = mu_anyNonce;
 mu_roleA[1].mu_kab = mu_anyNonce;
-mu_roleB[1].mu_A = mu_Intruder;
+mu_roleB[1].mu_A = mu_Alice;
 mu_roleB[1].mu_B = mu_Bob;
 mu_roleB[1].mu_Nb = mu_Nb;
 mu_roleB[1].mu_Nb1 = mu_Nb1;

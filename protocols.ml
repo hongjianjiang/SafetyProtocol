@@ -260,7 +260,9 @@ procedure printMsg(msg:Message);
         put \")\";
       elsif msg.k.encType=Symk then
         put \"SymK(\";
-        put msg.k.ag;
+        put msg.k.ag1;
+        put \",\";
+        put msg.k.ag2;
         put \")\";
       endif;
       elsif msg.msgType=aenc then
@@ -370,7 +372,7 @@ let genJudgeCode () =
       return true;
     elsif msg.msgType = senc then 
       ---if msgs[msg.sencKey].k.m =0 then 
-      return (msgs[msg.sencKey].k.ag1 = ag | msgs[msg.sencKey].k.ag2 = ag) 
+      return (msgs[msg.sencKey].k.ag1 = ag |msgs[msg.sencKey].k.ag2 = ag) 
       ---endif;
     endif;
     return true;
